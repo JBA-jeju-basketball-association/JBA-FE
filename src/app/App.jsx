@@ -1,7 +1,8 @@
+import React from "react";
 import { Reset } from "styled-reset";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { colors } from "../shared/colors";
+import colors  from "../shared/colors";
 function App() {
   return (
     <ThemeProvider theme={colors}>
