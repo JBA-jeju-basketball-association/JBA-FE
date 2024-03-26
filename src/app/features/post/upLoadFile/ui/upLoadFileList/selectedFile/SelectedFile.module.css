@@ -1,0 +1,10 @@
+.SelectedFile button{
+    background-color: blue;
+    color: white;
+  }
+
+  .SelectedFile button:hover {
+    background-color: skyblue;
+    color: black;
+  }
+
