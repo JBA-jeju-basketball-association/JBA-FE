@@ -1,10 +1,25 @@
-.SelectedFile button{
-    background-color: blue;
-    color: white;
+@import url("/src/shared/colors.css");
+
+.SelectedFile {
+    display: flex;
+    align-items: center;
+    padding: 5px 8px 5px 8px;
+    gap:4px;
+    width: max-content;
+    border-radius: 10px;
+    font-size: small;
+    background-color: var(--color-gray);
+    color: var(--color-dark);
   }
 
+
+  .SelectedFile button {
+    padding: 3px 5px 3px 5px;
+    border-radius: 50%;
+    font-size: 10px;
+   
+  }
   .SelectedFile button:hover {
-    background-color: skyblue;
-    color: black;
+    font-weight: bolder;
   }
 
