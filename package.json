@@ -1,5 +1,5 @@
 {
-  "name": "jba_project",
+  "name": "JBA-FE",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.6.8",
+    "colors": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
@@ -41,12 +42,17 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
-    "prettier": "^3.2.5"
-  }
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/JBA-jeju-basketball-association/JBA-FE.git",
+  "author": "Bhangdongho <bhang97@naver.com>",
+  "license": "MIT"
 }
