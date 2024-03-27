@@ -3,14 +3,14 @@ import styles from "../selectedFile/SelectedFile.module.css"
 
 type Props = {
   onClick?: () => void;
-  children:string;
   filename:string;
+  key:number;
 };
 
-export function SelectedFile({ onClick,children ,filename}: Props) {
+export function SelectedFile({ onClick ,filename,key}: Props) {
   return(
   <div className={styles.SelectedFile}>
     <span>{filename}</span>
-    <button onClick={onClick}>{children}</button>
+    <button key={key} onClick={onClick}>x</button>
   </div>)
 }
