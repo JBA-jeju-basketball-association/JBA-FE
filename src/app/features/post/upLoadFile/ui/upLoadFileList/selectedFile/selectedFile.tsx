@@ -1,17 +1,16 @@
 import React from "react";
-import { Button } from "../../../../../../../shared/ui/Button";
 import styles from "../selectedFile/SelectedFile.module.css"
 
 type Props = {
-  onChange?: () => void;
+  onClick?: () => void;
   children:string;
-  name:string;
+  filename:string;
 };
 
-export function SelectedFile({ onChange,children ,name}: Props) {
+export function SelectedFile({ onClick,children ,filename}: Props) {
   return(
   <div className={styles.SelectedFile}>
-    <span>{name}</span>
-    <Button onChange={onChange}>{children}</Button>
+    <span>{filename}</span>
+    <button onClick={onClick}>{children}</button>
   </div>)
 }

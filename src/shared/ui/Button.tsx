@@ -1,10 +1,10 @@
 import React from "react";
 
 type Props = {
-  onChange?: () => void;
-  children:string
+  onClick?: () => void;
+  children?:string
 };
 
-export function Button({ onChange,children }: Props) {
-  return <button  onChange={onChange} >{children}</button>;
+export function Button({ onClick,children }: Props) {
+  return <button  onClick={onClick} >{children}</button>;
 }
