@@ -1,10 +1,11 @@
 import React from "react";
 
 type Props = {
-  onChange?: () => void;
+  onChange?: (e:any) => void;
   type?: string;
+
 };
 
 export function Input({ onChange, type }: Props) {
-  return <input type={type} onChange={onChange} />;
+  return <input type={type} onChange={onChange}/>;
 }

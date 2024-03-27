@@ -1,0 +1,7 @@
+@import url("/src/shared/colors.css");
+
+.UpLoadButton input{
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+}
