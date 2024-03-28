@@ -1,0 +1,76 @@
+.SignupInput{
+    width: 430px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 3px;
+
+}
+.SignupInput_input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;;
+  border: 0.5px solid  rgba(83, 82, 97,0.7);
+  border-radius: 10px;
+  gap: 5px;
+
+}
+
+
+
+.SignupInput_iconbox{
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.5px solid rgba(83, 82, 97,0.7);
+  background-color: rgba(212, 215, 223,0.5);
+
+}
+.SignupInput_iconbox img{
+  width: 48px;
+  height: 48px;
+  display: flex;
+  overflow: hidden;;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+.SignupInput_input input{
+    width: 370px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+
+.SignupInput_input input::placeholder{
+  font-size: 18px;
+  font-weight:normal;
+  color: gray;
+}
+
+
+.SignupInput_guideline{
+  padding-left: 48px;
+  font-size: 12px;
+  color: red;
+}
+
+/* 인풋 기본값 제거 upLoadFile 브랜치가 develop과merge되면 거기서 resetcss에서 기능을 하기 때문에 이후 merge시 해당내용 삭제 */
+input { 
+  -webkit-appearance : none;
+  -moz-appearance:none;
+  appearance:none;
+  border: none;
+  outline: none;
+  }
