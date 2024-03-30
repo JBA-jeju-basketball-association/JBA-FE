@@ -55,7 +55,7 @@ button{
 }
 /* input css reset */
 input { 
-    -webkit-appearance : none; 
+    -webkit-appearance : none;
     -moz-appearance:none;
     appearance:none;
     outline: none;

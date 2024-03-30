@@ -1,0 +1,19 @@
+@import url("/src/shared/colors.css");
+
+.AddCompetitionPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.container {
+    width: 1040px;
+    border: 2px solid var(--color-border);
+}
+
+
+.inputArea {
+    display: flex;
+}

@@ -1,0 +1,15 @@
+
+.AddCompetitionLabel {
+    width: 140px;
+    height: 70px;
+    background-color: var(--color-beige);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--color-border);
+    border-right: 2px solid var(--color-border);
+}
+
+.AddCompetitionLabel label {
+    font-size: 16px;
+}

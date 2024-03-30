@@ -12,6 +12,9 @@
     --color-dark: #212a2e;
     --color-gray: #EAEBEF;
     --color-blue-iris: #543fd7;;
+    --color-border: #fafafa;
+    --color-beige: #FFF5E3
+
   }
   
   html[data-theme="light"] {
