@@ -1,6 +1,6 @@
 import * as React from 'react' 
-import { SelectedFile } from './selectedFile/SelectedFile';
 import style from "./UpLoadFileList.module.css"
+import {SelectedFile} from "./selectedFile/selectedFile";
 
 let testFiles=[{"name":"주연"},{"name":"한솔"},{"name":"동호"},{"name":"시후"}]
 
