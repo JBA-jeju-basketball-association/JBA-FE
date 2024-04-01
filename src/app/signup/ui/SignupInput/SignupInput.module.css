@@ -1,6 +1,15 @@
+/* 인풋 기본값 제거 upLoadFile 브랜치가 develop과merge되면 거기서 resetcss에서 기능을 하기 때문에 이후 merge시 해당내용 삭제 */
+input { 
+  -webkit-appearance : none;
+  -moz-appearance:none;
+  appearance:none;
+  border: none;
+  outline: none;
+  }
+
+/* form 기본 셋팅 : 작성란+ 가이드라인 box */
+
 .SignupInput{
-    width: 430px;
-    height: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +17,11 @@
     gap: 3px;
 
 }
-.SignupInput_input{
+
+/* form : 작성란 */
+
+.SignupInput_inputBox{
+  width: 430px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,9 +34,31 @@
 
 
 
+.SignupInput_inputBox input{
+  width: 380px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+
+.SignupInput_inputBox input::placeholder{
+font-size: 18px;
+font-weight:normal;
+color: gray;
+}
+
+
+
+
+/* form : 작성란의 아이콘 */
+
+
 .SignupInput_iconbox{
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +67,8 @@
 
 }
 .SignupInput_iconbox img{
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   display: flex;
   overflow: hidden;;
   justify-content: center;
@@ -42,23 +77,29 @@
 }
 
 
+/* form : 작성란이 성별일 때의 별도 css */
 
-.SignupInput_input input{
-    width: 370px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-}
-
-
-.SignupInput_input input::placeholder{
-  font-size: 18px;
-  font-weight:normal;
+.SignupInput_input_gender_checkbox{
+  display: flex;
+  justify-content: start;
+  align-items: center;
   color: gray;
+
 }
 
+.SignupInput_input_gender_checkbox input{
+  width: 20px;
+  height: 20px;
+  border: 2px solid gray;
+}
+
+.SignupInput_input_gender_checkbox input:checked{
+  color: white;
+  border: 1px red solid;
+  
+}
+
+/* form : 가이드라인 */
 
 .SignupInput_guideline{
   padding-left: 48px;
@@ -66,11 +107,12 @@
   color: red;
 }
 
-/* 인풋 기본값 제거 upLoadFile 브랜치가 develop과merge되면 거기서 resetcss에서 기능을 하기 때문에 이후 merge시 해당내용 삭제 */
-input { 
-  -webkit-appearance : none;
-  -moz-appearance:none;
-  appearance:none;
-  border: none;
-  outline: none;
-  }
+.SignupInput_input_gender{
+  width: 380px;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 18px;
+  gap: 20px;
+}

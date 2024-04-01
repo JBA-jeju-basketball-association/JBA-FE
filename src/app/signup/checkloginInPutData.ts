@@ -22,7 +22,7 @@ export default function checkloginInPutData(type: string): [RegExp, string, stri
         isFalse="이름을 정확히 입력해주세요."
         break;  
         case "phoneNum": 
-        regex = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;//000-0000-0000 형식확인
+        regex = /^\d{3,4}-\d{3,4}-\d{4}$/;//000-0000-0000 형식확인
         isTrue="사용 가능한 전화번호입니다."
         isFalse="올바른 휴대폰 형식이 아닙니다."
         break; 
