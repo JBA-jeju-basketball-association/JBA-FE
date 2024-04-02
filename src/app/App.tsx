@@ -6,7 +6,7 @@ import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/
 function App() {
   return (
       <div className="App">
-        <div style={{width:"100%", height:"190px", backgroundColor:"lightgray"}}>nav</div>
+        <header>nav</header>
         <Routes>
           <Route path="main" element={<div>main</div>} />
           {/*컴포넌트 테스트를 위한 임시 path */}
@@ -18,7 +18,7 @@ function App() {
           } />
             <Route path="/add-competition" element={<AddCompetitionPage />} />
         </Routes>
-        <div style={{width:"100%", height:"110px", backgroundColor:"lightgray", position:"absolute", bottom: 0}}>footer</div>
+        <footer >footer</footer>
       </div>
   );
 }

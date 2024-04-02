@@ -16,7 +16,10 @@ const PlaceArea = () => {
                         <div className={style.placeNameAreaLabel}>
                             <p>장소명</p>
                         </div>
-                        <input type="text" onChange={(e) => setPlaceName(e.target.value)}/>
+                        <input type="text"
+                               onChange={(e) => setPlaceName(e.target.value)}
+                               placeholder="장소명을 입력해주세요"
+                        />
                     </div>
                     <div className={style.searchPlaceArea}>
                         <button>주소검색</button>
