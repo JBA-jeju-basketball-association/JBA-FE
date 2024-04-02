@@ -36,10 +36,24 @@ export default function checkloginInPutData(type: string): [RegExp, string, stri
         isTrue="소속팀이 입력되었습니다.";
         isFalse="소속팀을 입력해주세요. 없을시 무소속을 체크해주세요."
         break; 
-        //비밀번호 확인과 생년월일은 제외하였습니다. 
+        case "year": 
+        regex = /^(199[0-9]|20[0-1][0-9]|202[0-4])$/;
+        isTrue="OK";
+        isFalse="올바른 년도를 입력해주세요."
+        break; 
+        case "month": 
+        regex = /^(0[1-9]|1[0-2])$/;//0부토 12까지 확인
+        isTrue="OK";
+        isFalse="올바른 월을 입력해주세요."
+        break; 
+        case "day": 
+        regex = /^(0[1-9]|[12][0-9]|3[01])$/;//0부터 31까지 확인
+        isTrue="OK";
+        isFalse="올바른 일을 입력해주세요."
+        break; 
+
         //비밀번호 확인은 사용자가 작성된 비밀번호와 비교하여야 하기에 정규표현식을 사용하기 알맞지 않고
-        //생년월일의 경우 3가지 데이터르 동시에 확인하여야 하기에 따로 적합하지 않다고 생각하였습니다.
-        //별도 작성예정
+       
       }
     return [regex,isTrue,isFalse]
   }
