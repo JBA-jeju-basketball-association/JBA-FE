@@ -6,11 +6,8 @@ import AddCompetitionLabel from "../../../../shared/ui/addCompetitionLabel/AddCo
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import CustomDatePicker from "../../../../shared/ui/datepicker/CustomDatePicker";
-import CustomDaumPostcode from "../../../../shared/ui/daumPostcode/CustomDaumPostcode";
-import Modal from "react-modal";
-import DaumPostcode from "react-daum-postcode";
 import PlaceArea from "../../../../entities/competition/ui/PlaceArea";
-import AddCompetitionLabel2 from "../../../../shared/ui/addCompetitionLabel/AddCompetitionLabel2";
+import AddFiles from "../../../../features/competition/ui/addFiles/AddFiles";
 
 const AddCompetitionPage:React.FC = () => {
     const [title, setTitle] = useState<string>("")
@@ -75,14 +72,16 @@ const AddCompetitionPage:React.FC = () => {
             <PageTitle pageName="대회등록"/>
             <form className={style.container} onSubmit={(event)=>formSubmitHandler(event)}>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"대회명"}/>
+                    <AddCompetitionLabel label={"대회명"} height={"normal"}/>
                     <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => addTitle(e)}
                            type={"text"}
-                           className={style.titleInput}/>
+                           className={style.titleInput}
+                           placeholder="대회명을 입력해주세요"
+                    />
 
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"종별"}/>
+                    <AddCompetitionLabel label={"종별"} height={"normal"}/>
                     <Select
                         components={makeAnimated()}
                         options={options}
@@ -93,17 +92,26 @@ const AddCompetitionPage:React.FC = () => {
                     />
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"날짜"}/>
+                    <AddCompetitionLabel label={"날짜"} height={"normal"}/>
                     <CustomDatePicker startDate={startDate} setStartDate={setStartDate} endDate={endDate}
                                       setEndDate={setEndDate}/>
                 </div>
                 <div className={style.inputArea2}>
-                    <AddCompetitionLabel2 label={"장소"}/>
+                    <AddCompetitionLabel label={"장소"} height={"double"}/>
                     <PlaceArea />
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"URL"} />
+                    <AddCompetitionLabel label={"URL"}  height={"normal"}/>
+                    <input type="text"
+                           placeholder="대회 관련 URL을 입력해주세요"
+                           className={style.urlInput}
+                    />
                 </div>
+                <div className={style.inputArea}>
+                    <AddCompetitionLabel label={"첨부파일"}  height={"normal"}/>
+                    <input type="file" multiple/>
+                </div>
+                <AddFiles />
             </form>
         </div>
     );

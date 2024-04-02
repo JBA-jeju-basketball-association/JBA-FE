@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+.idae
+JBA-FE.iml
 
 # testing
 /coverage
