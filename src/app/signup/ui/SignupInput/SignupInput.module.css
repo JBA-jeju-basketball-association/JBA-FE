@@ -7,6 +7,7 @@ input {
   outline: none;
   }
 
+
 /* form 기본 셋팅 : 작성란+ 가이드라인 box */
 
 .SignupInput{
@@ -23,7 +24,7 @@ input {
 .SignupInput_inputBox{
   width: 430px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   overflow: hidden;;
   border: 0.5px solid  rgba(83, 82, 97,0.7);
@@ -35,7 +36,7 @@ input {
 
 
 .SignupInput_inputBox input{
-  width: 380px;
+  width: 300px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -44,10 +45,19 @@ input {
 }
 
 
+.SignupInput_inputBox input:disabled{
+ background-color: white;
+}
+
 .SignupInput_inputBox input::placeholder{
 font-size: 18px;
 font-weight:normal;
 color: gray;
+}
+/* 모든 input checkbox 체크시의 css  */
+/* 체크박스 css 관련 이미지 구해질 시 변경예정 */
+.SignupInput_inputBox input:checked{
+  border: 1px red solid;
 }
 
 
@@ -56,9 +66,9 @@ color: gray;
 /* form : 작성란의 아이콘 */
 
 
-.SignupInput_iconbox{
+.SignupInput_iconBox{
   width: 50px;
-  height: px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +76,7 @@ color: gray;
   background-color: rgba(212, 215, 223,0.5);
 
 }
-.SignupInput_iconbox img{
+.SignupInput_iconBox img{
   width: 50px;
   height: 50px;
   display: flex;
@@ -75,9 +85,37 @@ color: gray;
   align-items: center;
 
 }
+/* form : team 무소속 버튼 css */
+
+.SignupInput_input_team_checkbox {
+  width:max-content;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: smaller;
+  color: gray;
+
+}
+.SignupInput_input_team_checkbox input{
+  width: 15px;
+  height:15px;
+  border: 2px solid gray;
+
+}
 
 
-/* form : 작성란이 성별일 때의 별도 css */
+/* form : 성별입력란  별도 css */
+
+.SignupInput_input_gender{
+  width: 380px;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 18px;
+  gap: 20px;
+}
+
 
 .SignupInput_input_gender_checkbox{
   display: flex;
@@ -93,11 +131,48 @@ color: gray;
   border: 2px solid gray;
 }
 
-.SignupInput_input_gender_checkbox input:checked{
-  color: white;
-  border: 1px red solid;
-  
+
+/* form : 성별입력란  별도 css */
+
+.SignupInput_input_birthday{
+  display: flex;
 }
+
+.SignupInput_input_Dob{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.SignupInput_input_Dob_inputBox{
+  display: flex;
+}
+.SignupInput_input_Dob_inputBox input::placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.year input{
+  width: 80px;
+}
+.month input{
+  width: 50px;
+}
+.day input{
+  width: 50px;
+}
+
+.SignupInput_input_Dob_guideline{
+  color: red;
+  font-size: smaller;
+
+}
+
+
+
 
 /* form : 가이드라인 */
 
@@ -107,12 +182,3 @@ color: gray;
   color: red;
 }
 
-.SignupInput_input_gender{
-  width: 380px;
-  height: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  font-size: 18px;
-  gap: 20px;
-}

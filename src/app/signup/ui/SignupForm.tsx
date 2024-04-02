@@ -1,5 +1,5 @@
 import React from "react" 
-import SignupInput from "./SignupInput/SignupInput";
+import {SignupInput} from "./SignupInput/SignupInput";
 import styles from"./SignupFrom.module.css"
 
   // type은 따로 관리예정입니다.
@@ -17,6 +17,15 @@ interface SignupFormData {
   }
   
 type Key ="email"|"password"|"passwordConfirm"|"name"|"phoneNum"|"team"|"birthday"|"gender"
+
+function isSignupFormDataValid(data: SignupFormData): boolean {
+  for (const key in data) {
+      if (data[key as keyof SignupFormData] === null || data[key as keyof SignupFormData] === "") {
+          return false;
+      }
+  }
+  return true;
+}
 
 
 
@@ -50,7 +59,9 @@ export function SignupForm(){
             <SignupInput type={"phoneNum"} changeSingupForm={changeSingupForm} placeholder={"000-0000-0000"}></SignupInput>
             <SignupInput type={"team"} changeSingupForm={changeSingupForm} placeholder={"소속팀"}></SignupInput>
             <SignupInput type={"gender"} changeSingupForm={changeSingupForm} placeholder={"소속팀"}></SignupInput>
-            <button onClick={()=>console.log(signupFormData)}> 확인 테스트</button>
+            <SignupInput type={"birthday"} changeSingupForm={changeSingupForm} placeholder={"소속팀"}></SignupInput>
+
+            <button onClick={()=>console.log(isSignupFormDataValid(signupFormData),signupFormData)}> 확인 테스트</button>
 
     </div>
     );
