@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./AddCompetitionLabel.module.css"
+import style from "./AddCompetitionLabel2.module.css"
 
 type Props = {
     label: string;
