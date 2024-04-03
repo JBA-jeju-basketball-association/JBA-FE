@@ -1,0 +1,6 @@
+.UploadFileList{
+    display:flex;
+    width: max-content;
+    gap: 10px;
+
+}
