@@ -1,0 +1,98 @@
+.PlaceArea {
+    width: 900px;
+    display: flex;
+}
+
+.leftBox {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    border-right: 1px solid var(--color-gray);
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    border-right: 1px solid var(--color-gray);
+}
+
+.placeNameArea {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.placeNameAreaLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 100%;
+    background-color: var(--color-beige);
+    margin-right: 20px;
+    border: none;
+    font-size: 16px;
+}
+
+.placeNameArea input {
+    border: none;
+    height: 80%;
+    font-size: 16px;
+}
+
+
+.searchPlaceArea {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding-right: 20px ;
+    box-sizing: border-box;
+}
+
+.searchPlaceArea button {
+    background-color: var(--primary-color);
+    width: 90px;
+    margin-right: 20px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.searchPlaceArea input {
+    /*border: none;*/
+    height: 60%;
+    width: 300px;
+    font-size: 16px;
+}
+
+.buttonArea {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonArea button {
+    width: 70%;
+    height: 70%;
+    border: 1px solid var(--color-beige);
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    font-size: 20px;
+}
+
+.rightBox {
+    width: 30%;
+}
+
+.placeList {
+    padding: 20px;
+}
+
