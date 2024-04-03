@@ -56,11 +56,13 @@ color: gray;
 }
 /* 모든 input checkbox 체크시의 css  */
 /* 체크박스 css 관련 이미지 구해질 시 변경예정 */
-.SignupInput_inputBox input:checked{
+
+input[type="checkbox"]:checked {
   border: 1px red solid;
 }
-
-
+input[type="checkbox"]:checked + label {
+  color: #000; 
+}
 
 
 /* form : 작성란의 아이콘 */
@@ -132,42 +134,49 @@ color: gray;
 }
 
 
-/* form : 성별입력란  별도 css */
+/* form : 생일입력란  별도 css */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 .SignupInput_input_birthday{
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .SignupInput_input_Dob{
-  display: flex;
-  flex-direction: column;
-}
-
-
-.SignupInput_input_Dob_inputBox{
-  display: flex;
-}
-.SignupInput_input_Dob_inputBox input::placeholder{
-  display: flex;
+  display:flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
+.SignupInput_input_Dob_inputBox{
+  display:flex;
+  align-items: center;
+  justify-content: center;}
 
 
-
+/*생년월일 입력창의 각 인풋창 사이즈 조절*/
 .year input{
-  width: 80px;
+  width: 40px;
 }
-.month input{
-  width: 50px;
-}
-.day input{
-  width: 50px;
+.month input,
+.day input
+{
+  width: 20px;
 }
 
-.SignupInput_input_Dob_guideline{
-  color: red;
-  font-size: smaller;
+/*생년월일 입력창의 값이 올바르지 않을시 인풋태그에 빨간 밑줄*/
+
+.false input{
+  border-bottom: 1px solid red;
+
 
 }
 
@@ -181,4 +190,7 @@ color: gray;
   font-size: 12px;
   color: red;
 }
-
+/* form : 가이드라인에 알맞게 입력시 가이드라인 색상변경 */
+.isTrue{
+  color: gray;
+}
