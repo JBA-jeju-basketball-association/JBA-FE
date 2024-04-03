@@ -1,14 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import App from "./app/App";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import './shared/base.css'
-import App from "./app/App"
 
-const root = ReactDOM.createRoot(document.getElementById("root")as HTMLElement ) ;
+const root:ReactDOM.Root = ReactDOM.createRoot(document.getElementById("root")as HTMLElement ) ;
+const queryClient: QueryClient = new QueryClient();
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+            <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right"/>
+    </QueryClientProvider>
+
 );
 
 //appEntry
