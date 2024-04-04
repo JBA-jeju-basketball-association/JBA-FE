@@ -1,0 +1,61 @@
+.LoginPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 100%;
+}
+
+.boxArea {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.labelArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 48px;
+    background-color: var(--color-lightgray);
+    border: 1px solid var(--color-lightgray);
+    border-radius: 10px 0 0 10px;
+}
+
+.labelArea label {
+    font-size: 20px;
+}
+
+.inputArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 48px;
+    border: 1px solid var(--color-lightgray);
+    border-radius: 0 10px 10px 0;
+}
+
+.inputArea input {
+    width: 340px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    border: none;
+}
+
+.submitButton {
+    width: 500px;
+    height: 48px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-size: 20px;
+
+}
