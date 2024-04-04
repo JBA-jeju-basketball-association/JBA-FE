@@ -4,28 +4,30 @@ import { UploadFileList } from "./features/post/upLoadFile/ui/upLoadFileList/UpL
 import { UpLoadButton } from "./features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import Test from "./Test";
-import LoginPage from "../pages/loginPage/LoginPage";
+import LoginPage from "../pages/loginPage/ui/LoginPage";
 
 function App() {
-  return (
-      <div className="App">
-        <header>nav</header>
-        <Routes>
-          <Route path="main" element={<div>main</div>} />
-          {/*컴포넌트 테스트를 위한 임시 path */}
-          <Route path="zzuyeontest" element={
-            <div>
-                <UploadFileList></UploadFileList>
-                <UpLoadButton></UpLoadButton>
+    return (
+        <div className="App">
+            <header>nav</header>
+            <div style={{minHeight: "calc(100vh - 110px)",  paddingTop:"180px"}}>
+            <Routes>
+                <Route path="main" element={<div>main</div>}/>
+                {/*컴포넌트 테스트를 위한 임시 path */}
+                <Route path="zzuyeontest" element={
+                    <div>
+                        <UploadFileList></UploadFileList>
+                        <UpLoadButton></UpLoadButton>
+                    </div>
+                }/>
+                <Route path="/add-competition" element={<AddCompetitionPage/>}/>
+                <Route path="login" element={<LoginPage/>}/>
+                <Route path="test" element={<Test/>}/>
+            </Routes>
             </div>
-          } />
-            <Route path="/add-competition" element={<AddCompetitionPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="test" element={<Test />} />
-        </Routes>
-        <footer >footer</footer>
-      </div>
-  );
+            <footer>footer</footer>
+        </div>
+    );
 }
 //appRouter
 

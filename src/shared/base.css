@@ -74,14 +74,7 @@ header {
 
 
 footer {
-	/* footer를 aside위에 올리기 위해 사용(부유객체) */
-
-	position: absolute;
 	height: 110px;
 	width: 100%;
-	padding: 0 25px;
-	line-height: 60px;
-	color: #8a8c8f;
-	border-top: 1px solid #dee5e7;
 	background-color: lightgray;
 }
