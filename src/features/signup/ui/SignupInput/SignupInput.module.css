@@ -1,12 +1,11 @@
-/* 인풋 기본값 제거 upLoadFile 브랜치가 develop과merge되면 거기서 resetcss에서 기능을 하기 때문에 이후 merge시 해당내용 삭제 */
-input { 
+@import url("/src/shared/colors.css");
+.Input input{ 
   -webkit-appearance : none;
   -moz-appearance:none;
   appearance:none;
   border: none;
   outline: none;
-  }
-
+}
 
 /* form 기본 셋팅 : 작성란+ 가이드라인 box */
 
@@ -36,7 +35,7 @@ input {
 
 
 .SignupInput_inputBox input{
-  width: 300px;
+  width: 280px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -52,7 +51,7 @@ input {
 .SignupInput_inputBox input::placeholder{
 font-size: 18px;
 font-weight:normal;
-color: gray;
+color: var(--color-dark-gray);
 }
 /* 모든 input checkbox 체크시의 css  */
 /* 체크박스 css 관련 이미지 구해질 시 변경예정 */
@@ -89,21 +88,88 @@ input[type="checkbox"]:checked + label {
 }
 /* form : team 무소속 버튼 css */
 
-.SignupInput_input_team_checkbox {
+.SignupInput_input_team_checkBox {
   width:max-content;
   display: flex;
   justify-content: start;
   align-items: center;
   font-size: smaller;
-  color: gray;
+  color:var(--color-dark-gray);
+
 
 }
-.SignupInput_input_team_checkbox input{
+.SignupInput_input_team_checkBox input{
   width: 15px;
   height:15px;
-  border: 2px solid gray;
+  border: 2px solid var(--color-dark-gray);
+
 
 }
+
+/* form : 이메일 인증  별도 css */
+.SignupInput_checkEmail{
+ font-size: smaller;
+ padding: 5px;
+ border-left: 1px solid var(--color-dark-gray);
+
+}
+
+.SignupInput_checkCode{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+  margin: 0px 3px 0px 5px;
+  border-left: 2px solid var(--color-dark-gray);
+}
+
+
+.SignupInput_checkCode_changeCode{
+  width: 100px; 
+  padding: 0px 3px 0px 5px;
+  font-size: 13x; 
+
+}
+
+
+.SignupInput_checkCode input{
+  width: 100px; 
+  padding: 0px 3px 0px 5px;
+  font-weight: lighter;
+  font-size: 13x; 
+
+}
+
+.SignupInput_checkCode input::placeholder{
+  font-size: 11px; 
+ }
+ 
+
+
+.SignupInput_checkCode_button{
+  width: max-content;
+  height: max-content;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SignupInput_checkCode_button div{
+  width: max-content;
+  height: fit-content;
+  padding-top: 6px;
+  font-size: 15;
+  color:black;
+
+}
+.complete{
+  border-left: 1px solid var(--color-lightgray-gray);
+  color:var(--color-lightgray-gray)
+}
+
+ 
 
 
 /* form : 성별입력란  별도 css */
@@ -119,19 +185,21 @@ input[type="checkbox"]:checked + label {
 }
 
 
-.SignupInput_input_gender_checkbox{
+.SignupInput_input_gender_checkBox{
   display: flex;
   justify-content: start;
   align-items: center;
-  color: gray;
+  color: var(--color-dark-gray);
+ 
 
 }
 
-.SignupInput_input_gender_checkbox input{
+.SignupInput_input_gender_checkBox input{
   width: 20px;
   height: 20px;
-  border: 2px solid gray;
+  border: 2px solid var(--color-dark-gray);
 }
+
 
 
 /* form : 생일입력란  별도 css */
@@ -150,7 +218,7 @@ input::-webkit-inner-spin-button {
   gap: 10px;
 }
 
-.SignupInput_input_Dob{
+.SignupInput_input_dob{
   display:flex;
   align-items: center;
   justify-content: center;
@@ -166,6 +234,7 @@ input::-webkit-inner-spin-button {
 .year input{
   width: 40px;
 }
+
 .month input,
 .day input
 {
@@ -176,8 +245,6 @@ input::-webkit-inner-spin-button {
 
 .false input{
   border-bottom: 1px solid red;
-
-
 }
 
 
@@ -185,12 +252,34 @@ input::-webkit-inner-spin-button {
 
 /* form : 가이드라인 */
 
-.SignupInput_guideline{
-  padding-left: 48px;
+.SignupInput_guideline_container{
+  display: flex ;
+  gap: 4px;
   font-size: 12px;
   color: red;
+
 }
+
+.SignupInput_guideline{
+  padding-left: 48px;
+}
+
 /* form : 가이드라인에 알맞게 입력시 가이드라인 색상변경 */
 .isTrue{
-  color: gray;
+  color: var(--color-dark-gray);
+
+}
+.isFalse{
+  color: red;
+}
+
+
+/* 이메일 작성란 없애기*/
+.None input[id="email"]{
+  display: none;
+}
+
+.Block input{
+  display: block;
+
 }

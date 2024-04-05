@@ -2,7 +2,7 @@ import axios,{AxiosResponse,AxiosError} from 'axios';
 import { SignupFormDataType,Response } from './type';
 
 
-export default function SignUpApi(data: SignupFormDataType) {
+export default function signUpApi(data: SignupFormDataType) {
   const birthday = data.birthday.split("-");
      axios.post('http://ec2-43-201-38-210.ap-northeast-2.compute.amazonaws.com:8080/v1/api/sign/sign-up', {
       email: data.email,
