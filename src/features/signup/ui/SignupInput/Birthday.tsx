@@ -1,6 +1,6 @@
 import React from "react" 
 import style from"./SignupInput.module.css"
-import { BirthdayType,BirthdayKey } from "app/signup/api/type";
+import { BirthdayType,BirthdayKey } from "features/signup/api/type";
 import Dob from "./DayOfBirthday";
 
 
