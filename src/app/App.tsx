@@ -3,7 +3,6 @@ import { Routes, Route} from "react-router-dom";
 import { UploadFileList } from "./features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "./features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
-import Test from "./Test";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
                 }/>
                 <Route path="/add-competition" element={<AddCompetitionPage/>}/>
                 <Route path="login" element={<LoginPage/>}/>
-                <Route path="test" element={<Test/>}/>
             </Routes>
             </div>
             <footer>footer</footer>
