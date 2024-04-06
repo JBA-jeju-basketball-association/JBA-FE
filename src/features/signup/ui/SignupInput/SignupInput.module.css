@@ -1,0 +1,285 @@
+@import url("/src/shared/colors.css");
+.Input input{ 
+  -webkit-appearance : none;
+  -moz-appearance:none;
+  appearance:none;
+  border: none;
+  outline: none;
+}
+
+/* form 기본 셋팅 : 작성란+ 가이드라인 box */
+
+.SignupInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 3px;
+
+}
+
+/* form : 작성란 */
+
+.SignupInput_inputBox{
+  width: 430px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;;
+  border: 0.5px solid  rgba(83, 82, 97,0.7);
+  border-radius: 10px;
+  gap: 5px;
+
+}
+
+
+
+.SignupInput_inputBox input{
+  width: 280px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+
+.SignupInput_inputBox input:disabled{
+ background-color: white;
+}
+
+.SignupInput_inputBox input::placeholder{
+font-size: 18px;
+font-weight:normal;
+color: var(--color-dark-gray);
+}
+/* 모든 input checkbox 체크시의 css  */
+/* 체크박스 css 관련 이미지 구해질 시 변경예정 */
+
+input[type="checkbox"]:checked {
+  border: 1px red solid;
+}
+input[type="checkbox"]:checked + label {
+  color: #000; 
+}
+
+
+/* form : 작성란의 아이콘 */
+
+
+.SignupInput_iconBox{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.5px solid rgba(83, 82, 97,0.7);
+  background-color: rgba(212, 215, 223,0.5);
+
+}
+.SignupInput_iconBox img{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  overflow: hidden;;
+  justify-content: center;
+  align-items: center;
+
+}
+/* form : team 무소속 버튼 css */
+
+.SignupInput_input_team_checkBox {
+  width:max-content;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: smaller;
+  color:var(--color-dark-gray);
+
+
+}
+.SignupInput_input_team_checkBox input{
+  width: 15px;
+  height:15px;
+  border: 2px solid var(--color-dark-gray);
+
+
+}
+
+/* form : 이메일 인증  별도 css */
+.SignupInput_checkEmail{
+ font-size: smaller;
+ padding: 5px;
+ border-left: 1px solid var(--color-dark-gray);
+
+}
+
+.SignupInput_checkCode{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+  margin: 0px 3px 0px 5px;
+  border-left: 2px solid var(--color-dark-gray);
+}
+
+
+.SignupInput_checkCode_changeCode{
+  width: 100px; 
+  padding: 0px 3px 0px 5px;
+  font-size: 13x; 
+
+}
+
+
+.SignupInput_checkCode input{
+  width: 100px; 
+  padding: 0px 3px 0px 5px;
+  font-weight: lighter;
+  font-size: 13x; 
+
+}
+
+.SignupInput_checkCode input::placeholder{
+  font-size: 11px; 
+ }
+ 
+
+
+.SignupInput_checkCode_button{
+  width: max-content;
+  height: max-content;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SignupInput_checkCode_button div{
+  width: max-content;
+  height: fit-content;
+  padding-top: 6px;
+  font-size: 15;
+  color:black;
+
+}
+.complete{
+  border-left: 1px solid var(--color-lightgray-gray);
+  color:var(--color-lightgray-gray)
+}
+
+ 
+
+
+/* form : 성별입력란  별도 css */
+
+.SignupInput_input_gender{
+  width: 380px;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 18px;
+  gap: 20px;
+}
+
+
+.SignupInput_input_gender_checkBox{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: var(--color-dark-gray);
+ 
+
+}
+
+.SignupInput_input_gender_checkBox input{
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-dark-gray);
+}
+
+
+
+/* form : 생일입력란  별도 css */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.SignupInput_input_birthday{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.SignupInput_input_dob{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.SignupInput_input_Dob_inputBox{
+  display:flex;
+  align-items: center;
+  justify-content: center;}
+
+
+/*생년월일 입력창의 각 인풋창 사이즈 조절*/
+.year input{
+  width: 40px;
+}
+
+.month input,
+.day input
+{
+  width: 20px;
+}
+
+/*생년월일 입력창의 값이 올바르지 않을시 인풋태그에 빨간 밑줄*/
+
+.false input{
+  border-bottom: 1px solid red;
+}
+
+
+
+
+/* form : 가이드라인 */
+
+.SignupInput_guideline_container{
+  display: flex ;
+  gap: 4px;
+  font-size: 12px;
+  color: red;
+
+}
+
+.SignupInput_guideline{
+  padding-left: 48px;
+}
+
+/* form : 가이드라인에 알맞게 입력시 가이드라인 색상변경 */
+.isTrue{
+  color: var(--color-dark-gray);
+
+}
+.isFalse{
+  color: red;
+}
+
+
+/* 이메일 작성란 없애기*/
+.None input[id="email"]{
+  display: none;
+}
+
+.Block input{
+  display: block;
+
+}
