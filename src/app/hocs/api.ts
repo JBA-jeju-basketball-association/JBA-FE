@@ -1,7 +1,5 @@
 import axios, {AxiosInstance} from "axios";
-import {Cookies} from "react-cookie";
 
-const cookies = new Cookies;
 
 
 
@@ -78,7 +76,11 @@ api.interceptors.response.use(function (response) {
     }else if(error.response.data.detailMessage === "접근 권한 없음") {
         alert("접근 권한이 없습니다.")
         window.location.href = "/"
-    }else if (error.response.status === 401) {
+    }else if (error.response.status === 401
+        && error.response.data.detailMessage !== "자격 증명에 실패하였습니다."
+        && error.response.data.detailMessage !== "자격 증명에 실패하였습니다. 계정이 잠깁니다."
+        && error.response.data.detailMessage !== "Login Locked User"
+    ) {
         localStorage.removeItem("AccessToken");
         localStorage.removeItem("RefreshToken");
         alert("로그인 해주세요.");

@@ -15,7 +15,6 @@
 .boxArea {
     display: flex;
     width: 100%;
-    margin-bottom: 1rem;
 }
 
 .labelArea {
@@ -24,8 +23,8 @@
     align-items: center;
     width: 100px;
     height: 48px;
-    background-color: var(--color-lightgray);
-    border: 1px solid var(--color-lightgray);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 10px 0 0 10px;
 }
 
@@ -57,5 +56,49 @@
     background-color: var(--primary-color);
     border-radius: 10px;
     font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
 
+.messageBox {
+    width: 100%;
+}
+
+.message {
+    margin: 3px 0 1rem 110px;
+    font-size: 12px;
+    color: red;
+}
+
+.searchBox {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.search {
+    margin: 1rem 0 1rem 0;
+    cursor: pointer;
+    color: var(--link-color);
+}
+
+.loginBottomLine {
+    height: 0;
+    width: 100%;
+    border: 1px solid var(--color-lightgray);
+    margin: 1rem 0 1rem 0;
+}
+
+.signUpLink {
+    width: 500px;
+    height: 48px;
+    border: 1px solid var(--color-dark);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    color: var(--color-dark-gray);
+    text-decoration: none;
 }
