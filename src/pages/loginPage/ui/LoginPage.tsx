@@ -1,42 +1,51 @@
 import React, {useState} from 'react';
 import PageTitle from "../../../shared/ui/pageTitle/PageTitle";
 import style from "./LoginPage.module.css";
+import axios from "axios";
 import {api} from "../../../app/hocs/api";
-import {useMutation, useQuery} from "@tanstack/react-query";
 
 const LoginPage = () => {
-
     const [email, setEmail] = useState<string | null>(null);
     const [password, setPassword] = useState<string | null>(null);
 
-    const fetchLogin = async () => {
-        api.post("/v1/api/sign/login",{
+    const fetchLogin = async ():Promise<void> => {
+        api.post("/v1/api/sign/login", {
             email,
             password
-        },{
-            headers: {
-                "access-token": "",
+        }).then((res):void => {
+            console.log(res)
+            if (res.status === 200) {
+                localStorage.setItem("AccessToken", res.headers["access-token"]);
+                localStorage.setItem("RefreshToken", res.headers["refresh-token"])
             }
-        }).then((res) => {
-                if (res.status === 200) {
-                    console.log(res)
-                }
-            })
-            .catch(err => console.log(err.message))
+        }).catch(err => console.log(err.response.data));
     }
-
-    // const {data, isError, error, isLoading} = useQuery({
-    //     queryKey:["login"],
-    //     queryFn:fetchLogin,
-    //     retry: false
-    // })
-
-
 
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         console.log(email,password)
         fetchLogin();
+    }
+
+
+    const getTestHandler = async () => {
+        return api.get("/test")
+            .then(res => {
+
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            });
+    }
+
+    const getTest1Handler =  async () => {
+        return api.get("/v1/api/sign/test1")
+            .then(res=> {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
 
@@ -63,6 +72,15 @@ const LoginPage = () => {
 
                 <button type="submit" className={style.submitButton}>로그인</button>
             </form>
+
+            <div>
+                <a onClick={()=>getTestHandler()} style={{margin:"10px", width:"100px", height:"100px", backgroundColor:"lightgray"}}>테스트</a>
+                <div  style={{margin:"10px", width:"100px", height:"100px", backgroundColor:"red"}}>없음</div>
+            </div>
+            {/*<div>*/}
+            {/*    <a onClick={()=>testHandler()} style={{margin:"10px", width:"100px", height:"100px", backgroundColor:"lightgray"}}>refresh</a>*/}
+            {/*    <div  style={{margin:"10px", width:"100px", height:"100px", backgroundColor:"red"}}>test</div>*/}
+            {/*</div>*/}
         </div>
     );
 };
