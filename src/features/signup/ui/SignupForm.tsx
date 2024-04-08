@@ -53,7 +53,7 @@ export function SignupForm(){
           <SignupInput type={"team"} changeSignupForm={changeSignupForm} placeholder={"소속팀"}></SignupInput>
           <SignupInput type={"gender"} changeSignupForm={changeSignupForm} placeholder={"소속팀"}></SignupInput>
           <SignupInput type={"birthday"} changeSignupForm={changeSignupForm} placeholder={"소속팀"}></SignupInput>
-           <button  className={styles.Button}onClick={()=>console.log(isSignupFormDataValid(signupFormData))}> 회원가입</button> 
+           <button  className={styles.Button}onClick={()=>isSignupFormDataValid(signupFormData)}> 회원가입</button> 
 
 
   </div>
