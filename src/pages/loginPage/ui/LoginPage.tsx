@@ -2,20 +2,21 @@ import React, {useEffect, useState} from 'react';
 import PageTitle from "../../../shared/ui/pageTitle/PageTitle";
 import style from "./LoginPage.module.css";
 import fetchLogin from "../api/FetchLogin";
+import useUserStore from "../../../app/hocs/UserStore";
 
 const LoginPage = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [emailMessage, setEmailMessage] = useState<string>("");
-
+    const {token, setToken} = useUserStore();
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         setEmailMessage("");
-        fetchLogin(email, password, setEmailMessage);
+        fetchLogin(email, password, setEmailMessage, setToken);
     }
 
     useEffect(() => {
-        if (localStorage.getItem("AccessToken")) {
+        if (token) {
             window.location.href = "/main"
         }
     }, []);
