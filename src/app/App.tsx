@@ -5,6 +5,8 @@ import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/Up
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import Test from "./Test";
+import Footer from "../widgets/footer/ui/Footer"
+
 function App() {
   return (
       <div className="App">
@@ -22,7 +24,7 @@ function App() {
             <Route path="/add-competition" element={<AddCompetitionPage />} />
             <Route path="test" element={<Test />} />
         </Routes>
-        <footer >footer</footer>
+        <footer ><Footer></Footer></footer>
       </div>
   );
 }
