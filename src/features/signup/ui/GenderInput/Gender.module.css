@@ -1,0 +1,29 @@
+
+/* form : 성별입력란  별도 css */
+
+.input_gender{
+    width: 380px;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 18px;
+    gap: 20px;
+  }
+  
+  
+  .input_gender_checkBox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: var(--color-dark-gray);
+   
+  
+  }
+  
+  .input_gender_checkBox input{
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-dark-gray);
+  }
+  
