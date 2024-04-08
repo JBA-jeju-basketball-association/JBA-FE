@@ -1,7 +1,7 @@
 import React from "react" 
-import style from"./SignupInput.module.css"
-import { BirthdayType,BirthdayKey } from "features/signup/api/type";
 import Dob from "./DayOfBirthday";
+import { BirthdayType,BirthdayKey } from "features/signup/api/type";
+import style from"./Birthday.module.css"
 
 
 
@@ -22,7 +22,7 @@ export default function Birthday({setInputData}:{setInputData:(data:string)=>voi
 
    
   return(
-  <div  className={style.SignupInput_input_birthday}>
+  <div  className={style.Input_birthday}>
     <Dob type={"year"} changeUserBirthday={changeUserBirthday}></Dob>
     <Dob type={"month"} changeUserBirthday={changeUserBirthday}></Dob>
     <Dob type={"day"} changeUserBirthday={changeUserBirthday}></Dob>

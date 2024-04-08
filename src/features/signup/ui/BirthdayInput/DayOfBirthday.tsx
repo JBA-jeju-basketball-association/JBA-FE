@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react" 
-import checkloginInPutData from"../../checkloginInPutData"
-import style from"./SignupInput.module.css"
+import checkloginInPutData from"../../lib/checkloginInPutData"
+import style from"./Birthday.module.css"
 import { BirthdayKey } from "features/signup/api/type";
 
 
@@ -45,7 +45,7 @@ export default function Dob({type,changeUserBirthday}:{type:BirthdayKey,changeUs
     [inputData,regex,type,changeUserBirthday])
 
   return(
-      <div className={`${style.SignupInput_input_dob} ${style[type]}  ${style[isOkay]}`}>
+      <div className={`${style.Input_dob} ${style[type]}  ${style[isOkay]}`}>
         <input type="number"  placeholder={type==="year"?"⋅⋅⋅⋅":"⋅⋅"}  maxLength={type==="year"?4:2} value={inputData} onChange={(e)=>{handleChange(e)} }/>
         <div>{type}</div>
       </div>
