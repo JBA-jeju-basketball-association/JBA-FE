@@ -10,12 +10,11 @@ const root:ReactDOM.Root = ReactDOM.createRoot(document.getElementById("root")as
 const queryClient: QueryClient = new QueryClient();
 root.render(
     <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-            <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right"/>
+        <BrowserRouter>
+                <App/>
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right"/>
     </QueryClientProvider>
-
 );
 
 //appEntry
