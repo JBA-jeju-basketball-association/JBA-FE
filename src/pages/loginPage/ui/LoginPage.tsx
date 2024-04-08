@@ -3,6 +3,7 @@ import PageTitle from "../../../shared/ui/pageTitle/PageTitle";
 import style from "./LoginPage.module.css";
 import fetchLogin from "../api/FetchLogin";
 import useUserStore from "../../../app/hocs/UserStore";
+import {Link} from "react-router-dom";
 
 const LoginPage = () => {
     const [email, setEmail] = useState<string>("");
@@ -49,11 +50,11 @@ const LoginPage = () => {
                     </div>
                 </div>
                 <div className={style.searchBox}>
-                    <a className={style.search}>아이디 | 비밀번호 찾기 &gt;</a>
+                    <Link to="/" className={style.search}>아이디 | 비밀번호 찾기 &gt;</Link>
                 </div>
                 <button type="submit" className={style.submitButton}>로그인</button>
                 <div className={style.loginBottomLine}></div>
-                <a href={"/signup"} className={style.signUpLink}>회원가입</a>
+                <Link to="/signup" className={style.signUpLink}>회원가입</Link>
             </form>
         </div>
     );
