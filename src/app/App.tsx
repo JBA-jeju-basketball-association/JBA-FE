@@ -1,11 +1,13 @@
 import React from "react";
 import { Routes, Route} from "react-router-dom";
+import '../shared/base.css'
 import { SignupForm } from "../features/signup/ui/SignupForm";
 import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
 import Header from "./header/Header";
+import MenuBar from "entities/MenuBar/ui/MenuBar";
 
 function App() {
     return (
@@ -17,8 +19,9 @@ function App() {
                 {/*컴포넌트 테스트를 위한 임시 path */}
                 <Route path="zzuyeontest" element={
                     <div>
-                        <UploadFileList></UploadFileList>
-                        <UpLoadButton></UpLoadButton>
+                        <MenuBar></MenuBar>
+                        {/* <UploadFileList></UploadFileList>
+                        <UpLoadButton></UpLoadButton> */}
                     </div>
                 }/>
                 <Route path="/add-competition" element={<AddCompetitionPage/>}/>

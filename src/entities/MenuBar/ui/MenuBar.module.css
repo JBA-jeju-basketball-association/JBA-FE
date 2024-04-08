@@ -1,0 +1,6 @@
+.Ul{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-gray);
+    
+}

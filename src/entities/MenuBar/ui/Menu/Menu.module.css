@@ -1,0 +1,24 @@
+.Li{
+    width: 137px;
+    float: left;
+    position: relative;
+    padding: 54px 0;
+    text-align: center;
+    border: 1px solid gray;
+}
+.Li:hover .Ul{
+    top:132px;
+
+}
+
+.Ul{
+    overflow: hidden;
+    position: absolute;
+    top: -1000px;
+    z-index: 2000;
+    width: 100%;
+}
+
+.Ul li{
+ padding-top: 10px;
+}
