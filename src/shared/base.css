@@ -62,3 +62,9 @@ input {
     /* input의 테두리를 연하게 바꿈 */
     border: 1px solid gray;
     }
+
+/*a css reset*/
+a {
+	text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+	color: inherit; /* 링크 텍스트 색상을 부모 요소로부터 상속 */
+}

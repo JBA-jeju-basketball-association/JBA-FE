@@ -10,7 +10,7 @@ export default function fetchLogin (email:string, password:string, setEmailMessa
             localStorage.setItem("AccessToken", res.headers["access-token"]);
             localStorage.setItem("RefreshToken", res.headers["refresh-token"]);
             setToken(res.headers["access-token"]);
-            window.location.href = "/main"
+            window.location.href = "/main";
         }
     }).catch(err => {
         const data = err.response.data;

@@ -5,11 +5,12 @@ import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/Up
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
+import Header from "./header/Header";
 
 function App() {
     return (
         <div className="App">
-            <header>nav</header>
+            <Header />
             <Routes>
                 <Route path="signup" element={<div><SignupForm/></div>} />
                 <Route path="main" element={<div>main</div>}/>

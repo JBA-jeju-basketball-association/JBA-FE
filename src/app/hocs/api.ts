@@ -3,7 +3,6 @@ import axios, {AxiosInstance} from "axios";
 
 
 
-
 export const api:AxiosInstance = axios.create({
     // baseURL: 'http://ec2-43-201-38-210.ap-northeast-2.compute.amazonaws.com:8080', // 배포된 서버 사용시
     baseURL: "http://localhost:8080", // 로컬 서버 사용시
@@ -84,7 +83,6 @@ api.interceptors.response.use(function (response) {
         localStorage.removeItem("AccessToken");
         localStorage.removeItem("RefreshToken");
         alert("로그인 해주세요.");
-        window.location.href = "/login"
     }
 
     return Promise.reject(error);
