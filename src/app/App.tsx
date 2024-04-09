@@ -4,6 +4,7 @@ import { SignupForm } from "../features/signup/ui/SignUpForm";
 import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
+import Footer from "../widgets/footer/ui/Footer"
 import SignUpPage from "pages/signUp/ui/SignUpPage/SignUpPage";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
 import Header from "./header/Header";
@@ -25,10 +26,9 @@ function App() {
                 <Route path="/add-competition" element={<AddCompetitionPage/>}/>
                 <Route path="login" element={<LoginPage/>}/>
             </Routes>
-            <footer>footer</footer>
+            <footer ><Footer></Footer></footer>
         </div>
     );
-
 }
 //appRouter
 
