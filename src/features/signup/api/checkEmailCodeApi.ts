@@ -7,9 +7,11 @@ export default function checkEmailCodeApi(email: string,authNum:string,isConfirm
         authNum:authNum
     }).then((response:AxiosResponse<Response>       
         )=>{ console.log("성공 :",response.data.code)
+        alert("이메일 인증이 성공되었습니다.")
         isConfirmedEmail(true);
         ;
     }).catch((response:AxiosError<Response>       
         )=>{ console.log("실패 :",response.response?.data)
+        alert("인증번호를 확인해주시기 바랍니다.")
         isConfirmedEmail(false);
     })}
