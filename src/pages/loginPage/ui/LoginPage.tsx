@@ -9,15 +9,15 @@ const LoginPage = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [emailMessage, setEmailMessage] = useState<string>("");
-    const {token, setToken} = useUserStore();
+    const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         setEmailMessage("");
-        fetchLogin(email, password, setEmailMessage, setToken);
+        fetchLogin(email, password, setEmailMessage, setAccessToken,setRefreshToken);
     }
 
     useEffect(() => {
-        if (token) {
+        if (AccessToken) {
             window.location.href = "/main"
         }
     }, []);

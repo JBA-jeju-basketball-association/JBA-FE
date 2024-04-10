@@ -1,15 +1,16 @@
-import {api} from "../../../app/hocs/api";
+import api from "../../../app/hocs/Api";
 import React from "react";
 
-export default function fetchLogin (email:string, password:string, setEmailMessage: React.Dispatch<React.SetStateAction<string>>, setToken:(token:string | null) =>void):void {
+export default function fetchLogin (email:string, password:string, setEmailMessage: React.Dispatch<React.SetStateAction<string>>
+                                    , setAccessToken:(token:string | null) =>void, setRefreshToken:(token:string|null)=>void):void {
     api.post("/v1/api/sign/login", {
         email,
         password
     }).then(res => {
         if (res.status === 200) {
-            localStorage.setItem("AccessToken", res.headers["access-token"]);
-            localStorage.setItem("RefreshToken", res.headers["refresh-token"]);
-            setToken(res.headers["access-token"]);
+            console.log(res.headers)
+            setAccessToken(res.headers["access-token"]);
+            setRefreshToken(res.headers["refresh-token"]);
             window.location.href = "/main";
         }
     }).catch(err => {

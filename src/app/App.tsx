@@ -5,15 +5,18 @@ import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/Up
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
+import Main from "../pages/mainPage/ui/Main";
 import Header from "./header/Header";
+import {useAxiosInterceptor} from "./hocs/UseAxiosInterceptor";
 
 function App() {
+    useAxiosInterceptor();
     return (
         <div className="App">
             <Header />
             <Routes>
                 <Route path="signup" element={<div><SignupForm/></div>} />
-                <Route path="main" element={<div>main</div>}/>
+                <Route path="main" element={<Main />}/>
                 {/*컴포넌트 테스트를 위한 임시 path */}
                 <Route path="zzuyeontest" element={
                     <div>
