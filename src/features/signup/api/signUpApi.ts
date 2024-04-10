@@ -17,6 +17,8 @@ export default function signUpApi(data: SignupFormDataType) {
       team: data.team
     }).then((response:AxiosResponse<Response>       
         )=>{ console.log("성공 :",response.data.data);
+        alert(`${response.data.data}님 ! 회원가입을 축하드립니다!`)
     }).catch((response:AxiosError<Response>       
-        )=>{ console.log("실패 :",response.response?.data.detailMessage);
+        )=>{ console.log("실패 :",response.response?.data.detailMessage)
+        alert(response.response?.data.detailMessage);
     })}

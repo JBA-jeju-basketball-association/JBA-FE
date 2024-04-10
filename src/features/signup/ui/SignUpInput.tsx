@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from "react" 
-import checkloginInPutData from"../../checkloginInPutData"
+import style from"./SignUpInput.module.css"
+import Birthday from "./BirthdayInput/Birthday"
+import Gender from "./GenderInput/Gender"
+import CheckEmail from "./CheckEmail/CheckEmail"
+import checkloginInPutData from"../lib/checkloginInPutData"
 import "shared/lib/resetInput.css"
-import style from"./SignupInput.module.css"
-import Birthday from "./Birthday"
-import Gender from "./Gender"
-import CheckEmail from "./CheckEmail"
 import { Props } from "features/signup/api/type"
+
 
 
 

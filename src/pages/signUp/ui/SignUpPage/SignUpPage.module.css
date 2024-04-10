@@ -1,0 +1,13 @@
+.SignUpPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    gap: 30px;
+}
+
+.Title{
+   font-size: 40px;
+   font-weight: bold;
+}

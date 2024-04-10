@@ -1,0 +1,65 @@
+/* form : 이메일 인증  별도 css */
+.checkEmail{
+    padding: 5px;
+    font-size: smaller;
+    border-left: 1px solid var(--color-dark-gray);
+   
+   }
+   
+   .checkCode{
+     height: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0px 3px 0px 5px;
+     font-size: smaller;
+     border-left: 2px solid var(--color-dark-gray);
+   }
+   
+   
+   .checkCode_changeCode{
+     width: 100px; 
+     padding: 0px 3px 0px 5px;
+     font-size: 13x; 
+   
+   }
+   
+   
+   .checkCode input{
+     width: 100px; 
+     padding: 0px 3px 0px 5px;
+     font-weight: lighter;
+     font-size: 13x; 
+   
+   }
+   
+   .checkCode input::placeholder{
+     font-size: 11px; 
+    }
+    
+   
+   
+   .checkCode_button{
+     width: max-content;
+     height: max-content;
+     margin: 5px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   .checkCode_button div{
+     width: max-content;
+     height: fit-content;
+     padding-top: 6px;
+     font-size: 15;
+     color:black;
+   
+   }
+   .complete{
+     border-left: 1px solid var(--color-lightgray-gray);
+     color:var(--color-lightgray-gray)
+   }
+   
+    
+   
