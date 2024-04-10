@@ -1,9 +1,9 @@
-import api from "../../../app/hocs/Api";
+import Api from "../../../app/hocs/Api";
 import React from "react";
 
 export default function fetchLogin (email:string, password:string, setEmailMessage: React.Dispatch<React.SetStateAction<string>>
                                     , setAccessToken:(token:string | null) =>void, setRefreshToken:(token:string|null)=>void):void {
-    api.post("/v1/api/sign/login", {
+    Api.post("/v1/api/sign/login", {
         email,
         password
     }).then(res => {
