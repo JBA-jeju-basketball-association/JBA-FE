@@ -1,7 +1,7 @@
 import React,{useState} from "react" 
-import style from"./SignupInput.module.css"
 import sendEmailApi from "features/signup/api/sendEmailApi"
 import checkEmailCodeApi from 'features/signup/api/checkEmailCodeApi';
+import style from"./CheckEmail.module.css"
 
 
 
@@ -26,7 +26,8 @@ export default function CheckEmail ({inputData,clickCheckEmail,isConfirmedEmail}
   setCheckingEmail(!checkingEmail);
   //이메일 입력란 보이기
   clickCheckEmail();
-  //이메일
+  //이메일 인증 문구보이기
+  isConfirmedEmail(false)
  }
 
  //인증번호 입력시 
@@ -44,15 +45,15 @@ export default function CheckEmail ({inputData,clickCheckEmail,isConfirmedEmail}
     return(
       <div >
         {checkingEmail? 
-          <div className={style.SignupInput_checkCode}>
-            <div className={style.SignupInput_checkCode_changeCode}  onClick={()=>{changeEmail()}}> 이메일 재작성 하기</div>
-            <input className={style.SignupInput_checkCode_codeInput}  onChange={(e)=>{changeAuthNum(e)}} placeholder="인증번호를 입력하세요."></input> 
-            <div className={style.SignupInput_checkCode_button}>
+          <div className={style.checkCode}>
+            <div className={style.checkCode_changeCode}  onClick={()=>{changeEmail()}}> 이메일 재작성 하기</div>
+            <input className={style.checkCode_codeInput}  onChange={(e)=>{changeAuthNum(e)}} placeholder="인증번호를 입력하세요."></input> 
+            <div className={style.checkCode_button}>
              <div onClick={()=>{checkEmailCode()}}>확인</div>
             </div>
           </div>
         : 
-        <div className={style.SignupInput_checkEmail} onClick={()=>{checkEmail()}}>이메일 인증</div>
+        <div className={style.checkEmail} onClick={()=>{checkEmail()}}>이메일 인증</div>
         }
       </div>)
     
