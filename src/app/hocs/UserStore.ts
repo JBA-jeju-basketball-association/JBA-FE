@@ -2,14 +2,18 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 
 type userState = {
-    token :string | null;
-    setToken: (token:string | null) =>void;
+    AccessToken :string | null;
+    RefreshToken :string | null;
+    setAccessToken: (token:string | null) =>void;
+    setRefreshToken: (token:string | null) =>void;
 }
 
 const useUserStore = create(
     persist<userState>((set) => ({
-            token: null,
-            setToken: (token) => set({token: token}),
+            AccessToken: null,
+            RefreshToken: null,
+            setAccessToken: (token) => set({AccessToken: token}),
+            setRefreshToken: (token) => set({RefreshToken: token}),
         }), {
             name: "userStore"
         }
