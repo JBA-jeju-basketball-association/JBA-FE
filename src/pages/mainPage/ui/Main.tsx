@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import api from "../../../app/hocs/Api";
+import Api from "../../../app/hocs/Api";
 
 const Main = () => {
     const [userName, setUserName] = useState<string>("");
 
     const test = ():void => {
-        api.get("/test")
+        Api.get("/test")
             .then(res=>{
                 console.log(res)
                 setUserName(res.data)

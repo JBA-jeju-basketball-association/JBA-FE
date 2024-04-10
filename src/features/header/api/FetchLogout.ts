@@ -1,9 +1,9 @@
-import api from "../../../app/hocs/Api";
+import Api from "../../../app/hocs/Api";
 import {NavigateFunction} from "react-router-dom";
 
 
 const fetchLogout = (AccessToken:string | null, setAccessToken:(token: (string | null)) => void, setRefreshToken:(token:(string | null)) => void, navigate:NavigateFunction):void => {
-    api.post("/v1/api/sign/logout", null, {
+    Api.post("/v1/api/sign/logout", null, {
         headers: {
             AccessToken: AccessToken,
         }

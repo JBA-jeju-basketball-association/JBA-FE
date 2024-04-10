@@ -2,7 +2,7 @@ import axios, {AxiosError, AxiosResponse, InternalAxiosRequestConfig} from "axio
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import useUserStore from "./UserStore";
-import api from "app/hocs/Api"
+import Api from "app/hocs/Api"
 
 
 
@@ -75,22 +75,22 @@ const useAxiosInterceptor = ():void => {
         return Promise.reject(error)
     }
 
-    const requestInterceptor = api.interceptors.request.use(
+    const requestInterceptor = Api.interceptors.request.use(
         (config:InternalAxiosRequestConfig) =>requestHandler(config),
         (error:AxiosError | Error) =>requestErrorHandler(error)
     );
 
-    const responseInterceptor = api.interceptors.response.use(
+    const responseInterceptor = Api.interceptors.response.use(
         (response:AxiosResponse) => responseHandler(response),
         (error:AxiosError | Error) => responseErrorHandler(error)
     );
 
     useEffect(() => {
         return () => {
-            api.interceptors.request.eject(requestInterceptor);
-            api.interceptors.response.eject(responseInterceptor);
+            Api.interceptors.request.eject(requestInterceptor);
+            Api.interceptors.response.eject(responseInterceptor);
         };
     }, [responseInterceptor, requestInterceptor]);
 };
 
-export { useAxiosInterceptor, api };
+export { useAxiosInterceptor, Api };
