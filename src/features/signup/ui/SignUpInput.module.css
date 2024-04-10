@@ -1,0 +1,144 @@
+.Input input{ 
+  -webkit-appearance : none;
+  -moz-appearance:none;
+  appearance:none;
+  border: none;
+  outline: none;
+}
+
+/* form 기본 셋팅 : 작성란+ 가이드라인 box */
+
+.SignupInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 3px;
+
+}
+
+/* form : 작성란 */
+
+.SignupInput_inputBox{
+  width: 430px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;;
+  border: 0.5px solid  rgba(83, 82, 97,0.7);
+  border-radius: 10px;
+  gap: 5px;
+
+}
+
+
+
+.SignupInput_inputBox input{
+  width: 280px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+
+.SignupInput_inputBox input:disabled{
+ background-color: white;
+}
+
+.SignupInput_inputBox input::placeholder{
+font-size: 18px;
+font-weight:normal;
+color: var(--color-dark-gray);
+}
+
+/* 모든 input checkbox 체크시의 css  */
+/* 체크박스 css 관련 이미지 구해질 시 변경예정 */
+
+input[type="checkbox"]:checked {
+  border: 1px red solid;
+}
+input[type="checkbox"]:checked + label {
+  color: #000; 
+}
+
+
+/* form : 작성란의 아이콘 */
+
+
+.SignupInput_iconBox{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.5px solid rgba(83, 82, 97,0.7);
+  background-color: rgba(212, 215, 223,0.5);
+
+}
+.SignupInput_iconBox img{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  overflow: hidden;;
+  justify-content: center;
+  align-items: center;
+
+}
+/* form : team 무소속 버튼 css */
+
+.SignupInput_input_team_checkBox {
+  width:max-content;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: smaller;
+  color:var(--color-dark-gray);
+
+
+}
+.SignupInput_input_team_checkBox input{
+  width: 15px;
+  height:15px;
+  border: 2px solid var(--color-dark-gray);
+
+
+}
+
+
+
+/* form : 가이드라인 */
+
+.SignupInput_guideline_container{
+  display: flex ;
+  gap: 4px;
+
+
+}
+
+.SignupInput_guideline{
+    font-size: 12px;
+  color: red;
+  padding-left: 48px;
+}
+
+/* form : 가이드라인에 알맞게 입력시 가이드라인 색상변경 */
+.isTrue{
+  color: var(--color-dark-gray);
+
+}
+.isFalse{
+  color: red;
+}
+
+
+/* 이메일 작성란 없애기*/
+.None input[id="email"]{
+  display: none;
+}
+
+.Block input{
+  display: block;
+
+}
