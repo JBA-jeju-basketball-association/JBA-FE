@@ -1,79 +1,70 @@
 .PlaceArea {
     width: 900px;
+    height: 100px;
     display: flex;
 }
 
-.leftBox {
-    display: flex;
-    width: 70%;
-    height: 100%;
-    border-right: 1px solid var(--color-gray);
-}
-
-.inputArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    height: 100%;
-    border-right: 1px solid var(--color-gray);
-}
-
-.placeNameArea {
-    display: flex;
-    align-items: center;
+.closeButtonArea {
     width: 100%;
-    height: 50px;
-    padding-right: 20px;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--color-gray);
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
-.placeNameAreaLabel {
+.closeButton {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+.placeNameInput {
+    width: 100%;
+    max-width: 800px;
+    height: 50px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px 0 20px;
+}
+
+.submitArea {
+    width: 100%;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
+}
+
+.submitArea button {
+    width: 100px;
     height: 100%;
-    background-color: var(--color-beige);
-    margin-right: 20px;
-    border: none;
-    font-size: 16px;
-}
-
-.placeNameArea input {
-    border: none;
-    height: 80%;
-    font-size: 16px;
-}
-
-
-.searchPlaceArea {
-    align-items: center;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    padding-right: 20px ;
-    box-sizing: border-box;
-}
-
-.searchPlaceArea button {
+    font-size: 18px;
+    font-weight: bold;
     background-color: var(--primary-color);
-    width: 90px;
-    margin-right: 20px;
-    height: 40px;
     border-radius: 10px;
 }
 
-.searchPlaceArea input {
-    /*border: none;*/
-    height: 60%;
-    width: 300px;
-    font-size: 16px;
+
+
+.addressModalSearchTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.addressModalSearchTitle p {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .buttonArea {
-    width: 20%;
+    width: 150px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,10 +80,22 @@
 }
 
 .rightBox {
-    width: 30%;
+    width: 70%;
 }
 
 .placeList {
-    padding: 20px;
+    padding: 10px 0 10px 0;
+}
+
+.placeName {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    padding: 0;
+}
+
+.placeName button {
+    margin-left: 5px;
+    font-size: 18px;
 }
 

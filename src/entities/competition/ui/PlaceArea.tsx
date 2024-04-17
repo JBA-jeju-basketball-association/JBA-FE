@@ -1,41 +1,119 @@
 import React, {useState} from 'react';
 import style from "./PlaceArea.module.css"
+import Modal from "react-modal";
+import DaumPostcode, {Address} from "react-daum-postcode";
+import {place} from "../../../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 
-const PlaceArea = () => {
+type props = {
+    places: place[];
+    setPlaces: React.Dispatch<React.SetStateAction<place[]>>;
+}
+
+const PlaceArea = ({places, setPlaces}:props) => {
 
     const [placeName, setPlaceName] = useState<string>("")
+    const [address, setAddress] = useState<string>("")
+    const [isOpen, setIsOpen] = useState<boolean>(false)
 
-    console.log(placeName)
+    const customModalStyles: ReactModal.Styles = {
+        overlay: {
+            backgroundColor: " rgba(0, 0, 0, 0.4)",
+            width: "100%",
+            height: "100vh",
+            zIndex: "10",
+            position: "fixed",
+            top: "0",
+            left: "0",
+        },
+        content: {
+            width: "1000px",
+            height: "600px",
+            zIndex: "150",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "10px",
+            boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+            backgroundColor: "white",
+            display:"flex",
+            flexDirection:"column",
+            overflow: "auto",
+        },
+    };
+
+    const registPlace = ():void => {
+        if (placeName === "") {
+            alert("장소명을 입력해주세요.")
+            return
+        }else if (address === "") {
+            alert("주소를 검색해주세요.")
+            return
+        }
+        let place:place = {
+            name:placeName,
+            address:address
+        }
+        setPlaces(prevState => {
+            return [...prevState, place]
+        })
+        setPlaceName("");
+        setAddress("");
+        setIsOpen(false)
+    }
+
+    const deletePlace = (indexToRemove:number):void => {
+        setPlaces(prevState => prevState.filter((place:place, index:number):boolean => index !== indexToRemove))
+    }
+
+    const closeModal = () => {
+        setPlaceName("");
+        setAddress("");
+        setIsOpen(false)
+    }
 
     return (
         <div className={style.PlaceArea}>
-            {/*장소 등록 area*/}
-            <section className={style.leftBox}>
-                <div className={style.inputArea}>
-                    <div className={style.placeNameArea}>
-                        <div className={style.placeNameAreaLabel}>
-                            <p>장소명</p>
-                        </div>
-                        <input type="text"
-                               onChange={(e) => setPlaceName(e.target.value)}
-                               placeholder="장소명을 입력해주세요"
-                        />
-                    </div>
-                    <div className={style.searchPlaceArea}>
-                        <button>주소검색</button>
-                        <input type="text" readOnly/>
-                    </div>
+            <Modal
+                isOpen={isOpen}
+                onRequestClose={() => closeModal()}
+                ariaHideApp={false}
+                contentLabel="주소 검색"
+                style={customModalStyles}
+            >
+                <div className={style.closeButtonArea}>
+                    <button onClick={() => closeModal()} className={style.closeButton}>X</button>
                 </div>
-                <div className={style.buttonArea}>
-                    <button>등록</button>
+                <div className={style.addressModalSearchTitle}>
+                    <p>{address === "" ? "주소 검색" : "주소 : " + address}</p>
                 </div>
+                <DaumPostcode
+                    onComplete={(data: Address): void => {
+                        setAddress(data.jibunAddress)
+                    }}
+                    autoClose={true}/>
+                <div className={style.addressModalSearchTitle}>
+                    <p>장소명</p>
+                </div>
+                <input className={style.placeNameInput} type="text" placeholder={" 예) 사라봉다목적체육관"}
+                       onChange={(e) => setPlaceName(e.target.value)}/>
+                <div className={style.submitArea}>
+                    <button onClick={() => registPlace()}>등록</button>
+                </div>
+            </Modal>
 
-            </section>
-            {/*등록된 장소 보여주는 area*/}
+            <div className={style.buttonArea}>
+                <button onClick={() => setIsOpen(true)}>등록</button>
+            </div>
             <section className={style.rightBox}>
                 <ul className={style.placeList}>
-                    <li>-사라봉다목적체육관  x</li>
-                    <li>-제주제일중학교체육관  x</li>
+                    {places.map((place: place, index: number) => (
+                        <li key={index} className={style.placeName}>
+                            <p>{place.name}</p>
+                            <button onClick={() => deletePlace(index)}>X</button>
+                        </li>
+                    ))}
+
                 </ul>
 
             </section>

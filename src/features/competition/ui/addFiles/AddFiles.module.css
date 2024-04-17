@@ -1,14 +1,14 @@
 .AddFiles {
-    width: 100%;
-    height: 300px;
+    width: 900px;
+    min-height: 100px;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
 }
 
 .AddFilesDragging {
-    width: 400px;
-    height: 200px;
+    width: 140px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,11 +19,12 @@
     transition: 0.12s ease-in;
     background-color: black;
     color: white;
+    margin-left: 20px;
 }
 
 .AddFilesNormal {
-    width: 400px;
-    height: 200px;
+    width: 140px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,6 +33,7 @@
     border-radius: 10px;
     cursor: pointer;
     transition: 0.12s ease-in;
+    margin-left: 20px;
 }
 
 .Files {
