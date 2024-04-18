@@ -3,6 +3,9 @@ import style from "./PlaceArea.module.css"
 import Modal from "react-modal";
 import DaumPostcode, {Address} from "react-daum-postcode";
 import {place} from "../../../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
+import api from "../../../app/hocs/Api";
+import * as process from "process";
+import axios from "axios";
 
 type props = {
     places: place[];
@@ -14,6 +17,8 @@ const PlaceArea = ({places, setPlaces}:props) => {
     const [placeName, setPlaceName] = useState<string>("")
     const [address, setAddress] = useState<string>("")
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [latitude, setLatitude] = useState<number>(0);
+    const [longitude, setLongitude] = useState<number>(0);
 
     const customModalStyles: ReactModal.Styles = {
         overlay: {
@@ -42,6 +47,21 @@ const PlaceArea = ({places, setPlaces}:props) => {
         },
     };
 
+    const getLALOInfo = async(address:string):Promise<void>=> {
+
+        const url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + encodeURI(address);
+        await axios.get(url, {
+            headers: {
+                Authorization: "KakaoAK "+ process.env.REACT_APP_KAKAO_MAP_KEY
+            }
+        }).then(res=> {
+            setLatitude(res.data.documents[0].x)
+            setLongitude(res.data.documents[0].y)
+        })
+            .catch(err => console.log(err))
+
+    }
+
     const registPlace = ():void => {
         if (placeName === "") {
             alert("장소명을 입력해주세요.")
@@ -52,7 +72,9 @@ const PlaceArea = ({places, setPlaces}:props) => {
         }
         let place:place = {
             name:placeName,
-            address:address
+            address:address,
+            latitude:latitude,
+            longitude:longitude
         }
         setPlaces(prevState => {
             return [...prevState, place]
@@ -90,6 +112,7 @@ const PlaceArea = ({places, setPlaces}:props) => {
                 <DaumPostcode
                     onComplete={(data: Address): void => {
                         setAddress(data.jibunAddress)
+                        getLALOInfo(data.jibunAddress)
                     }}
                     autoClose={true}/>
                 <div className={style.addressModalSearchTitle}>

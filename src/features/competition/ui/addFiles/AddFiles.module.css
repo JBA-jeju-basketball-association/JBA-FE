@@ -38,20 +38,31 @@
 
 .Files {
     margin-left: 20px;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 510px;
 }
 
 .File {
-    width: 500px;
-    padding: 8px;
-    border: 1px solid black;
+    width: 300px;
+    padding: 1px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+    height: 12px;
+}
+
+.FileName {
+    width: 300px;
+    overflow: hidden;
+    height: 12px;
 }
 
 .FilesFilter {
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .FilesFilter:hover {
