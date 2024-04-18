@@ -12,9 +12,10 @@ import AddFiles from "../../../../features/competition/ui/addFiles/AddFiles";
 export type place = {
     name : string;
     address: string;
-    latitude?: number;
-    longitude?: number;
+    latitude?: number | null;
+    longitude?: number | null;
 }
+
 
 const AddCompetitionPage:React.FC = () => {
     const [title, setTitle] = useState<string>("")
@@ -23,10 +24,6 @@ const AddCompetitionPage:React.FC = () => {
     const [endDate, setEndDate] = useState<Date | null>(null)
     const [places, setPlaces] = useState<place[]>([]);
     const [relatedURL, setRelatedUrl] = useState<string | null>(null);
-
-
-
-
     const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
     }
@@ -97,10 +94,6 @@ const AddCompetitionPage:React.FC = () => {
                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRelatedUrl(e.target.value)}
                     />
                 </div>
-                {/*<div className={style.inputArea}>*/}
-                {/*    <AddCompetitionLabel label={"첨부파일"} height={"normal"}/>*/}
-                {/*    <input type="file" multiple/>*/}
-                {/*</div>*/}
                 <div className={style.inputArea2}>
                     <AddCompetitionLabel label={"첨부파일"} height={"double"}/>
                     <AddFiles/>
