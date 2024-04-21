@@ -35,7 +35,7 @@ const useAxiosInterceptor = ():void => {
     const responseErrorHandler = async(error:any):Promise<never> => {
         if (error.response.data.detailMessage === "만료된 토큰") {
             const originalRequest = error.config;
-            axios.post("http://ec2-43-201-38-210.ap-northeast-2.compute.amazonaws.com:8080/v1/api/sign/refresh-token", null, {
+            axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
                 headers: {
                     AccessToken: AccessToken,
                     RefreshToken: RefreshToken
