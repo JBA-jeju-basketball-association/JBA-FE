@@ -121,12 +121,12 @@ const PlaceArea = ({places, setPlaces}:props) => {
                 <input className={style.placeNameInput} type="text" placeholder={" 예) 사라봉다목적체육관"}
                        onChange={(e) => setPlaceName(e.target.value)}/>
                 <div className={style.submitArea}>
-                    <button onClick={() => registPlace()}>등록</button>
+                    <button type={"button"} onClick={() => registPlace()}>등록</button>
                 </div>
             </Modal>
 
             <div className={style.buttonArea}>
-                <button onClick={() => setIsOpen(true)}>등록</button>
+                <button type={"button"} onClick={() => setIsOpen(true)}>등록</button>
             </div>
             <section className={style.rightBox}>
                 <ul className={style.placeList}>

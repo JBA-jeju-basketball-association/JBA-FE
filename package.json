@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.3.1",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
     "@tanstack/react-query": "^5.28.14",
     "@tanstack/react-query-devtools": "^5.28.14",
     "@testing-library/jest-dom": "^5.14.1",
@@ -14,6 +16,7 @@
     "@types/react-dom": "^18.2.22",
     "@types/react-modal": "^3.16.3",
     "axios": "^1.6.8",
+    "ckeditor5-custom-build": "file:./ckeditor5",
     "date-fns": "^3.6.0",
     "datepicker": "^0.0.0",
     "process": "^0.11.10",

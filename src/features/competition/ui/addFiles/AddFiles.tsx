@@ -1,13 +1,15 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import style from "./AddFiles.module.css";
+import {IFileTypes} from "../../../../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 
-type IFileTypes = {
-    id: number;
-    object: File;
+
+
+type Props = {
+    files:IFileTypes[]
+    setFiles: React.Dispatch<React.SetStateAction<IFileTypes[]>>
 }
 
-const AddFiles = () => {
-    const [files, setFiles] = useState<IFileTypes[]>([]);
+const AddFiles = ({files, setFiles}: Props) => {
     const [isDragging, setIsDragging] = useState<boolean>(false);
     // 각 선택했던 파일들의 고유값 id
     const fileId = useRef<number>(0);

@@ -8,6 +8,10 @@ import makeAnimated from "react-select/animated";
 import CustomDatePicker from "../../../../shared/ui/datepicker/CustomDatePicker";
 import PlaceArea from "../../../../entities/competition/ui/PlaceArea";
 import AddFiles from "../../../../features/competition/ui/addFiles/AddFiles";
+import CkEditor from "../../../../shared/ui/ckEditor/CkEditor";
+import Api from "../../../../app/hocs/Api";
+import useUserStore from "../../../../app/hocs/UserStore";
+
 
 export type place = {
     name : string;
@@ -16,32 +20,50 @@ export type place = {
     longitude?: number | null;
 }
 
+type value = {
+    label: string;
+    value: string;
+}
 
-const AddCompetitionPage:React.FC = () => {
+type requestData = {
+    title: string;
+    divisions: string[];
+    startDate: Date | null;
+    endDate: Date | null;
+    places: place[];
+    relatedURL: string | null;
+    ckData:any;
+    realCkImgs:string[];
+}
+
+export type IFileTypes = {
+    id: number;
+    object: File;
+}
+
+
+const AddCompetitionPage = () => {
+    const {AccessToken} = useUserStore();
     const [title, setTitle] = useState<string>("")
-    const [division, setDivision] = useState<string[]>([]);
+    const [divisions, setDivisions] = useState<string[]>([]);
     const [startDate, setStartDate] = useState<Date | null>(null)
     const [endDate, setEndDate] = useState<Date | null>(null)
     const [places, setPlaces] = useState<place[]>([]);
     const [relatedURL, setRelatedUrl] = useState<string | null>(null);
-    const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-    }
+    const [files, setFiles] = useState<IFileTypes[]>([]);
+    const [ckData, setCkData] = useState<string>("");
+    const [ckImgUrls, setCkImgUrls] = useState<string[]>([]); //TODO: 나중에 s3 파일 삭제요청때 쓸 예정.
 
-    type value = {
-        label: string;
-        value: string;
-    }
 
     const divisionHandler = (values:MultiValue<any>):void => {
-        setDivision([])
+        setDivisions([])
         values.map(
             (item:value):void => {
-                setDivision(prevState => [...prevState,item.value])
+                setDivisions(prevState => [...prevState,item.value])
             }
         )
     }
-    const options:{value:string, label:string}[] = [
+    const options: { value: string, label: string; }[] = [
         {value: "element", label: "초등"},
         {value: "middle", label: "중등"},
         {value: "high", label: "고등"},
@@ -50,7 +72,53 @@ const AddCompetitionPage:React.FC = () => {
         {value: "division4", label: "디비전4"},
         {value: "forties", label: "40대"},
         {value: "rookie", label: "루키"},
-    ]
+    ];
+
+    console.log("ckImgUrls",ckImgUrls)
+    const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>):void => {
+        event.preventDefault()
+        const requestData:requestData = {
+            title: title,
+            divisions: divisions,
+            startDate: startDate,
+            endDate: endDate,
+            places: places,
+            relatedURL: relatedURL,
+            ckData:ckData,
+            realCkImgs:[]
+        }
+
+        for (let i:number = 0; i < ckImgUrls.length; i++) {
+            if(ckData.includes(ckImgUrls[i])) {
+                requestData.realCkImgs.push(ckImgUrls[i])
+            }
+        }
+        console.log("real",requestData.realCkImgs)
+
+        const blob:Blob = new Blob([JSON.stringify(requestData)], {type: "application/json"})
+        const data: FormData = new FormData();
+        data.append("requestData", blob)
+        for (let i:number = 0; i < files.length; i++) {
+            data.append("requestFiles", files[i].object)
+        }
+        Api.post("/v1/api/competition/add-competition-info", data, {
+            headers: {
+                "AccessToken": AccessToken,
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(res => {
+            alert("대회 등록이 완료되었습니다.")
+            window.location.href = "/main";
+        })
+            .catch(err => {
+                console.log(err)
+                if (err.response.data.detailMessage === "제목을 입력해주세요.") alert("제목을 입력해주세요.");
+                if (err.response.data.detailMessage === "종별을 선택해주세요.") alert("종별을 선택해주세요");
+                if (err.response.data.detailMessage === "시작일을 입력해주세요.") alert("시작일 또는 종료일을 선택해주세요.");
+                if (err.response.data.detailMessage === "종료일을 입력해주세요.") alert("시작일 또는 종료일을 선택해주세요.");
+                if (err.response.data.detailMessage === "장소를 등록해주세요.") alert("장소를 등록해주세요.");
+            })
+    }
 
 
     return (
@@ -96,11 +164,18 @@ const AddCompetitionPage:React.FC = () => {
                 </div>
                 <div className={style.inputArea2}>
                     <AddCompetitionLabel label={"첨부파일"} height={"double"}/>
-                    <AddFiles/>
+                    <AddFiles files={files} setFiles={setFiles}/>
                 </div>
+                <div className={style.CkEditorTitle}>
+                    <p>내용</p>
+                </div>
+                <div className={style.CkEditor}>
+                    <CkEditor setCkData={setCkData} setCkImgUrls={setCkImgUrls}/>
+                </div>
+                <button type={"submit"} className={style.submitButton}>등록</button>
             </form>
         </div>
     );
-};
+}
 
 export default AddCompetitionPage;
