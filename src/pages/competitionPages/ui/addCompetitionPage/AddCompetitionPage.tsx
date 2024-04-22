@@ -11,6 +11,7 @@ import AddFiles from "../../../../features/competition/ui/addFiles/AddFiles";
 import CkEditor from "../../../../shared/ui/ckEditor/CkEditor";
 import Api from "../../../../app/hocs/Api";
 import useUserStore from "../../../../app/hocs/UserStore";
+import JwtDecoder from "../../../../app/hocs/JwtDecoder";
 
 
 export type place = {
@@ -74,7 +75,6 @@ const AddCompetitionPage = () => {
         {value: "rookie", label: "루키"},
     ];
 
-    console.log("ckImgUrls",ckImgUrls)
     const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>):void => {
         event.preventDefault()
         const requestData:requestData = {
@@ -119,6 +119,8 @@ const AddCompetitionPage = () => {
                 if (err.response.data.detailMessage === "장소를 등록해주세요.") alert("장소를 등록해주세요.");
             })
     }
+
+
 
 
     return (
