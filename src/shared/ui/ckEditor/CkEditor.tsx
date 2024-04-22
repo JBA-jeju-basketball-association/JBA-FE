@@ -105,8 +105,6 @@ const TextEditor = ({setCkData, setCkImgUrls}:Props) => {
             data = ""
             onChange={(event, editor):void => {
                 setCkData(editor.getData()); // 에디터 작성 내용 저장
-                console.log(editor.getData())
-                console.log(editor);
             }}
         />
     )

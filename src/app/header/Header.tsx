@@ -13,7 +13,6 @@ const Header = () => {
                 {AccessToken === null ? <SignUpButton/> : ""}
             </div>
         </div>
-
     );
 };
 
