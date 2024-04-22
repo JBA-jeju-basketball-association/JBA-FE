@@ -111,8 +111,9 @@ const PlaceArea = ({places, setPlaces}:props) => {
                 </div>
                 <DaumPostcode
                     onComplete={(data: Address): void => {
-                        setAddress(data.jibunAddress)
-                        getLALOInfo(data.jibunAddress)
+                        const address:string = data.jibunAddress!==""? data.jibunAddress : data.autoJibunAddress
+                        setAddress(address)
+                        getLALOInfo(address)
                     }}
                     autoClose={true}/>
                 <div className={style.addressModalSearchTitle}>
