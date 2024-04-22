@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import useUserStore from "./UserStore";
 import Api from "app/hocs/Api"
+import fetchLogout from "../../features/header/api/FetchLogout";
 
 
 
@@ -32,37 +33,75 @@ const useAxiosInterceptor = ():void => {
         return response;
     };
 
-    const responseErrorHandler = async(error:any):Promise<never> => {
+    const responseErrorHandler = async(error:any) => {
         if (error.response.data.detailMessage === "만료된 토큰") {
             const originalRequest = error.config;
-            axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
+            await axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
                 headers: {
                     AccessToken: AccessToken,
                     RefreshToken: RefreshToken
                 }
-            }).then(res => {
-                if (res.status === 200) {
-                    const accessToken:string = res.headers["access-token"];
-                    const refreshToken:string = res.headers["refresh-token"];
+            })
+                .then(res => {
+                    const accessToken: string = res.headers["access-token"];
+                    const refreshToken: string = res.headers["refresh-token"];
 
                     setAccessToken(accessToken);
                     setRefreshToken(refreshToken);
-
                     originalRequest.headers["AccessToken"] = accessToken;
-                    return axios(originalRequest);
-                }
-            }).catch(err => {
+                    console.log(originalRequest);
+                    return axios(originalRequest)
+                }).catch(err => {
                 if (err.response.status === 401) {
-                    console.log(err.response.data)
+                    console.log(err.response.data);
                     setAccessToken(null);
                     setRefreshToken(null);
-                    alert("로그인이 만료되었습니다.")
-                    window.location.href = "/login"
+                    alert("로그인이 만료되었습니다.");
+                    // window.location.href = "/login";
                 }
             })
+
+
+
+            // }).then(res => {
+            //     if (res.status === 200) {
+            //         const accessToken:string = res.headers["access-token"];
+            //         const refreshToken:string = res.headers["refresh-token"];
+            //
+            //         setAccessToken(accessToken);
+            //         setRefreshToken(refreshToken);
+            //
+            //         originalRequest.headers["AccessToken"] = accessToken;
+            //         console.log(originalRequest)
+            //             return axios(originalRequest)
+            //             .then(res=> {
+            //                 if (originalRequest.url === "/v1/api/sign/logout") {
+            //                     setAccessToken(null);
+            //                     setRefreshToken(null);
+            //                     navigate("/login")
+            //                 }else if (originalRequest.url === "/v1/api/competition/add-competition-info") {
+            //                     alert("대회 등록이 완료되었습니다.")
+            //                     window.location.href = "/main";
+            //                 }
+            //             })
+            //             .catch(err=> {
+            //                 console.log(err)
+            //             })
+            //
+            //     }
+            // }).catch(err => {
+            //     if (err.response.status === 401) {
+            //         console.log(err.response.data)
+            //         setAccessToken(null);
+            //         setRefreshToken(null);
+            //         alert("로그인이 만료되었습니다.")
+            //         window.location.href = "/login"
+            //     }
+            // })
+
         }else if(error.response.data.detailMessage === "접근 권한 없음") {
             alert("접근 권한이 없습니다.")
-            window.location.href = "/"
+            window.location.href = "/main"
         }else if (error.response.status === 401
             && error.response.data.detailMessage !== "자격 증명에 실패하였습니다."
             && error.response.data.detailMessage !== "자격 증명에 실패하였습니다. 계정이 잠깁니다."
