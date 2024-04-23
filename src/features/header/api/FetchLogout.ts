@@ -8,7 +8,6 @@ const fetchLogout = (AccessToken:string | null, setAccessToken:(token: (string |
             AccessToken: AccessToken,
         }
     }).then(res => {
-        console.log(res)
         setAccessToken(null);
         setRefreshToken(null);
         navigate("/login")

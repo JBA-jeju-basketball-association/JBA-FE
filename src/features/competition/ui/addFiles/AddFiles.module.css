@@ -1,14 +1,14 @@
 .AddFiles {
-    width: 100%;
-    height: 300px;
+    width: 900px;
+    min-height: 100px;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
 }
 
 .AddFilesDragging {
-    width: 400px;
-    height: 200px;
+    width: 140px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,11 +19,12 @@
     transition: 0.12s ease-in;
     background-color: black;
     color: white;
+    margin-left: 20px;
 }
 
 .AddFilesNormal {
-    width: 400px;
-    height: 200px;
+    width: 140px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,24 +33,36 @@
     border-radius: 10px;
     cursor: pointer;
     transition: 0.12s ease-in;
+    margin-left: 20px;
 }
 
 .Files {
     margin-left: 20px;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 510px;
 }
 
 .File {
-    width: 500px;
-    padding: 8px;
-    border: 1px solid black;
+    width: 300px;
+    padding: 1px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+    height: 12px;
+}
+
+.FileName {
+    width: 300px;
+    overflow: hidden;
+    height: 12px;
 }
 
 .FilesFilter {
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .FilesFilter:hover {
