@@ -4,19 +4,19 @@ import useUserStore from "../../../../app/hocs/UserStore";
 import {useNavigate} from "react-router-dom";
 import fetchLogout from "../../api/FetchLogout";
 const LoginButton = () => {
-    const {token, setToken} = useUserStore();
+    const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
     const navigate = useNavigate();
 
     const loginButtonHandler = ():void => {
-        if (token === null) {
+        if (AccessToken === null) {
             navigate("/login")
         }else {
-            fetchLogout(token, setToken, navigate)
+            fetchLogout(AccessToken, setAccessToken,setRefreshToken, navigate)
         }
     }
     return (
         <button className={style.LoginButton} onClick={()=> loginButtonHandler()}>
-            {token === null ? "로그인" : "로그아웃"}
+            {AccessToken === null ? "로그인" : "로그아웃"}
         </button>
     );
 };
