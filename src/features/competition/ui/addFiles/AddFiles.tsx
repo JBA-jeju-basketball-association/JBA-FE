@@ -1,13 +1,15 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import style from "./AddFiles.module.css";
+import {IFileTypes} from "../../../../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 
-type IFileTypes = {
-    id: number;
-    object: File;
+
+
+type Props = {
+    files:IFileTypes[]
+    setFiles: React.Dispatch<React.SetStateAction<IFileTypes[]>>
 }
 
-const AddFiles = () => {
-    const [files, setFiles] = useState<IFileTypes[]>([]);
+const AddFiles = ({files, setFiles}: Props) => {
     const [isDragging, setIsDragging] = useState<boolean>(false);
     // 각 선택했던 파일들의 고유값 id
     const fileId = useRef<number>(0);
@@ -17,7 +19,6 @@ const AddFiles = () => {
     const onChangeFiles = useCallback((e:ChangeEvent<HTMLInputElement> | any):void => {
         let selectFiles: File[] = [];
         let tempFiles: IFileTypes[] = files;
-        console.log("event" ,e)
         //드래그 했을 때와 안했을 때 가리키는 파일 배열을 다르게 해줍니다.
         if (e.type === "drop") { // 드래그 했을 때
             selectFiles = e.dataTransfer.files;
@@ -103,7 +104,6 @@ const AddFiles = () => {
     }, [initDragEvents, resetDragEvents]);
 
 
-
     return (
         <div className={style.AddFiles}>
             <input
@@ -131,7 +131,7 @@ const AddFiles = () => {
 
                         return (
                             <div key={id} className={style.File}>
-                                <div>{name}</div>
+                                <div className={style.FileName}>{name}</div>
                                 <div
                                     className={style.FilesFilter}
                                     onClick={()=> handleFilterFile(id)}
