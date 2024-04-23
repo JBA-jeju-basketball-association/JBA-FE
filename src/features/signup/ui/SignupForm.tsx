@@ -2,7 +2,7 @@ import React from "react"
 import {SignupInput} from "./SignUpInput";
 import signUpApi from"../api/signUpApi"
 import { SignupFormDataType,SignupFormDataKey } from "../api/type";
-import styles from"./SignUpFrom.module.css"
+import styles from "./SignupFrom.module.css"
 
 
   //api에 사용될 값

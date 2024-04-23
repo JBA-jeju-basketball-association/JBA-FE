@@ -5,12 +5,12 @@ import style from "./Header.module.css"
 import useUserStore from "../hocs/UserStore";
 
 const Header = () => {
-    const {token} = useUserStore();
+    const {AccessToken} = useUserStore();
     return (
         <div>
             <div className={style.Header}>
                 <LoginButton/>
-                {token === null ? <SignUpButton/> : ""}
+                {AccessToken === null ? <SignUpButton/> : ""}
             </div>
         </div>
 
