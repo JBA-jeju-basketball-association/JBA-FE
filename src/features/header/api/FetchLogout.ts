@@ -1,4 +1,4 @@
-import Api from "../../../app/hocs/Api";
+import {Api} from "../../../shared/api";
 import {NavigateFunction} from "react-router-dom";
 
 
