@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Api from "../../../app/hocs/Api";
+import {Api} from "../../../shared/api";
 import {useNavigate} from "react-router-dom";
 
 const Main = () => {

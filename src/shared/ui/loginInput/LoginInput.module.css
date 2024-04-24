@@ -1,0 +1,16 @@
+.LoginInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 48px;
+    border: 1px solid var(--color-lightgray);
+    border-radius: 0 10px 10px 0;
+}
+
+.LoginInput input {
+    width: 340px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    border: none;
+}
