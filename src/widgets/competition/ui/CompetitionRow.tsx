@@ -17,6 +17,15 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
     const startDate: string = moment(item.startDate).format('YYYY-MM-DD');
     const endDate: string = moment(item.endDate).format('YYYY-MM-DD');
     const division:string | undefined = DivisionOptions.find(divisionOption => divisionOption.value === item.division)?.label
+    let status:string = "";
+    const now:Date = new Date();
+    if(new Date(item.startDate) > now) {
+        status = "예정";
+    }else if(new Date(item.startDate) <= now && new Date(item.endDate) >= now) {
+        status = "진행중";
+    }else {
+        status = "완료";
+    }
 
 
     return (
@@ -25,7 +34,7 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
                 <p>{totalElements-index-(pageNumber*10)}</p>
             </div>
             <div className={style.listLabel100}>
-                <p>ssss</p>
+                <p>{status}</p>
             </div>
             <div className={style.listLabel100}>
                 <p>{division===undefined ? "혼합" :division}</p>
