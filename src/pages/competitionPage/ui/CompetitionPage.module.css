@@ -1,0 +1,22 @@
+.CompetitionPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 1200px;
+}
+
+.statusArea {
+    width: 1200px;
+    height: 50px;
+    display: flex;
+}
+.yearFilter {
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+

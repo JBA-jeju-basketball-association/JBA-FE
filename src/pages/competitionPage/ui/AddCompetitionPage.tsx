@@ -9,35 +9,10 @@ import {AddCompetitionLabel, PageTitle} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
 import {DivisionOptions} from "../model/DivisionOptions";
 import FetchAddCompetition from "../api/FetchAddCompetition";
+import {IFileTypes, place, requestData, value} from "../type/type";
 
 
-export type place = {
-    name : string;
-    address: string;
-    latitude?: number | null;
-    longitude?: number | null;
-}
 
-type value = {
-    label: string;
-    value: string;
-}
-
-type requestData = {
-    title: string;
-    divisions: string[];
-    startDate: Date | null;
-    endDate: Date | null;
-    places: place[];
-    relatedURL: string | null;
-    ckData:any;
-    realCkImgs:string[];
-}
-
-export type IFileTypes = {
-    id: number;
-    object: File;
-}
 
 
 export const AddCompetitionPage = () => {
@@ -62,7 +37,7 @@ export const AddCompetitionPage = () => {
     }
 
 
-    const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>):void => {
+    const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const requestData:requestData = {
             title: title,
@@ -80,9 +55,7 @@ export const AddCompetitionPage = () => {
                 requestData.realCkImgs.push(ckImgUrls[i])
             }
         }
-
-        const blob:Blob = new Blob([JSON.stringify(requestData)], {type: "application/json"})
-        FetchAddCompetition(blob, files);
+        FetchAddCompetition(requestData, files);
 
     }
 
