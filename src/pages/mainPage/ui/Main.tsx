@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Api} from "../../../shared/api";
 import {useNavigate} from "react-router-dom";
+import style from "./Main.module.css"
 
 const Main = () => {
     const [userName, setUserName] = useState<string>("");
@@ -22,9 +23,10 @@ const Main = () => {
                 <button onClick={() => test()}>test button</button>
                 <div>{userName}</div>
             </div>
-            <div>
-                <div>대회정보 등록 페이지로</div>
-                <button onClick={()=> navigate("/add-competition")}>gogo</button>
+            <div style={{display:"flex", flexDirection:"column"}}>
+                <button className={style.navigator} onClick={()=> navigate("/add-competition")}>대회정보 등록 페이지</button>
+                <button className={style.navigator} onClick={()=> navigate("/competition")}>대회정보 페이지</button>
+
             </div>
 
         </div>

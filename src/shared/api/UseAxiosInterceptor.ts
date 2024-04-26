@@ -66,6 +66,7 @@ const useAxiosInterceptor = ():void => {
             setAccessToken(null);
             setRefreshToken(null);
             alert("로그인 해주세요.");
+            window.location.href="/login"
         }
         return Promise.reject(error)
     }

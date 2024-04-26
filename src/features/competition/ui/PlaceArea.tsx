@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import style from "./PlaceArea.module.css"
 import Modal from "react-modal";
 import DaumPostcode, {Address} from "react-daum-postcode";
-import {place} from "../../../pages/competitionPage/ui/AddCompetitionPage";
 import * as process from "process";
 import axios from "axios";
+import {place} from "../../../pages/competitionPage/type/type";
 
 type props = {
     places: place[];
