@@ -17,7 +17,7 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
     const startDate: string = moment(item.startDate).format('YYYY-MM-DD');
     const endDate: string = moment(item.endDate).format('YYYY-MM-DD');
     const division:string | undefined = DivisionOptions.find(divisionOption => divisionOption.value === item.division)?.label
-    let status:string = "";
+    let status:string;
     const now:Date = new Date();
     if(new Date(item.startDate) > now) {
         status = "예정";
@@ -48,6 +48,7 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
             <div className={style.listLabel140}>
                 <button onClick={()=> navigate(`/competition/${item.competitionId}`)}>자세히보기</button>
             </div>
+
         </div>
     );
 };

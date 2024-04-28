@@ -5,61 +5,64 @@ import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
 import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
 import {competitionListItem} from "../type/type";
+import {Pagination} from "../../../widgets/pagination";
+import fetchGetCompetitionList from "../api/FetchGetCompetitionList";
+import fetchCompetitionYearList from "../api/FetchCompetitionYearList";
 
 export const CompetitionPage = () => {
     const [statusFocused, setStatusFocused] = useState<string>("ALL")
     const [year, setYear] = useState<string>("2024");
     const [page, setPage] = useState<number>(1);
 
-    const options:{value:string, label:string}[] = [
-        {value:"2024", label:"2024"},
-        {value:"2023", label:"2023"},
-        {value:"2022", label:"2022"},
-        {value:"2021", label:"2021"},
-        {value:"2020", label:"2020"},
-        {value:"2019", label:"2019"},
-        {value:"2018", label:"2018"},
-        {value:"2017", label:"2017"},
-        {value:"2016", label:"2016"}
-    ]
+    const pageSize:number = 10;
 
-    const fetchGetCompetitionList = async () => {
-        return axios.get(`http://localhost:8080/v1/api/competition/competition?status=${statusFocused}&year=${year}&page=${page-1}&size=10`)
-    }
+    const {data:yearData} = useQuery({
+        queryKey:["getCompetitionYearList"],
+        queryFn:()=> fetchCompetitionYearList(),
+        select: (result:any) => result.data.data,
+        retry:1,
+        gcTime:1000 * 60 * 60,
+        staleTime:1000 * 60 * 10
+    })
 
     const {data, isLoading, isError, error} = useQuery({
         queryKey:["getCompetitionList", year, statusFocused, page],
-        queryFn:fetchGetCompetitionList,
-        select:(result) => result.data.data,
+        queryFn:()=> fetchGetCompetitionList(statusFocused, year, page, pageSize),
+        select:(result:any) => result.data.data,
         retry:1,
-        gcTime:60000,
-        staleTime:60000,
+        gcTime:60 * 1000,
+        staleTime:60 * 1000,
         refetchOnMount:true,
     });
 
-    console.log(data)
 
-
+    const options: { value: string, label: string; }[] = [];
+    if (yearData) {
+        for (let i:number = 0; i < yearData.length; i++ ) {
+            options.push({
+                value:yearData[i].toString(),
+                label:yearData[i].toString()
+            })
+        }
+    }
 
     return (
         <div className={style.CompetitionPage}>
             <PageTitle pageName="대회정보"/>
             <div className={style.container}>
                 <div className={style.statusArea}>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="전체" id={"ALL"}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="예정" id={"EXPECTED"}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="진행중" id={"PROCEEDING"}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="완료" id={"COMPLETE"}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="전체" id={"ALL"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="예정" id={"EXPECTED"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="진행중" id={"PROCEEDING"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="완료" id={"COMPLETE"} setPage={setPage}/>
                 </div>
                 <div>
                     <Select
                         options={options}
                         className={style.yearFilter}
-                        placeholder={"선택"}
+                        placeholder={"2024"}
                         required={true}
-                        defaultValue={options[0]}
                         onChange={(newValue:SingleValue<any>) => setYear(newValue.value)}
                     />
                 </div>
@@ -71,6 +74,7 @@ export const CompetitionPage = () => {
                         return <CompetitionRow key={item.competitionId} item={item} index={index} totalElements={data.totalElements} pageNumber={data.pageable.pageNumber}/>
                     })}
                 </div>
+                <Pagination totalPages={Math.max(1, data?.totalPages)} page={page} setPage={setPage} />
             </div>
         </div>
     );
