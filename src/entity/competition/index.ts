@@ -1,0 +1,1 @@
+export {CompetitionDetailLabel} from "./ui/CompetitionDetailLabel"

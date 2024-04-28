@@ -3,7 +3,7 @@ import style from "./App.module.css"
 import { Routes, Route} from "react-router-dom";
 import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
-import {AddCompetitionPage, CompetitionPage} from "../pages/competitionPage";
+import {AddCompetitionPage, CompetitionDetailPage, CompetitionPage} from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {LoginPage} from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
@@ -31,7 +31,8 @@ function App() {
                     }/>
                     <Route path="/add-competition" element={<AddCompetitionPage/>}/>
                     <Route path="/competition" element={<CompetitionPage/>}/>
-                    <Route path="login" element={<LoginPage/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path={"/competition/:competitionId"} element={<CompetitionDetailPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>

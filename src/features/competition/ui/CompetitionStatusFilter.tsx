@@ -5,13 +5,18 @@ type Props = {
     setStatusFocused: React.Dispatch<React.SetStateAction<string>>;
     name:string;
     id:string;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const CompetitionStatusFilter = ({statusFocused, setStatusFocused, name, id}:Props) => {
+export const CompetitionStatusFilter = ({statusFocused, setStatusFocused, name, id, setPage}:Props) => {
     return (
         <button
             className={statusFocused === id? style.statusButtonFocused : style.statusButton}
-            onClick={() => setStatusFocused(id)}
+            onClick={() => {
+                window.scroll(0,80)
+                setStatusFocused(id)
+                setPage(1)
+            }}
         >{name}</button>
     );
 };
