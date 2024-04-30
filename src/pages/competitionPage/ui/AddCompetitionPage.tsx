@@ -7,9 +7,9 @@ import {CustomDatePicker} from "../../../features/datepicker";
 import {PlaceArea,AddFiles} from "../../../features/competition";
 import {AddCompetitionLabel, PageTitle} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
-import {DivisionOptions} from "../model/DivisionOptions";
+import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import FetchAddCompetition from "../api/FetchAddCompetition";
-import {IFileTypes, place, requestData, value} from "../type/type";
+import {IFileTypes, place, requestData, value} from "../../../shared/type/CompetitionType";
 
 
 

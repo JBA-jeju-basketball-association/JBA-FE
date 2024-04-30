@@ -5,7 +5,7 @@ import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
 import {useQuery} from "@tanstack/react-query";
-import {competitionListItem} from "../type/type";
+import {competitionListItem} from "../../../shared/type/CompetitionType";
 import {Pagination} from "../../../widgets/pagination";
 import fetchGetCompetitionList from "../api/FetchGetCompetitionList";
 import fetchCompetitionYearList from "../api/FetchCompetitionYearList";

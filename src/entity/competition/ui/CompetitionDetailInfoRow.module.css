@@ -1,0 +1,22 @@
+.halfInfoArea {
+    width: 520px;
+    min-height: 70px;
+    display: flex;
+}
+
+.infoArea {
+    width: 1040px;
+    min-height: 70px;
+    display: flex;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info p {
+    padding: 10px 20px 10px 20px;
+
+}

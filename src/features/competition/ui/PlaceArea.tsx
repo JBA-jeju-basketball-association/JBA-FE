@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import DaumPostcode, {Address} from "react-daum-postcode";
 import * as process from "process";
 import axios from "axios";
-import {place} from "../../../pages/competitionPage/type/type";
+import {place} from "../../../shared/type/CompetitionType";
 
 type props = {
     places: place[];

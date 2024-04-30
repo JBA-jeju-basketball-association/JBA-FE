@@ -1,5 +1,5 @@
 import {Api} from "../../../shared/api";
-import {IFileTypes, requestData} from "../type/type";
+import {IFileTypes, requestData} from "../../../shared/type/CompetitionType";
 
 
 
