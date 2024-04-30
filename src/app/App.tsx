@@ -32,7 +32,7 @@ function App() {
                     <Route path="/add-competition" element={<AddCompetitionPage/>}/>
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
-                    <Route path={"/competition/:competitionId"} element={<CompetitionDetailPage/>}/>
+                    <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>

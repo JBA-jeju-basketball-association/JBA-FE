@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from "./CompetitionDetailCategory.module.css"
-export const CompetitionDetailCategory = () => {
-    const [infoFocused, setInfoFocused] = useState<boolean>(true);
+
+type Props = {
+    infoFocused:boolean;
+    setInfoFocused: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const CompetitionDetailCategory = ({infoFocused,setInfoFocused}:Props) => {
 
 
     return (

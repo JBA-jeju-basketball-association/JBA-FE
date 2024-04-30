@@ -1,1 +1,1 @@
-export {CompetitionDetailLabel} from "./ui/CompetitionDetailLabel"
+export {CompetitionDetailInfoRow} from "./ui/CompetitionDetailInfoRow"

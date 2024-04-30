@@ -25,10 +25,24 @@
 .info {
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
 .info p {
     padding: 10px 20px 10px 20px;
+}
 
+.info a {
+    text-decoration: underline;
+    padding: 10px 20px 10px 20px;
+
+}
+
+.contentArea {
+    padding: 10px 20px 10px 20px;
+}
+
+.contentArea img{
+    max-width: 800px;
+    height: auto;
 }
