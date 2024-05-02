@@ -142,10 +142,10 @@ export const Result = ({index, resultIndex, resultList, setResultList, divisions
                     <input type={"number"} placeholder={"점수"} className={style.scoreInput} onChange={(e) => addScore(false, parseInt(e.target.value))} value={resultList[index].competitionResult[resultIndex].awayScore}/>
                 </div>
                 <div>
-                    <label htmlFor={"file"+resultIndex}>
+                    <label htmlFor={"file"+index+"&"+resultIndex}>
                         <div className={style.btnUpload}>{resultList[index].competitionResult[resultIndex].fileName === "" ? "파일 업로드" : resultList[index].competitionResult[resultIndex].fileName }</div>
                     </label>
-                    <input type="file" id={"file"+resultIndex} multiple={false} className={style.file} onChange={(e) => fileHandler(e)}/>
+                    <input type="file" id={"file"+index+"&"+resultIndex} multiple={false} className={style.file} onChange={(e) => fileHandler(e)}/>
                 </div>
             </div>
             <div className={style.rightSide}>
