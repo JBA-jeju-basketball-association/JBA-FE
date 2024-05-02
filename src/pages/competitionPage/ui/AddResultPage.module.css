@@ -1,0 +1,22 @@
+.AddResultPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addFloorArea {
+    margin: 20px 0 20px 0;
+    width: 900px;
+}
+
+.addFloorArea button {
+    width: 100px;
+    height: 50px;
+    background-color: var(--color-lightgray);
+    border-radius: 10px;
+}
+
+.container {
+    width: 1040px;
+
+}

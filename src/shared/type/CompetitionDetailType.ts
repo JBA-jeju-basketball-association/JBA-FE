@@ -6,7 +6,7 @@ export type competitionDetailData = {
     endDate: Date;
     relatedUrl: string;
     competitionDetailAttachedFiles:competitionDetailAttachedFiles[];
-    places: places[];
+    places: place[];
     divisions: string[];
 
 }
@@ -17,7 +17,7 @@ export type competitionDetailAttachedFiles = {
     filePath: string;
 }
 
-export type places = {
+export type place = {
     competitionPlaceId:number;
     address: string;
     placeName:string;
