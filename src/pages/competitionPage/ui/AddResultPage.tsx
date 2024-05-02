@@ -6,6 +6,7 @@ import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetit
 import {useParams} from "react-router-dom";
 import {CompetitionDetailTitle, competitionStatusCalculator, FloorBox} from "../../../widgets/competition";
 import {competitionResultList} from "../../../shared/type/CompetitionResultType";
+import FetchAddResult from "../api/FetchAddResult";
 
 export const AddResultPage = () => {
     const {id} = useParams();
@@ -38,6 +39,12 @@ export const AddResultPage = () => {
 
     console.log(data)
 
+    function submitHandler() {
+        if (id != null) {
+            FetchAddResult(resultList, id)
+        }
+    }
+
     return (
         <div className={style.AddResultPage}>
             <PageTitle pageName={"대회결과등록"} />
@@ -47,6 +54,7 @@ export const AddResultPage = () => {
                     return <FloorBox index={index} resultList={resultList} key={index} setResultList={setResultList} divisions={data?.divisions}/>
                 })}
             </div>
+            <button onClick={()=> submitHandler()}>등록</button>
 
         </div>
     );
