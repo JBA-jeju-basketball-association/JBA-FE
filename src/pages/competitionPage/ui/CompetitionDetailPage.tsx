@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {PageTitle} from "../../../shared/ui";
 import style from "./CompetitionDetailPage.module.css"
-import {CompetitionDetailInfo, CompetitionDetailTitle, competitionStatusCalculator} from "../../../widgets/competition";
+import {CompetitionDetailInfo, CompetitionDetailTitle, competitionStatusCalculator,CompetitionResult} from "../../../widgets/competition";
 import {CompetitionDetailCategory} from "../../../features/competition";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
@@ -31,7 +31,7 @@ export const CompetitionDetailPage = () => {
             <PageTitle pageName={"대회정보"} />
             <CompetitionDetailTitle  status={competitionStatusCalculator(data?.startDate, data?.endDate)} title={data?.title}/>
             <CompetitionDetailCategory infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
-            {infoFocused?<CompetitionDetailInfo data={data}/>:"대회결과 컴포넌트"}
+            {infoFocused?<CompetitionDetailInfo data={data}/>:<CompetitionResult/>}
         </div>
     );
 };

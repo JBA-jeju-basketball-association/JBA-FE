@@ -5,6 +5,7 @@ import {CompetitionDetailLabel} from "../../../shared/ui";
 import {CompetitionDetailInfoRow} from "../../../entity/competition";
 import {competitionDetailAttachedFiles, competitionDetailData} from "../../../shared/type/CompetitionDetailType";
 import {competitionDetailMakeDivisionText, competitionStatusCalculator} from "../index"
+import {KakaoMap} from "../../pagination";
 
 type Props = {
     data:competitionDetailData
@@ -52,7 +53,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <CompetitionDetailLabel name={"대회장소"}/>
                     <div className={style.info}>
                         {data?.places.map((p:any, index:number) => {
-                                return <p key={index}>- {p.placeName}</p>
+                                return <p key={index}>- {p.placeName} ({p.address})</p>
                             }
                         )}
                     </div>
@@ -79,6 +80,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <div className={style.contentArea} ref={containerRef}/>
                 </div>
             </div>
+            <KakaoMap places={data?.places}/>
         </div>
     );
 };

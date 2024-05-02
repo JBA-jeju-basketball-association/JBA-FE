@@ -9,11 +9,18 @@ import {competitionListItem} from "../../../shared/type/CompetitionType";
 import {Pagination} from "../../../widgets/pagination";
 import fetchGetCompetitionList from "../api/FetchGetCompetitionList";
 import fetchCompetitionYearList from "../api/FetchCompetitionYearList";
+import {useNavigate} from "react-router-dom";
+import {useUserStore} from "../../../shared/model";
+import {JwtDecoder} from "../../../shared/lib";
 
 export const CompetitionPage = () => {
     const [statusFocused, setStatusFocused] = useState<string>("ALL")
     const [year, setYear] = useState<string>("2024");
     const [page, setPage] = useState<number>(1);
+    const navigate = useNavigate();
+
+    const {AccessToken} = useUserStore();
+    console.log(AccessToken && JwtDecoder(AccessToken).role)
 
     const pageSize:number = 10;
 
@@ -57,7 +64,7 @@ export const CompetitionPage = () => {
                     <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="진행중" id={"PROCEEDING"} setPage={setPage}/>
                     <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="완료" id={"COMPLETE"} setPage={setPage}/>
                 </div>
-                <div>
+                <div className={style.selectAndRegisterArea}>
                     <Select
                         options={options}
                         className={style.yearFilter}
@@ -65,6 +72,7 @@ export const CompetitionPage = () => {
                         required={true}
                         onChange={(newValue:SingleValue<any>) => setYear(newValue.value)}
                     />
+                    {AccessToken && (JwtDecoder(AccessToken).role === "ROLE_MASTER") ? <button onClick={()=> navigate("/add-competition")}>대회등록</button> : ""}
                 </div>
                 <div>
                     <CompetitionTitleArea />
