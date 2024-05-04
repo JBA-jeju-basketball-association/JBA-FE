@@ -1,4 +1,4 @@
-import Api from "../../../app/hocs/Api";
+import {Api} from "../../../shared/api";
 import React from "react";
 
 export default function fetchLogin (email:string, password:string, setEmailMessage: React.Dispatch<React.SetStateAction<string>>

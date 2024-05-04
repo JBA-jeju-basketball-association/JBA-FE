@@ -5,7 +5,7 @@ type Props = {
     label: string;
     height: string;
 }
-const AddCompetitionLabel = ({label, height}:Props) => {
+export const AddCompetitionLabel = ({label, height}:Props) => {
 
     return (
         <label className={height === "normal" ? style.AddCompetitionLabel : style.AddCompetitionLabelDouble}>
@@ -14,5 +14,3 @@ const AddCompetitionLabel = ({label, height}:Props) => {
 
     );
 };
-
-export default AddCompetitionLabel;
