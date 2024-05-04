@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./Result.module.css"
+import style from "./ResultRow.module.css"
 import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
@@ -14,7 +14,7 @@ type Props = {
     setResultList: React.Dispatch<React.SetStateAction<competitionResultList[]>>;
     divisions:string[];
 }
-export const Result = ({index, resultIndex, resultList, setResultList, divisions}:Props) => {
+export const ResultRow = ({index, resultIndex, resultList, setResultList, divisions}:Props) => {
 
     const setStartDate = (date:Date) => {
         setResultList(prevState => {
@@ -28,11 +28,6 @@ export const Result = ({index, resultIndex, resultList, setResultList, divisions
     if (divisions) {
         resultDivisions = DivisionOptions.filter(d=>divisions.includes(d.value))
     }
-
-
-
-
-
 
     const plusButtonHandler = () => {
         setResultList(prevState => {
@@ -90,7 +85,6 @@ export const Result = ({index, resultIndex, resultList, setResultList, divisions
     }
 
     function divisionHandler(value:{value:string, label:string}):void {
-        console.log(value)
         setResultList(prevState => {
             const updateResultList:competitionResultList[] = [...prevState];
             updateResultList[index].competitionResult[resultIndex].division = value.value
@@ -103,7 +97,6 @@ export const Result = ({index, resultIndex, resultList, setResultList, divisions
         if (e.target.files) {
             fetchResultAttachedFile(e.target.files[0])
                 .then(res=> {
-                    console.log(res)
                     setResultList(prevState =>  {
                         const updateResultList:competitionResultList[] = [...prevState]
                         console.log(updateResultList[index].competitionResult)
