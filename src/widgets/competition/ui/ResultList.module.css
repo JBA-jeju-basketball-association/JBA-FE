@@ -1,0 +1,30 @@
+.ResultList {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 40px 0;
+}
+
+.floorArea {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floorArea p {
+    font-weight: bold;
+    font-size: 22px;
+    color: var(--primary-color);
+}
+
+
+
+
+
+.rowArea {
+    width: 1040px;
+    border-top: 3px solid var(--primary-color);
+    border-right: 2px solid var(--color-lightgray);
+    border-left: 2px solid var(--color-lightgray);
+}

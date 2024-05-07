@@ -1,6 +1,6 @@
 import * as React from 'react';
 import style from "./AddCompetitionPage.module.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
 import {CustomDatePicker} from "../../../features/datepicker";
@@ -10,7 +10,7 @@ import {CkEditor} from "../../../features/ckEditor";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import FetchAddCompetition from "../api/FetchAddCompetition";
 import {IFileTypes, place, requestData, value} from "../../../shared/type/CompetitionType";
-
+import { useBeforeunload } from 'react-beforeunload';
 
 
 
@@ -25,6 +25,7 @@ export const AddCompetitionPage = () => {
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
     const [ckImgUrls, setCkImgUrls] = useState<string[]>([]); //TODO: 나중에 s3 파일 삭제요청때 쓸 예정.
+    const [success, setSuccess] = useState<boolean>(false);
 
 
     const divisionHandler = (values:MultiValue<any>):void => {
@@ -58,6 +59,22 @@ export const AddCompetitionPage = () => {
         FetchAddCompetition(requestData, files);
 
     }
+    const preventClose = (e: BeforeUnloadEvent) => {
+        e.preventDefault();
+        e.returnValue = "ㅗㅗㅗㅗ";
+    }
+
+    useEffect(() => {
+            window.addEventListener("beforeunload", preventClose);
+
+            return () => {
+                if (!success) {
+                    window.removeEventListener("beforeunload", preventClose);
+                }
+            };
+        }
+
+        , []);
 
 
 

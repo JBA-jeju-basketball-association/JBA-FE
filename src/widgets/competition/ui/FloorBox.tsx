@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./FloorBox.module.css"
-import {Result} from "./Result";
+import {AddResultRow} from "./AddResultRow";
 import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
 
 type Props = {
@@ -42,10 +42,6 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
             return updatedResultList;
         });
     }
-
-
-    console.log(resultList)
-
     return (
         <div className={style.FloorBox}>
             <div className={style.titleArea}>
@@ -61,7 +57,7 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
             </div>
             <div className={style.inputArea}>
                 {resultList[index].competitionResult.map((r:competitionResult,resultIndex:number) => {
-                    return <Result key={resultIndex} index={index} resultIndex={resultIndex} resultList={resultList} setResultList={setResultList} divisions={divisions && divisions}/>
+                    return <AddResultRow key={resultIndex} index={index} resultIndex={resultIndex} resultList={resultList} setResultList={setResultList} divisions={divisions && divisions}/>
                 })}
             </div>
 

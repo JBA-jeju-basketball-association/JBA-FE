@@ -1,0 +1,61 @@
+.ResultRow {
+    width: 1040px;
+    height: 50px;
+    display: flex;
+    border-bottom: 2px solid var(--color-lightgray);
+}
+
+.ResultRow p {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.timeArea {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-beige);
+}
+
+.divisionArea {
+    width: 120px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid var(--color-lightgray);
+    border-right: 2px solid var(--color-lightgray);
+}
+
+.pointArea {
+    width: 420px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.teamName {
+    margin: 0 10px 0 10px;
+    font-weight: normal;
+}
+
+.winPoint {
+    color: red;
+}
+
+.vsText {
+    margin: 0 10px 0 10px;
+}
+
+.fileBtn {
+    width: 250px;
+    height: 100%;
+    border-left: 2px solid var(--color-lightgray);
+    background-color: var(--color-lightbeige);
+    font-size: 16px;
+    font-weight: bolder;
+}

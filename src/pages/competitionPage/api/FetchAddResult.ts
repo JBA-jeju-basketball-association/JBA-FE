@@ -11,10 +11,11 @@ export default function FetchAddResult(requestData:competitionResultList[], id:s
     })
         .catch(err => {
             console.log(err)
-            // if (err.response.data.detailMessage === "제목을 입력해주세요.") alert("제목을 입력해주세요.");
-            // if (err.response.data.detailMessage === "종별을 선택해주세요.") alert("종별을 1개 이상 선택해주세요");
-            // if (err.response.data.detailMessage === "시작일을 입력해주세요." || "종료일을 입력해주세요.") alert("시작일 또는 종료일을 선택해주세요.");
-            // if (err.response.data.detailMessage === "장소를 등록해주세요.") alert("장소를 등록해주세요.");
-            // if (err.response.data.detailMessage === "제목은 3글자 이상이고 특수문자를 포함할 수 없습니다.") alert("제목은 3글자 이상이고 특수문자를 포함할 수 없습니다.");
+            if (err.response.data.detailMessage === "스테이지를 입력해주세요.") alert("스테이지를 입력해주세요.");
+            if (err.response.data.detailMessage === "종별을 입력해주세요.") alert("종별을 입력해주세요.");
+            if (err.response.data.detailMessage === "HOME 팀명을 입력해주세요." || "AWAY 팀명을 입력해주세요.") alert("팀명을 입력해주세요.");
+            if (err.response.data.detailMessage === "점수는 0점 이상입니다.") alert("점수는 0점 이상입니다.");
+            if (err.response.data.detailMessage === "점수는 200점 이하입니다.") alert("점수는 200점 이하입니다.");
+            if (err.response.data.detailMessage === "시작일을 입력해주세요.") alert("시작일을 입력해주세요.");
         })
 }
