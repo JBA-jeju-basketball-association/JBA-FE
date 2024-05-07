@@ -7,4 +7,6 @@ export {competitionDetailMakeDivisionText} from "./model/CompetitionDetailMakeDi
 export {competitionStatusCalculator} from "./model/CompetitionStatusCalculator"
 export {CompetitionResult} from "./ui/CompetitionResult"
 export {FloorBox} from "./ui/FloorBox"
-export {Result} from "./ui/Result"
+export {AddResultRow} from "./ui/AddResultRow"
+export {ResultList} from "./ui/ResultList"
+export {ResultRow} from "./ui/ResultRow"

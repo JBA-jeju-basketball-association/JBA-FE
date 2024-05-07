@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./ResultRow.module.css"
+import style from "./AddResultRow.module.css"
 import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
@@ -14,7 +14,7 @@ type Props = {
     setResultList: React.Dispatch<React.SetStateAction<competitionResultList[]>>;
     divisions:string[];
 }
-export const ResultRow = ({index, resultIndex, resultList, setResultList, divisions}:Props) => {
+export const AddResultRow = ({index, resultIndex, resultList, setResultList, divisions}:Props) => {
 
     const setStartDate = (date:Date) => {
         setResultList(prevState => {

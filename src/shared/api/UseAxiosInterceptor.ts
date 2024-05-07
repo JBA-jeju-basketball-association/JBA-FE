@@ -9,7 +9,6 @@ import {JwtDecoder} from "../lib";
 
 const useAxiosInterceptor = ():void => {
 
-    const navigate = useNavigate();
     const {AccessToken, RefreshToken, setAccessToken, setRefreshToken} = useUserStore();
 
     const requestHandler = async (config:InternalAxiosRequestConfig) => {

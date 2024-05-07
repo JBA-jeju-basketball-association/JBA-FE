@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchGetCompetitionResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug-template.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug-template.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddResult.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/Result.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/Result.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/type/CompetitionResultType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/type/CompetitionResultType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/Result.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/Result.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TypeScript.BoxArea.tsx.executor": "Run",
+    "TypeScript.CompetitionResultType.ts.executor": "Run",
     "TypeScript.PlaceArea.tsx.executor": "Run",
     "git-widget-placeholder": "feat-competition-page",
     "jdk.selected.JAVA_MODULE": "17",
@@ -118,7 +130,8 @@
       <workItem from="1712049363597" duration="26101000" />
       <workItem from="1712908682741" duration="6983000" />
       <workItem from="1713338358339" duration="32585000" />
-      <workItem from="1714445907069" duration="42503000" />
+      <workItem from="1714445907069" duration="44520000" />
+      <workItem from="1714738385249" duration="6493000" />
     </task>
     <servers />
   </component>

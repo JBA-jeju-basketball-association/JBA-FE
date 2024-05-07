@@ -32,13 +32,6 @@ export const AddResultPage = () => {
     }
     const [resultList, setResultList] = useState<competitionResultList[]>([initialResult]);
 
-
-
-
-
-
-    console.log(data)
-
     function submitHandler() {
         if (id != null) {
             FetchAddResult(resultList, id)
