@@ -57,24 +57,7 @@ export const AddCompetitionPage = () => {
             }
         }
         FetchAddCompetition(requestData, files);
-
     }
-    const preventClose = (e: BeforeUnloadEvent) => {
-        e.preventDefault();
-        e.returnValue = "ㅗㅗㅗㅗ";
-    }
-
-    useEffect(() => {
-            window.addEventListener("beforeunload", preventClose);
-
-            return () => {
-                if (!success) {
-                    window.removeEventListener("beforeunload", preventClose);
-                }
-            };
-        }
-
-        , []);
 
 
 
