@@ -80,7 +80,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <div className={style.contentArea} ref={containerRef}/>
                 </div>
             </div>
-            <KakaoMap places={data?.places}/>
+            {data?.places.length !== 0 ? <KakaoMap places={data?.places}/> : ""}
         </div>
     );
 };

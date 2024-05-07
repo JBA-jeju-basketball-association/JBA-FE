@@ -21,6 +21,8 @@ export const CompetitionDetailPage = () => {
         staleTime:1000*60
     })
 
+    console.log(data)
+
     if (isLoading) {
         return <div>Loading.....</div>
     }
@@ -29,7 +31,7 @@ export const CompetitionDetailPage = () => {
         <div className={style.CompetitionDetailPage}>
             <PageTitle pageName={"대회정보"} />
             <CompetitionDetailTitle  status={competitionStatusCalculator(data?.startDate, data?.endDate)} title={data?.title}/>
-            <CompetitionDetailCategory infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
+            <CompetitionDetailCategory existResult={data.existResult} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
             {infoFocused?<CompetitionDetailInfo data={data}/>:<CompetitionResult/>}
         </div>
     );

@@ -17,18 +17,18 @@ export const KakaoMap = ({places}:Props) => {
                     return <button
                         key={index}
                         onClick={()=>setPlacesNum(index)}
-                    >{p.placeName}</button>
+                    >{p?.placeName}</button>
                 })}
             </div>
 
 
             <Map
-                center={{ lat: places[placesNum].latitude, lng: places[placesNum].longitude }}
+                center={{ lat: places[placesNum]?.latitude, lng: places[placesNum]?.longitude }}
                 level={4}
                 className={style.map}
             >
-                <MapMarker position={{ lat: places[placesNum].latitude, lng: places[placesNum].longitude }}>
-                    <div>{places[placesNum].placeName}</div>
+                <MapMarker position={{ lat: places[placesNum]?.latitude, lng: places[placesNum]?.longitude }}>
+                    <div>{places[placesNum]?.placeName}</div>
                 </MapMarker>
             </Map>
         </div>

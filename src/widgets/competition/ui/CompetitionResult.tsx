@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 import {useParams} from "react-router-dom";
 import fetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultList} from "./ResultList";
-import {competitionResult, getResultBox} from "../../../shared/type/CompetitionResultType";
+import {getResultBox} from "../../../shared/type/CompetitionResultType";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 
 export const CompetitionResult = () => {
@@ -16,7 +16,9 @@ export const CompetitionResult = () => {
     const {data, isLoading, isError, error} = useQuery({
         queryKey: ["getCompetitionResult", id],
         queryFn: () => fetchGetCompetitionResult(id),
-        select: (result) => result?.data.data
+        select: (result) => result?.data.data,
+        gcTime:1000*60*10,
+        staleTime:1000*60
     })
 
     const divisionOptions:{value:string, label:string}[] = [{value:"all", label:"전체"}];
