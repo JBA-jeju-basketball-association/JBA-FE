@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import style from "./AddFiles.module.css";
-import {IFileTypes} from "../../../pages/competitionPage/ui/AddCompetitionPage";
+import {IFileTypes} from "../../../shared/type/CompetitionType";
 
 
 

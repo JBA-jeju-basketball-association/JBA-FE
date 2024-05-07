@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import style from "./PlaceArea.module.css"
 import Modal from "react-modal";
 import DaumPostcode, {Address} from "react-daum-postcode";
-import {place} from "../../../pages/competitionPage/ui/AddCompetitionPage";
-import * as process from "process";
 import axios from "axios";
+import {place} from "../../../shared/type/CompetitionType";
 
 type props = {
     places: place[];
@@ -51,11 +50,11 @@ export const PlaceArea = ({places, setPlaces}:props) => {
         const url = 'https://dapi.kakao.com/v2/local/search/address.json?query=' + encodeURI(address);
         await axios.get(url, {
             headers: {
-                Authorization: "KakaoAK "+ process.env.REACT_APP_KAKAO_MAP_KEY
+                Authorization: "KakaoAK "+ process.env.REACT_APP_KAKAO_API_KEY
             }
         }).then(res=> {
-            setLatitude(res.data.documents[0].x)
-            setLongitude(res.data.documents[0].y)
+            setLatitude(res.data.documents[0].y)
+            setLongitude(res.data.documents[0].x)
         })
             .catch(err => console.log(err))
 

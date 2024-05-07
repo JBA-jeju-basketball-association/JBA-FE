@@ -9,7 +9,6 @@ import {JwtDecoder} from "../lib";
 
 const useAxiosInterceptor = ():void => {
 
-    const navigate = useNavigate();
     const {AccessToken, RefreshToken, setAccessToken, setRefreshToken} = useUserStore();
 
     const requestHandler = async (config:InternalAxiosRequestConfig) => {
@@ -66,6 +65,7 @@ const useAxiosInterceptor = ():void => {
             setAccessToken(null);
             setRefreshToken(null);
             alert("로그인 해주세요.");
+            window.location.href="/login"
         }
         return Promise.reject(error)
     }

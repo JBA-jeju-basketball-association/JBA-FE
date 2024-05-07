@@ -1,0 +1,25 @@
+.CompetitionDetailTitle {
+    width: 1200px;
+    height: 70px;
+    border-top: 3px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.CompetitionDetailTitle div {
+    width: 70px;
+    height: 34px;
+    font-size: 20px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.CompetitionDetailTitle h1 {
+    font-size: 30px;
+    font-weight: bold;
+}

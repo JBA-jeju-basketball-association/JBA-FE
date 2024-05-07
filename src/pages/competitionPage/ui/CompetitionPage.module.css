@@ -1,0 +1,35 @@
+.CompetitionPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 1200px;
+}
+
+.statusArea {
+    width: 1200px;
+    height: 50px;
+    display: flex;
+}
+.yearFilter {
+    width: 200px;
+    height: 50px;
+}
+
+.selectAndRegisterArea {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.selectAndRegisterArea button {
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}

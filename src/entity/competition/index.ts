@@ -1,0 +1,1 @@
+export {CompetitionDetailInfoRow} from "./ui/CompetitionDetailInfoRow"

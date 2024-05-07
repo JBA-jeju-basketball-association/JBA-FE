@@ -1,0 +1,25 @@
+.pagination {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pagination__link {
+    transition: all 0.25s;
+    width: 20px;
+    font-size: 16px;
+}
+
+.pagination__link__active {
+    transition: all 0.25s;
+    width: 20px;
+    font-size: 16px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.leftRightButton {
+    font-size: 18px;
+}

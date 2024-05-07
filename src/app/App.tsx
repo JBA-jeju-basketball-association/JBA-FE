@@ -1,8 +1,15 @@
 import React from "react";
+import style from "./App.module.css"
 import { Routes, Route} from "react-router-dom";
 import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
-import {AddCompetitionPage} from "../pages/competitionPage";
+import {
+    AddCompetitionPage,
+    AddResultPage,
+    CompetitionDetailPage,
+    CompetitionPage,
+    PrivateRoute
+} from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {LoginPage} from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
@@ -15,22 +22,29 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <Routes>
+            <div className={style.wrapper}>
+                <Routes>
 
-                <Route path="signup" element={<div><SignUpPage/></div>} />
-                <Route path="main" element={<Main />}/>
+                    <Route path="signup" element={<div><SignUpPage/></div>} />
+                    <Route path="main" element={<Main />}/>
 
-                {/*컴포넌트 테스트를 위한 임시 path */}
-                <Route path="zzuyeontest" element={
-                    <div>
-                        <UploadFileList></UploadFileList>
-                        <UpLoadButton></UpLoadButton>
-                    </div>
-                }/>
-                <Route path="/add-competition" element={<AddCompetitionPage/>}/>
-                <Route path="login" element={<LoginPage/>}/>
-            </Routes>
-            <footer ><Footer></Footer></footer>
+                    {/*컴포넌트 테스트를 위한 임시 path */}
+                    <Route path="zzuyeontest" element={
+                        <div>
+                            <UploadFileList></UploadFileList>
+                            <UpLoadButton></UpLoadButton>
+                        </div>
+                    }/>
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/add-competition" element={<AddCompetitionPage/>}/>
+                        <Route path="/competition/add-result/:id" element={<AddResultPage />} />
+                    </Route>
+                    <Route path="/competition" element={<CompetitionPage/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
+                </Routes>
+            </div>
+            <Footer></Footer>
         </div>
     );
 }
