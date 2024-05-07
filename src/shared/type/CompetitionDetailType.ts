@@ -8,7 +8,7 @@ export type competitionDetailData = {
     competitionDetailAttachedFiles:competitionDetailAttachedFiles[];
     places: place[];
     divisions: string[];
-
+    existResult:boolean;
 }
 
 export type competitionDetailAttachedFiles = {
