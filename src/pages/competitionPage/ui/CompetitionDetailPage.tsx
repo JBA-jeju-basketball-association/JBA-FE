@@ -18,10 +18,8 @@ export const CompetitionDetailPage = () => {
         queryFn:() => fetchCompetitionInfo(id),
         select:(result) => result.data.data,
         gcTime:1000*60*10,
-        staleTime:1000*60
     })
 
-    console.log(data)
 
     if (isLoading) {
         return <div>Loading.....</div>

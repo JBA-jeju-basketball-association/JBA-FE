@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./ResultRow.module.css"
-import {getResult} from "../../../shared/type/CompetitionResultType";
+import {getResult} from "../../../shared/type/CompetitionType";
 import formatDate from "../../../shared/lib/formatDate";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 

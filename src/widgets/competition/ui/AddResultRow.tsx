@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./AddResultRow.module.css"
-import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionType";
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";

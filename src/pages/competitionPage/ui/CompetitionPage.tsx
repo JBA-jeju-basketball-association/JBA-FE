@@ -20,7 +20,6 @@ export const CompetitionPage = () => {
     const navigate = useNavigate();
 
     const {AccessToken} = useUserStore();
-    console.log(AccessToken && JwtDecoder(AccessToken).role)
 
     const pageSize:number = 10;
 

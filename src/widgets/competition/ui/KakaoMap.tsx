@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import style from "./KakaoMap.module.css"
 import {Map, MapMarker} from "react-kakao-maps-sdk";
-import {place} from "../../../shared/type/CompetitionDetailType";
+import {place} from "../../../shared/type/CompetitionType";
 
 type Props = {
     places:place[];

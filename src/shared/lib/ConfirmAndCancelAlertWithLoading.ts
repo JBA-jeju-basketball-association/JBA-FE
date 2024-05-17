@@ -1,7 +1,7 @@
 import Swal, {SweetAlertIcon} from "sweetalert2";
 
 
-export default function confirmAndCancelAlert(icon: SweetAlertIcon, title: string, text?: string, asyncFc?:any) {
+export default function confirmAndCancelAlertWithLoading(icon: SweetAlertIcon, title: string, text?: string, asyncFc?:any) {
     return Swal.fire({
         title: title,
         text: text,
@@ -12,6 +12,7 @@ export default function confirmAndCancelAlert(icon: SweetAlertIcon, title: strin
         cancelButtonText: "취소",
         cancelButtonColor: "#3085d6",
         showLoaderOnConfirm: true,
-        preConfirm: () => asyncFc()
-    })
+        preConfirm: asyncFc
+
+    });
 }

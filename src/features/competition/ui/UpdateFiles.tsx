@@ -1,6 +1,8 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
-import style from "./AddFiles.module.css";
+import style from "./UpdateFiles.module.css";
 import {IFileTypes} from "../../../shared/type/CompetitionType";
+import {competitionDetailAttachedFile} from "../../../shared/type/CompetitionType";
+import {UploadedFileRow} from "./UploadedFileRow";
 import {FileRow} from "./FileRow";
 
 
@@ -8,14 +10,18 @@ import {FileRow} from "./FileRow";
 type Props = {
     files:IFileTypes[]
     setFiles: React.Dispatch<React.SetStateAction<IFileTypes[]>>
+    attachedFiles: competitionDetailAttachedFile[];
+    attachedFileList: competitionDetailAttachedFile[];
+    setAttachedFileList: React.Dispatch<React.SetStateAction<competitionDetailAttachedFile[]>>
 }
 
-export const AddFiles = ({files, setFiles}: Props) => {
+export const UpdateFiles = ({attachedFiles, files, setFiles, attachedFileList, setAttachedFileList}: Props) => {
     const [isDragging, setIsDragging] = useState<boolean>(false);
     // 각 선택했던 파일들의 고유값 id
     const fileId = useRef<number>(0);
     //드래그 이벤트를 감지하는 ref 참조변수 (label 태그에 들어갈 예정)
     const dragRef = useRef<HTMLLabelElement | null>(null);
+    console.log(attachedFileList)
 
     const onChangeFiles = useCallback((e:ChangeEvent<HTMLInputElement> | any):void => {
         let selectFiles: File[] = [];
@@ -25,7 +31,6 @@ export const AddFiles = ({files, setFiles}: Props) => {
             selectFiles = e.dataTransfer.files;
         }else { // 파일 첨부 버튼을 눌러서 이미지를 선택했을 때
             selectFiles = e.target.files;
-
         }
 
         for (const file of selectFiles) { // 스프레드 연산자를 이용하여 기존에 있던 파일들을 복사하고, 선택했던 파일들을 append 해준다.
@@ -104,6 +109,9 @@ export const AddFiles = ({files, setFiles}: Props) => {
         return () => resetDragEvents();
     }, [initDragEvents, resetDragEvents]);
 
+    useEffect(() => {
+        setAttachedFileList(attachedFiles);
+    }, [attachedFiles]);
 
     return (
         <div className={style.AddFiles}>
@@ -123,9 +131,11 @@ export const AddFiles = ({files, setFiles}: Props) => {
                 <div>파일 첨부</div>
             </label>
             <div className={style.Files}>
-                {files.length > 0 &&
-                    files.map((file: IFileTypes) => {
-                        return <FileRow file={file} handleFilterFile={handleFilterFile} />
+                {attachedFileList.map((item, index) => {
+                    return <UploadedFileRow key={index} index={index} attachedFile={item} setAttachedFileList={setAttachedFileList}/>
+                })}
+                {files.length > 0 && files.map((file: IFileTypes, index) => {
+                        return <FileRow key={index} file={file} handleFilterFile={handleFilterFile} />
                     })}
             </div>
         </div>

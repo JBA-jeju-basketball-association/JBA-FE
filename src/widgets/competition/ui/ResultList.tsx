@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./ResultList.module.css"
-import {getResult, getResultBox} from "../../../shared/type/CompetitionResultType";
+import {getResult, getResultBox} from "../../../shared/type/CompetitionType";
 import {ResultRow} from "./ResultRow";
 
 

@@ -18,5 +18,12 @@
 
 .container {
     width: 1040px;
+}
 
+.submitButton {
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
 }

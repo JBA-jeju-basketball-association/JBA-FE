@@ -1,5 +1,6 @@
 import {Api} from "../../../shared/api";
-import {competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResultList} from "../../../shared/type/CompetitionType";
+import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 
 
@@ -10,12 +11,17 @@ export default function FetchAddResult(requestData:competitionResultList[], id:s
         window.location.href = `/competition/${id}`;
     })
         .catch(err => {
-            console.log(err)
-            if (err.response.data.detailMessage === "스테이지를 입력해주세요.") alert("스테이지를 입력해주세요.");
-            if (err.response.data.detailMessage === "종별을 입력해주세요.") alert("종별을 입력해주세요.");
-            if (err.response.data.detailMessage === "HOME 팀명을 입력해주세요." || "AWAY 팀명을 입력해주세요.") alert("팀명을 입력해주세요.");
-            if (err.response.data.detailMessage === "점수는 0점 이상입니다.") alert("점수는 0점 이상입니다.");
-            if (err.response.data.detailMessage === "점수는 200점 이하입니다.") alert("점수는 200점 이하입니다.");
-            if (err.response.data.detailMessage === "시작일을 입력해주세요.") alert("시작일을 입력해주세요.");
+            if (err.response.data.detailMessage === "스테이지를 입력해주세요.")
+                confirmAlert("warning", "스테이지를 입력해주세요.")
+            if (err.response.data.detailMessage === "종별을 입력해주세요.")
+                confirmAlert("warning", "종별을 입력해주세요.")
+            if (err.response.data.detailMessage === "HOME 팀명을 입력해주세요." || err.response.data.detailMessage === "AWAY 팀명을 입력해주세요.")
+                confirmAlert("warning", "팀명을 입력해주세요.")
+            if (err.response.data.detailMessage === "점수는 0점 이상입니다.")
+                confirmAlert("warning", "점수는 0점 이상입니다.")
+            if (err.response.data.detailMessage === "점수는 200점 이하입니다.")
+                confirmAlert("warning", "점수는 200점 이하입니다.")
+            if (err.response.data.detailMessage === "시작일을 입력해주세요.")
+                confirmAlert("warning", "시작일을 입력해주세요.")
         })
 }

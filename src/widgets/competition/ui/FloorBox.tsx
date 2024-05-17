@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./FloorBox.module.css"
 import {AddResultRow} from "./AddResultRow";
-import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionType";
 
 type Props = {
     resultList:competitionResultList[];

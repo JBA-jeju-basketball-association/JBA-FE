@@ -69,7 +69,7 @@ export const PlaceArea = ({places, setPlaces}:props) => {
             return
         }
         let place:place = {
-            name:placeName,
+            placeName:placeName,
             address:address,
             latitude:latitude,
             longitude:longitude
@@ -82,7 +82,8 @@ export const PlaceArea = ({places, setPlaces}:props) => {
         setIsOpen(false)
     }
 
-    const deletePlace = (indexToRemove:number):void => {
+    const deletePlace = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, indexToRemove:number):void => {
+        e.preventDefault()
         setPlaces(prevState => prevState.filter((place:place, index:number):boolean => index !== indexToRemove))
     }
 
@@ -129,10 +130,10 @@ export const PlaceArea = ({places, setPlaces}:props) => {
             </div>
             <section className={style.rightBox}>
                 <ul className={style.placeList}>
-                    {places.map((place: place, index: number) => (
+                    {places?.map((place: place, index: number) => (
                         <li key={index} className={style.placeName}>
-                            <p>{place.name}</p>
-                            <button onClick={() => deletePlace(index)}>X</button>
+                            <p>{place.placeName}</p>
+                            <button onClick={(e) => deletePlace(e, index)}>X</button>
                         </li>
                     ))}
 

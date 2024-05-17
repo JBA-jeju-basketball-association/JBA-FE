@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {useParams} from "react-router-dom";
 import {CompetitionDetailTitle, competitionStatusCalculator, FloorBox} from "../../../widgets/competition";
-import {competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResultList} from "../../../shared/type/CompetitionType";
 import FetchAddResult from "../api/FetchAddResult";
 
 export const AddResultPage = () => {
@@ -15,7 +15,6 @@ export const AddResultPage = () => {
         queryFn:() => fetchCompetitionInfo(id),
         select:(result) => result.data.data,
         gcTime:1000*60*10,
-        staleTime:1000*60
     })
     const initialResult:competitionResultList = {
         floor:"경기",
@@ -47,7 +46,7 @@ export const AddResultPage = () => {
                     return <FloorBox index={index} resultList={resultList} key={index} setResultList={setResultList} divisions={data?.divisions}/>
                 })}
             </div>
-            <button onClick={()=> submitHandler()}>등록</button>
+            <button onClick={()=> submitHandler()} className={style.submitButton}>등록</button>
 
         </div>
     );

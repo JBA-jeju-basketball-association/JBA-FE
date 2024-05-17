@@ -1,5 +1,4 @@
 .CompetitionDetailInfo {
-    border: 1px solid var(--color-dark);
     border-top: 3px solid var(--color-dark);
     display: flex;
     flex-direction: column;
@@ -8,6 +7,8 @@
 .fullInfoArea {
     display: flex;
     border-bottom: 1px solid var(--color-gray);
+    border-right: 1px solid var(--color-dark);
+    border-left: 1px solid var(--color-dark);
 }
 
 .halfInfoArea {
@@ -45,4 +46,25 @@
 .contentArea img{
     max-width: 800px;
     height: auto;
+}
+
+.updateDeleteButtonArea {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.updateDeleteButtonArea button {
+    margin-right: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.updateDeleteButtonArea button:hover{
+    color: var(--color-dark-gray);
 }
