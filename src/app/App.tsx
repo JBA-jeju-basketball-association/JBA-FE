@@ -2,12 +2,11 @@ import React from "react";
 import { Routes, Route} from "react-router-dom";
 import '../shared/base.css'
 import { SignupForm } from "../features/signup/ui/SignupForm";
-import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
-import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";
 import LoginPage from "../pages/loginPage/ui/LoginPage";
 import Header from "./header/Header";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
+import Logo from "shared/ui/Logo/Logo";
 
 function App() {
     return (
@@ -20,8 +19,7 @@ function App() {
                 <Route path="zzuyeontest" element={
                     <div>
                         <MenuBar></MenuBar>
-                        {/* <UploadFileList></UploadFileList>
-                        <UpLoadButton></UpLoadButton> */}
+                        <Logo></Logo>
                     </div>
                 }/>
                 <Route path="/add-competition" element={<AddCompetitionPage/>}/>
