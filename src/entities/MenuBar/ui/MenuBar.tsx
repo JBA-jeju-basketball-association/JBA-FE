@@ -13,8 +13,8 @@ export default function MenuBar(){
     return(
         //menuName 변수의 값을 사용하여 메뉴를 생성해줍니다.
         <div className={Style.MenuBar}>
+            <Logo></Logo>
             <div className={Style.MenuBar_Inner} >
-                <Logo></Logo>
                 <ul className={Style.Ul}
                     onMouseEnter={() => { setFocuse(true)}}
                     onMouseLeave={() => setFocuse(false)}>
