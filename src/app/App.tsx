@@ -16,6 +16,8 @@ import Main from "../pages/mainPage/ui/Main";
 import {Header} from "../widgets/header";
 import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
 import SignUpPage from "../pages/signUp/ui/SignUpPage/SignUpPage";
+import GalleryUploadPage from '../pages/galleryUploadPage/ui'
+import GalleryPage from "pages/galleryPage/ui";
 
 function App() {
     useAxiosInterceptor();
@@ -42,6 +44,8 @@ function App() {
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
+                    <Route path={"/gallery"} element={<GalleryPage/>}/>
+                    <Route path={"/galleryUpload"} element={<GalleryUploadPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>
