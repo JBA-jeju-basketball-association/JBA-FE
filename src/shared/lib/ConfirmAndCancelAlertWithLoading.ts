@@ -13,6 +13,5 @@ export default function confirmAndCancelAlertWithLoading(icon: SweetAlertIcon, t
         cancelButtonColor: "#3085d6",
         showLoaderOnConfirm: true,
         preConfirm: asyncFc
-
     });
 }

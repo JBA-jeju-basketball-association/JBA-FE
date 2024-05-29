@@ -16,7 +16,7 @@ export const CompetitionDetailPage = () => {
     const {data, isLoading, isError, error} = useQuery({
         queryKey:["getCompetitionDetail", id],
         queryFn:() => fetchCompetitionInfo(id),
-        select:(result) => result.data.data,
+        select:(result) => result?.data.data,
         gcTime:1000*60*10,
     })
 
@@ -29,8 +29,8 @@ export const CompetitionDetailPage = () => {
         <div className={style.CompetitionDetailPage}>
             <PageTitle pageName={"대회정보"} />
             <CompetitionDetailTitle  status={competitionStatusCalculator(data?.startDate, data?.endDate)} title={data?.title}/>
-            <CompetitionDetailCategory existResult={data.existResult} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
-            {infoFocused?<CompetitionDetailInfo data={data}/>:<CompetitionResult/>}
+            <CompetitionDetailCategory existResult={data?.existResult} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
+            {infoFocused?<CompetitionDetailInfo data={data && data}/>:<CompetitionResult/>}
         </div>
     );
 };

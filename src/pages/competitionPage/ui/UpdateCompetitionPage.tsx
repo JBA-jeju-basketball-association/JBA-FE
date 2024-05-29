@@ -5,7 +5,7 @@ import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
 import {CustomDatePicker} from "../../../features/datepicker";
 import {PlaceArea,UpdateFiles} from "../../../features/competition";
-import {AddCompetitionLabel, PageTitle} from "../../../shared/ui";
+import {AddCompetitionLabel, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
 import {DivisionOptions, divisionType} from "../../../shared/model/DivisionOptions";
 import FetchUpdateCompetition from "../api/FetchUpdateCompetition";
@@ -23,12 +23,12 @@ export const UpdateCompetitionPage = () => {
     const {data, isLoading, isError, error} = useQuery({
         queryKey:["getCompetitionDetail", id],
         queryFn:() => fetchCompetitionInfo(id),
-        select:(result) => result.data.data,
+        select:(result) => result?.data.data,
         gcTime:1000*60*10,
     })
 
     const [title, setTitle] = useState<string>("")
-    const [selectedDivisions, setSelectedDivisions] = useState<{value:string, label:string}[]>([])
+    const [selectedDivisions, setSelectedDivisions] = useState<{ value: string, label: string; }[]>([]);
     const [startDate, setStartDate] = useState<Date | null>(null)
     const [endDate, setEndDate] = useState<Date | null>(null)
     const [places, setPlaces] = useState<place[]>([]);
@@ -54,7 +54,7 @@ export const UpdateCompetitionPage = () => {
 
         const requestData:updateRequestData = {
             title: title,
-            divisions: selectedDivisions.map(item => item.value),
+            divisions: selectedDivisions?.map(item => item.value),
             startDate: startDate,
             endDate: endDate,
             updatePlaces: places,
@@ -117,7 +117,7 @@ export const UpdateCompetitionPage = () => {
                 </div>
                 <div className={style.inputArea}>
                     <AddCompetitionLabel label={"종별"} height={"normal"}/>
-                    {selectedDivisions?.length > 0 &&
+                    {selectedDivisions &&
                         <Select
                             components={makeAnimated()}
                             options={DivisionOptions}
@@ -127,7 +127,7 @@ export const UpdateCompetitionPage = () => {
                             placeholder={"선택"}
                             className={style.select}
                             onChange={(values: MultiValue<any>) => divisionHandler(values)}
-                            defaultValue={selectedDivisions}
+                            value={selectedDivisions}
                         />
                     }
 
@@ -160,7 +160,7 @@ export const UpdateCompetitionPage = () => {
                 <div className={style.CkEditor}>
                     <CkEditor ckData={ckData} setCkData={setCkData} setNewCkImgUrls={setNewCkImgUrls}/>
                 </div>
-                <button type={"submit"} className={style.submitButton}>수정</button>
+                <RegitUpdateDeleteButton content={"수정"}/>
             </form>
         </div>
     );

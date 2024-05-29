@@ -21,7 +21,6 @@ export const UpdateFiles = ({attachedFiles, files, setFiles, attachedFileList, s
     const fileId = useRef<number>(0);
     //드래그 이벤트를 감지하는 ref 참조변수 (label 태그에 들어갈 예정)
     const dragRef = useRef<HTMLLabelElement | null>(null);
-    console.log(attachedFileList)
 
     const onChangeFiles = useCallback((e:ChangeEvent<HTMLInputElement> | any):void => {
         let selectFiles: File[] = [];

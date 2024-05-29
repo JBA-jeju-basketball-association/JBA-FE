@@ -1,4 +1,4 @@
-import {NormalApi} from "../../../shared/api/NormalApi";
+import {NormalApi} from "../../../shared/api";
 import {AxiosResponse} from "axios";
 
 

@@ -136,7 +136,6 @@ export const PlaceArea = ({places, setPlaces}:props) => {
                             <button onClick={(e) => deletePlace(e, index)}>X</button>
                         </li>
                     ))}
-
                 </ul>
 
             </section>

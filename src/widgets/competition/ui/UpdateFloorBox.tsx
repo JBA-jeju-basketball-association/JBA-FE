@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./FloorBox.module.css"
+import style from "./UpdateFloorBox.module.css"
 import {AddResultRow} from "./AddResultRow";
 import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionType";
 
@@ -9,7 +9,7 @@ type Props = {
     setResultList:React.Dispatch<React.SetStateAction<competitionResultList[]>>;
     divisions:string[];
 }
-export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
+export const UpdateFloorBox = ({resultList,setResultList,index,divisions}:Props) => {
 
     const initialResult:competitionResultList = {
         floor:"경기",
@@ -48,7 +48,8 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
 
                 <input
                     type={"text"}
-                    placeholder={resultList[index].floor}
+                    placeholder={resultList[index]?.floor}
+                    value={resultList[index]?.floor}
                     onChange={(e)=> changeFloorHandler(e.target.value)}
                 />
 

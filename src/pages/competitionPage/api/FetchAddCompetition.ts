@@ -20,7 +20,7 @@ export default function FetchAddCompetition(requestData:requestData, files:IFile
     }).then(res => {
         confirmAlert("success", "대회등록이 완료되었습니다.")
             .then(res => {
-                if (res.isConfirmed) window.location.href = "/main";
+                if (res.isConfirmed) window.location.href = "/competition";
             })
     })
         .catch(err => {

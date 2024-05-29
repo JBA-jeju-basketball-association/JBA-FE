@@ -4,16 +4,17 @@ import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 
 
-export default function FetchAddResult(requestData:competitionResultList[], id:string):void {
-    requestData.forEach(result => result.competitionResult.forEach(item => item.startTime = new Date(new Date(item.startTime).getTime() - (new Date(item.startTime).getTimezoneOffset() * 60000))));
+export default function FetchUpdateResult(requestData:competitionResultList[], id:string) {
+    requestData.forEach(result => result.competitionResult.forEach(item => item.startTime = new Date(new Date(item.startTime).getTime() - (new Date(item.startTime).getTimezoneOffset() * 60000))))
     const requestDataFinal:{requests:competitionResultList[]} = {requests:requestData}
-    Api.post(`/v1/api/competition/add-result/${id}`, requestDataFinal)
+    return Api.put(`/v1/api/competition/update-result/${id}`, requestDataFinal)
         .then(res => {
-        confirmAlert("warning","대회결과 등록이 완료되었습니다.")
-            .then(res => {
-                if (res.isConfirmed) window.location.href = `/competition/${id}`;
-            })
-
+            if (res.status === 200){
+                confirmAlert("success", "대회결과 수정이 완료되었습니다.")
+                    .then(res => {
+                        if (res.isConfirmed) window.location.href = `/competition/${id}`;
+                    });
+            }
     })
         .catch(err => {
             if (err.response.data.detailMessage === "스테이지를 입력해주세요.")

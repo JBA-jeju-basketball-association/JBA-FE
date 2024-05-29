@@ -8,7 +8,7 @@ import {
     AddResultPage,
     CompetitionDetailPage,
     CompetitionPage,
-    PrivateRoute
+    PrivateRoute, UpdateCompetitionResultPage
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {LoginPage} from "../pages/loginPage";
@@ -40,6 +40,7 @@ function App() {
                         <Route path="/add-competition" element={<AddCompetitionPage/>}/>
                         <Route path="/competition/update-competition/:id" element={<UpdateCompetitionPage/>}/>
                         <Route path="/competition/add-result/:id" element={<AddResultPage/>}/>
+                        <Route path="/competition/update-result/:id" element={<UpdateCompetitionResultPage/>}/>
                     </Route>
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>

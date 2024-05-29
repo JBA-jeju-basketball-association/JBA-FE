@@ -1,11 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import style from "./CompetitionDetailInfo.module.css"
 import moment from "moment/moment";
-import {CompetitionDetailLabel} from "../../../shared/ui";
+import {CompetitionDetailLabel, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionDetailInfoRow} from "../../../entity/competition";
 import {competitionDetailAttachedFile, competitionDetailData} from "../../../shared/type/CompetitionType";
 import {competitionDetailMakeDivisionText, competitionStatusCalculator} from "../index"
-import {KakaoMap} from "../../pagination";
+import {KakaoMap} from "./KakaoMap";
 import {useNavigate, useParams} from "react-router-dom";
 import {useUserStore} from "../../../shared/model";
 import {JwtDecoder} from "../../../shared/lib";
@@ -99,8 +99,8 @@ export const CompetitionDetailInfo = ({data}:Props) => {
             {data?.places.length !== 0 ? <KakaoMap places={data?.places}/> : ""}
             {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
                 <div className={style.updateDeleteButtonArea}>
-                    <button onClick={() => updateHandler()}>수정</button>
-                    <button onClick={() => deleteHandler()}>삭제</button>
+                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
+                    <RegitUpdateDeleteButton onClickHandler={() => deleteHandler()} content={"삭제"} />
                 </div>
                 :
                 null

@@ -1,20 +1,20 @@
 import React from 'react';
 import style from "./ResultList.module.css"
-import {getResult, getResultBox} from "../../../shared/type/CompetitionType";
+import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionType";
 import {ResultRow} from "./ResultRow";
 
 
 type Props = {
-    resultList: getResultBox;
+    resultList: competitionResultList;
     divisionSelect: string;
 }
 export const ResultList = ({resultList, divisionSelect}:Props) => {
 
-    let filteredResult: getResult[] = [];
+    let filteredResult: competitionResult[] = [];
     if (divisionSelect === "all") {
-        filteredResult = resultList.resultList;
+        filteredResult = resultList.competitionResult;
     }else {
-        filteredResult = resultList.resultList.filter(item => item.division === divisionSelect)
+        filteredResult = resultList.competitionResult.filter(item => item.division === divisionSelect)
     }
     return (
         <div className={style.ResultList}>
@@ -22,7 +22,7 @@ export const ResultList = ({resultList, divisionSelect}:Props) => {
                 <p>{resultList.floor}</p>
             </div>
             <div className={style.rowArea}>
-                {filteredResult.map((results:getResult, index:number) => {
+                {filteredResult.map((results:competitionResult, index:number) => {
                         return <ResultRow results={results} key={index}/>;
                 })}
             </div>

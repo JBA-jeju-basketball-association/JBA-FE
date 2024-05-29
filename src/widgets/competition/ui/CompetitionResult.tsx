@@ -5,11 +5,12 @@ import {useQuery} from "@tanstack/react-query";
 import {useNavigate, useParams} from "react-router-dom";
 import fetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultList} from "./ResultList";
-import {getResultBox} from "../../../shared/type/CompetitionType";
+import {competitionResultList} from "../../../shared/type/CompetitionType";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import {JwtDecoder} from "../../../shared/lib";
 import {useUserStore} from "../../../shared/model";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import {RegitUpdateDeleteButton} from "../../../shared/ui";
 
 export const CompetitionResult = () => {
     const {id} = useParams();
@@ -51,13 +52,13 @@ export const CompetitionResult = () => {
                     onChange={(newValue: SingleValue<any>) => setDivisionSelect(newValue.value)}
                 />
                 {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
-                    <button className={style.updateButton} onClick={() => updateHandler()}>수정</button>
+                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
                     :
                     null
                 }
             </div>
             <div>
-                {data?.resultResponse.map((r: getResultBox, index: number) => {
+                {data?.resultResponse.map((r: competitionResultList, index: number) => {
                     return <ResultList resultList={r} key={index} divisionSelect={divisionSelect}/>;
                 })}
             </div>

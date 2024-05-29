@@ -18,10 +18,13 @@ export default function FetchUpdateCompetition(id:string, requestData:updateRequ
             "Content-Type": "multipart/form-data"
         }
     }).then(res => {
-        confirmAlert("success", "대회수정이 완료되었습니다.")
-            .then(res => {
-                // if (res.isConfirmed) window.location.href = "/main";
-            })
+        if (res.status === 200) {
+            confirmAlert("success", "대회수정이 완료되었습니다.")
+                .then(res => {
+                    if (res.isConfirmed) window.location.href = "/competition";
+                })
+        }
+
     })
         .catch(err => {
             console.log(err)
