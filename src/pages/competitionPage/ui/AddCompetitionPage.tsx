@@ -1,6 +1,6 @@
 import * as React from 'react';
 import style from "./AddCompetitionPage.module.css"
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
 import {CustomDatePicker} from "../../../features/datepicker";
@@ -8,9 +8,10 @@ import {PlaceArea,AddFiles} from "../../../features/competition";
 import {AddCompetitionLabel, PageTitle} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
+import {IFileTypes, requestData, value} from "../../../shared/type/CompetitionType";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import {place} from "../../../shared/type/CompetitionType";
 import FetchAddCompetition from "../api/FetchAddCompetition";
-import {IFileTypes, place, requestData, value} from "../../../shared/type/CompetitionType";
-import { useBeforeunload } from 'react-beforeunload';
 
 
 
@@ -24,7 +25,7 @@ export const AddCompetitionPage = () => {
     const [relatedURL, setRelatedUrl] = useState<string | null>(null);
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
-    const [ckImgUrls, setCkImgUrls] = useState<string[]>([]); //TODO: 나중에 s3 파일 삭제요청때 쓸 예정.
+    const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]); //TODO: 나중에 s3 파일 삭제요청때 쓸 예정.
     const [success, setSuccess] = useState<boolean>(false);
 
 
@@ -51,12 +52,14 @@ export const AddCompetitionPage = () => {
             realCkImgs:[]
         }
 
-        for (let i:number = 0; i < ckImgUrls.length; i++) {
-            if(ckData.includes(ckImgUrls[i])) {
-                requestData.realCkImgs.push(ckImgUrls[i])
+        for (let i:number = 0; i < newCkImgUrls.length; i++) {
+            if(ckData.includes(newCkImgUrls[i])) {
+                requestData.realCkImgs.push(newCkImgUrls[i])
             }
         }
-        FetchAddCompetition(requestData, files);
+        confirmAndCancelAlertWithLoading("question", "대회를 등록하시겠습니까?", "", async () => {
+            await FetchAddCompetition(requestData, files)
+        })
     }
 
 
@@ -111,7 +114,7 @@ export const AddCompetitionPage = () => {
                     <p>내용</p>
                 </div>
                 <div className={style.CkEditor}>
-                    <CkEditor setCkData={setCkData} setCkImgUrls={setCkImgUrls}/>
+                    <CkEditor ckData={ckData} setCkData={setCkData} setNewCkImgUrls={setNewCkImgUrls}/>
                 </div>
                 <button type={"submit"} className={style.submitButton}>등록</button>
             </form>

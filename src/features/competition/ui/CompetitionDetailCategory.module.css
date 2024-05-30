@@ -31,3 +31,7 @@
     background-color: white;
     color: var(--primary-color);
 }
+
+.modal {
+    margin: 20px;
+}

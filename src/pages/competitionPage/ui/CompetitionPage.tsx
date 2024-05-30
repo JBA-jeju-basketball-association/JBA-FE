@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import style from "./CompetitionPage.module.css"
-import {PageTitle} from "../../../shared/ui";
+import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
@@ -20,7 +20,6 @@ export const CompetitionPage = () => {
     const navigate = useNavigate();
 
     const {AccessToken} = useUserStore();
-    console.log(AccessToken && JwtDecoder(AccessToken).role)
 
     const pageSize:number = 10;
 
@@ -59,10 +58,14 @@ export const CompetitionPage = () => {
             <PageTitle pageName="대회정보"/>
             <div className={style.container}>
                 <div className={style.statusArea}>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="전체" id={"ALL"} setPage={setPage}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="예정" id={"EXPECTED"} setPage={setPage}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="진행중" id={"PROCEEDING"} setPage={setPage}/>
-                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="완료" id={"COMPLETE"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="전체"
+                                             id={"ALL"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="예정"
+                                             id={"EXPECTED"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused}
+                                             name="진행중" id={"PROCEEDING"} setPage={setPage}/>
+                    <CompetitionStatusFilter statusFocused={statusFocused} setStatusFocused={setStatusFocused} name="완료"
+                                             id={"COMPLETE"} setPage={setPage}/>
                 </div>
                 <div className={style.selectAndRegisterArea}>
                     <Select
@@ -70,19 +73,23 @@ export const CompetitionPage = () => {
                         className={style.yearFilter}
                         placeholder={"2024"}
                         required={true}
-                        onChange={(newValue:SingleValue<any>) => setYear(newValue.value)}
+                        onChange={(newValue: SingleValue<any>) => setYear(newValue.value)}
                     />
-                    {AccessToken && (JwtDecoder(AccessToken).role === "ROLE_MASTER") ? <button onClick={()=> navigate("/add-competition")}>대회등록</button> : ""}
+                    {AccessToken && (JwtDecoder(AccessToken).role === "ROLE_MASTER") ?
+                        <RegitUpdateDeleteButton onClickHandler={() => navigate("/add-competition")}
+                                                 content={"대회등록"}/> : ""}
                 </div>
                 <div>
-                    <CompetitionTitleArea />
+                    <CompetitionTitleArea/>
                 </div>
                 <div>
-                    {data?.content.map((item:competitionListItem,index:number) => {
-                        return <CompetitionRow key={item.competitionId} item={item} index={index} totalElements={data.totalElements} pageNumber={data.pageable.pageNumber}/>
+                    {data?.content.map((item: competitionListItem, index: number) => {
+                        return <CompetitionRow key={item.competitionId} item={item} index={index}
+                                               totalElements={data.totalElements}
+                                               pageNumber={data.pageable.pageNumber}/>
                     })}
                 </div>
-                <Pagination totalPages={Math.max(1, data?.totalPages)} page={page} setPage={setPage} />
+                <Pagination totalPages={Math.max(1, data?.totalPages)} page={page} setPage={setPage}/>
             </div>
         </div>
     );

@@ -2,18 +2,24 @@ import React from 'react';
 import {useUserStore} from "../../../shared/model";
 import {JwtDecoder} from "../../../shared/lib";
 import {Navigate, Outlet} from "react-router-dom";
+import axios from "axios";
+import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
-export const PrivateRoute = () => {
-    const {AccessToken} = useUserStore()
+
+export const PrivateRoute  = () => {
+    const {AccessToken} = useUserStore();
+
+
     if (AccessToken) {
-        if (JwtDecoder(AccessToken).role === "ROLE_MASTER") {
+        const decodedToken:any = JwtDecoder(AccessToken);
+        if (decodedToken.role === "ROLE_MASTER") {
             return <Outlet />
         }else {
-            alert("권한이 없습니다.")
+            confirmAlert("warning", "권한이 없습니다.")
         }
     }else {
-        alert("권한이 없습니다.")
-
+        confirmAlert("warning", "로그인이 필요합니다.")
+            .then(res => window.location.href = "/login")
     }
 
     return <Navigate replace to="/main"/>;

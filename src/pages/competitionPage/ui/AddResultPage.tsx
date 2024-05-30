@@ -1,26 +1,28 @@
 import React, {useState} from 'react';
 import style from "./AddResultPage.module.css"
-import {PageTitle} from "../../../shared/ui";
+import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {useQuery} from "@tanstack/react-query";
 import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {useParams} from "react-router-dom";
 import {CompetitionDetailTitle, competitionStatusCalculator, FloorBox} from "../../../widgets/competition";
-import {competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResultList} from "../../../shared/type/CompetitionType";
 import FetchAddResult from "../api/FetchAddResult";
 
 export const AddResultPage = () => {
     const {id} = useParams();
-    const {data, isLoading, isError, error} = useQuery({
+    const {data:detailData} = useQuery({
         queryKey:["getCompetitionDetail", id],
         queryFn:() => fetchCompetitionInfo(id),
-        select:(result) => result.data.data,
+        select:(result) => result?.data.data,
         gcTime:1000*60*10,
-        staleTime:1000*60
     })
+
+
+
     const initialResult:competitionResultList = {
         floor:"경기",
         competitionResult: [{
-            division:null,
+            division:"",
             startTime:new Date(),
             homeName: "",
             homeScore:0,
@@ -41,14 +43,14 @@ export const AddResultPage = () => {
     return (
         <div className={style.AddResultPage}>
             <PageTitle pageName={"대회결과등록"} />
-            <CompetitionDetailTitle  status={competitionStatusCalculator(data?.startDate, data?.endDate)} title={data?.title}/>
+            <CompetitionDetailTitle  status={competitionStatusCalculator(detailData?.startDate, detailData?.endDate)} title={detailData?.title}/>
             <div className={style.container}>
-                {resultList.map((fl:competitionResultList, index:number)=> {
-                    return <FloorBox index={index} resultList={resultList} key={index} setResultList={setResultList} divisions={data?.divisions}/>
+                {detailData && resultList?.map((fl:competitionResultList, index:number)=> {
+                    return <FloorBox index={index} resultList={resultList} key={index} setResultList={setResultList} divisions={detailData?.divisions}/>
                 })}
             </div>
-            <button onClick={()=> submitHandler()}>등록</button>
-
+            <RegitUpdateDeleteButton onClickHandler={() => submitHandler()} content={"등록"} />
+            {/*<button onClick={()=> submitHandler()} className={style.submitButton}>등록</button>*/}
         </div>
     );
 };
