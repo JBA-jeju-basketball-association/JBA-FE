@@ -1,6 +1,8 @@
-import {NormalApi} from "../../../shared/api/NormalApi";
+import {NormalApi} from "../../../shared/api";
 
 
 export default function fetchCompetitionInfo(id:string|undefined) {
-    return NormalApi.get(`/v1/api/competition/detail/${id}`)
+    if (id) {
+        return NormalApi.get(`/v1/api/competition/detail/${id}`);
+    }
 }

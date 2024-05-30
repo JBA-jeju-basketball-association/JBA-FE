@@ -8,7 +8,7 @@ import {
     AddResultPage,
     CompetitionDetailPage,
     CompetitionPage,
-    PrivateRoute
+    PrivateRoute, UpdateCompetitionResultPage
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {LoginPage} from "../pages/loginPage";
@@ -18,17 +18,18 @@ import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
 import SignUpPage from "../pages/signUp/ui/SignUpPage/SignUpPage";
 import GalleryUploadPage from '../pages/galleryUploadPage/ui'
 import GalleryPage from "pages/galleryPage/ui";
+import {UpdateCompetitionPage} from "../pages/competitionPage/ui/UpdateCompetitionPage";
 
 function App() {
     useAxiosInterceptor();
     return (
-        <div className="App">
-            <Header />
+        <div>
+            <Header/>
             <div className={style.wrapper}>
                 <Routes>
 
-                    <Route path="signup" element={<div><SignUpPage/></div>} />
-                    <Route path="main" element={<Main />}/>
+                    <Route path="signup" element={<div><SignUpPage/></div>}/>
+                    <Route path="main" element={<Main/>}/>
 
                     {/*컴포넌트 테스트를 위한 임시 path */}
                     <Route path="zzuyeontest" element={
@@ -37,9 +38,11 @@ function App() {
                             <UpLoadButton></UpLoadButton>
                         </div>
                     }/>
-                    <Route element={<PrivateRoute />}>
+                    <Route element={<PrivateRoute/>}>
                         <Route path="/add-competition" element={<AddCompetitionPage/>}/>
-                        <Route path="/competition/add-result/:id" element={<AddResultPage />} />
+                        <Route path="/competition/update-competition/:id" element={<UpdateCompetitionPage/>}/>
+                        <Route path="/competition/add-result/:id" element={<AddResultPage/>}/>
+                        <Route path="/competition/update-result/:id" element={<UpdateCompetitionResultPage/>}/>
                     </Route>
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>

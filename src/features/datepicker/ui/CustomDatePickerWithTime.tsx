@@ -11,33 +11,35 @@ type Props = {
 
 export const CustomDatePickerWithTime = ({startDate, setStartDate}:Props) => {
 
-    let currentDate:Date = new Date();
-    let nextDay:Date = new Date(currentDate);
-    nextDay.setDate(currentDate.getDate() + 1);
-
     const filterPassedTime = (time:any):boolean => {
         const currentDate:Date = new Date();
-        const selectedDate:Date = new Date(time);
-
+        let selectedDate:Date = new Date(time);
         return currentDate.getTime() > selectedDate.getTime();
     };
 
+
+
+
     return (
-        <div  className={style.datepicker}>
-            <DatePicker
-                startDate={startDate}
-                onChange={(date)=>setStartDate(date)}
-                selected={startDate}
-                showTimeSelect
-                toggleCalendarOnIconClick
-                dateFormat="yyyy. M. d. aa h:mm "
-                locale={ko}
-                showPopperArrow={false}
-                filterTime={filterPassedTime}
-                customInput={
-                    <input className={style.inputStyle}/>
-                }
-            />
+        <div className={style.datepicker}>
+            {startDate &&
+                <DatePicker
+                    startDate={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    selected={new Date(startDate)}
+                    showTimeSelect
+                    timeIntervals={10}
+                    toggleCalendarOnIconClick
+                    dateFormat="yyyy. M. d. aa h:mm "
+                    locale={ko}
+                    showPopperArrow={false}
+                    filterTime={filterPassedTime}
+                    customInput={
+                        <input className={style.inputStyle}/>
+                    }
+                />
+            }
+
         </div>
     );
 };

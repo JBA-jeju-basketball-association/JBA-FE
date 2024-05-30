@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useCallback, useEffect, useRef, useState} from 'react';
 import style from "./AddFiles.module.css";
 import {IFileTypes} from "../../../shared/type/CompetitionType";
+import {FileRow} from "./FileRow";
 
 
 
@@ -124,22 +125,7 @@ export const AddFiles = ({files, setFiles}: Props) => {
             <div className={style.Files}>
                 {files.length > 0 &&
                     files.map((file: IFileTypes) => {
-                        const {
-                            id,
-                            object: {name}
-                        } = file;
-
-                        return (
-                            <div key={id} className={style.File}>
-                                <div className={style.FileName}>{name}</div>
-                                <div
-                                    className={style.FilesFilter}
-                                    onClick={()=> handleFilterFile(id)}
-                                >
-                                    X
-                                </div>
-                            </div>
-                        );
+                        return <FileRow file={file} handleFilterFile={handleFilterFile} />
                     })}
             </div>
         </div>

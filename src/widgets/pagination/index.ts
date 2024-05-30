@@ -1,2 +1,2 @@
 export {Pagination} from "./ui/Pagination"
-export {KakaoMap} from "./ui/KakaoMap"
+export {KakaoMap} from "../competition/ui/KakaoMap"

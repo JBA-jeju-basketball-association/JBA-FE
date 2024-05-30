@@ -35,7 +35,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.homePointArea {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.awayPointArea {
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .teamName {

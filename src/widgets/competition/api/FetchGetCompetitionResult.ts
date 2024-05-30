@@ -1,4 +1,4 @@
-import {NormalApi} from "../../../shared/api/NormalApi";
+import {NormalApi} from "../../../shared/api";
 
 
 export default function fetchGetCompetitionResult(id:string | undefined) {

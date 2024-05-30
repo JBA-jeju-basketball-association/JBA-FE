@@ -8,10 +8,11 @@ import {Api} from "../../../shared/api";
 
 type Props = {
     setCkData: React.Dispatch<any>;
-    setCkImgUrls:  React.Dispatch<React.SetStateAction<string[]>>;
+    setNewCkImgUrls:  React.Dispatch<React.SetStateAction<string[]>>;
+    ckData: string;
 }
 
-export const CkEditor = ({setCkData, setCkImgUrls}:Props) => {
+export const CkEditor = ({ckData, setCkData, setNewCkImgUrls}:Props) => {
 
     const editorConfiguration = {
         toolbar: {
@@ -76,7 +77,7 @@ export const CkEditor = ({setCkData, setCkImgUrls}:Props) => {
                             }
                         })
                             .then((res) => {
-                                setCkImgUrls(prevState => {
+                                setNewCkImgUrls(prevState => {
                                     return [...prevState, res.data.url]
                                 })
                                 resolve({
@@ -101,7 +102,7 @@ export const CkEditor = ({setCkData, setCkImgUrls}:Props) => {
         <CKEditor
             editor={Editor}
             config={editorConfiguration}
-            data = ""
+            data = {ckData !== null ? ckData : ""}
             onChange={(event, editor):void => {
                 setCkData(editor.getData()); // 에디터 작성 내용 저장
             }}

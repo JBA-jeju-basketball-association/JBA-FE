@@ -18,7 +18,7 @@ const useAxiosInterceptor = ():void => {
             const expireTime:number = Math.floor(new Date(JwtDecoder(AccessToken).exp).getTime());
             const currentTime:number = Math.floor(new Date().getTime()/1000)
             if (currentTime + 1 > expireTime) {
-                await axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
+                await axios.post(process.env.REACT_APP_SERVER_URL+"/v1/api/sign/refresh-token", null, {
                     headers: {
                         AccessToken: AccessToken,
                         RefreshToken: RefreshToken

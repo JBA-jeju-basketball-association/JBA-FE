@@ -1,6 +1,9 @@
 
-
-export const DivisionOptions: { value: string, label: string; }[] = [
+export type divisionType = {
+    value:string;
+    label:string
+}
+export const DivisionOptions: divisionType[] = [
     {value: "element", label: "초등"},
     {value: "middle", label: "중등"},
     {value: "high", label: "고등"},
