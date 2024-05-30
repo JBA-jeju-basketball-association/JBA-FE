@@ -1,10 +1,6 @@
 import React from "react";
 import styles from "./galleryCard.module.css";
-
-type GalleryCardType = {
-  title: string;
-  imgUrl: string;
-};
+import { GalleryCardType } from "pages/galleryPage/ui";
 
 const GalleryCard = ({ title, imgUrl }: GalleryCardType) => {
   return (

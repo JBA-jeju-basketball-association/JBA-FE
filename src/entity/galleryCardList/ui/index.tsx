@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import GalleryCard from "shared/ui/galleryCard";
 import styles from "./galleryCardList.module.css";
+import { GalleryCardType } from "pages/galleryPage/ui";
 
-type GalleryCardType = {
-  galleryId: number;
-  title: string;
-  fileName: string;
-  imgUrl: string;
-};
 
 type GalleryCardListType = {
   galleries: GalleryCardType[];
 };
 
-const GalleryCardList = ({ galleries }: any) => {
+const GalleryCardList = ({ galleries }: GalleryCardListType) => {
   return (
     <div className={styles.container}>
       {galleries.map((gallery: GalleryCardType) => (
