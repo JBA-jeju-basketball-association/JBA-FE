@@ -1,0 +1,31 @@
+.container {
+  width: 1040px;
+  height: 290px;
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 140px 1fr;
+  border: 1px solid gray;
+}
+
+.title,
+.titleInput {
+  border-bottom: 1px solid gray !important;
+}
+
+.title,
+.upload {
+  background: beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid gray;
+}
+
+.titleInput,
+.uploadInput {
+  border: none;
+  padding-left: 30px;
+}
+.uploadInput{
+  padding-top: 20px;
+}

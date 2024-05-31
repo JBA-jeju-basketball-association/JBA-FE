@@ -48,7 +48,7 @@ function App() {
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
                     <Route path={"/gallery"} element={<GalleryPage/>}/>
-                    <Route path={"/galleryUpload"} element={<GalleryUploadPage/>}/>
+                    <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>

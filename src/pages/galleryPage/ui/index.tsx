@@ -5,7 +5,6 @@ import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
 import { useQuery } from "@tanstack/react-query";
 import { Api } from "shared/api";
-import axios from "axios";
 
 export type GalleryCardType = {
   galleryId?: number;
@@ -27,18 +26,15 @@ const GalleryPage = () => {
   const { data: galleryData, refetch } = useQuery({
     queryKey: ["galleries", page, searchCategory, searchKeyword],
     queryFn: () =>
-      axios.get(
-        `http://ec2-43-200-4-149.ap-northeast-2.compute.amazonaws.com:8080/v1/api/gallery?`,
-        {
-          params: {
-            page: page - 1,
-            size: 6,
-            official: true,
-            searchCategory,
-            searchKeyword,
-          },
-        }
-      ),
+      Api.get(`/v1/api/gallery`, {
+        params: {
+          page: page - 1,
+          size: 6,
+          official: true,
+          searchCategory,
+          searchKeyword,
+        },
+      }),
   });
   const galleries: GalleryCardType[] = galleryData?.data.data.galleries ?? [];
   const totalPage: number = galleryData?.data.data.totalPages ?? 0;
