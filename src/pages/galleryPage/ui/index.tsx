@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GalleryCardList from "entity/galleryCardList/ui";
 import styles from "./galleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
 import { useQuery } from "@tanstack/react-query";
 import { Api } from "shared/api";
-
+import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
+import { Link } from "react-router-dom";
 export type GalleryCardType = {
   galleryId?: number;
   title?: string;
@@ -41,7 +42,12 @@ const GalleryPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1>갤러리</h1>
+      <div className={styles.GalleryPageHeader}>
+        <h1>갤러리</h1>
+        <Link to={"/galleryupload"}>
+          <RegitUpdateDeleteButton content="등록하기" />
+        </Link>
+      </div>
       <GalleryCardList galleries={galleries} />
       <Pagination totalPages={totalPage} page={page} setPage={setPage} />
       <SearchBar
