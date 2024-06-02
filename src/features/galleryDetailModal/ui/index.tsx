@@ -1,6 +1,7 @@
 import React from "react";
 import CommnModal from "shared/ui/commonModal";
-import styles from './galleryDetail.module.css'
+import styles from "./galleryDetail.module.css";
+import { CloseIcon, RightIcon, LeftIcon } from "utils/icon";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
@@ -40,7 +41,12 @@ const GalleryDetailModal = ({
       onRequestClose={() => setModalOpen(false)}
       style={customModalStyles}
     >
-      <div>테스트1234</div>
+      <div className={styles.container}>
+        <h1>[2024]제주특별도민자치도 도민체전</h1>
+        <CloseIcon />
+        <RightIcon />
+        <LeftIcon />
+      </div>
     </CommnModal>
   );
 };

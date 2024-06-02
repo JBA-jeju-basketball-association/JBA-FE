@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > h1 {
+  font-size: 30px;
+  color: var(--color-white);
+  margin: 20px 0;
+}
