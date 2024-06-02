@@ -1,15 +1,22 @@
-.container {
+.contaienr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.wrapper {
   width: 1040px;
   height: 290px;
   display: grid;
   grid-template-rows: 70px 1fr;
   grid-template-columns: 140px 1fr;
-  border: 1px solid gray;
+  border: 1px solid var(--color-dark-gray);
 }
 
 .title,
 .titleInput {
-  border-bottom: 1px solid gray !important;
+  border-bottom: 1px solid var(--color-dark-gray) !important;
 }
 
 .title,
@@ -18,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid gray;
+  border-right: 1px solid var(--color-dark-gray);
 }
 
 .titleInput,
@@ -26,6 +33,14 @@
   border: none;
   padding-left: 30px;
 }
-.uploadInput{
+.uploadInput {
   padding-top: 20px;
+}
+
+.button {
+  background: var(--primary-color);
+  padding: 15px 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 700;
 }

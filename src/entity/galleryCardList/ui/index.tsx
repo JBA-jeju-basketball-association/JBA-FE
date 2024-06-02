@@ -1,12 +1,7 @@
 import React from "react";
 import GalleryCard from "shared/ui/galleryCard";
 import styles from "./galleryCardList.module.css";
-import { GalleryCardType } from "pages/galleryPage/ui";
-
-
-type GalleryCardListType = {
-  galleries: GalleryCardType[];
-};
+import { GalleryCardType, GalleryCardListType } from "shared/type/Gallery";
 
 const GalleryCardList = ({ galleries }: GalleryCardListType) => {
   return (

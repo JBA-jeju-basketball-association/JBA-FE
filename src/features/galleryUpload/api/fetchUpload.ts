@@ -1,1 +1,7 @@
-import react from 'react'
+import react from "react";
+
+const fetchUpload = () => {
+
+};
+
+export default fetchUpload;

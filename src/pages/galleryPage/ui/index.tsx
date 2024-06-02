@@ -7,12 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 import { Link } from "react-router-dom";
-export type GalleryCardType = {
-  galleryId?: number;
-  title?: string;
-  fileName?: string;
-  imgUrl?: string;
-};
+import { GalleryCardType } from "shared/type/Gallery";
 
 const GalleryPage = () => {
   const [page, setPage] = useState(1);
