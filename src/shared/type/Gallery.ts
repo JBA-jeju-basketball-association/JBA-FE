@@ -5,7 +5,7 @@ export type file = {
 
 export type uploadType = {
   title: string;
-  files: file[];
+  imgs: file[];
 };
 
 export type GalleryCardType = {

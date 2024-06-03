@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from "react";
 import styles from "./galleryUpload.module.css";
 import { useState } from "react";
-import { AddFiles } from "features/competition/index";
 import { useMutation } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { useNavigate } from "react-router-dom";
@@ -10,17 +9,22 @@ import { uploadType } from "shared/type/Gallery";
 
 const GalleryUpload = () => {
   const [titleValue, setTitleValue] = useState("");
-  const [files, setFiles] = useState<any>([]);
+  // const [uploadFiles, setUploadFiles] = useState<any>([]);
+  const [uploadFiles, setUploadFiles] = useState<
+    { fileName: string; fileUrl: string }[]
+  >([]);
   const navigate = useNavigate();
 
+  //title의 값을 받아오는 함수
   const handleUploadTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitleValue(e.target.value);
   };
 
+  // 파일 업로드 함수
   const { mutate: uploadData } = useMutation({
     mutationKey: ["galleryUpload"],
     mutationFn: (data: uploadType) =>
-      Api.post("/v1/api/gallery/register", data),
+      Api.post("/v1/api/gallery/register?official=true", data),
     onSuccess: () => {
       confirmAlert("success", "이미지 등록이 완료되었습니다.");
       navigate("/gallery");
@@ -30,51 +34,62 @@ const GalleryUpload = () => {
     },
   });
 
-  const uploadClick = (e: React.MouseEvent) => {
+  // 이미지 파일을 url로 변환하는 함수
+  const { mutate: uploadFile } = useMutation({
+    mutationKey: ["galleryUploadFiles"],
+    mutationFn: (files: FormData) =>
+      Api.post("/v1/api/storage/multipart-files", files, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        params: {
+          type: "small",
+        },
+      }),
+    onSuccess: (res) => {
+      console.log("파일 업로드 성공:", res.data); //res.data 여기는 성공
+      setUploadFiles([
+        {
+          fileName: res.data.data[0].fileName,
+          fileUrl: res.data.data[0].fileUrl,
+        },
+      ]);
+    },
+    onError: (error) => {
+      console.log("파일 업로드 실패", error); //근데 바로 실패 뜸
+    },
+  });
+  console.log("업로드파일", uploadFiles);
+
+  // 이미지 파일을 url로 변환하는 함수
+  const handleFileUpload = (files: FileList | null) => {
+    if (files) {
+      const formData = new FormData();
+      Array.from(files).forEach((file) => {
+        formData.append("uploadFiles", file);
+      });
+      console.log("FormData:", formData); // FormData 객체에 안닮김
+      uploadFile(formData);
+    }
+  };
+
+  // 등록하기 버튼 클릭 시 실행되는 함수
+  const handleUpload = (e: React.MouseEvent) => {
     e.preventDefault();
 
     const data = {
       title: titleValue,
-      files: files.map((file: any) => ({
-        fileName: file.fileName,
-        fileUrl: file.fileUrl,
-      })),
+      imgs: uploadFiles,
     };
+
+    // console.log("업로드파일", uploadFiles); //언디파인드 나옴
+    console.log("데이터:", data); //언디파인드 나옴
 
     uploadData(data);
   };
 
-  // const { mutate: uploadData } = useMutation({
-  //   mutationKey: ["galleryUpload"],
-  //   mutationFn: (formData: FormData) =>
-  //     Api.post("/v1/api/gallery/register", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     }),
-  //   onSuccess: () => {
-  //     confirmAlert("success", "이미지 등록이 완료되었습니다.");
-  //     navigate("/gallery");
-  //   },
-  //   onError: () => {
-  //     console.log("업로드 실패");
-  //   },
-  // });
-
-  // const uploadClick = (e: React.MouseEvent) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData();
-  //   formData.append("title", titleValue);
-  //   files.forEach((file: any, index: number) => {
-  //     formData.append(`files[${index}]`, file);
-  //   });
-
-  //   uploadData(formData);
-  // };
-
   return (
-    <form className={styles.contaienr}>
+    <form className={styles.container}>
       <div className={styles.wrapper}>
         <p className={styles.title}>갤러리제목</p>
         <input
@@ -84,9 +99,14 @@ const GalleryUpload = () => {
           onChange={handleUploadTitle}
         />
         <p className={styles.upload}>첨부파일</p>
-        <AddFiles files={files} setFiles={setFiles} />
+        <input
+          type="file"
+          className={styles.fileInput}
+          multiple
+          onChange={(e) => handleFileUpload(e.target.files)}
+        />
       </div>
-      <button className={styles.button} type="button" onClick={uploadClick}>
+      <button className={styles.button} type="button" onClick={handleUpload}>
         등록하기
       </button>
     </form>
@@ -94,79 +114,3 @@ const GalleryUpload = () => {
 };
 
 export default GalleryUpload;
-
-// import React, { ChangeEvent } from "react";
-// import styles from "./galleryUpload.module.css";
-// import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
-// import { useState, useEffect } from "react";
-// import { AddFiles } from "features/competition/index";
-// import { IFileTypes } from "shared/type/CompetitionType";
-// import { competitionDetailAttachedFile } from "shared/type/CompetitionType";
-// import { useMutation } from "@tanstack/react-query";
-// import { Api } from "shared/api";
-// import { useNavigate } from "react-router-dom";
-// import confirmAlert from "shared/lib/ConfirmAlert";
-
-// const GalleryUpload = () => {
-//   const [titleValue, setTitleValue] = useState("");
-//   const [files, setFiles] = useState<IFileTypes[]>([]);
-//   const navigate = useNavigate();
-
-//   const handleUploadTitle = (e: ChangeEvent<HTMLInputElement>) => {
-//     setTitleValue(e.target.value);
-//   };
-
-//   const { mutate: uploadData } = useMutation({
-//     mutationKey: ["galleryUpload"],
-//     mutationFn: (formData: FormData) =>
-//       Api.post("/v1/api/gallery/register", formData, {
-//         headers: {
-//           "Content-Type": "Multipart/form-data",
-//         },
-//         params: { offical: true },
-//       }),
-//     onSuccess: () => {
-//       confirmAlert("success", "이미지 등록이 완료되었습니다.");
-//       navigate("/gallery");
-//     },
-//     onError: () => {
-//       console.log("업로드 실패패");
-//     },
-//   });
-
-//   const uploadClick = (e: React.MouseEvent) => {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append("title", titleValue);
-//     files.forEach((files, index) => {
-//       formData.append(`files[${index}]`, files);
-//     });
-
-//     // uploadData(formData);
-//   };
-//   useEffect(() => {
-//     uploadData();
-//   }, []);
-
-//   return (
-//     <form className={styles.contaienr}>
-//       <div className={styles.wrapper}>
-//         <p className={styles.title}>갤러리제목</p>
-//         <input
-//           type="text"
-//           className={styles.titleInput}
-//           value={titleValue}
-//           onChange={handleUploadTitle}
-//         />
-//         <p className={styles.upload}>첨부파일</p>
-//         <AddFiles files={files} setFiles={setFiles} />
-//       </div>
-//       <button className={styles.button} type="button" onClick={uploadClick}>
-//         등록하기
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default GalleryUpload;
