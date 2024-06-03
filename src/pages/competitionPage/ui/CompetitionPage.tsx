@@ -12,6 +12,7 @@ import fetchCompetitionYearList from "../api/FetchCompetitionYearList";
 import {useNavigate} from "react-router-dom";
 import {useUserStore} from "../../../shared/model";
 import {JwtDecoder} from "../../../shared/lib";
+import {ListErrorRow} from "../../../shared/ui/listErrorRow/ListErrorRow";
 
 export const CompetitionPage = () => {
     const [statusFocused, setStatusFocused] = useState<string>("ALL")
@@ -36,9 +37,8 @@ export const CompetitionPage = () => {
         queryKey:["getCompetitionList", year, statusFocused, page],
         queryFn:()=> fetchGetCompetitionList(statusFocused, year, page, pageSize),
         select:(result:any) => result.data.data,
-        retry:1,
+        retry:0,
         gcTime:60 * 1000,
-        staleTime:60 * 1000,
         refetchOnMount:true,
     });
 
@@ -52,7 +52,6 @@ export const CompetitionPage = () => {
             })
         }
     }
-
     return (
         <div className={style.CompetitionPage}>
             <PageTitle pageName="대회정보"/>
@@ -88,6 +87,7 @@ export const CompetitionPage = () => {
                                                totalElements={data.totalElements}
                                                pageNumber={data.pageable.pageNumber}/>
                     })}
+                    {error?.message === "Request failed with status code 404" ? <ListErrorRow content={"대회정보를 찾을 수 없습니다."} /> : ""}
                 </div>
                 <Pagination totalPages={Math.max(1, data?.totalPages)} page={page} setPage={setPage}/>
             </div>
