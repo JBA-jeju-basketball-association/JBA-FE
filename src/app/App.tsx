@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route} from "react-router-dom";
-import { SignupForm } from "../features/signup/ui/SignUpForm";
 import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
 import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import AddCompetitionPage from "../pages/competitionPages/ui/addCompetitionPage/AddCompetitionPage";

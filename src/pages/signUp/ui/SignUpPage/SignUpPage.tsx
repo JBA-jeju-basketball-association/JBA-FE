@@ -1,5 +1,5 @@
 import React from "react"
-import { SignupForm } from "features/signup/ui/SignUpForm"
+import { SignupForm } from "./../../../../features/signup/ui/SignupForm"
 import  Style from './SignUpPage.module.css'
 
 
