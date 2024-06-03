@@ -78,7 +78,7 @@
     top:124px;
     width: 100%;
     background-color: var(--color-lightbeige);
-    transition: all 0.3s ease /* top과 opacity에 대한 1초 동안의 트랜지션 */;
+    transition: all 0.3s ease /* top과 height에 대한 1초 동안의 트랜지션 */;
 
 }
 

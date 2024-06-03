@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useState } from "react"
 import Style from'./MenuBar.module.css'
 import classNames from 'classnames';
 import { Link } from "react-router-dom"
