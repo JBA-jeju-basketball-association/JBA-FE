@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionResultWithTitle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchUpdateResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/UpdateFloorBox.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/UpdateFloorBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/UpdateFiles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/UpdateFiles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePickerWithTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePickerWithTime.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddCompetition.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddCompetition.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddResult.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchCompetitionYearList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchCompetitionYearList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchUpdateCompetition.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchUpdateCompetition.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/Api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/Api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/UseAxiosInterceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/UseAxiosInterceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/ConfirmAndCancelAlertWithLoading.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/ConfirmAndCancelAlertWithLoading.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/model/UserStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/model/stores/UserStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/model/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/type/CompetitionType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/type/CompetitionType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/api/FetchGetCompetitionResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchGetCompetitionResult.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="JSX File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;shinhansol1057&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="b7d122ec-c129-484f-b0f8-e4ed9c891eb1" />
+        <option name="url" value="https://github.com/JBA-jeju-basketball-association/JBA-FE.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2eBBRvACP349ra1dyljTAKAimLT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TypeScript.BoxArea.tsx.executor&quot;: &quot;Run&quot;,
+    &quot;TypeScript.CompetitionResult.tsx.executor&quot;: &quot;Run&quot;,
+    &quot;TypeScript.CompetitionResultType.ts.executor&quot;: &quot;Run&quot;,
+    &quot;TypeScript.PlaceArea.tsx.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat-update-delete-competition&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/shinhansol/IdeaProjects/JBA-FE/src/pages/competitionPage/api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/competitionPage/api" />
+      <recent name="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/shared/model/stores" />
+      <recent name="$PROJECT_DIR$/src/widgets/competition/ui" />
+      <recent name="$PROJECT_DIR$/src/features/competition/ui" />
+      <recent name="$PROJECT_DIR$/src/shared/ui" />
+      <recent name="$PROJECT_DIR$/src/shared" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-53826d6a" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="" />
+      <created>1711368085790</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711368085790</updated>
+      <workItem from="1711368086909" duration="43282000" />
+      <workItem from="1711815980966" duration="83000" />
+      <workItem from="1711816077980" duration="1128000" />
+      <workItem from="1711817219591" duration="37547000" />
+      <workItem from="1712049363597" duration="26101000" />
+      <workItem from="1712908682741" duration="6983000" />
+      <workItem from="1713338358339" duration="32585000" />
+      <workItem from="1714445907069" duration="44520000" />
+      <workItem from="1714738385249" duration="41753000" />
+      <workItem from="1716254391453" duration="13374000" />
+      <workItem from="1716519548888" duration="21460000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,12 @@
+.CompetitionDetailLabel {
+    height: 100%;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-beige);
+}
+
+.CompetitionDetailLabel p {
+    font-size: 16px;
+}
