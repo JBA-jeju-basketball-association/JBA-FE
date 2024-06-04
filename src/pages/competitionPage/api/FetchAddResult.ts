@@ -9,7 +9,7 @@ export default function FetchAddResult(requestData:competitionResultList[], id:s
     const requestDataFinal:{requests:competitionResultList[]} = {requests:requestData}
     Api.post(`/v1/api/competition/add-result/${id}`, requestDataFinal)
         .then(res => {
-        confirmAlert("warning","대회결과 등록이 완료되었습니다.")
+        confirmAlert("success","대회결과 등록이 완료되었습니다.")
             .then(res => {
                 if (res.isConfirmed) window.location.href = `/competition/${id}`;
             })
@@ -28,5 +28,7 @@ export default function FetchAddResult(requestData:competitionResultList[], id:s
                 confirmAlert("warning", "점수는 200점 이하입니다.")
             if (err.response.data.detailMessage === "시작일을 입력해주세요.")
                 confirmAlert("warning", "시작일을 입력해주세요.")
+            if (err.response.data.detailMessage === "점수를 입력해주세요.")
+                confirmAlert("warning", "점수를 입력해주세요.")
         })
 }

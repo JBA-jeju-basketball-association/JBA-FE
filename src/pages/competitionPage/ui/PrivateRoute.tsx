@@ -2,7 +2,6 @@ import React from 'react';
 import {useUserStore} from "../../../shared/model";
 import {JwtDecoder} from "../../../shared/lib";
 import {Navigate, Outlet} from "react-router-dom";
-import axios from "axios";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 

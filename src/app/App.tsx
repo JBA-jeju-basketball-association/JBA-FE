@@ -1,8 +1,6 @@
 import React from "react";
 import style from "./App.module.css"
 import { Routes, Route} from "react-router-dom";
-import { UploadFileList } from "../features/post/upLoadFile/ui/upLoadFileList/UpLoadFileList";
-import { UpLoadButton } from "../features/post/upLoadFile/ui/UpLoadButton/UpLoadButton";
 import {
     AddCompetitionPage,
     AddResultPage,
@@ -11,14 +9,20 @@ import {
     PrivateRoute, UpdateCompetitionResultPage
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
-import {LoginPage} from "../pages/loginPage";
-import Main from "../pages/mainPage/ui/Main";
-import {Header} from "../widgets/header";
 import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
+<<<<<<< HEAD
 import SignUpPage from "../pages/signUp/ui/SignUpPage/SignUpPage";
 import GalleryUploadPage from '../pages/galleryUploadPage/ui'
 import GalleryPage from "pages/galleryPage/ui";
+=======
+>>>>>>> ab768871604207eb4be3e06c8dbe901705b34266
 import {UpdateCompetitionPage} from "../pages/competitionPage/ui/UpdateCompetitionPage";
+import '../shared/base.css'
+import { SignupForm } from "../features/signup/ui/SignupForm";
+import Header from "./header/Header";
+import MenuBar from "entities/MenuBar/ui/MenuBar";
+import Logo from "shared/ui/Logo/Logo";
+import {LoginPage} from "../pages/loginPage";
 
 function App() {
     useAxiosInterceptor();
@@ -27,15 +31,13 @@ function App() {
             <Header/>
             <div className={style.wrapper}>
                 <Routes>
-
-                    <Route path="signup" element={<div><SignUpPage/></div>}/>
-                    <Route path="main" element={<Main/>}/>
-
+                    <Route path="signup" element={<div><SignupForm/></div>} />
+                    <Route path="main" element={<div>main</div>}/>
                     {/*컴포넌트 테스트를 위한 임시 path */}
                     <Route path="zzuyeontest" element={
                         <div>
-                            <UploadFileList></UploadFileList>
-                            <UpLoadButton></UpLoadButton>
+                            <MenuBar></MenuBar>
+                            <Logo></Logo>
                         </div>
                     }/>
                     <Route element={<PrivateRoute/>}>
