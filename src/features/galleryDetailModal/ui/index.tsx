@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import CommnModal from "shared/ui/commonModal";
 import styles from "./galleryDetail.module.css";
 import { CloseIcon, RightIcon, LeftIcon } from "utils/icon";

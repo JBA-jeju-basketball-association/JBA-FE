@@ -30,12 +30,11 @@ const GalleryUpload = () => {
       confirmAlert("success", "이미지 등록이 완료되었습니다.");
       navigate("/gallery");
     },
-    onError: () => {
-      console.log("업로드 실패");
+    onError: (e) => {
+      console.log(e, "error");
+      confirmAlert("error", "제목이 중복되었습니다");
     },
   });
-
-  //(제목이 중복됐을 가능성이 있습니다.) 400에러 처리
 
   const handleImageUpload = (files: FileType[]) => {
     setUploadFiles((prev) => [...prev, ...files]);
@@ -47,6 +46,15 @@ const GalleryUpload = () => {
       title: titleValue,
       imgs: uploadFiles,
     };
+    if (data.title === "") {
+      confirmAlert("warning", "제목을 입력해주세요");
+      return;
+    }
+    if (data.imgs.length === 0) {
+      confirmAlert("warning", "이미지를 등록해주세요");
+      return;
+    }
+
     uploadData(data);
   };
 
