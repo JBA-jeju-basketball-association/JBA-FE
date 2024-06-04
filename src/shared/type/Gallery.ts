@@ -1,11 +1,11 @@
-export type file = {
+export type FileType = {
   fileName: string;
   fileUrl: string;
 };
 
-export type uploadType = {
+export type UploadType = {
   title: string;
-  imgs: file[];
+  imgs: FileType[];
 };
 
 export type GalleryCardType = {

@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+
+.fileLabel {
+  width: 100px;
+  height: 50px;
+  background: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadInput {
+  padding-left: 30px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.fileName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
