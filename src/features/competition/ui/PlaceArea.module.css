@@ -1,0 +1,101 @@
+.PlaceArea {
+    width: 900px;
+    height: 100px;
+    display: flex;
+}
+
+.closeButtonArea {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.closeButton {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+.placeNameInput {
+    width: 100%;
+    max-width: 800px;
+    height: 50px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px 0 20px;
+}
+
+.submitArea {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitArea button {
+    width: 100px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+
+
+.addressModalSearchTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.addressModalSearchTitle p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buttonArea {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonArea button {
+    width: 70%;
+    height: 70%;
+    border: 1px solid var(--color-beige);
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    font-size: 20px;
+}
+
+.rightBox {
+    width: 70%;
+}
+
+.placeList {
+    padding: 10px 0 10px 0;
+}
+
+.placeName {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    padding: 0;
+}
+
+.placeName button {
+    margin-left: 5px;
+    font-size: 18px;
+}
+

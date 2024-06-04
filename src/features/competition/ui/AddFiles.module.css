@@ -1,0 +1,70 @@
+.AddFiles {
+    width: 900px;
+    min-height: 100px;
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+.AddFilesDragging {
+    width: 140px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.12s ease-in;
+    background-color: black;
+    color: white;
+    margin-left: 20px;
+}
+
+.AddFilesNormal {
+    width: 140px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.12s ease-in;
+    margin-left: 20px;
+}
+
+.Files {
+    margin-left: 20px;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 510px;
+}
+
+.File {
+    width: 300px;
+    padding: 1px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    height: 12px;
+}
+
+.FileName {
+    width: 300px;
+    overflow: hidden;
+    height: 12px;
+}
+
+.FilesFilter {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.FilesFilter:hover {
+    opacity: 0.7;
+}

@@ -1,0 +1,35 @@
+.listTitleArea {
+    display: flex;
+    width: 1200px;
+    height: 50px;
+    border-top: 2px solid var(--color-dark);
+    border-bottom: 2px solid var(--color-dark);
+}
+
+.listTitleArea div {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listTitleArea label{
+    font-size: 16px;
+}
+
+
+.listTitleLabel100 {
+    width: 100px;
+}
+
+.listTitleLabel140 {
+    width: 140px;
+}
+
+.listTitleLabel280 {
+    width: 280px;
+}
+
+.listTitleLabel480 {
+    width: 480px;
+}

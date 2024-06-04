@@ -3,7 +3,7 @@ import Style from './Footer.module.css'
 
 
 
-export default function Footer(){
+export function Footer(){
 
 return(
     <div className={Style.Footer} >
@@ -21,6 +21,5 @@ return(
               </div>
             </div>
         </div>
-    </div>
-)
+    );
 }
