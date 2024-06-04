@@ -50,7 +50,6 @@ export const AddResultPage = () => {
                 })}
             </div>
             <RegitUpdateDeleteButton onClickHandler={() => submitHandler()} content={"등록"} />
-            {/*<button onClick={()=> submitHandler()} className={style.submitButton}>등록</button>*/}
         </div>
     );
 };
