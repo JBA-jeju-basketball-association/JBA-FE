@@ -1,0 +1,14 @@
+.LoginLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 48px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px 0 0 10px;
+}
+
+.LoginLabel label {
+    font-size: 20px;
+}

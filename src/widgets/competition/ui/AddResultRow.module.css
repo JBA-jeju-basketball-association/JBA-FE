@@ -1,0 +1,87 @@
+.Result {
+    width: 1040px;
+    height: 50px;
+    background-color: var(--color-beige);
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftSide {
+    display: flex;
+    align-items: center;
+}
+
+.rightSide {
+    display: flex;
+    align-items: center;
+}
+
+.rightSide button {
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    background-color: aquamarine;
+    margin-right: 10px;
+}
+
+.inputArea {
+    display: flex;
+    align-items: center;
+}
+
+.inputArea p {
+    margin: 0 10px 0 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nameInput {
+    width: 100px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 3px 0 3px;
+}
+
+.scoreInput {
+    margin-left: 10px;
+    width: 30px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 3px 0 3px;
+}
+
+.select {
+    width: 130px;
+    margin: 0 0 5px 20px;
+    height: 34px;
+}
+
+.btnUpload {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    padding: 0 10px 0 10px;
+    width: 70px;
+    height: 25px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    &:hover {
+        background: rgb(77,77,77);
+        color: #fff;
+    }
+    margin-left: 10px;
+}
+
+.file {
+    display: none;
+}

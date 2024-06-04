@@ -1,0 +1,40 @@
+.listArea {
+    display: flex;
+    width: 1200px;
+    height: 70px;
+    border-bottom: 1px solid var(--color-dark-gray);
+}
+
+.listArea div {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listArea p {
+    font-size: 16px;
+}
+
+.listLabel100 {
+    width: 100px;
+}
+
+.listLabel140 {
+    width: 140px;
+}
+
+.listLabel280 {
+    width: 280px;
+}
+
+.listLabel480 {
+    width: 480px;
+}
+
+.listLabel140 button {
+    width: 100px;
+    height: 40px;
+    border: 1px solid var(--color-dark-gray);
+    font-size: 16px;
+}

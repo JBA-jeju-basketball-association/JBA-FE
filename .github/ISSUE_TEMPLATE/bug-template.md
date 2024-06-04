@@ -13,7 +13,7 @@ assignees: ''
 ### 💣 Occurred Situation
 - 발생시점을 (가능하면) Given-When-Then 형식으로 서술해주세요
 
-### ⭐ Expected Result
+### ⭐ Expected AddResultRow
 - 예상했던 정상적인 결과가 어떤 것이었는지 설명해주세요
 
 ### 📚 References(선택)
