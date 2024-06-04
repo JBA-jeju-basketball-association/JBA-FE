@@ -35,6 +35,8 @@ const GalleryUpload = () => {
     },
   });
 
+  //(제목이 중복됐을 가능성이 있습니다.) 400에러 처리
+
   const handleImageUpload = (files: FileType[]) => {
     setUploadFiles((prev) => [...prev, ...files]);
   };

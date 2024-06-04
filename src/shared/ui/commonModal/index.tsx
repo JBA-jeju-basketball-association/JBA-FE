@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import { useEffect } from "react";
 
 type ModalProps = {
   children?: React.ReactNode;
@@ -26,6 +27,14 @@ const CommnModal = ({
   onRequestClose,
   style,
 }: ModalProps) => {
+  useEffect(() => {
+    if (isopen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isopen]);
+
   return (
     <Modal
       isOpen={isopen}

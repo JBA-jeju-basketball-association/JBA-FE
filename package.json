@@ -64,12 +64,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.0",
     "@types/base-64": "^1.0.2",
     "@types/react-beforeunload": "^2.1.5",
     "@types/react-datepicker": "^6.2.0",
+    "@types/react-slick": "^0.23.13",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.16.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

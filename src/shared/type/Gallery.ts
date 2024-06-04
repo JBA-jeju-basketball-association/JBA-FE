@@ -18,3 +18,8 @@ export type GalleryCardType = {
 export type GalleryCardListType = {
   galleries: GalleryCardType[];
 };
+
+export type GalleryDetailProps = {
+  title: string;
+  files: FileType[];
+};

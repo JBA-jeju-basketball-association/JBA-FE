@@ -7,11 +7,7 @@ const GalleryCardList = ({ galleries }: GalleryCardListType) => {
   return (
     <div className={styles.container}>
       {galleries.map((gallery: GalleryCardType) => (
-        <GalleryCard
-          key={gallery.galleryId}
-          title={gallery.title}
-          imgUrl={gallery.imgUrl}
-        />
+        <GalleryCard key={gallery.galleryId} {...gallery} />
       ))}
     </div>
   );
