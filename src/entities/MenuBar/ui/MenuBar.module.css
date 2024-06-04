@@ -20,7 +20,6 @@
     display: flex;
     justify-content: space-between;
     background-color: var(--color-white);
-    font-weight: bold;
     position: relative;
 
 }
@@ -29,12 +28,10 @@
 .Li{
     flex-grow: 1;
     padding: 54px 0px 64px 0px;
-    /* padding-bottom:10px; */
     align-content: center;
     float: left;
     position: relative; /* 추가: .Li 요소에 상대적인 위치 설정 */
     text-align: center;
-    /* border: 1px solid gray; */
     font-size: 16px;
 
 }
@@ -53,6 +50,7 @@
 
 .SubMenu{
     padding-bottom:20px;
+    padding-top:20px;
     overflow: hidden;
     position: absolute;
     opacity: 1;/* 초기에 투명하게 설정 */
@@ -75,18 +73,17 @@
 
 .BackGround{
     position: absolute;
-    top:124px;
+    top:144px;
     width: 100%;
     background-color: var(--color-lightbeige);
     transition: all 0.3s ease /* top과 height에 대한 1초 동안의 트랜지션 */;
 
 }
 
-
 .On{
     height: 220px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 }
 .Off{
-    height: 0px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
+    height: 220px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 
 }
