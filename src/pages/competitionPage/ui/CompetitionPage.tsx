@@ -87,7 +87,7 @@ export const CompetitionPage = () => {
                                                totalElements={data.totalElements}
                                                pageNumber={data.pageable.pageNumber}/>
                     })}
-                    {error?.message === "Request failed with status code 404" ? <ListErrorRow content={"대회정보를 찾을 수 없습니다."} /> : ""}
+                    {error?.message === "Request failed with status code 404" ? <ListErrorRow content={"대회를 찾을 수 없습니다."} /> : ""}
                 </div>
                 <Pagination totalPages={Math.max(1, data?.totalPages)} page={page} setPage={setPage}/>
             </div>
