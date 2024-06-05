@@ -10,6 +10,8 @@ import {
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
+import GalleryUploadPage from '../pages/galleryUploadPage/ui'
+import GalleryPage from "pages/galleryPage/ui";
 import {UpdateCompetitionPage} from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import '../shared/base.css'
 import { SignupForm } from "../features/signup/ui/SignupForm";
@@ -43,6 +45,8 @@ function App() {
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
+                    <Route path={"/gallery"} element={<GalleryPage/>}/>
+                    <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>
