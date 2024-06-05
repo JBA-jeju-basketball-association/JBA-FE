@@ -2766,6 +2766,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-slick@^0.23.13":
+  version "0.23.13"
+  resolved "https://registry.npmjs.org/@types/react-slick/-/react-slick-0.23.13.tgz"
+  integrity sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.4.0":
   version "4.4.10"
   resolved "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.10.tgz"
@@ -4123,6 +4130,11 @@ ckeditor5@41.3.1:
     "@ckeditor/ckeditor5-utils" "41.3.1"
     "@ckeditor/ckeditor5-watchdog" "41.3.1"
     "@ckeditor/ckeditor5-widget" "41.3.1"
+
+classnames@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 clean-css@^5.2.2:
   version "5.3.3"
@@ -5972,11 +5984,6 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
-
-fsevents@^2.3.2, fsevents@~2.3.2:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"
@@ -9456,9 +9463,9 @@ react-is@^18.0.0:
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
 react-kakao-maps-sdk@^1.1.26:
-  version "1.1.27"
-  resolved "https://registry.npmjs.org/react-kakao-maps-sdk/-/react-kakao-maps-sdk-1.1.27.tgz"
-  integrity sha512-1EwYkYsjTDRFqysKStDasFMrFTXcLx2AyRlqMoWD7ONWhRqpjx9M874hkhEEHrnypP2eSIhhDLe0EiSKp3bd2Q==
+  version "1.1.26"
+  resolved "https://registry.npmjs.org/react-kakao-maps-sdk/-/react-kakao-maps-sdk-1.1.26.tgz"
+  integrity sha512-rzQLGVPk8LmT8ffZFiPEutQxxufH/K9ffbFgCnE9OqqfvlQ94qmBtl8s5MvTtt3noOJ3W1WBTle1B/Y+Yphuug==
   dependencies:
     "@babel/runtime" "^7.22.15"
     kakao.maps.d.ts "^0.1.39"
