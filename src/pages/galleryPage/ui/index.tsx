@@ -46,8 +46,9 @@ const GalleryPage = () => {
       );
     };
     setFilteredGalleries(filterGalleries());
+
     //검색어가 바뀌면 필터링된 갤러리를 다시 세팅
-  }, [galleryData, searchCategory]);
+  }, [galleryData, searchCategory, searchKeyword]);
 
   // 검색 결과 페이지로 이동하는 함수 호출
   const findTargetPage = () => {
@@ -65,10 +66,9 @@ const GalleryPage = () => {
       const targetPageNumber =
         foundIndex !== -1 ? Math.floor(foundIndex / 6) + 1 : 1;
       setPage(targetPageNumber);
-      refetch();
     });
   };
-  //refetch를 사용하면 바로바로 바뀜 -> 검색은 한번 눌러야함
+
   return (
     <div className={styles.container}>
       <div className={styles.GalleryPageHeader}>
