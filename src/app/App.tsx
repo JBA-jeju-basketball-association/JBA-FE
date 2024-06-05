@@ -10,12 +10,8 @@ import {
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
-<<<<<<< HEAD
-import SignUpPage from "../pages/signUp/ui/SignUpPage/SignUpPage";
 import GalleryUploadPage from '../pages/galleryUploadPage/ui'
 import GalleryPage from "pages/galleryPage/ui";
-=======
->>>>>>> ab768871604207eb4be3e06c8dbe901705b34266
 import {UpdateCompetitionPage} from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import '../shared/base.css'
 import { SignupForm } from "../features/signup/ui/SignupForm";
