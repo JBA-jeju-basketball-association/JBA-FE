@@ -68,7 +68,6 @@ const GalleryPage = () => {
       refetch();
     });
   };
-  console.log('필터')
   //refetch를 사용하면 바로바로 바뀜 -> 검색은 한번 눌러야함
   return (
     <div className={styles.container}>

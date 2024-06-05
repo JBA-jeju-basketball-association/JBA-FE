@@ -59,8 +59,8 @@ const GalleryImageInput = ({
 
   const handleFileUpload = (files: FileList | null) => {
     if (files) {
-      if (uploadFiles.length + files.length > 10) {
-        confirmAlert("warning", "최대 10개의 파일만 업로드할 수 있습니다.");
+      if (uploadFiles.length + files.length > 20) {
+        confirmAlert("warning", "최대 20개의 파일만 업로드할 수 있습니다.");
         return;
       }
       const formData = new FormData();
