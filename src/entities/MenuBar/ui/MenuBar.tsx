@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Link } from "react-router-dom"
 import { menuName } from "../lib/menuName"
 import Logo from "shared/ui/Logo/Logo";
+import { menuLink } from "../lib/menrLink";
 
 
 
@@ -40,14 +41,11 @@ function Menu({MainMenu,subMene,iscenter}:{MainMenu:string,subMene:string[],isce
         //menuName의 키값을 MainMenu로 담아 li에 담고 데이터 array를subMene에 넣어 map하여 생성해줍니다.
            <li className={liClass} >
 
-            {/* <Link to={menuLink[MainMenu]}>{MainMenu}</Link> 
-            link 생성될 시 해당 코드 활성화 후 아래 코드 삭제*/}
-             <Link to={"main"}>{MainMenu}</Link>
+            <Link to={menuLink[MainMenu]}>{MainMenu}</Link> 
             <ul className={Style.SubMenu}>
                 {subMene.map((mene)=>{
                     return(
-                        // <li><Link to={menuLink[mene]}>{mene}</Link></li>)
-                       <li><Link to={"main"}>{mene}</Link></li>)
+                    <li><Link to={menuLink[mene]}>{mene}</Link></li>)
 
                 })}
             </ul>

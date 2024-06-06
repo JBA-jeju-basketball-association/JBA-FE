@@ -1,4 +1,6 @@
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css");
+
 /* 기본 css reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -17,7 +19,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -25,9 +26,19 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
+html, body {
+	font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
 }
+
+body * {
+	font-family: 'Pretendard Variable', Pretendard, sans-serif;
+}
+
+body *:lang(en) {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 li, ol, ul {
 	list-style: none;
 }

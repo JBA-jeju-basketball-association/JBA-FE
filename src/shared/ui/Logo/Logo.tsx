@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import Style from './logo.module.css';
+
 
 const Logo = () => {
     return (
         <div className={Style.Logo}>
-       <img src='/logo.jpeg' alt=''></img>
+       <Link to={"./"}>
+       <img src='/logo.jpeg' alt=''/>
+       </Link>
        </div>
     );
 };
