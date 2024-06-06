@@ -4,6 +4,7 @@ import { Api } from "shared/api";
 import styles from "./galleryImageInput.module.css";
 import { FileType } from "shared/type/Gallery";
 import { CloseIcon } from "utils/icon";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export type GalleryImageInputProps = {
   onUploadSuccess: (files: FileType[]) => void;
@@ -28,7 +29,7 @@ const GalleryImageInput = ({
         },
       }),
     onSuccess: (res) => {
-      const uploadFileList = res.data.data.map((file: any) => ({
+      const uploadFileList = res.data.data.map((file: FileType) => ({
         fileName: file.fileName,
         fileUrl: file.fileUrl,
       }));
@@ -58,6 +59,10 @@ const GalleryImageInput = ({
 
   const handleFileUpload = (files: FileList | null) => {
     if (files) {
+      if (uploadFiles.length + files.length > 20) {
+        confirmAlert("warning", "최대 20개의 파일만 업로드할 수 있습니다.");
+        return;
+      }
       const formData = new FormData();
       Array.from(files).forEach((file) => {
         formData.append("uploadFiles", file);
