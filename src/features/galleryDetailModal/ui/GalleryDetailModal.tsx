@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CommnModal from "shared/ui/commonModal";
+import { CommonModal } from "shared/ui";
 import styles from "./galleryDetail.module.css";
 import { CloseIcon, RightIcon, LeftIcon } from "utils/icon";
-import { GalleryDetailProps } from "shared/type/Gallery";
+import { GalleryDetailProps } from "shared/type/GalleryType";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
@@ -33,7 +33,7 @@ const customModalStyles: ReactModal.Styles = {
   },
 };
 
-const GalleryDetailModal = ({
+export const GalleryDetailModal = ({
   modalOpen,
   setModalOpen,
   galleryDetail,
@@ -72,7 +72,7 @@ const GalleryDetailModal = ({
   };
 
   return (
-    <CommnModal
+    <CommonModal
       isopen={modalOpen}
       onRequestClose={() => setModalOpen(false)}
       style={customModalStyles}
@@ -110,8 +110,6 @@ const GalleryDetailModal = ({
           ))}
         </div>
       </div>
-    </CommnModal>
+    </CommonModal>
   );
 };
-
-export default GalleryDetailModal;

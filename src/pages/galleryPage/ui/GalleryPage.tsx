@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import GalleryCardList from "entity/galleryCardList/ui";
-import styles from "./galleryPage.module.css";
+import { GalleryCardList } from "entity/galleryCardList";
+import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
 import { useQuery } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 import { Link } from "react-router-dom";
-import { GalleryCardType } from "shared/type/Gallery";
+import { GalleryCardType } from "shared/type/GalleryType";
 
-const GalleryPage = () => {
+export const GalleryPage = () => {
   const [page, setPage] = useState(1);
   const [searchCategory, setSearchCategory] = useState("제목");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -88,5 +88,3 @@ const GalleryPage = () => {
     </div>
   );
 };
-
-export default GalleryPage;

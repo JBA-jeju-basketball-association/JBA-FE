@@ -1,15 +1,14 @@
 import React, { ChangeEvent } from "react";
-import styles from "./galleryUpload.module.css";
+import styles from "./GalleryUpload.module.css";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
-import { UploadType } from "shared/type/Gallery";
-import GalleryImageInput from "entity/galleryImageInput/ui";
-import { FileType } from "shared/type/Gallery";
+import { UploadType, FileType } from "shared/type/GalleryType";
+import { GalleryImageInput } from "entity/galleryImageInput";
 
-const GalleryUpload = () => {
+export const GalleryUpload = () => {
   const [titleValue, setTitleValue] = useState("");
   const [uploadFiles, setUploadFiles] = useState<FileType[]>([]);
   const navigate = useNavigate();
@@ -85,5 +84,3 @@ const GalleryUpload = () => {
     </form>
   );
 };
-
-export default GalleryUpload;

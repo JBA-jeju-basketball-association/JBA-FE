@@ -54,3 +54,13 @@ export const RightIcon = ({ ...props }: IconPropsType) => {
     </IconTemplate>
   );
 };
+
+export const MeatballIcon = ({ ...props }: IconPropsType) => {
+  return (
+    <IconTemplate {...props}>
+      <circle cx="2" cy="12" r="2" />
+      <circle cx="12" cy="12" r="2" />
+      <circle cx="22" cy="12" r="2" />
+    </IconTemplate>
+  );
+};

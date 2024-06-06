@@ -1,8 +1,8 @@
 import React from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Api } from "shared/api";
-import styles from "./galleryImageInput.module.css";
-import { FileType } from "shared/type/Gallery";
+import styles from "./GalleryImageInput.module.css";
+import { FileType } from "shared/type/GalleryType";
 import { CloseIcon } from "utils/icon";
 import confirmAlert from "shared/lib/ConfirmAlert";
 
@@ -12,7 +12,7 @@ export type GalleryImageInputProps = {
   setUploadFiles: React.Dispatch<React.SetStateAction<FileType[]>>;
 };
 
-const GalleryImageInput = ({
+export const GalleryImageInput = ({
   onUploadSuccess,
   uploadFiles,
   setUploadFiles,
@@ -104,5 +104,3 @@ const GalleryImageInput = ({
     </div>
   );
 };
-
-export default GalleryImageInput;
