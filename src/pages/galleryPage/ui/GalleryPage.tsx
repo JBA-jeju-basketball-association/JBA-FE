@@ -4,11 +4,13 @@ import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
 import { useQuery } from "@tanstack/react-query";
-import { Api } from "shared/api";
 import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
-import { Link } from "react-router-dom";
 import { GalleryCardType } from "shared/type/GalleryType";
 import { PageTitle } from "shared/ui";
+import { NormalApi } from "shared/api";
+import { useNavigate } from "react-router-dom";
+import { JwtDecoder } from "shared/lib";
+import { useUserStore } from "shared/model";
 
 export const GalleryPage = () => {
   const [page, setPage] = useState(1);
@@ -17,12 +19,14 @@ export const GalleryPage = () => {
   const [filteredGalleries, setFilteredGalleries] = useState<GalleryCardType[]>(
     []
   );
+  const navigate = useNavigate();
+  const { AccessToken } = useUserStore();
 
   // 페이지 전체 조회하는 쿼리
   const { data: galleryData, refetch } = useQuery({
     queryKey: ["galleries", page],
     queryFn: () =>
-      Api.get(`/v1/api/gallery`, {
+      NormalApi.get(`/v1/api/gallery`, {
         params: {
           page: page - 1,
           size: 6,
@@ -53,7 +57,7 @@ export const GalleryPage = () => {
 
   // 검색 결과 페이지로 이동하는 함수 호출
   const findTargetPage = () => {
-    Api.get(`/v1/api/gallery`, {
+    NormalApi.get(`/v1/api/gallery`, {
       params: {
         page: 0,
         size: totalPage * 6,
@@ -74,9 +78,14 @@ export const GalleryPage = () => {
     <div className={styles.container}>
       <div className={styles.GalleryPageHeader}>
         <PageTitle pageName="갤러리" />
-        <Link to={"/galleryupload"}>
-          <RegitUpdateDeleteButton content="등록하기" />
-        </Link>
+        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+          <RegitUpdateDeleteButton
+            content="등록하기"
+            onClickHandler={() => navigate("galleryupload")}
+          />
+        ) : (
+          ""
+        )}
       </div>
       <GalleryCardList galleries={filteredGalleries} />
       <Pagination totalPages={totalPage} page={page} setPage={setPage} />

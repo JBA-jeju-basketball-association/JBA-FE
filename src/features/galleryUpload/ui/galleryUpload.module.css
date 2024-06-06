@@ -11,12 +11,12 @@
   display: grid;
   grid-template-rows: 70px 1fr;
   grid-template-columns: 140px 1fr;
-  border: 1px solid var(--color-dark-gray);
+  border: 1px solid var(--subcolor-black5);
 }
 
 .title,
 .titleInput {
-  border-bottom: 1px solid var(--color-dark-gray) !important;
+  border-bottom: 1px solid var(--subcolor-black5) !important;
 }
 
 .title,
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid var(--color-dark-gray);
+  border-right: 1px solid var(--subcolor-black5);
 }
 
 .titleInput {

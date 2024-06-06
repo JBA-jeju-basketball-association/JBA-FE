@@ -11,7 +11,7 @@
 .container > h1 {
   font-size: 30px;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--subcolor-black4);
   margin-top: 40px;
 }
 
@@ -31,17 +31,18 @@
 
 .detailImageListWrapper {
   width: 100%;
-  min-width: 300px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   overflow-x: scroll;
 }
 
 .detailImage,
 .selectedImage {
-  width: 150px;
-  height: 140px;
+  max-width: 190px;
+  height: 150px;
 }
 
 .centerImage {
@@ -61,6 +62,10 @@
 
 .detailImageListWrapper::-webkit-scrollbar-thumb {
   background: var(--primary-color);
-  border: 2px solid #9b6a2f;
+  border: 2px solid var(--primary-color);
   border-radius: 12px 12px 12px 12px;
 }
+
+/* 이미지가 한개 있으면 detailmageListWrapper영역 안에서 100%로 적용됨 */
+/* detailImageListWrapper에서 justify-content: center 적용하면 이미지가 하나여도 가운데 정렬됨 */
+/* 그러면 이미지가 여러개일 때 앞쪽이 잘려서 보임 */

@@ -4,14 +4,15 @@ import { GalleryCardType } from "shared/type/GalleryType";
 import { useState } from "react";
 import { GalleryDetailModal } from "features/galleryDetailModal";
 import { useQuery } from "@tanstack/react-query";
-import { Api } from "shared/api";
+import { NormalApi } from "shared/api";
+
 
 export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const { data: galleryDetailData } = useQuery({
     queryKey: ["galleryDetail", galleryId],
-    queryFn: () => Api.get(`/v1/api/gallery/${galleryId}`),
+    queryFn: () => NormalApi.get(`/v1/api/gallery/${galleryId}`),
     enabled: modalOpen,
   });
 
