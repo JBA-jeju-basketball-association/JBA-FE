@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+.GalleryPageHeader {
+  width: 1260px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.GalleryPageHeader > h1 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+}
