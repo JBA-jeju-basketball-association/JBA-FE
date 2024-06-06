@@ -11,7 +11,7 @@ export const menuLink:menuLinkType={
     "회장인사말":"idontknow",
     "협회역사":"idontknow",
     "제주대회":"main",
-    "대회정보":"idontknow",
+    "대회정보":"competition",
     "미디어센터":"main",
     "갤러리":"idontknow",
     "대회영상":"idontknow",
