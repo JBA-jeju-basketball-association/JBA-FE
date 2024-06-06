@@ -27,15 +27,16 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 html, body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
 }
 
 body * {
-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Pretendard Variable', Pretendard, sans-serif;
 }
 
-body *:lang(ko) {
-font-family: 'Pretendard Variable', Pretendard, sans-serif;
+body *:lang(en) {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 li, ol, ul {

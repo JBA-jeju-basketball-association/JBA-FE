@@ -1,27 +1,23 @@
 :root {
-    --text-color: #121416d8;
-    --link-color: #543fd7;
-    --background-color: #fff;
-    --alternate-background-color: #f7f7f9;
     --primary-color: #D8A646;
-    --primary-colorPressed: #FFF5E3;
-    
-  
-    /* Global colors */
-    --color-white: #ffff;
-    --color-dark: #212a2e;
-    --color-gray: #666666;
-    --color-dark-gray: #808080;
-    --color-stone:#535261;
+    --private-black: #191616;
+    --primary-red: #B54607;
 
-    --color-blue-iris: #543fd7;;
-    --color-border: #fafafa;
-    --color-beige: #FFF5E3;
-    --color-lightbeige:#FCF9F5;
-    --color-lightgray: lightgray;
-    --color-lightbeige: #FCF9F5;
-    --color-blue: #3085d6;
+    /*서브컬러-Black*/
+    --subcolor-black1: #211515;
+    --subcolor-black2: #323232;
+    --subcolor-black3: #595656;
+    --subcolor-black4: #C1C1C1;
+    --subcolor-black5: #666666;
 
+
+    /*서브컬러-Gold*/
+    --subcolor-gold1: #4A340A;
+    --subcolor-gold2: #9A7F4C;
+    --subcolor-gold3: #C2A56F;
+
+    /*서브컬러-Red*/
+    --subcolor-red1: #953608;
   }
   
   html[data-theme="light"] {
