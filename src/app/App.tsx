@@ -19,6 +19,7 @@ import Header from "./header/Header";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import {LoginPage} from "../pages/loginPage";
+import {GalleryEditPage} from "../pages/galleryEditPage";
 
 function App() {
     useAxiosInterceptor();
@@ -41,12 +42,13 @@ function App() {
                         <Route path="/competition/update-competition/:id" element={<UpdateCompetitionPage/>}/>
                         <Route path="/competition/add-result/:id" element={<AddResultPage/>}/>
                         <Route path="/competition/update-result/:id" element={<UpdateCompetitionResultPage/>}/>
+                        <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
+                        <Route path={"/galleryedit"} element={<GalleryEditPage/>}/>
                     </Route>
                     <Route path="/competition" element={<CompetitionPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
                     <Route path={"/gallery"} element={<GalleryPage/>}/>
-                    <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
                 </Routes>
             </div>
             <Footer></Footer>

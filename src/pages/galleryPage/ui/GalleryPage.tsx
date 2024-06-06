@@ -8,6 +8,7 @@ import { Api } from "shared/api";
 import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 import { Link } from "react-router-dom";
 import { GalleryCardType } from "shared/type/GalleryType";
+import { PageTitle } from "shared/ui";
 
 export const GalleryPage = () => {
   const [page, setPage] = useState(1);
@@ -72,7 +73,7 @@ export const GalleryPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.GalleryPageHeader}>
-        <h1>갤러리</h1>
+        <PageTitle pageName="갤러리" />
         <Link to={"/galleryupload"}>
           <RegitUpdateDeleteButton content="등록하기" />
         </Link>

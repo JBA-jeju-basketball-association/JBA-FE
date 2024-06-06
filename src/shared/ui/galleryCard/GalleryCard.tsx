@@ -5,7 +5,6 @@ import { useState } from "react";
 import { GalleryDetailModal } from "features/galleryDetailModal";
 import { useQuery } from "@tanstack/react-query";
 import { Api } from "shared/api";
-import { MeatballIcon } from "utils/icon";
 
 export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,9 +20,6 @@ export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
   };
 
   const galleryDetail = galleryDetailData?.data.data;
-  const idClick = () => {
-    console.log(galleryId);
-  };
 
   return (
     <>
@@ -34,16 +30,7 @@ export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
           className={styles.image}
           onClick={modalClick}
         />
-        <div className={styles.titleWrapper}>
-          <div className={styles.title}>{title}</div>
-          <MeatballIcon
-            width="20"
-            height="20"
-            fill="black"
-            className={styles.meatBallIcon}
-            onClick={idClick}
-          />
-        </div>
+        <div className={styles.title}>{title}</div>
       </div>
       <GalleryDetailModal
         modalOpen={modalOpen}

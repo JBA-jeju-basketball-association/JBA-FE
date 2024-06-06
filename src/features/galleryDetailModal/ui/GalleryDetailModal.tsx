@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CommonModal } from "shared/ui";
-import styles from "./galleryDetail.module.css";
+import styles from "./GalleryDetailModal.module.css";
 import { CloseIcon, RightIcon, LeftIcon } from "utils/icon";
 import { GalleryDetailProps } from "shared/type/GalleryType";
 
