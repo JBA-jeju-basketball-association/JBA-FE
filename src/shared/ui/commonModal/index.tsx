@@ -27,6 +27,7 @@ const CommnModal = ({
   onRequestClose,
   style,
 }: ModalProps) => {
+  //모달창 나왔을 때 body 스크롤 막기
   useEffect(() => {
     if (isopen) {
       document.body.style.overflow = "hidden";

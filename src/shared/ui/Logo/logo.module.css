@@ -8,7 +8,7 @@
     margin-left: -41px;
 }
 
-.Logo > img {
+img {
     flex: 1; /* 부모 요소에 맞게 이미지를 늘리기 위해 추가 */
     width: auto; /* 이미지의 너비를 자동으로 조정하기 위해 추가 */
     height: auto; /* 이미지의 높이를 자동으로 조정하기 위해 추가 */
