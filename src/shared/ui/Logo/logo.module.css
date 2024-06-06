@@ -1,0 +1,17 @@
+.Logo {
+    position: absolute;
+    z-index: 100;
+    top: 28px;
+    left: 50%;
+    width: 82px;
+    height: 90px;
+    margin-left: -41px;
+}
+
+img {
+    flex: 1; /* 부모 요소에 맞게 이미지를 늘리기 위해 추가 */
+    width: auto; /* 이미지의 너비를 자동으로 조정하기 위해 추가 */
+    height: auto; /* 이미지의 높이를 자동으로 조정하기 위해 추가 */
+    max-width: 100%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정하기 위해 추가 */
+    max-height: 100%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정하기 위해 추가 */
+}

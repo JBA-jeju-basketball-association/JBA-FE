@@ -2,15 +2,21 @@ import React, {useState} from 'react';
 import Select, {SingleValue} from "react-select";
 import style from "./CompetitionResult.module.css";
 import {useQuery} from "@tanstack/react-query";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import fetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultList} from "./ResultList";
-import {getResultBox} from "../../../shared/type/CompetitionResultType";
+import {competitionResultList} from "../../../shared/type/CompetitionType";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
+import {JwtDecoder} from "../../../shared/lib";
+import {useUserStore} from "../../../shared/model";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import {RegitUpdateDeleteButton} from "../../../shared/ui";
 
 export const CompetitionResult = () => {
-    const {id} = useParams()
+    const {id} = useParams();
+    const navigate = useNavigate();
     const [divisionSelect, setDivisionSelect] = useState<string>("all");
+    const {AccessToken} = useUserStore();
 
 
     const {data, isLoading, isError, error} = useQuery({
@@ -24,20 +30,36 @@ export const CompetitionResult = () => {
     const divisionOptions:{value:string, label:string}[] = [{value:"all", label:"전체"}];
     data?.divisionList.forEach((item:string) => divisionOptions.push({value:item, label:DivisionOptions.filter(d=> d.value === item)[0].label}))
 
+    function updateHandler() {
+        confirmAndCancelAlertWithLoading("warning", "대회결과를 수정하겠습니까?", "대회결과 수정페이지로 이동합니다.")
+            .then((res) => {
+                if (res.isConfirmed) {
+                    navigate(`/competition/update-result/${id}`)
+                }
+            });
+    }
+
+
+
     return (
         <div className={style.CompetitionResult}>
-            <div>
+            <div className={style.selectAndUpdateDeleteArea}>
                 <Select
                     options={divisionOptions.filter(item => item.value !== divisionSelect)}
                     className={style.divisionFilter}
                     placeholder={"전체"}
                     required={true}
-                    onChange={(newValue:SingleValue<any>) => setDivisionSelect(newValue.value)}
+                    onChange={(newValue: SingleValue<any>) => setDivisionSelect(newValue.value)}
                 />
+                {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
+                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
+                    :
+                    null
+                }
             </div>
             <div>
-                {data?.resultResponse.map((r:getResultBox, index:number) => {
-                        return <ResultList resultList={r} key={index} divisionSelect={divisionSelect}/>;
+                {data?.resultResponse.map((r: competitionResultList, index: number) => {
+                    return <ResultList resultList={r} key={index} divisionSelect={divisionSelect}/>;
                 })}
             </div>
         </div>

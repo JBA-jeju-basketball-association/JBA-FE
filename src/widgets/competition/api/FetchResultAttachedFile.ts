@@ -1,5 +1,4 @@
 import {Api} from "../../../shared/api";
-import {AxiosResponse} from "axios";
 
 
 export default function fetchResultAttachedFile(file:File) {

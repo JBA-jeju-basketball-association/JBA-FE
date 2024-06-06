@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./FloorBox.module.css"
 import {AddResultRow} from "./AddResultRow";
-import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionResultType";
+import {competitionResult, competitionResultList} from "../../../shared/type/CompetitionType";
 
 type Props = {
     resultList:competitionResultList[];
@@ -14,7 +14,7 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
     const initialResult:competitionResultList = {
         floor:"경기",
         competitionResult: [{
-            division:null,
+            division:"",
             startTime:new Date(),
             homeName: " ",
             homeScore:0,
@@ -56,7 +56,7 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
                 {resultList.length === index + 1 ? <button onClick={() => plusButtonHandler()}>+</button> : ""}
             </div>
             <div className={style.inputArea}>
-                {resultList[index].competitionResult.map((r:competitionResult,resultIndex:number) => {
+                {resultList[index]?.competitionResult.map((r:competitionResult,resultIndex:number) => {
                     return <AddResultRow key={resultIndex} index={index} resultIndex={resultIndex} resultList={resultList} setResultList={setResultList} divisions={divisions && divisions}/>
                 })}
             </div>

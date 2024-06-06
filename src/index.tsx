@@ -5,6 +5,8 @@ import App from "./app/App";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import './shared/base.css'
+import 'sweetalert2/src/sweetalert2.scss'
+
 
 const root:ReactDOM.Root = ReactDOM.createRoot(document.getElementById("root")as HTMLElement ) ;
 const queryClient: QueryClient = new QueryClient();

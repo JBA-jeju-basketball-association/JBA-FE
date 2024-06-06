@@ -17,13 +17,12 @@ export const CustomDatePicker = ({startDate, setStartDate, endDate, setEndDate}:
     let nextDay:Date = new Date(currentDate);
     nextDay.setDate(currentDate.getDate() + 1);
 
-
     return (
-        <div  className={style.datepicker}>
+        <div className={style.datepicker}>
             <DatePicker
                 startDate={startDate}
                 endDate={endDate}
-                onChange={(update:[Date, Date]):void => {
+                onChange={(update: [Date, Date]): void => {
                     setStartDate(update[0])
                     setEndDate(update[1])
                 }}

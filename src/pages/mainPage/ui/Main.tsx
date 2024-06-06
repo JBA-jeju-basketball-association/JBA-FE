@@ -24,7 +24,6 @@ const Main = () => {
                 <div>{userName}</div>
             </div>
             <div style={{display:"flex", flexDirection:"column"}}>
-                <button className={style.navigator} onClick={()=> navigate("/add-competition")}>대회정보 등록 페이지</button>
                 <button className={style.navigator} onClick={()=> navigate("/competition")}>대회정보 페이지</button>
 
             </div>
