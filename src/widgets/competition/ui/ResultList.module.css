@@ -23,6 +23,6 @@
 .rowArea {
     width: 1040px;
     border-top: 3px solid var(--primary-color);
-    border-right: 2px solid var(--color-lightgray);
-    border-left: 2px solid var(--color-lightgray);
+    border-right: 2px solid var(--subcolor-black5);
+    border-left: 2px solid var(--subcolor-black5);
 }

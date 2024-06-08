@@ -73,7 +73,7 @@
 .buttonArea button {
     width: 70%;
     height: 70%;
-    border: 1px solid var(--color-beige);
+    border: 1px solid var(--subcolor-gold3);
     border-radius: 10px;
     background-color: var(--primary-color);
     font-size: 20px;
