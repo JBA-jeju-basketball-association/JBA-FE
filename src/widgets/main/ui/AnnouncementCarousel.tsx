@@ -2,12 +2,8 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {CompetitionCard} from "./CompetitionCard";
 import styled from "styled-components";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-import {useQuery} from "@tanstack/react-query";
-import FetchMainCompetitionList from "../api/FetchMainCompetitionList";
-import {getMainCompetition} from "../../../shared/type/MainType";
 import {AnnouncementCard} from "./AnnouncementCard";
 
 export const AnnouncementCarousel = () => {

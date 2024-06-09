@@ -9,7 +9,7 @@ export const AnnouncementArea = () => {
             <MainTitle title={"협회공지"} color={"#FFFFFF"}/>
             <div className={style.titleBar}></div>
             <div className={style.navigateBtnArea}>
-                <NavigateAllItemBtn path={"/competition"} color={"#BA5422"}/>
+                <NavigateAllItemBtn path={"/announcement"} color={"#BA5422"}/>
             </div>
             <AnnouncementCarousel />
         </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import style from "./AnnouncementCard.module.css"
-import {getMainCompetition} from "../../../shared/type/MainType";
 import formatDate2 from "../../../shared/lib/formatDate2";
 import {useNavigate} from "react-router-dom";
 
