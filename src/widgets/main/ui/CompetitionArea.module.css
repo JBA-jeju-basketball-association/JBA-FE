@@ -1,0 +1,36 @@
+.CompetitionArea {
+    width: 1440px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F4F0E7;
+}
+
+.title {
+    margin-top: 120px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.titleBar {
+    margin-top: 40px;
+    border: 2.2px solid #D4C39C;
+    width: 20px;
+    height: 0;
+}
+
+.navigateBtnArea {
+    margin: 20px 0 10px 0;
+    width: 1320px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.slider div {
+    width: 100px;
+    height: 100px;
+    background-color: #2D3A4A;
+}
