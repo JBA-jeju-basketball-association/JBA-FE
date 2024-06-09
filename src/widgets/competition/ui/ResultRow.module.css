@@ -65,8 +65,8 @@
 .fileBtn {
     width: 250px;
     height: 100%;
-    border-left: 2px solid var(--color-lightgray);
-    background-color: var(--color-lightbeige);
+    border-left: 2px solid var(--subcolor-lightgray);
+    background-color: var(--subcolor-gold3);
     font-size: 16px;
     font-weight: bolder;
 }
