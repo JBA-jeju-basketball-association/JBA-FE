@@ -1,5 +1,5 @@
 .CompetitionArea {
-    width: 1440px;
+    width: 100%;
     height: 800px;
     display: flex;
     flex-direction: column;
