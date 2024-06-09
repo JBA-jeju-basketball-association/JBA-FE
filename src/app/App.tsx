@@ -20,6 +20,7 @@ import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import {LoginPage} from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
+import {JbaHistoryPage} from "../pages/jbaHistoryPage/JbaHistoryPage";
 
 function App() {
     useAxiosInterceptor();
@@ -48,6 +49,7 @@ function App() {
                     <Route path={"/competition/:id"} element={<CompetitionDetailPage/>}/>
                     <Route path={"/gallery"} element={<GalleryPage/>}/>
                     <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
+                    <Route path={"/history"} element={<JbaHistoryPage />}/>
                 </Routes>
             </div>
             <Footer></Footer>
