@@ -67,7 +67,7 @@ function App() {
               path="/competition/update-result/:id"
               element={<UpdateCompetitionResultPage />}
             />
-            <Route path={"/add-post"} element={<AddPostPage />} />
+            <Route path={"/post/add"} element={<AddPostPage />} />
             <Route path={"/post/update/:id"} element={<UpdatePostPage />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
@@ -78,7 +78,7 @@ function App() {
           />
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/galleryupload"} element={<GalleryUploadPage />} />
-          <Route path={"/post-list"} element={<PostListPage />} />
+          <Route path={"/post/:category"} element={<PostListPage />} />
           <Route path={"/post-detail"} element={<PostDetailPage />} />
         </Routes>
       </div>
