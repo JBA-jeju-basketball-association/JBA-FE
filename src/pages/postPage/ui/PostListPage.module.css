@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    gap: 16px;
+}
+.titleArea {
+    margin: 0 auto;
+}
+.title {
+    font-size: 26px;
+    font-weight: 600;
+}

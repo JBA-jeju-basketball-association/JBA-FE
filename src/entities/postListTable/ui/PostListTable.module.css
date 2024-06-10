@@ -1,0 +1,14 @@
+.itemTypeList {
+    font-weight: 400;
+    font-size: 17px;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.itemType {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
