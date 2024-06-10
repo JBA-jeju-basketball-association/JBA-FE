@@ -21,7 +21,7 @@ const customModalStyles: ReactModal.Styles = {
     left: "0",
   },
   content: {
-    width: "60%",
+    width: "1200px",
     height: "90%",
     zIndex: "102",
     position: "absolute",

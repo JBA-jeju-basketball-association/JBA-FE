@@ -22,7 +22,7 @@ export const GalleryUpload = () => {
     mutationFn: (data: UploadType) =>
       Api.post("/v1/api/gallery/register", data, {
         params: {
-          official: true,
+          official: false,
         },
       }),
     onSuccess: () => {

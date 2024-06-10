@@ -42,7 +42,7 @@ function App() {
                         <Route path="/competition/update-competition/:id" element={<UpdateCompetitionPage/>}/>
                         <Route path="/competition/add-result/:id" element={<AddResultPage/>}/>
                         <Route path="/competition/update-result/:id" element={<UpdateCompetitionResultPage/>}/>
-                        <Route path={"/galleryupload"} element={<GalleryUploadPage/>}/>
+                        <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage/>}/>
                         <Route path={"/galleryedit"} element={<GalleryEditPage/>}/>
                     </Route>
                     <Route path="/competition" element={<CompetitionPage/>}/>
