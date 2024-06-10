@@ -3,8 +3,11 @@ import style from "./GalleryArea.module.css"
 import {GalleryCardContent, MainTitle, NavigateAllItemBtn} from "../../../shared/ui";
 import {useQuery} from "@tanstack/react-query";
 import FetchMainGalleryList from "../api/FetchMainGalleryList";
+import useGalleryModalStore from "../../../shared/model/stores/GalleryModalStore";
+import {useNavigate} from "react-router-dom";
 
 export const GalleryArea = () => {
+    const navigate = useNavigate();
     const {data} = useQuery({
         queryKey: ["getMainGalleryList"],
         queryFn: () => FetchMainGalleryList(),
@@ -12,6 +15,14 @@ export const GalleryArea = () => {
     })
     console.log(data)
 
+    const {forceModalOpen, setForceModalOpen, galleryIdFromMain, setGalleryIdFromMain}:any = useGalleryModalStore(state => state)
+    const navigateDetail = (id:number) => {
+        setForceModalOpen(true);
+        setGalleryIdFromMain(id)
+        navigate("/gallery")
+    }
+
+    console.log(forceModalOpen, galleryIdFromMain)
 
     return (
         <div className={style.GalleryArea}>
@@ -23,7 +34,7 @@ export const GalleryArea = () => {
             <div className={style.pictureArea}>
                 <div className={style.leftArea}>
                     <GalleryCardContent title={data?.galleries[0].title} date={data?.galleries[0].createAt}/>
-                    <img src={data?.galleries[0].imgUrl} alt={"main-gallery1"}/>
+                    <img src={data?.galleries[0].imgUrl} alt={"main-gallery1"} onClick={() => navigateDetail(data?.galleries[0].galleryId)}/>
                 </div>
                 <div className={style.rightArea}>
                     <div className={style.rightAreaColumn}>
