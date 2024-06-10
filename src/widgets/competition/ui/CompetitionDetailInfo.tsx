@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import style from "./CompetitionDetailInfo.module.css"
 import moment from "moment/moment";
 import {CompetitionDetailLabel, RegitUpdateDeleteButton} from "../../../shared/ui";
-import {CompetitionDetailInfoRow} from "../../../entity/competition";
+import {CompetitionDetailInfoRow} from "../../../entities/competition";
 import {competitionDetailAttachedFile, competitionDetailData} from "../../../shared/type/CompetitionType";
 import {competitionDetailMakeDivisionText, competitionStatusCalculator} from "../index"
 import {KakaoMap} from "./KakaoMap";

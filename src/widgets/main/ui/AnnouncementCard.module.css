@@ -1,0 +1,32 @@
+.AnnouncementCard {
+    width: 398px;
+    height: 188px;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 36px;
+    color: white;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2) ;
+    cursor: pointer;
+}
+
+.titleArea {
+    margin-top: 36px;
+}
+
+.dateArea {
+    margin-bottom: 36px;
+}
+
+.shortHead {
+    height: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 18px;
+    width: 355px;
+}

@@ -12,7 +12,7 @@
 .addFloorArea button {
     width: 100px;
     height: 50px;
-    background-color: var(--color-lightgray);
+    background-color: var(--subcolor-lightgray);
     border-radius: 10px;
 }
 
