@@ -1,0 +1,24 @@
+.container {
+    
+}
+
+.postList {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr 1fr 1fr;
+    text-wrap: nowrap;
+    font-size: 14px;
+    gap: 20px;
+}
+
+.postItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+}
+
+.postWriter {
+    margin: auto;
+    cursor: pointer;
+}

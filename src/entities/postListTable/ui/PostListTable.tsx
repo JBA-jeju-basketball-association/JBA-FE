@@ -1,10 +1,17 @@
 import React from "react";
 import { PostListRow } from "./PostListRow";
 import { PostListData } from "../../../shared/type/PostType";
+import styles from "./PostListTable.module.css";
 
 const PostListTable = ({ postListData }: { postListData?: PostListData }) => {
+  const itemTypeList = ["No", "제목", "등록자", "등록일", "조회수"];
   return (
-    <div>
+    <div className={styles.container}>
+      <ul className={styles.itemTypeList}>
+        {itemTypeList.map((item) => (
+          <li className={styles.itemType}>{item}</li>
+        ))}
+      </ul>
       {postListData?.posts.map((postItem) => (
         <PostListRow key={postItem.postId} postItem={postItem} />
       ))}
