@@ -1,12 +1,12 @@
 .bannerContainer {
-    background-color: #F4F0E7;
+    background-color: #0D0D0D;
     width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
 }
 .Banner {
-    background-image: url("/public/banner.jpeg");
+    background-image: url("/public/mainImg/banner.jpeg");
     min-width: 1920px;
     max-height: 828px;
     background-repeat: no-repeat;

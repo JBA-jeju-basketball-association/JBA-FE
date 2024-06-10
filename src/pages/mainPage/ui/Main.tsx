@@ -1,5 +1,5 @@
 import React from 'react';
-import {AnnouncementArea, Banner, CompetitionArea} from "../../../widgets/main";
+import {AnnouncementArea, Banner, CompetitionArea, GalleryArea} from "../../../widgets/main";
 import style from "./Main.module.css"
 
 
@@ -11,7 +11,7 @@ const Main = () => {
             <Banner />
             <AnnouncementArea />
             <CompetitionArea />
-
+            <GalleryArea />
 
         </div>
 

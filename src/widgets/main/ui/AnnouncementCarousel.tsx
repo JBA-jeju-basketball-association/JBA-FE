@@ -5,8 +5,18 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
 import {AnnouncementCard} from "./AnnouncementCard";
+import {useQuery} from "@tanstack/react-query";
+import FetchMainAnnouncementList from "../api/FetchMainAnnouncementList";
+import {getMainAnnouncement} from "../../../shared/type/MainType";
 
 export const AnnouncementCarousel = () => {
+    const {data} = useQuery({
+        queryKey: ["getMainPostList"],
+        queryFn: () => FetchMainAnnouncementList(),
+        select: (result) => result?.data.data.posts,
+    })
+    let postData:getMainAnnouncement[] = data?.slice(0,27);
+
     const settings = {
         dots: true,
         infinite: true,
@@ -35,11 +45,13 @@ export const AnnouncementCarousel = () => {
     return (
         <SliderContainer>
             <StyledSlider {...settings}>
-                {Array.from({ length: 18 }).map((_, index) => (
-                    <div key={index} className="slide">
-                        <AnnouncementCard />
-                    </div>
-                ))}
+                {postData?.map((item: getMainAnnouncement, index: number) => {
+                    return (
+                        <div key={index} className="slide">
+                            <AnnouncementCard data={item}/>
+                        </div>
+                    );
+                })}
             </StyledSlider>
         </SliderContainer>
     );
