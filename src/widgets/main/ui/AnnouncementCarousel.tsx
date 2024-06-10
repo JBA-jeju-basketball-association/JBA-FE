@@ -2,29 +2,28 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {CompetitionCard} from "./CompetitionCard";
 import styled from "styled-components";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
+import {AnnouncementCard} from "./AnnouncementCard";
 import {useQuery} from "@tanstack/react-query";
-import FetchMainCompetitionList from "../api/FetchMainCompetitionList";
-import {getMainCompetition} from "../../../shared/type/MainType";
+import FetchMainAnnouncementList from "../api/FetchMainAnnouncementList";
+import {getMainAnnouncement} from "../../../shared/type/MainType";
 
-
-
-export const CompetitionCarousel = () => {
+export const AnnouncementCarousel = () => {
     const {data} = useQuery({
-        queryKey:["mainCompetitionList"],
-        queryFn: () => FetchMainCompetitionList(),
-        select: (result) => result?.data.data
-
+        queryKey: ["getMainPostList"],
+        queryFn: () => FetchMainAnnouncementList(),
+        select: (result) => result?.data.data.posts,
     })
+    let postData:getMainAnnouncement[] = data?.slice(0,27);
 
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        rows: 3,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
         appendDots: (dots: any) => (
@@ -45,13 +44,15 @@ export const CompetitionCarousel = () => {
     };
     return (
         <SliderContainer>
-            <Slider {...settings}>
-                {data?.map((item: getMainCompetition, index: number) => {
-                        return <CompetitionCard data={item} key={index}/>
-                    }
-                )}
-
-            </Slider>
+            <StyledSlider {...settings}>
+                {postData?.map((item: getMainAnnouncement, index: number) => {
+                    return (
+                        <div key={index} className="slide">
+                            <AnnouncementCard data={item}/>
+                        </div>
+                    );
+                })}
+            </StyledSlider>
         </SliderContainer>
     );
 };
@@ -59,7 +60,7 @@ export const CompetitionCarousel = () => {
 const CustomPrevArrow = ({onClick, style}:any) => {
     return (
         <button onClick={onClick} style={{...style, display: "block", position:"absolute", top:"46%", left:"-45px"}}>
-            <IoIosArrowBack size={40} color={"#D4C39C"} />
+            <IoIosArrowBack size={40} color={"#FFFFFF"} />
         </button>
     );
 };
@@ -67,17 +68,19 @@ const CustomPrevArrow = ({onClick, style}:any) => {
 const CustomNextArrow = ({onClick, style}:any) => {
     return (
         <button onClick={onClick} style={{...style, display: "block", position:"absolute", top:"46%", right:"-35px"}}>
-            <IoIosArrowForward size={40} color={"#D4C39C"} />
+            <IoIosArrowForward size={40} color={"#FFFFFF"} />
         </button>
     );
 };
 
 const SliderContainer = styled.div`
-    width: 1320px;
-    height: 400px;
+    width: 1340px;
+    height: 900px; /* 높이를 높여 카드 간의 간격을 반영 */
+    position: relative;
+
     .dots_custom {
         position: absolute;
-        top: 450px;
+        top: 660px;
         vertical-align: middle;
         margin: auto 0;
         padding: 0;
@@ -92,7 +95,7 @@ const SliderContainer = styled.div`
     }
 
     .dots_custom li button {
-        border: 2px solid #D4C39C;
+        border: 2px solid #FFFFFF;
         color: transparent;
         cursor: pointer;
         display: block;
@@ -103,6 +106,12 @@ const SliderContainer = styled.div`
     }
 
     .dots_custom li.slick-active button {
-        background-color: #D4C39C;
+        background-color: #FFFFFF;
     }
-`
+`;
+
+const StyledSlider = styled(Slider)`
+    .slide {
+        padding: 8px 0 8px 0; /* 각 슬라이드에 패딩 추가 */
+    }
+`;

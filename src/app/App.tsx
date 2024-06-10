@@ -27,6 +27,7 @@ import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
+import {JbaHistoryPage} from "../pages/jbaHistoryPage/JbaHistoryPage";
 
 function App() {
   useAxiosInterceptor();
