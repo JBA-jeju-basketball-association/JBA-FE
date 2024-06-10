@@ -26,6 +26,7 @@ import Header from "./header/Header";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
+import Main from "../pages/mainPage/ui/Main";
 
 function App() {
   useAxiosInterceptor();
@@ -42,7 +43,7 @@ function App() {
               </div>
             }
           />
-          <Route path="main" element={<div>main</div>} />
+          <Route path="/" element={<Main />} />
           {/*컴포넌트 테스트를 위한 임시 path */}
           <Route
             path="zzuyeontest"

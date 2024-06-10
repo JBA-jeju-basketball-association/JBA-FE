@@ -27,5 +27,5 @@
 }
 
 .updateButton:hover{
-    color: var(--color-dark-gray);
+    color: var(--subcolor-black3);
 }
