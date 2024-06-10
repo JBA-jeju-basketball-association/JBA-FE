@@ -2,8 +2,8 @@
     display: flex;
     width: 1200px;
     height: 50px;
-    border-top: 2px solid var(--color-dark);
-    border-bottom: 2px solid var(--color-dark);
+    border-top: 2px solid var(--private-black);
+    border-bottom: 2px solid var(--private-black);
 }
 
 .listTitleArea div {
