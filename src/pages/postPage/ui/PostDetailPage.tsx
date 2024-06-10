@@ -54,9 +54,7 @@ export const PostDetailPage = () => {
         </div>
         <div className={styles.divideLine}></div>
         <ul className={styles.titleArea}>
-          <li className={styles.title}>
-            {foreword && [{ foreword }]} {title}
-          </li>
+          <li className={styles.title}>{title}</li>
           <li className={styles.list}></li>
           {typeItems.map((item) => (
             <li className={styles.list}>{item}</li>
@@ -66,11 +64,14 @@ export const PostDetailPage = () => {
           <li className={styles.list}>{createAt}</li>
           <li className={styles.list}>{viewCount}</li>
         </ul>
+        <div className={styles.subLine}></div>
         <div className={styles.content}>{parse(content)}</div>
-        <div className={styles.divideLine}></div>
-        <div>포스트 이미지: {postImgs.length ? postImgs : "이미지 없음"}</div>
-        <div>포스트 파일: {files.length ? files : "파일 없음"}</div>
-        <div className={styles.divideLine}></div>
+        <div className={styles.addWrapper}>
+          <div className={styles.subLine}></div>
+          <div>포스트 이미지: {postImgs.length ? '첨부 파일 있음' : "이미지 없음"}</div>
+          <div>포스트 파일: {files.length ? '첨부파일 있음' : "파일 없음"}</div>
+          <div className={styles.subLine}></div>
+        </div>
       </div>
     </div>
   );
