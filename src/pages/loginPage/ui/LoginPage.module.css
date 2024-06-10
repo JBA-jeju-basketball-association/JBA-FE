@@ -1,4 +1,23 @@
 .LoginPage {
+    min-width: 1920px;
+    min-height: 1080px;
+    background-image: url("/public/loginPage/loginPagebackgroundImg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(244,240,231,0.8);
+}
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -40,21 +40,21 @@ export const GalleryArea = () => {
                     <div className={style.rightAreaColumn}>
                         <div className={style.rightImgBox}>
                             <GalleryCardContent title={data?.galleries[1].title} date={data?.galleries[1].createAt}/>
-                            <img src={data?.galleries[1].imgUrl} alt={"main-gallery2"}/>
+                            <img src={data?.galleries[1].imgUrl} alt={"main-gallery2"} onClick={() => navigateDetail(data?.galleries[1].galleryId)}/>
                         </div>
                         <div className={style.rightImgBox}>
                             <GalleryCardContent title={data?.galleries[2].title} date={data?.galleries[2].createAt}/>
-                            <img src={data?.galleries[2].imgUrl} alt={"main-gallery3"}/>
+                            <img src={data?.galleries[2].imgUrl} alt={"main-gallery3"} onClick={() => navigateDetail(data?.galleries[2].galleryId)}/>
                         </div>
                     </div>
                     <div className={style.rightAreaColumn}>
                         <div className={style.rightImgBox}>
                             <GalleryCardContent title={data?.galleries[3].title} date={data?.galleries[3].createAt}/>
-                            <img src={data?.galleries[3].imgUrl} alt={"main-gallery4"}/>
+                            <img src={data?.galleries[3].imgUrl} alt={"main-gallery4"} onClick={() => navigateDetail(data?.galleries[3].galleryId)}/>
                         </div>
                         <div className={style.rightImgBox}>
                             <GalleryCardContent title={data?.galleries[4].title} date={data?.galleries[4].createAt}/>
-                            <img src={data?.galleries[4].imgUrl} alt={"main-gallery5"}/>
+                            <img src={data?.galleries[4].imgUrl} alt={"main-gallery5"} onClick={() => navigateDetail(data?.galleries[4].galleryId)}/>
                         </div>
                     </div>
                 </div>

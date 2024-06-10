@@ -25,29 +25,34 @@ export const LoginPage = () => {
 
     return (
         <div className={style.LoginPage}>
-            <PageTitle pageName={"로그인"}/>
-            <form noValidate className={style.formBox} onSubmit={(e) => submitHandler(e)}>
-                <div className={style.boxArea}>
-                    <LoginLabel name={"이메일"} />
-                    <LoginInput type={"email"} setFn={setEmail}/>
-                </div>
-                <div className={style.messageBox}>
-                    <p className={style.message}>
-                        {emailMessage}
-                    </p>
-                </div>
+            <div className={style.wrapper}>
+                <div className={style.container}>
+                    <PageTitle pageName={"로그인"}/>
+                    <form noValidate className={style.formBox} onSubmit={(e) => submitHandler(e)}>
+                        <div className={style.boxArea}>
+                            <LoginLabel name={"이메일"}/>
+                            <LoginInput type={"email"} setFn={setEmail}/>
+                        </div>
+                        <div className={style.messageBox}>
+                            <p className={style.message}>
+                                {emailMessage}
+                            </p>
+                        </div>
 
-                <div className={style.boxArea}>
-                    <LoginLabel name={"비밀번호"} />
-                    <LoginInput type={"password"} setFn={setPassword}/>
+                        <div className={style.boxArea}>
+                            <LoginLabel name={"비밀번호"}/>
+                            <LoginInput type={"password"} setFn={setPassword}/>
+                        </div>
+                        <div className={style.searchBox}>
+                            <Link to="/" className={style.search}>아이디 | 비밀번호 찾기 &gt;</Link>
+                        </div>
+                        <button type="submit" className={style.submitButton}>로그인</button>
+                        <div className={style.loginBottomLine}></div>
+                        <Link to="/signup" className={style.signUpLink}>회원가입</Link>
+                    </form>
                 </div>
-                <div className={style.searchBox}>
-                    <Link to="/" className={style.search}>아이디 | 비밀번호 찾기 &gt;</Link>
-                </div>
-                <button type="submit" className={style.submitButton}>로그인</button>
-                <div className={style.loginBottomLine}></div>
-                <Link to="/signup" className={style.signUpLink}>회원가입</Link>
-            </form>
+            </div>
         </div>
+
     );
 };
