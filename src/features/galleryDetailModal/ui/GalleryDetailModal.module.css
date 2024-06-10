@@ -35,6 +35,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  padding-bottom: 3px;
   overflow-x: scroll;
 }
 
@@ -65,7 +66,73 @@
   border: 2px solid var(--primary-color);
   border-radius: 12px 12px 12px 12px;
 }
+/* 
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
+}
 
-/* 이미지가 한개 있으면 detailmageListWrapper영역 안에서 100%로 적용됨 */
-/* detailImageListWrapper에서 justify-content: center 적용하면 이미지가 하나여도 가운데 정렬됨 */
-/* 그러면 이미지가 여러개일 때 앞쪽이 잘려서 보임 */
+.container > h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--subcolor-black4);
+  margin-top: 40px;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.centerImagWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+
+.detailImageListWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 3px;
+  overflow-x: scroll;
+}
+
+.detailImage,
+.selectedImage {
+  min-width: 175px;
+  max-width: 180px;
+  height: 130px;
+}
+
+.centerImage {
+  width: 85%;
+  height: 520px;
+  max-width: 900px;
+}
+
+.selectedImage {
+  border: 4px solid var(--primary-color);
+}
+
+.detailImageListWrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.detailImageListWrapper::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px 12px 12px 12px;
+}
+ */

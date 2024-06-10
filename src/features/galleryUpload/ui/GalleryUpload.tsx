@@ -6,7 +6,7 @@ import { Api } from "shared/api";
 import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { UploadType, FileType } from "shared/type/GalleryType";
-import { GalleryImageInput } from "entity/galleryImageInput";
+import { GalleryImageInput } from "entities/galleryImageInput";
 
 export const GalleryUpload = () => {
   const [titleValue, setTitleValue] = useState("");
