@@ -5,6 +5,7 @@ export interface Post {
   writer: string;
   createAt: string;
   viewCount: number;
+  foreword: string;
 }
 
 export interface PostListData {

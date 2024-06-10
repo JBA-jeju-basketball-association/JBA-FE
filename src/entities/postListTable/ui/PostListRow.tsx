@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import styles from "./PostListRow.module.css";
 
 const PostListRow = ({ postItem }: { postItem: Post }) => {
-  const { postId, isAnnouncement, title, writer, createAt, viewCount } =
+  const { postId, isAnnouncement, title, writer, createAt, viewCount, foreword } =
     postItem;
   const navigate = useNavigate();
+  console.log(postItem, '-----포스트 아이템-----');
   return (
     <div
       className={styles.container}
@@ -14,13 +15,23 @@ const PostListRow = ({ postItem }: { postItem: Post }) => {
         navigate(`${postId}`);
       }}
     >
-      <ul className={styles.postList}>
-        <li className={styles.postItem}>{postId}</li>
-        <li className={styles.postItem}>{title}</li>
-        <li className={styles.postWriter}>{writer}</li>
-        <li className={styles.postItem}>{createAt}</li>
-        <li className={styles.postItem}>{viewCount}</li>
-      </ul>
+      {isAnnouncement ? (
+        <ul className={styles.postList}>
+          <li className={styles.postItem}>공지</li>
+          <li className={styles.postItem}>[{foreword}] {title}</li>
+          <li className={styles.postWriter}>{writer}</li>
+          <li className={styles.postItem}>{createAt}</li>
+          <li className={styles.postItem}>{viewCount}</li>
+        </ul>
+      ) : (
+        <ul className={styles.postList}>
+          <li className={styles.postItem}>{postId}</li>
+          <li className={styles.postItem}>{title}</li>
+          <li className={styles.postWriter}>{writer}</li>
+          <li className={styles.postItem}>{createAt}</li>
+          <li className={styles.postItem}>{viewCount}</li>
+        </ul>
+      )}
     </div>
   );
 };
