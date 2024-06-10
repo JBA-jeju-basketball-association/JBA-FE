@@ -7,7 +7,6 @@ const PostListRow = ({ postItem }: { postItem: Post }) => {
   const { postId, isAnnouncement, title, writer, createAt, viewCount, foreword } =
     postItem;
   const navigate = useNavigate();
-  console.log(postItem, '-----포스트 아이템-----');
   return (
     <div
       className={styles.container}
