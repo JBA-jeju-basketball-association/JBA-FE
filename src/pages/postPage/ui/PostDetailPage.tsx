@@ -7,6 +7,16 @@ import styles from "./PostDetailPage.module.css";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
+  const typeItems = ["등록자", "등록일", "조회수"];
+  category = category as string;
+  const detailTitle =
+    category === "notice"
+      ? "공지사항"
+      : category === "news"
+        ? "NEWS"
+        : category === "news"
+          ? "자료실"
+          : "";
 
   const {
     isError,
@@ -25,27 +35,42 @@ export const PostDetailPage = () => {
     return <span>Error</span>;
   }
 
-  console.log(postDetail);
+  const {
+    foreword,
+    title,
+    writer,
+    createAt,
+    viewCount,
+    content,
+    postImgs,
+    files,
+  } = postDetail;
 
   return (
     <div className={styles.container}>
-      <span>{category}</span>
       <div className={styles.wrapper}>
-        <span>
-          [{postDetail.foreword}] {postDetail.title}
-        </span>
-        <span>{postDetail.writer}</span>
-        <span>{postDetail.createAt}</span>
-        <span>{postDetail.viewCount}</span>
-        <div>{parse(postDetail.content)}</div>
-        <div>
-          포스트 이미지: {postDetail.postImgs.length ? postDetail.postImgs : "이미지 없음"}
+        <div className={styles.categoryArea}>
+          <span className={styles.category}>{detailTitle}</span>
         </div>
-        <div>
-          <div>
-            포스트 파일: {postDetail.files.length ? postDetail.files : "파일 없음"}
-          </div>
-        </div>
+        <div className={styles.divideLine}></div>
+        <ul className={styles.titleArea}>
+          <li className={styles.title}>
+            {foreword && [{ foreword }]} {title}
+          </li>
+          <li className={styles.list}></li>
+          {typeItems.map((item) => (
+            <li className={styles.list}>{item}</li>
+          ))}
+          <li></li>
+          <li className={styles.list}>{writer}</li>
+          <li className={styles.list}>{createAt}</li>
+          <li className={styles.list}>{viewCount}</li>
+        </ul>
+        <div className={styles.content}>{parse(content)}</div>
+        <div className={styles.divideLine}></div>
+        <div>포스트 이미지: {postImgs.length ? postImgs : "이미지 없음"}</div>
+        <div>포스트 파일: {files.length ? files : "파일 없음"}</div>
+        <div className={styles.divideLine}></div>
       </div>
     </div>
   );

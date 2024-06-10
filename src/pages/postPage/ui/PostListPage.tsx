@@ -80,9 +80,11 @@ export const PostListPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.titleArea}>
-          <span className={styles.title}>{`${title}`}</span>
+          <span className={styles.title}>{title}</span>
         </div>
+        <div className={styles.divideLine}></div>
         <PostListTable postListData={filteredPosts} />
+        <div className={styles.divideLine}></div>
         {postList && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
