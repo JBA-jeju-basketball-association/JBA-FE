@@ -8,3 +8,4 @@ export { NavigateAllItemBtn } from "./navigateAllItemBtn/navigateAllItemBtn";
 export { MainTitle } from "./mainTitle/MainTitle";
 export { CommonModal } from "./commonModal/CommonModal";
 export { GalleryCard } from "./galleryCard/GalleryCard";
+export { CommonSlide } from "./commonSlide/commonSlide";

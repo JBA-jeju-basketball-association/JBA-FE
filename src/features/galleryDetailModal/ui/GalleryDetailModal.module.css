@@ -21,29 +21,10 @@
   top: 0;
 }
 
-.centerImagWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  width: 100%;
-}
-
-.detailImageListWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 3px;
-  overflow-x: scroll;
-}
-
 .detailImage,
 .selectedImage {
-  min-width: 175px;
-  max-width: 180px;
-  height: 130px;
+  width: 180px;
+  height: 500px;
 }
 
 .centerImage {
@@ -66,6 +47,12 @@
   border: 2px solid var(--primary-color);
   border-radius: 12px 12px 12px 12px;
 }
+
+.sliderWrapper {
+  width: 900px;
+}
+
+
 /* 
 .container {
   width: 100%;
