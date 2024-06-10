@@ -8,13 +8,9 @@ export interface Post {
 }
 
 export interface PostListData {
-  code: number;
-  message: string;
-  data: {
     totalPages: number;
     totalPosts: number;
     posts: Post[];
-  };
 }
 
 export interface PostDataResponse {

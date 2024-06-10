@@ -41,6 +41,7 @@ export const CompetitionPage = () => {
         gcTime:60 * 1000,
         refetchOnMount:true,
     });
+    console.log(data);
 
 
     const options: { value: string, label: string; }[] = [];
