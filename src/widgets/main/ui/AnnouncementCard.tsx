@@ -9,7 +9,7 @@ type Props = {
 export const AnnouncementCard = ({data}:Props) => {
     const navigate = useNavigate();
     return (
-        <div className={style.AnnouncementCard} onClick={() => navigate(`/post/${data?.postId}`)}>
+        <div className={style.AnnouncementCard} onClick={() => navigate(`/post/notice/${data?.postId}`)}>
             <div className={style.titleArea}>
                 {data?.foreword ? <p className={style.shortHead}>[{data?.foreword}]</p> : <p className={style.shortHead}></p>}
                 <h2 className={style.title}>{data?.title}</h2>
