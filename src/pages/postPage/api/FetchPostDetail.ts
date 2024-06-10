@@ -11,6 +11,4 @@ export const FetchPostDetail = ({ postId, category }: FetchPostDetailType) => {
     queryKey: ["postDeatil"],
     queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
   });
-
-  return { postDetail };
 };

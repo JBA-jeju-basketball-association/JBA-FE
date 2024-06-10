@@ -1,15 +1,52 @@
 import React from "react";
-import { FetchPostDetail } from "../api/FetchPostDetail";
+import { useQuery } from "@tanstack/react-query";
+import { NormalApi } from "../../../shared/api/NormalApi";
 import { useParams } from "react-router-dom";
-import { FetchPostDetailType } from "../api/FetchPostDetail";
+import parse from "html-react-parser";
+import styles from "./PostDetailPage.module.css";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
-  postId = postId as FetchPostDetailType["postId"];
-  category = category as FetchPostDetailType["category"];
 
-  const { postDetail } = FetchPostDetail({ postId, category });
+  const {
+    isError,
+    isLoading,
+    data: postDetail,
+  } = useQuery({
+    queryKey: ["postDeatil"],
+    queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
+    select: (result: any) => result.data.data,
+  });
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+  if (isError) {
+    return <span>Error</span>;
+  }
 
   console.log(postDetail);
-  return <div>포스트 디테일: {postId} 페이지 입니다.</div>;
+
+  return (
+    <div className={styles.container}>
+      <span>{category}</span>
+      <div className={styles.wrapper}>
+        <span>
+          [{postDetail.foreword}] {postDetail.title}
+        </span>
+        <span>{postDetail.writer}</span>
+        <span>{postDetail.createAt}</span>
+        <span>{postDetail.viewCount}</span>
+        <div>{parse(postDetail.content)}</div>
+        <div>
+          포스트 이미지: {postDetail.postImgs.length ? postDetail.postImgs : "이미지 없음"}
+        </div>
+        <div>
+          <div>
+            포스트 파일: {postDetail.files.length ? postDetail.files : "파일 없음"}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
