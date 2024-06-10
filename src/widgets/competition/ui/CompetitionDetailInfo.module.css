@@ -1,14 +1,14 @@
 .CompetitionDetailInfo {
-    border-top: 3px solid var(--color-dark);
+    border-top: 3px solid var(--private-black);
     display: flex;
     flex-direction: column;
 }
 
 .fullInfoArea {
     display: flex;
-    border-bottom: 1px solid var(--color-gray);
-    border-right: 1px solid var(--color-dark);
-    border-left: 1px solid var(--color-dark);
+    border-bottom: 1px solid var(--subcolor-black3);
+    border-right: 1px solid var(--private-black);
+    border-left: 1px solid var(--private-black);
 }
 
 .halfInfoArea {
