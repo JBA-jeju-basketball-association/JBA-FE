@@ -78,14 +78,16 @@ export const GalleryPage = () => {
     <div className={styles.container}>
       <div className={styles.GalleryPageHeader}>
         <PageTitle pageName="갤러리" />
-        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
-          <RegitUpdateDeleteButton
-            content="등록하기"
-            onClickHandler={() => navigate("galleryupload")}
-          />
-        ) : (
-          ""
-        )}
+        <div className={styles.buttonWrapper}>
+          {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+            <RegitUpdateDeleteButton
+              content="등록하기"
+              onClickHandler={() => navigate("galleryupload")}
+            />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <GalleryCardList galleries={filteredGalleries} />
       <Pagination totalPages={totalPage} page={page} setPage={setPage} />

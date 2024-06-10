@@ -10,8 +10,8 @@ import {
 } from "../pages/competitionPage";
 import {Footer} from "../widgets/footer"
 import {useAxiosInterceptor} from "../shared/api/UseAxiosInterceptor";
-import {GalleryUploadPage} from '../pages/galleryUploadPage'
-import {GalleryPage} from "pages/galleryPage";
+import {GalleryUploadPage} from 'pages/galleryPages'
+import {GalleryPage} from "pages/galleryPages";
 import {UpdateCompetitionPage} from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import '../shared/base.css'
 import { SignupForm } from "../features/signup/ui/SignupForm";
@@ -19,7 +19,7 @@ import Header from "./header/Header";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import {LoginPage} from "../pages/loginPage";
-import {GalleryEditPage} from "../pages/galleryEditPage";
+import {GalleryEditPage} from "pages/galleryPages";
 
 function App() {
     useAxiosInterceptor();
