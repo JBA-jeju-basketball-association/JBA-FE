@@ -1,22 +1,23 @@
 .container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  padding-bottom: 50px;
 }
 
-.GalleryPageHeader {
-  width: 1260px;
+.wrapper {
+  max-width: 1320px;
+}
+
+.titleWrapper {
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
-  position: relative;
 }
-
 .buttonWrapper {
-  position: absolute;
-  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 10px;
 }

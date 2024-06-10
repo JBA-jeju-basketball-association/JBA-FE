@@ -1,8 +1,13 @@
 .container {
-  width: 1260px;
-  height: 630px;
-  gap: 30px;
+  width: 100%;
+  height: 1040px;
+  /* 일단 고정값 */
+  gap: 20px;
   display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+  padding: 15px 0;
 }

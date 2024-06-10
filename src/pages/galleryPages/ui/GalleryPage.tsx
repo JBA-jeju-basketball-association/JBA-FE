@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GalleryCardList } from "entity/galleryCardList";
 import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
@@ -16,9 +16,6 @@ export const GalleryPage = () => {
   const [page, setPage] = useState(1);
   const [searchCategory, setSearchCategory] = useState("제목");
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [filteredGalleries, setFilteredGalleries] = useState<GalleryCardType[]>(
-    []
-  );
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
 
@@ -29,8 +26,8 @@ export const GalleryPage = () => {
       NormalApi.get(`/v1/api/gallery`, {
         params: {
           page: page - 1,
-          size: 6,
-          official: true,
+          size: 9,
+          official: false,
         },
       }),
   });
@@ -38,46 +35,16 @@ export const GalleryPage = () => {
   const galleries: GalleryCardType[] = galleryData?.data.data.galleries ?? [];
   const totalPage: number = galleryData?.data.data.totalPages ?? 0;
 
-  // 검색 결과 필터링 및 페이지 이동
-  useEffect(() => {
-    if (!galleryData) return;
-    const filterGalleries = () => {
-      return galleries.filter((gallery) =>
-        //galleries 데이터를 필터해서
-        searchCategory === "제목" || searchCategory === "전체"
-          ? //제목이나 전체로 검색했을 때 true면 타이틀을 포함하는 갤러리만 반환
-            gallery.title?.includes(searchKeyword) ?? false
-          : true
-      );
-    };
-    setFilteredGalleries(filterGalleries());
-
-    //검색어가 바뀌면 필터링된 갤러리를 다시 세팅
-  }, [galleryData, searchCategory, searchKeyword]);
-
-  // 검색 결과 페이지로 이동하는 함수 호출
   const findTargetPage = () => {
-    NormalApi.get(`/v1/api/gallery`, {
-      params: {
-        page: 0,
-        size: totalPage * 6,
-        official: true,
-      },
-    }).then((res) => {
-      const allGalleries = res.data.data.galleries;
-      const foundIndex = allGalleries.findIndex((gallery: GalleryCardType) =>
-        gallery.title?.includes(searchKeyword)
-      );
-      const targetPageNumber =
-        foundIndex !== -1 ? Math.floor(foundIndex / 6) + 1 : 1;
-      setPage(targetPageNumber);
-    });
+    console.log("findTargetPage");
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.GalleryPageHeader}>
-        <PageTitle pageName="갤러리" />
+      <div className={styles.wrapper}>
+        <div className={styles.titleWrapper}>
+          <PageTitle pageName="갤러리" />
+        </div>
         <div className={styles.buttonWrapper}>
           {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
             <RegitUpdateDeleteButton
@@ -87,16 +54,16 @@ export const GalleryPage = () => {
           ) : (
             ""
           )}
+          <SearchBar
+            searchCategory={searchCategory}
+            setSearchCategory={setSearchCategory}
+            setSearchKeyword={setSearchKeyword}
+            handleSearch={() => findTargetPage()}
+          />
         </div>
+        <GalleryCardList galleries={galleries} />
+        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
       </div>
-      <GalleryCardList galleries={filteredGalleries} />
-      <Pagination totalPages={totalPage} page={page} setPage={setPage} />
-      <SearchBar
-        searchCategory={searchCategory}
-        setSearchCategory={setSearchCategory}
-        setSearchKeyword={setSearchKeyword}
-        handleSearch={() => findTargetPage()}
-      />
     </div>
   );
 };
