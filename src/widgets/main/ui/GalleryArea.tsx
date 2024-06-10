@@ -3,7 +3,7 @@ import style from "./GalleryArea.module.css"
 import {GalleryCardContent, MainTitle, NavigateAllItemBtn} from "../../../shared/ui";
 import {useQuery} from "@tanstack/react-query";
 import FetchMainGalleryList from "../api/FetchMainGalleryList";
-import useGalleryModalStore from "../../../shared/model/stores/GalleryModalStore";
+import {useGalleryModalStore} from "../../../shared/model";
 import {useNavigate} from "react-router-dom";
 
 export const GalleryArea = () => {
