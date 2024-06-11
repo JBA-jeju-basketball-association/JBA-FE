@@ -18,7 +18,6 @@ export const CompetitionCarousel = () => {
         select: (result) => result?.data.data
 
     })
-    console.log(data)
 
     const settings = {
         dots: true,
@@ -47,7 +46,7 @@ export const CompetitionCarousel = () => {
     return (
         <SliderContainer>
             <Slider {...settings}>
-                {data?.map((item:getMainCompetition, index:number) =>{
+                {data?.map((item: getMainCompetition, index: number) => {
                         return <CompetitionCard data={item} key={index}/>
                     }
                 )}

@@ -6,6 +6,6 @@ export { CompetitionDetailLabel } from "./competitionLabel/CompetitionDetailLabe
 export { RegitUpdateDeleteButton } from "./regitUpdateDeleteButton/RegitUpdateDeleteButton";
 export { NavigateAllItemBtn } from "./navigateAllItemBtn/navigateAllItemBtn";
 export { MainTitle } from "./mainTitle/MainTitle";
-export { CommonModal } from "./commonModal/CommonModal";
+export { GalleryCardContent } from "./galleryCardContent/GalleryCardContent";
 export { GalleryCard } from "./galleryCard/GalleryCard";
-export { CommonSlide } from "./commonSlide/commonSlide";
+export { CommonModal } from "./commonModal/CommonModal";

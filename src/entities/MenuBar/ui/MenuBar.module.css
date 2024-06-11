@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-width: 1400px;
+    min-width: 1920px;
 }
 .MenuBar_Inner{
     display: flex;
@@ -19,7 +19,7 @@
     width:100%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--color-white);
+    background-color: white;
     position: relative;
 
 }
@@ -73,9 +73,9 @@
 
 .BackGround{
     position: absolute;
-    top:144px;
+    top:136px;
     width: 100%;
-    background-color: var(--color-lightbeige);
+    background-color: #FCF9F5;
     transition: all 0.3s ease /* top과 height에 대한 1초 동안의 트랜지션 */;
 
 }
