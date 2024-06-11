@@ -1,18 +1,22 @@
 .container {
+    min-width: 1920px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 72px;
 }
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
     position: relative;
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 .categoryArea {
     margin: 0 auto;
-    margin-top: 50px;
     margin-bottom: 30px;
 }
 .category {
@@ -31,11 +35,11 @@
 }
 .titleArea {
     display: grid;
-    grid-template-columns: 7fr 1fr 1fr 1fr;
+    grid-template-columns: 7fr 0.5fr 0.5fr 0.5fr;
     text-wrap: nowrap;
-    gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .title {
     position: absolute;
@@ -51,10 +55,16 @@
     padding-bottom: 40px;
     padding-right: 10%;
     padding-left: 10%;
-    background-color: var(--subcolor-black4);
 }
-.addWrapper {
+.filesWrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+}
+.fileDownload {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.fileNull {
+    padding-left: 16px;
 }
