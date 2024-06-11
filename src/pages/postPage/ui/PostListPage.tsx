@@ -24,7 +24,7 @@ export const PostListPage = () => {
           ? "자료실"
           : "";
 
-  const { data: postList } = useQuery<PostListData>({
+  const { isLoading, isError, data: postList } = useQuery<PostListData>({
     queryKey: ["postList", page],
     queryFn: () =>
       NormalApi.get(`/v1/api/post/${category}?page=${page - 1}&size=10`),
@@ -69,13 +69,22 @@ export const PostListPage = () => {
     //검색어가 바뀌면 필터링된 갤러리를 다시 세팅
   }, [postList, searchCategory, searchKeyword]);
 
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+  if (isError) {
+    return <span>Error</span>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.titleArea}>
-          <span className={styles.title}>{`${title}`}</span>
+          <span className={styles.title}>{title}</span>
         </div>
+        <div className={styles.divideLine}></div>
         <PostListTable postListData={filteredPosts} />
+        <div className={styles.divideLine}></div>
         {postList && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}

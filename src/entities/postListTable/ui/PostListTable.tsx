@@ -8,8 +8,8 @@ const PostListTable = ({ postListData }: { postListData?: Post[] }) => {
   return (
     <div className={styles.container}>
       <ul className={styles.itemTypeList}>
-        {itemTypeList.map((item) => (
-          <li className={styles.itemType}>{item}</li>
+        {itemTypeList.map((item, index) => (
+          <li key={index} className={styles.itemType}>{item}</li>
         ))}
       </ul>
       {postListData?.map((postItem) => (

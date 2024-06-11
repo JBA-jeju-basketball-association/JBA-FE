@@ -81,7 +81,7 @@ function App() {
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/galleryupload"} element={<GalleryUploadPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
-          <Route path={"/post/detail"} element={<PostDetailPage />} /><Route path={"/history"} element={<JbaHistoryPage />}/>
+          <Route path={"/post/:category/:postId"} element={<PostDetailPage />} />
         </Routes>
       </div>
       <Footer></Footer>
