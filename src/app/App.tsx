@@ -69,8 +69,8 @@ function App() {
               path="/competition/update-result/:id"
               element={<UpdateCompetitionResultPage />}
             />
-            <Route path={"/post/add"} element={<AddPostPage />} />
-            <Route path={"/post/update/:id"} element={<UpdatePostPage />} />
+            <Route path={"/post/:category/add"} element={<AddPostPage />} />
+            <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -18,9 +18,7 @@ export const PostDetailPage = () => {
       ? "공지사항"
       : category === "news"
         ? "NEWS"
-        : category === "news"
-          ? "자료실"
-          : "";
+          : "자료실";
 
   const {
     isError,
