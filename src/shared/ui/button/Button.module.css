@@ -3,12 +3,12 @@
     padding-right: 15px;
     height: 48px;
     background-color: var(--primary-color);
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 18px;
     color: #fff;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: var(--subcolor-gold2);
+    background-color: #E3BE58;
 }

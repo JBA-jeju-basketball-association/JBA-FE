@@ -68,3 +68,23 @@
 .fileNull {
     padding-left: 16px;
 }
+.buttonWrapper {
+    display: flex;
+    gap: 20px;
+
+    }
+
+.buttonCancel {
+    background-color: var(--subcolor-black3);
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.buttonCancel:hover {
+    background-color: var(--subcolor-black4);
+}

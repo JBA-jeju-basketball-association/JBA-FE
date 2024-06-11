@@ -14,7 +14,7 @@ export const AddPostPage = () => {
       ? "공지사항"
       : category === "news"
         ? "NEWS"
-          : "자료실";
+        : "자료실";
 
   return (
     <div className={styles.container}>
@@ -23,28 +23,26 @@ export const AddPostPage = () => {
           <span className={styles.category}>{detailTitle}</span>
         </div>
         <div className={styles.divideLine}></div>
-        <ul className={styles.titleArea}>
-          <li className={styles.title}>8888888888</li>
-          <li className={styles.list}></li>
-          {typeItems.map((item, index) => (
-            <li key={index} className={styles.list}>
-              {item}
-            </li>
-          ))}
-          <li></li>
-          <li className={styles.list}>{8888888888}</li>
-          <li className={styles.list}>{8888888888}</li>
-          <li className={styles.list}>{8888888888}</li>
-        </ul>
         <div className={styles.subLine}></div>
-        <div className={styles.content}>{888888888}</div>
+        <div className={styles.content}>에디터 자리</div>
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
-            <span className={styles.fileNull}>첨부파일 없음</span>
+          <span className={styles.fileNull}>파일 업로드 자리</span>
           <div className={styles.subLine}></div>
         </div>
       </div>
-      <Button onClick={() => navigate(`/post/${category}`)}>작성 취소</Button>
+      <div className={styles.buttonWrapper}>
+        <Button onClick={() => alert("작성이 완료되었습니다!")}>
+          작성 완료
+        </Button>
+        <Button
+          className={styles.buttonCancel}
+          // onClick={() => navigate(`/post/${category}`)}
+          onClick={() => alert("작성이 취소되었습니다.")}
+        >
+          취소
+        </Button>
+      </div>
     </div>
   );
 };
