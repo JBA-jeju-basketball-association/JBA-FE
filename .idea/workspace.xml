@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/checkBox/CheckBox.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/checkBox/CheckBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/," beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/model/svgComponent/Check.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/cookie/cookie.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/api/FetchLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loginPage/api/FetchLogin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/model/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/loginInput/LoginInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/loginInput/LoginInput.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

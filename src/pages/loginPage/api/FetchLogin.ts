@@ -1,14 +1,23 @@
 import {Api} from "../../../shared/api";
 import React from "react";
 
-export default function fetchLogin (email:string, password:string, setEmailMessage: React.Dispatch<React.SetStateAction<string>>
-                                    , setAccessToken:(token:string | null) =>void, setRefreshToken:(token:string|null)=>void):void {
+export default function fetchLogin (email:string, password:string,
+                                    setEmailMessage: React.Dispatch<React.SetStateAction<string>>,
+                                    setAccessToken:(token:string | null) =>void,
+                                    setRefreshToken:(token:string|null)=>void,
+                                    isChecked:boolean,
+                                    setCookie:(name: string, value: string, days: number) => void):void{
+
     Api.post("/v1/api/sign/login", {
         email,
         password
     }).then(res => {
         if (res.status === 200) {
-            console.log(res.headers)
+            if (isChecked) {
+                setCookie("savedEmail", email, 10);
+            }else {
+                setCookie("savedEmail", "", -1)
+            }
             setAccessToken(res.headers["access-token"]);
             setRefreshToken(res.headers["refresh-token"]);
             window.location.href = "/main";
