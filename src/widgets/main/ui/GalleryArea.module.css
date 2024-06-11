@@ -31,6 +31,13 @@
     width: 640px;
     margin-right: 20px;
     position: relative;
+    cursor: pointer;
+}
+
+.leftArea:hover {
+    border: 1px solid white;
+    scale: 1.05;
+    transition: ease-in-out 0.5s;
 }
 
 .rightArea {
@@ -49,6 +56,13 @@
 .rightImgBox {
     height: 240px;
     position: relative;
+    cursor: pointer;
+}
+
+.rightImgBox:hover {
+    border:1px solid white;
+    scale: 1.05;
+    transition: ease-in-out 0.5s;
 }
 
 .pictureArea img {

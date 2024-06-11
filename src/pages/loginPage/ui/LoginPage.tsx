@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {LoginInput, LoginLabel, PageTitle} from "../../../shared/ui";
+import {LoginInput} from "../../../shared/ui";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import style from "./LoginPage.module.css";
 import fetchLogin from "../api/FetchLogin";
 import {useUserStore, WhiteLogo} from "../../../shared/model";
@@ -10,6 +11,8 @@ export const LoginPage = () => {
     const [password, setPassword] = useState<string>("");
     const [emailMessage, setEmailMessage] = useState<string>("");
     const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
+    const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
+
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         setEmailMessage("");
@@ -37,11 +40,10 @@ export const LoginPage = () => {
                         </div>
                     </div>
                     <div className={style.loginArea}>
-                        <PageTitle pageName={"로그인"}/>
+                        <div className={style.title}>로그인</div>
                         <form noValidate className={style.formBox} onSubmit={(e) => submitHandler(e)}>
                             <div className={style.boxArea}>
-                                <LoginLabel name={"이메일"}/>
-                                <LoginInput type={"email"} setFn={setEmail}/>
+                                <LoginInput type={"email"} setFn={setEmail} placeholder={"이메일"}/>
                             </div>
                             <div className={style.messageBox}>
                                 <p className={style.message}>
@@ -50,8 +52,12 @@ export const LoginPage = () => {
                             </div>
 
                             <div className={style.boxArea}>
-                                <LoginLabel name={"비밀번호"}/>
-                                <LoginInput type={"password"} setFn={setPassword}/>
+                                <LoginInput type={isHidePassword? "password" : "text"} setFn={setPassword} placeholder={"비밀번호"}/>
+                                {isHidePassword ?
+                                    <VscEye className={style.openEye} onClick={() => setIsHidePassword(false)}/>
+                                    :
+                                    <VscEyeClosed className={style.openEye} onClick={() => setIsHidePassword(true)}/>
+                                }
                             </div>
                             <div className={style.searchBox}>
                                 <Link to="/" className={style.search}>아이디 | 비밀번호 찾기 &gt;</Link>
