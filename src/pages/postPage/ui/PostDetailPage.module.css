@@ -1,7 +1,10 @@
 .container {
     min-width: 1920px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin-bottom: 72px;
 }
 .wrapper {
     display: flex;
@@ -10,7 +13,7 @@
     position: relative;
     width: 70%;
     margin-top: 50px;
-    margin-bottom: 72px;
+    margin-bottom: 20px;
 }
 .categoryArea {
     margin: 0 auto;

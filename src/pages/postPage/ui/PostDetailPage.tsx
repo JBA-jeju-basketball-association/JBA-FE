@@ -1,12 +1,14 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Button from "../../../shared/ui/button";
 import parse from "html-react-parser";
 import styles from "./PostDetailPage.module.css";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
+  const navigate = useNavigate();
   const typeItems = ["등록자", "등록일", "조회수"];
   category = category as string;
   const detailTitle =
@@ -68,12 +70,14 @@ export const PostDetailPage = () => {
         <div className={styles.content}>{parse(content)}</div>
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
-          <div>포스트 이미지: {postImgs.length ? '첨부 파일 있음' : "이미지 없음"}</div>
-          <div>포스트 파일: {files.length ? '첨부파일 있음' : "파일 없음"}</div>
+          <div>
+            포스트 이미지: {postImgs.length ? "첨부 파일 있음" : "이미지 없음"}
+          </div>
+          <div>포스트 파일: {files.length ? "첨부파일 있음" : "파일 없음"}</div>
           <div className={styles.subLine}></div>
-          <button>목록</button>
         </div>
       </div>
+      <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
     </div>
   );
 };
