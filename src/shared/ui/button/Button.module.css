@@ -5,4 +5,9 @@
     border-radius: 5px;
     font-size: 18px;
     color: #fff;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--subcolor-gold2);
 }
