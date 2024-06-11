@@ -25,7 +25,7 @@ const GalleryPage = () => {
         params: {
           page: page - 1,
           size: 6,
-          official: true,
+          official: false,
         },
       }),
   });

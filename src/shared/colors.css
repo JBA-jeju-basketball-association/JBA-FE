@@ -18,8 +18,12 @@
 
     /*서브컬러-Red*/
     --subcolor-red1: #953608;
+
+    /*서브컬러-기타*/
+    --subcolor-lightgray: #D3D3D3FF;
   }
-  
+
+
   html[data-theme="light"] {
     --text-color: #121416d8;
     --link-color: #543fd7;

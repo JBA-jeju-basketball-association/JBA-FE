@@ -50,6 +50,7 @@ export const FloorBox = ({resultList,setResultList,index,divisions}:Props) => {
                     type={"text"}
                     placeholder={resultList[index].floor}
                     onChange={(e)=> changeFloorHandler(e.target.value)}
+                    className={style.floorInput}
                 />
 
                 <button onClick={() => minusButtonHandler()}>-</button>

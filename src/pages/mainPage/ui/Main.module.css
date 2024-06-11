@@ -1,7 +1,7 @@
-.navigator {
-    margin: 20px;
-    width: 200px;
-    height: 100px;
-    background-color: #1a9aef;
-    font-size: 20px;
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 1920px;
+
 }

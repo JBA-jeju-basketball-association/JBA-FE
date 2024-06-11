@@ -1,7 +1,7 @@
 .Result {
     width: 1040px;
     height: 50px;
-    background-color: var(--color-beige);
+    background-color: var(--subcolor-gold3);
     margin: 10px 0 10px 0;
     display: flex;
     justify-content: space-between;

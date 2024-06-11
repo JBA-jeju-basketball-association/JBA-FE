@@ -1,7 +1,7 @@
 .selectButton {
     width: 90px;
     height: 40px;
-    background-color: var(--color-beige);
+    background-color: var(--subcolor-gold3);
     font-size: 16px;
 }
 
@@ -14,7 +14,7 @@
 .liBox {
     width: 90px;
     height: 70px;
-    background-color: var(--color-dark-gray);
+    background-color: var(--subcolor-black3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,8 +38,8 @@
 .inputArea {
     height: 40px;
 
-    background-color: var(--color-beige);
-    border-left: 1px solid var(--color-dark);
+    background-color: var(--subcolor-gold3);
+    border-left: 1px solid var(--private-black);
     display: flex;
     align-items: center;
     padding-right: 10px;
@@ -50,7 +50,7 @@
     height: 40px;
     border: none;
     padding: 0 15px 0 15px;
-    background-color: var(--color-beige);
+    background-color: var(--subcolor-gold3);
     font-size: 16px;
 }
 
