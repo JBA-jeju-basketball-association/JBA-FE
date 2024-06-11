@@ -65,3 +65,6 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.fileNull {
+    padding-left: 16px;
+}

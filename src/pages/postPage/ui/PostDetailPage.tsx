@@ -34,10 +34,10 @@ export const PostDetailPage = () => {
 
   useEffect(() => {
     let fileList: string[] = [];
-    const postImage = postDetail?.postImgs?.[0]?.fileUrl
-    const postFile = postDetail?.files?.[0]?.fileUrl
-    postImage && fileList.push(postImage)
-    postFile && fileList.push(postFile)
+    const postImage = postDetail?.postImgs?.[0]?.fileUrl;
+    const postFile = postDetail?.files?.[0]?.fileUrl;
+    postImage && fileList.push(postImage);
+    postFile && fileList.push(postFile);
     console.log(fileList, "----파일리스트---");
     if (fileList) {
       for (let i = 0; i < fileList.length - 1; i++) {
@@ -107,6 +107,9 @@ export const PostDetailPage = () => {
             <a href={downloadUrl[1]} download className={styles.fileDownload}>
               {files[0].fileName || "첨부파일 다운로드 2"}
             </a>
+          )}
+          {!!downloadUrl.length || (
+            <span className={styles.fileNull}>첨부파일 없음</span>
           )}
           <div className={styles.subLine}></div>
         </div>
