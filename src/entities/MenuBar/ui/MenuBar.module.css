@@ -6,6 +6,7 @@
     align-items: center;
     width: 100%;
     min-width: 1920px;
+    z-index: 10;
 }
 .MenuBar_Inner{
     display: flex;
@@ -14,7 +15,6 @@
 }
 
 .Ul{
-    position: absolute;
     z-index: 1;
     width:100%;
     display: flex;

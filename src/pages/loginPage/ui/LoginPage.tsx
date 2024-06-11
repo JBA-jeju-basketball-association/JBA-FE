@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {LoginInput} from "../../../shared/ui";
+import {CheckBox, LoginInput} from "../../../shared/ui";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+
 import style from "./LoginPage.module.css";
 import fetchLogin from "../api/FetchLogin";
 import {useUserStore, WhiteLogo} from "../../../shared/model";
@@ -12,6 +13,7 @@ export const LoginPage = () => {
     const [emailMessage, setEmailMessage] = useState<string>("");
     const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
     const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
+    const [isChecked, setIsChecked] = useState<boolean>(false);
 
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
@@ -52,19 +54,22 @@ export const LoginPage = () => {
                             </div>
 
                             <div className={style.boxArea}>
-                                <LoginInput type={isHidePassword? "password" : "text"} setFn={setPassword} placeholder={"비밀번호"}/>
+                                <LoginInput type={isHidePassword ? "password" : "text"} setFn={setPassword}
+                                            placeholder={"비밀번호"}/>
                                 {isHidePassword ?
                                     <VscEye className={style.openEye} onClick={() => setIsHidePassword(false)}/>
                                     :
                                     <VscEyeClosed className={style.openEye} onClick={() => setIsHidePassword(true)}/>
                                 }
                             </div>
-                            <div className={style.searchBox}>
-                                <Link to="/" className={style.search}>아이디 | 비밀번호 찾기 &gt;</Link>
+                            <div className={style.checkBoxArea}>
+                                <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} content={"로그인 정보 저장"}/>
                             </div>
                             <button type="submit" className={style.submitButton}>로그인</button>
-                            <div className={style.loginBottomLine}></div>
                             <Link to="/signup" className={style.signUpLink}>회원가입</Link>
+                            <div className={style.searchBox}>
+                                <Link to="/" className={style.search}>계정 찾기 | 비밀번호 찾기</Link>
+                            </div>
                         </form>
                     </div>
                 </div>
