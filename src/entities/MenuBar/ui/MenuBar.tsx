@@ -20,18 +20,20 @@ export default function MenuBar(){
                     onMouseEnter={() => { setFocuse(true)}}
                     onMouseLeave={() => setFocuse(false)}>
                 {Object.entries(menuName).map(([category, items],i,array) => (
-                <Menu MainMenu={category} subMene={items} iscenter={iscenter(array.length,i)}></Menu>
+                <Menu MainMenu={category} subMene={items} iscenter={iscenter(array.length,i)} focuse={focuse}></Menu>
                 ))}
                 </ul>
             </div>
-            <div className={`${Style.BackGround} ${focuse? Style.On:Style.Off}`}/>
+            <div className={`${Style.BackGround} ${focuse ? Style.On : Style.Off}`}
+             onMouseEnter={() => { setFocuse(true)}}
+            onMouseLeave={() => setFocuse(false)}/>
         </div>
     )
 }
 
 
 
-function Menu({MainMenu,subMene,iscenter}:{MainMenu:string,subMene:string[],iscenter:boolean}){
+function Menu({MainMenu,subMene,iscenter,focuse}:{MainMenu:string,subMene:string[],iscenter:boolean,focuse:boolean}){
 
     const liClass = classNames(Style.Li, {
         [Style.iscenter]: iscenter,
@@ -42,7 +44,8 @@ function Menu({MainMenu,subMene,iscenter}:{MainMenu:string,subMene:string[],isce
            <li className={liClass} >
 
             <Link to={menuLink[MainMenu]}>{MainMenu}</Link> 
-            <ul className={Style.SubMenu}>
+            <ul className={`${Style.SubMenu} ${focuse ? Style.OnSubMenu : Style.OffSubMene}`}
+            >
                 {subMene.map((mene)=>{
                     return(
                     <li><Link to={menuLink[mene]}>{mene}</Link></li>)

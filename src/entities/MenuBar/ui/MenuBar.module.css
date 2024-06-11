@@ -19,7 +19,7 @@
     width:100%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--color-white);
+    background-color: #ffffff;
     position: relative;
 
 }
@@ -42,11 +42,6 @@
 
 }
 
-.Ul:hover .SubMenu{
-    opacity: 1; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
-    top: 100%;
-
-}
 
 .SubMenu{
     padding-bottom:20px;
@@ -75,7 +70,7 @@
     position: absolute;
     top:144px;
     width: 100%;
-    background-color: var(--color-lightbeige);
+    background-color: #FCF9F5;
     transition: all 0.3s ease /* top과 height에 대한 1초 동안의 트랜지션 */;
 
 }
@@ -83,6 +78,13 @@
 .On{
     height: 220px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 }
+
+.OnSubMenu{
+    opacity: 1; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
+    top: 100%;
+
+}
+
 .Off{
     height: 0px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 
