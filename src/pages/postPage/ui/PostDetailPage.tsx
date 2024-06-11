@@ -66,11 +66,12 @@ export const PostDetailPage = () => {
         </ul>
         <div className={styles.subLine}></div>
         <div className={styles.content}>{parse(content)}</div>
-        <div className={styles.addWrapper}>
+        <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
           <div>포스트 이미지: {postImgs.length ? '첨부 파일 있음' : "이미지 없음"}</div>
           <div>포스트 파일: {files.length ? '첨부파일 있음' : "파일 없음"}</div>
           <div className={styles.subLine}></div>
+          <button>목록</button>
         </div>
       </div>
     </div>
