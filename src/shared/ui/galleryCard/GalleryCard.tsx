@@ -7,7 +7,12 @@ import { useQuery } from "@tanstack/react-query";
 import { NormalApi } from "shared/api";
 import useGalleryModalStore from "../../model/stores/GalleryModalStore";
 
-export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
+export const GalleryCard = ({
+  title,
+  imgUrl,
+  galleryId,
+  createAt,
+}: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const { data: galleryDetailData } = useQuery({
@@ -51,7 +56,10 @@ export const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
           className={styles.image}
           onClick={modalClick}
         />
-        <div className={styles.title}>{title}</div>
+        <div className={styles.title}>
+          <p>{title}</p>
+          <span>{createAt}</span>
+        </div>
       </div>
       <GalleryDetailModal
         modalOpen={modalOpen}

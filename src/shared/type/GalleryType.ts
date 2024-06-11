@@ -13,6 +13,7 @@ export type GalleryCardType = {
   title?: string;
   fileName?: string;
   imgUrl?: string;
+  createAt?: string;
 };
 
 export type GalleryCardListType = {
