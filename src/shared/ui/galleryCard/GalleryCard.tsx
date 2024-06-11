@@ -33,7 +33,6 @@ export const GalleryCard = ({
 
   const getGalleryData = async () => {
     await NormalApi.get(`/v1/api/gallery/${galleryIdFromMain}`).then((res) => {
-      console.log(res?.data.data);
       galleryDetail = res?.data.data;
       setModalOpen(true);
     });
@@ -65,6 +64,8 @@ export const GalleryCard = ({
         modalOpen={modalOpen}
         setModalOpen={() => setModalOpen(false)}
         galleryDetail={galleryDetail}
+        galleryId={galleryId}
+
       />
     </>
   );

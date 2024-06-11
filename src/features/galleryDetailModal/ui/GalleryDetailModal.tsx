@@ -7,11 +7,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { RegitUpdateDeleteButton } from "shared/ui";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Api } from "shared/api";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
   setModalOpen: (isOpen: boolean) => void;
   galleryDetail: GalleryDetailProps | undefined;
+  galleryId?: number | undefined;
 };
 
 const customModalStyles: ReactModal.Styles = {
@@ -93,9 +98,11 @@ export const GalleryDetailModal = ({
   modalOpen,
   setModalOpen,
   galleryDetail,
+  galleryId,
 }: GalleryDetailModalProps) => {
   const { title, files } = galleryDetail ?? { title: "", files: [] };
   const dotsRef = useRef<HTMLUListElement>(null);
+  const queryClient = useQueryClient();
 
   const settings = {
     dots: true,
@@ -125,6 +132,25 @@ export const GalleryDetailModal = ({
     },
   };
 
+  const { mutate: deleteData } = useMutation({
+    mutationKey: ["galleryDelete"],
+    mutationFn: (galleryId: number) =>
+      Api.delete(`/v1/api/gallery/${galleryId}`),
+    onSuccess: () => {
+      setModalOpen(false);
+      queryClient.invalidateQueries({ queryKey: ["galleries"] });
+    },
+  });
+
+  const handleDeleteClick = async () => {
+    if (galleryId) {
+      const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
+      if (confirm) {
+        deleteData(galleryId);
+      }
+    }
+  };
+
   return (
     <CommonModal
       isopen={modalOpen}
@@ -133,6 +159,10 @@ export const GalleryDetailModal = ({
     >
       <div className={styles.container}>
         <h1>{title}</h1>
+        <RegitUpdateDeleteButton
+          content="삭제하기"
+          onClickHandler={handleDeleteClick}
+        />
         <CloseIcon
           width="30"
           height="30"
