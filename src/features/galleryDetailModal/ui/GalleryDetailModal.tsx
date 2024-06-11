@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { CommonModal } from "shared/ui";
 import styles from "./GalleryDetailModal.module.css";
 import { CloseIcon, RightIcon, LeftIcon } from "utils/icon";
@@ -39,25 +39,28 @@ const customModalStyles: ReactModal.Styles = {
 
 const SlideContainer = styled.div`
   width: 100%;
-  overflow: hidden;
 
   .slick-slide {
     height: 680px;
   }
 
-  .dots_custom {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
+  .slick-dots {
     display: flex;
     justify-content: center;
+  }
+
+  .dots_custom {
+    display: flex;
     gap: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .dots_custom li {
     cursor: pointer;
     width: 190px;
     height: 140px;
+    flex: 0 0 190px;
   }
 
   .dots_custom li img {
@@ -68,21 +71,22 @@ const SlideContainer = styled.div`
   .dots_custom li.slick-active {
     border: 4px solid var(--primary-color);
   }
-  
+
   .slick-next {
     width: 40px;
     height: 40px;
     position: absolute;
     right: 0;
-    top:40%
+    top: 40%;
   }
-    .slick-prev {
+
+  .slick-prev {
     width: 40px;
     height: 40px;
-     position: absolute;
+    position: absolute;
     left: 0;
-    top:40%
-    },
+    top: 40%;
+  }
 `;
 
 export const GalleryDetailModal = ({
@@ -91,6 +95,7 @@ export const GalleryDetailModal = ({
   galleryDetail,
 }: GalleryDetailModalProps) => {
   const { title, files } = galleryDetail ?? { title: "", files: [] };
+  const dotsRef = useRef<HTMLUListElement>(null);
 
   const settings = {
     dots: true,
@@ -108,9 +113,16 @@ export const GalleryDetailModal = ({
       />
     ),
     appendDots: (dots: React.ReactNode) => (
-      <ul className={styles.dotsCustom}>{dots}</ul>
+      <div>
+        <ul ref={dotsRef} className="dots_custom">
+          {dots}
+        </ul>
+      </div>
     ),
-    dotsClass: `dots_custom`,
+    afterChange: (current: number) => {
+      const activeDot = dotsRef.current?.children[current] as HTMLElement;
+      activeDot?.scrollIntoView({ behavior: "smooth", inline: "center" });
+    },
   };
 
   return (
@@ -130,11 +142,10 @@ export const GalleryDetailModal = ({
         <SlideContainer>
           <Slider {...settings}>
             {files.map((file, index) => (
-              <div className={styles.detailImageImgWrapper}>
+              <div className={styles.detailImageImgWrapper} key={index}>
                 <img
                   className={styles.detailImage}
                   src={file.fileUrl}
-                  key={index}
                   alt="갤러리 이미지"
                 />
               </div>
