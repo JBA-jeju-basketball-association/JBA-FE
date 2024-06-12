@@ -12,7 +12,7 @@ export const Header = () => {
             <div className={style.Header}>
                 {/*임시 홈버튼*/}
                 <div>
-                    <button onClick={()=>navigate("/main")} className={style.home}>홈으로</button>
+                    <button onClick={()=>navigate("/")} className={style.home}>홈으로</button>
                 </div>
                 <div>
                     <LoginButton/>
