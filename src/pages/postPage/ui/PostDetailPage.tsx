@@ -112,7 +112,15 @@ export const PostDetailPage = () => {
           <div className={styles.subLine}></div>
         </div>
       </div>
-      <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
+      <div className={styles.buttonWrapper}>
+        <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
+        <Button
+          className={styles.buttonEdit}
+          onClick={() => navigate(`/post/${category}/${postId}/update`)}
+        >
+          수정하기
+        </Button>
+      </div>
     </div>
   );
 };

@@ -75,3 +75,25 @@
 .fileNull {
   padding-left: 16px;
 }
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.buttonEdit {
+  background-color: var(--subcolor-black3);
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonEdit:hover {
+  background-color: var(--subcolor-black4);
+}
