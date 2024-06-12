@@ -20,11 +20,13 @@ export const PostListPage = () => {
       ? "공지사항"
       : category === "news"
         ? "NEWS"
-        : category === "news"
-          ? "자료실"
-          : "";
+        : "자료실";
 
-  const { isLoading, isError, data: postList } = useQuery<PostListData>({
+  const {
+    isLoading,
+    isError,
+    data: postList,
+  } = useQuery<PostListData>({
     queryKey: ["postList", page],
     queryFn: () =>
       NormalApi.get(`/v1/api/post/${category}?page=${page - 1}&size=10`),

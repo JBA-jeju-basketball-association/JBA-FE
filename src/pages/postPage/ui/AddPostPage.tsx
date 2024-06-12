@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
+import { CkEditor } from "features/ckEditor";
+import ForewordOptions from "../../../shared/model/forewordOptions";
+import { AddCompetitionLabel } from "../../../shared/ui";
+import { AddFiles } from "features/competition";
+import Select, { MultiValue } from "react-select";
+import makeAnimated from "react-select/animated";
+import { value } from "shared/type/CompetitionType";
 import styles from "./AddPostPage.module.css";
 
-export const AddPostPage = () => {
-  let { category } = useParams();
-  const navigate = useNavigate();
+interface PostImgsType {
+  fileName: string;
+  imgUrl: string;
+}
 
-  const typeItems = ["등록자", "등록일", "조회수"];
+interface PostFilesType {
+  fileName: string;
+  fileUrl: string;
+}
+
+interface requestPostData {
+  title: string;
+  content: string;
+  foreword: string;
+  postImgs: PostImgsType[];
+}
+
+export const AddPostPage = () => {
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [foreword, setForeword] = useState<string>("");
+  const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
+  const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
+  const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+
+  const navigate = useNavigate();
+  let { category } = useParams();
   category = category as string;
   const detailTitle =
     category === "notice"
@@ -16,6 +45,40 @@ export const AddPostPage = () => {
         ? "NEWS"
         : "자료실";
 
+  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const requestData: requestPostData = {
+      title: title,
+      content: content,
+      foreword: foreword[0],
+      postImgs: postImgs,
+    };
+
+    // for (let i: number = 0; i < newCkImgUrls.length; i++) {
+    //   if (content.includes(newCkImgUrls[i])) {
+    //     requestData.postImgs.push(newCkImgUrls[i]);
+    //   }
+    // }
+
+    // confirmAndCancelAlertWithLoading(
+    //   "question",
+    //   "대회를 등록하시겠습니까?",
+    //   "",
+    //   async () => {
+    //     await FetchAddCompetition(requestData, files);
+    //   }
+    // );
+  };
+
+  const forewordHandler = (values: MultiValue<any>): void => {
+    setForeword("");
+    values.map((item: value): void => {
+      setForeword(item.value);
+    });
+  };
+
+  console.log(content, "----content---");
+  console.log(foreword, "----foreword----");
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -24,24 +87,60 @@ export const AddPostPage = () => {
         </div>
         <div className={styles.divideLine}></div>
         <div className={styles.subLine}></div>
-        <div className={styles.content}>에디터 자리</div>
-        <div className={styles.filesWrapper}>
-          <div className={styles.subLine}></div>
-          <span className={styles.fileNull}>파일 업로드 자리</span>
-          <div className={styles.subLine}></div>
-        </div>
-      </div>
-      <div className={styles.buttonWrapper}>
-        <Button onClick={() => alert("작성이 완료되었습니다!")}>
-          작성 완료
-        </Button>
-        <Button
-          className={styles.buttonCancel}
-          // onClick={() => navigate(`/post/${category}`)}
-          onClick={() => alert("작성이 취소되었습니다.")}
+        <form
+          className={styles.formContainer}
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+            formSubmitHandler(e)
+          }
         >
-          취소
-        </Button>
+          <div className={styles.formWrapper}>
+            <div className={styles.formContent}>
+              <input
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setTitle(e.target.value)
+                }
+                type={"text"}
+                className={styles.titleInput}
+                placeholder="제목을 입력해주세요"
+              />
+              <Select
+                components={makeAnimated()}
+                options={ForewordOptions}
+                isMulti={true}
+                closeMenuOnSelect
+                placeholder="머리말"
+                className={styles.select}
+                onChange={(values: MultiValue<any>) => forewordHandler(values)}
+              />
+              {/* <div className={styles.inputArea2}>
+            <AddCompetitionLabel label={"첨부파일"} height={"double"} />
+            <AddFiles files={postFiles} setFiles={setPostFiles} />
+          </div> */}
+              <CkEditor
+                ckData={content}
+                setCkData={setContent}
+                setNewCkImgUrls={setNewCkImgUrls}
+              />
+            </div>
+            <div className={styles.filesWrapper}>
+              <div className={styles.subLine}></div>
+              <span className={styles.fileNull}>파일 업로드 자리</span>
+              <div className={styles.subLine}></div>
+            </div>
+            <div className={styles.buttonWrapper}>
+              <Button onClick={() => alert("작성이 완료되었습니다!")}>
+                작성 완료
+              </Button>
+              <Button
+                className={styles.buttonCancel}
+                // onClick={() => navigate(`/post/${category}`)}
+                onClick={() => alert("작성이 취소되었습니다.")}
+              >
+                취소
+              </Button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

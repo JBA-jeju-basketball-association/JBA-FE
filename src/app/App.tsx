@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./App.module.css";
+import style from "./App.css";
 import { Routes, Route } from "react-router-dom";
 import {
   AddCompetitionPage,

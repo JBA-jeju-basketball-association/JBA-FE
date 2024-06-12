@@ -3,3 +3,7 @@
     min-height: 80vh;
     width: 100%;
 }
+
+.ck-editor__editable {
+    min-height: 30rem;
+  }
