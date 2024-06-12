@@ -24,7 +24,7 @@ export const LoginPage = () => {
 
     useEffect(() => {
         if (AccessToken) {
-            window.location.href = "/main"
+            window.location.href = "/"
         }
     }, []);
 

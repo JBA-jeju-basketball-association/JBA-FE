@@ -21,7 +21,7 @@ export default function fetchLogin (email:string, password:string,
             }
             setAccessToken(res.headers["access-token"]);
             setRefreshToken(res.headers["refresh-token"]);
-            window.location.href = "/main";
+            window.location.href = "/";
         }
     }).catch(err => {
         const data = err.response.data;
