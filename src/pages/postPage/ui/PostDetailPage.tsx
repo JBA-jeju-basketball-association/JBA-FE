@@ -80,7 +80,7 @@ export const PostDetailPage = () => {
         </div>
         <div className={styles.divideLine}></div>
         <ul className={styles.titleArea}>
-          <li className={styles.title}>{title}</li>
+          <li className={styles.title}><span className={styles.titleContent}>{`[${foreword}] `+ title}</span></li>
           <li className={styles.list}></li>
           {typeItems.map((item, index) => (
             <li key={index} className={styles.list}>

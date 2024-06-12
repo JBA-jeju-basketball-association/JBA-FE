@@ -36,7 +36,6 @@ export const PostListPage = () => {
   const posts: Post[] = postList?.posts ?? [];
   const totalPages: number = postList?.totalPages ?? 0;
 
-  // 검색 결과 페이지로 이동하는 함수 호출
   const findTargetPage = () => {
     NormalApi.get(`/v1/api/post/${category}`, {
       params: {
@@ -59,16 +58,13 @@ export const PostListPage = () => {
     if (!postList) return;
     const filterPosts = () => {
       return posts.filter((post) =>
-        //galleries 데이터를 필터해서
         searchCategory === "제목" || searchCategory === "전체"
-          ? //제목이나 전체로 검색했을 때 true면 타이틀을 포함하는 갤러리만 반환
+          ? 
             post.title?.includes(searchKeyword) ?? false
           : true
       );
     };
     setFilteredPosts(filterPosts());
-
-    //검색어가 바뀌면 필터링된 갤러리를 다시 세팅
   }, [postList, searchCategory, searchKeyword]);
 
   if (isLoading) {

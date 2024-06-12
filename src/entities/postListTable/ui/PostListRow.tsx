@@ -17,7 +17,7 @@ const PostListRow = ({ postItem }: { postItem: Post }) => {
       {isAnnouncement ? (
         <ul className={styles.postList}>
           <li className={styles.postItem}>공지</li>
-          <li className={styles.postItem}>[{foreword}] {title}</li>
+          <li className={styles.postItem}>{!!foreword ? `[${foreword}]` : ''} {title}</li>
           <li className={styles.postWriter}>{writer}</li>
           <li className={styles.postItem}>{createAt}</li>
           <li className={styles.postItem}>{viewCount}</li>
