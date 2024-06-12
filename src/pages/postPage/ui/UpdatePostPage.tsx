@@ -6,10 +6,8 @@ import ForewordOptions from "../../../shared/model/forewordOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useMutation } from "@tanstack/react-query";
-import AddPostRequest, {
-  PostImgsType,
-  requestPostData,
-} from "../api/AddPostRequest";
+import { PostImgsType, requestPostData } from "../api/AddPostRequest";
+import EditPostRequest from "../api/EditPostRequest";
 import styles from "./UpdatePostPage.module.css";
 
 interface PostFilesType {
@@ -39,8 +37,7 @@ export const UpdatePostPage = () => {
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
 
   const navigate = useNavigate();
-  let { category } = useParams();
-  category = category as string;
+  let { category, postId } = useParams();
   const detailTitle =
     category === "notice"
       ? "공지사항"
@@ -49,15 +46,19 @@ export const UpdatePostPage = () => {
         : "자료실";
 
   const mutation = useMutation({
-    mutationFn: AddPostRequest,
+    mutationFn: EditPostRequest,
     onSuccess: () => {
-      alert("작성이 완료되었습니다.");
-      navigate(`/post/${category}`)
+      alert("수정이 완료되었습니다.");
+      navigate(`/post/${category}`);
     },
     onError: (e) => console.log(e),
   });
 
-  const addPost = (params: { category?: string; data: requestPostData }) => {
+  const editPost = (params: {
+    category?: string;
+    data: requestPostData;
+    postId?: string;
+  }) => {
     mutation.mutate(params);
   };
 
@@ -70,9 +71,10 @@ export const UpdatePostPage = () => {
       postImgs: postImgs,
     };
 
-    addPost({
+    editPost({
       category,
       data: requestData,
+      postId,
     });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
@@ -145,7 +147,7 @@ export const UpdatePostPage = () => {
             </div>
             <div className={styles.buttonContainer}>
               <div className={styles.buttonWrapper}>
-                <Button type="submit">작성 완료</Button>
+                <Button type="submit">수정하기</Button>
                 <Button
                   className={styles.buttonCancel}
                   type="button"

@@ -40,7 +40,6 @@ export const AddPostPage = () => {
 
   const navigate = useNavigate();
   let { category } = useParams();
-  category = category as string;
   const detailTitle =
     category === "notice"
       ? "공지사항"
