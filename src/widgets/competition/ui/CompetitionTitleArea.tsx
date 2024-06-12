@@ -12,14 +12,11 @@ export const CompetitionTitleArea = () => {
             <div className={style.listTitleLabel100}>
                 <label>종별</label>
             </div>
-            <div className={style.listTitleLabel480}>
+            <div className={style.listTitleLabel740}>
                 <label>대회명</label>
             </div>
             <div className={style.listTitleLabel280}>
-                <label>대회기간</label>
-            </div>
-            <div className={style.listTitleLabel140}>
-                <label>보기</label>
+                <label>기간</label>
             </div>
         </div>
     );

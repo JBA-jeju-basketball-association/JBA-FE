@@ -6,14 +6,15 @@ type Props = {
     name:string;
     id:string;
     setPage: React.Dispatch<React.SetStateAction<number>>;
+    end?:string;
 }
 
-export const CompetitionStatusFilter = ({statusFocused, setStatusFocused, name, id, setPage}:Props) => {
+export const CompetitionStatusFilter = ({statusFocused, setStatusFocused, name, id, setPage, end}:Props) => {
     return (
         <button
+            style={end ? {borderRight: "none"} : {}}
             className={statusFocused === id? style.statusButtonFocused : style.statusButton}
             onClick={() => {
-                window.scroll(0,80)
                 setStatusFocused(id)
                 setPage(1)
             }}

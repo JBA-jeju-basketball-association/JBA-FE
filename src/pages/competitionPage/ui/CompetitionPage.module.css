@@ -2,28 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 1920px;
 }
 
-.container {
-    width: 1200px;
+.containerBox {
+    width: 1320px;
+}
+
+.yearFilter {
+    width: 200px;
+    height: 48px;
 }
 
 .statusArea {
-    width: 1200px;
-    height: 50px;
+    width: 1316px;
+    height: 46px;
     display: flex;
-}
-.yearFilter {
-    width: 200px;
-    height: 50px;
+    margin-bottom: 10px;
+    border: 2px solid var(--primary-color);
 }
 
 .selectAndRegisterArea {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    width: 100%;
 }
 
 .selectAndRegisterArea button {
