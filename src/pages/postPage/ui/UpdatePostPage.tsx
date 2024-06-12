@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
-import { useMutation } from "@tanstack/react-query";
-import { PostImgsType, requestPostData } from "../api/AddPostRequest";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { NormalApi } from "../../../shared/api/NormalApi";
+import { requestPostData } from "../api/AddPostRequest";
 import EditPostRequest from "../api/EditPostRequest";
+import parse from "html-react-parser";
 import styles from "./UpdatePostPage.module.css";
+import { PostDetailType, PostImgsType } from "shared/type/PostType";
 
 interface PostFilesType {
   fileName: string;
@@ -35,6 +38,7 @@ export const UpdatePostPage = () => {
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
   const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+  const [postData, setPostData] = useState(null);
 
   const navigate = useNavigate();
   let { category, postId } = useParams();
@@ -44,6 +48,18 @@ export const UpdatePostPage = () => {
       : category === "news"
         ? "NEWS"
         : "자료실";
+
+  const {
+    isLoading,
+    isError,
+    data: postDetail,
+    error,
+  } = useQuery<PostDetailType>({
+    queryKey: ["postDeatil", category, postId],
+    queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
+    enabled: !!postId, // postId가 존재할 때에만 호출
+    select: (result: any) => result.data.data,
+  });
 
   const mutation = useMutation({
     mutationFn: EditPostRequest,
@@ -97,6 +113,20 @@ export const UpdatePostPage = () => {
     setForeword(selectedOption.label);
   };
 
+  useEffect(() => {
+    if (postDetail) {
+      setTitle(postDetail.title);
+      setContent(postDetail.content);
+      setForeword(postDetail.foreword);
+      setPostImgs(postDetail.postImgs);
+    }
+  }, [postDetail]);
+
+  console.log(postDetail);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error.message}</div>;
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -120,8 +150,10 @@ export const UpdatePostPage = () => {
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
+                  value={{ label: `${foreword}`, value:  'initailValue'}}
                 />
                 <input
+                  value={title}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setTitle(e.target.value)
                   }

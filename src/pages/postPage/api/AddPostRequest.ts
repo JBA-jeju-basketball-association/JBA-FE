@@ -1,9 +1,5 @@
 import { NormalApi } from "../../../shared/api/NormalApi";
-
-export interface PostImgsType {
-  fileName: string;
-  imgUrl: string;
-}
+import { PostImgsType } from "shared/type/PostType";
 
 export interface requestPostData {
   title: string;

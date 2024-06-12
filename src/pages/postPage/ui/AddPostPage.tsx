@@ -6,10 +6,8 @@ import ForewordOptions from "../../../shared/model/forewordOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useMutation } from "@tanstack/react-query";
-import AddPostRequest, {
-  PostImgsType,
-  requestPostData,
-} from "../api/AddPostRequest";
+import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
+import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
 
 interface PostFilesType {
@@ -51,7 +49,7 @@ export const AddPostPage = () => {
     mutationFn: AddPostRequest,
     onSuccess: () => {
       alert("작성이 완료되었습니다.");
-      navigate(`/post/${category}`)
+      navigate(`/post/${category}`);
     },
     onError: (e) => console.log(e),
   });
