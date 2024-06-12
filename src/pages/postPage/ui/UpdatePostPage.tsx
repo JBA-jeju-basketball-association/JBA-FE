@@ -183,8 +183,10 @@ export const UpdatePostPage = () => {
                 <Button
                   className={styles.buttonCancel}
                   type="button"
-                  // onClick={() => navigate(`/post/${category}`)}
-                  onClick={() => alert("작성이 취소되었습니다.")}
+                  onClick={() => {
+                    alert("작성이 취소되었습니다.")
+                    navigate(`/post/${category}`)
+                  }}
                 >
                   취소
                 </Button>
