@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import parse from "html-react-parser";
+import { useUserStore } from "../../../shared/model";
+import { JwtDecoder } from "../../../shared/lib";
 import styles from "./PostDetailPage.module.css";
+import { DeletePost } from "../api/DeletePost";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
   const navigate = useNavigate();
+  const { AccessToken } = useUserStore();
   const [downloadUrl, setDownloadUrl] = useState<string[]>([]);
 
   const typeItems = ["등록자", "등록일", "조회수"];
@@ -18,9 +22,7 @@ export const PostDetailPage = () => {
       ? "공지사항"
       : category === "news"
         ? "NEWS"
-        : category === "news"
-          ? "자료실"
-          : "";
+        : "자료실";
 
   const {
     isError,
@@ -31,6 +33,21 @@ export const PostDetailPage = () => {
     queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
     select: (result: any) => result.data.data,
   });
+
+  const mutation = useMutation({
+    mutationFn: DeletePost,
+    onSuccess: () => {
+      alert("게시글이 삭제되었습니다.");
+      navigate(`/post/${category}`);
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
+
+  const deletePost = () => {
+    mutation.mutate({ postId });
+  };
 
   useEffect(() => {
     let fileList: string[] = [];
@@ -70,10 +87,6 @@ export const PostDetailPage = () => {
     files,
   } = postDetail;
 
-  console.log(files[0], "----파일----");
-  console.log(postImgs[0], "----이미지----");
-  console.log(downloadUrl, "----다운로드 리스트 ----");
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -82,7 +95,11 @@ export const PostDetailPage = () => {
         </div>
         <div className={styles.divideLine}></div>
         <ul className={styles.titleArea}>
-          <li className={styles.title}>{title}</li>
+          <li className={styles.title}>
+            <span className={styles.titleContent}>
+              {!!foreword ? `[${foreword}] ` + title : title}
+            </span>
+          </li>
           <li className={styles.list}></li>
           {typeItems.map((item, index) => (
             <li key={index} className={styles.list}>
@@ -114,7 +131,26 @@ export const PostDetailPage = () => {
           <div className={styles.subLine}></div>
         </div>
       </div>
-      <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
+      <div className={styles.buttonWrapper}>
+        <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
+
+        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+          <div className={styles.buttonWrapper}>
+            <Button
+              className={styles.buttonEdit}
+              onClick={() => navigate(`/post/${category}/${postId}/update`)}
+            >
+              수정하기
+            </Button>
+            <Button
+              className={styles.buttonDelete}
+              onClick={() => deletePost()}
+            >
+              삭제하기
+            </Button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

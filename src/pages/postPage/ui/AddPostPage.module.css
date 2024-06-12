@@ -6,6 +6,7 @@
   justify-content: center;
   margin-bottom: 72px;
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -15,74 +16,106 @@
   margin-top: 50px;
   margin-bottom: 20px;
 }
+
 .categoryArea {
   margin: 0 auto;
   margin-bottom: 30px;
 }
+
 .category {
   font-size: 26px;
   font-weight: 600;
 }
+
 .divideLine {
   background-color: var(--primary-color);
   width: 100%;
   height: 0.2px;
 }
+
 .subLine {
   background-color: var(--subcolor-black4);
   width: 100%;
   height: 0.2px;
 }
-.titleArea {
-  display: grid;
-  grid-template-columns: 7fr 0.5fr 0.5fr 0.5fr;
-  text-wrap: nowrap;
-  gap: 30px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-.title {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.titleContent {
-  max-width: 600px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+
 .list {
   margin: 0 auto;
 }
-.content {
-  height: 700px;
-  padding-top: 40px;
+
+.formContainer {
+  padding-top: 28px;
   padding-bottom: 40px;
-  padding-right: 10%;
-  padding-left: 10%;
 }
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.formContent {
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-bottom: 30px;
+}
+
+.inputArea {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    min-height: 50px;
+    margin-bottom: 19px;
+}
+
+.select {
+    min-width: 15%;
+}
+
+.titleInput {
+  height: 48px;
+  padding-left: 20px;
+  background-color: #EFEFEF;
+  width: 85%;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.titleInput::placeholder {
+  color: #8E8E8E;
+  font-size: 16px;
+}
+
 .filesWrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .fileDownload {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .fileNull {
   padding-left: 16px;
 }
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+
+.buttonContainer {
+  margin: 0 auto;
 }
 
-.buttonEdit {
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.buttonCancel {
   background-color: var(--subcolor-black3);
   padding-left: 15px;
   padding-right: 15px;
@@ -93,21 +126,6 @@
   cursor: pointer;
 }
 
-.buttonEdit:hover {
-  background-color: var(--subcolor-black4);
-}
-
-.buttonDelete {
-  background-color: var(--primary-red);
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 48px;
-  border-radius: 8px;
-  font-size: 18px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.buttonDelete:hover {
+.buttonCancel:hover {
   background-color: var(--subcolor-black4);
 }

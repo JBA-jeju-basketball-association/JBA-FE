@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./App.module.css";
+import style from "./App.css";
 import { Routes, Route } from "react-router-dom";
 import {
   AddCompetitionPage,
@@ -69,8 +69,8 @@ function App() {
               path="/competition/update-result/:id"
               element={<UpdateCompetitionResultPage />}
             />
-            <Route path={"/post/add"} element={<AddPostPage />} />
-            <Route path={"/post/update/:id"} element={<UpdatePostPage />} />
+            <Route path={"/post/:category/add"} element={<AddPostPage />} />
+            <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -88,6 +88,5 @@ function App() {
     </div>
   );
 }
-//appRouter
 
 export default App;
