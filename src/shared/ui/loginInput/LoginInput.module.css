@@ -1,16 +1,12 @@
-.LoginInput {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 400px;
-    height: 48px;
-    border: 1px solid var(--subcolor-lightgray);
-    border-radius: 0 10px 10px 0;
-}
-
-.LoginInput input {
-    width: 340px;
-    padding: 0 10px 0 10px;
+.input {
+    width: 390px;
+    padding-left: 20px;
     font-size: 16px;
     border: none;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+}
+
+.input::placeholder {
+    color: #B5B5B5
 }

@@ -21,7 +21,7 @@ export const PrivateRoute  = () => {
             .then(res => window.location.href = "/login")
     }
 
-    return <Navigate replace to="/main"/>;
+    return <Navigate replace to="/"/>;
 
 
 };

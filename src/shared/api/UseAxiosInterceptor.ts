@@ -65,7 +65,7 @@ const useAxiosInterceptor = ():void => {
         if(error.response.data.detailMessage === "접근 권한 없음") {
             try {
                 const res = await confirmAlert("warning", "접근 권한이 없습니다.");
-                if (res.isConfirmed) window.location.href = "/main"
+                if (res.isConfirmed) window.location.href = "/"
             }catch (confirmErr) {
                 console.error("Error during confirmAlert:", confirmErr);
             }
