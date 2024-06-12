@@ -6,6 +6,7 @@
     align-items: center;
     width: 100%;
     min-width: 1920px;
+    z-index: 10;
 }
 .MenuBar_Inner{
     display: flex;
@@ -14,12 +15,11 @@
 }
 
 .Ul{
-    position: absolute;
     z-index: 1;
     width:100%;
     display: flex;
     justify-content: space-between;
-    background-color: white;
+    background-color: #ffffff;
     position: relative;
 
 }
@@ -42,11 +42,6 @@
 
 }
 
-.Ul:hover .SubMenu{
-    opacity: 1; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
-    top: 100%;
-
-}
 
 .SubMenu{
     padding-bottom:20px;
@@ -83,6 +78,13 @@
 .On{
     height: 220px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 }
+
+.OnSubMenu{
+    opacity: 1; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
+    top: 100%;
+
+}
+
 .Off{
     height: 0px; /* 호버 시 투명도를 1로 변경하여 천천히 나타나도록 함 */
 

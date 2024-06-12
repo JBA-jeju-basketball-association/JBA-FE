@@ -1,73 +1,170 @@
+/* 전체 화면 배경 설정 */
 .LoginPage {
+    min-width: 1920px;
+    min-height: 1080px;
+    background-image: url("/public/loginPage/loginPagebackgroundImg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* 배경 이미지 고정 */
+    position: relative;
+}
+
+/* 전체 화면 위에 반투명 오버레이 */
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(244, 240, 231, 0.94);
+    display: flex;
+    justify-content: center;
+}
+
+/* 작은 div 내부의 배경 설정 */
+.centerBox {
+    width: 1320px;
+    height: 830px;
+    margin-top: 144px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: rgba(0,0,0,0.25) 4px 4px 4px;
+}
+
+.logoArea{
+    width: 475px;
+    height: 100%;
+    position: relative;
+    background-image: url("/public/loginPage/loginPagebackgroundImg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* 배경 이미지 고정 */
+}
+
+/* 작은 div의 내용 */
+.logoAreaOverlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(181, 70, 7, 0.85); /* 내용 부분의 배경 투명도 조절 */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+}
+
+.hiContent {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    color: white;
+}
+
+.welcomeContent {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 5px 0 ;
+    color: white;
+}
+
+.logoBar {
+    width: 20px;
+    height: 0;
+    border: 2px solid white;
+}
+
+
+.loginArea {
+    width: 845px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
 .formBox {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
-    height: 100%;
+    width: 460px;
 }
 
 .boxArea {
     display: flex;
-    width: 100%;
-}
-
-.labelArea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 48px;
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 10px 0 0 10px;
-}
-
-.labelArea label {
-    font-size: 20px;
-}
-
-.inputArea {
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 100%;
     height: 48px;
-    border: 1px solid var(--subcolor-lightgray);
-    border-radius: 0 10px 10px 0;
-}
-
-.inputArea input {
-    width: 340px;
-    padding: 0 10px 0 10px;
-    font-size: 16px;
-    border: none;
-}
-
-.submitButton {
-    width: 500px;
-    height: 48px;
-    border: 1px solid var(--primary-color);
-    background-color: var(--primary-color);
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
+    background-color: #EFEFEF;
+    border-radius: 5px;
 }
 
 .messageBox {
     width: 100%;
+    height: 30px;
+    position: relative;
 }
 
 .message {
-    margin: 3px 0 1rem 110px;
+    position: absolute;
+    top: 3px;
+    left: 20px;
     font-size: 12px;
     color: red;
+}
+
+.openEye {
+    margin-right: 20px;
+    color: #B5B5B5;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.openEye:hover {
+    color: var(--private-black);
+}
+
+.checkBoxArea {
+    width: 100%;
+    margin: 30px 0 14px 10px;
+}
+
+.submitButton {
+    width: 100%;
+    height: 48px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.signUpLink {
+    margin-top: 10px;
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    color: var(--subcolor-black3);
+    text-decoration: none;
 }
 
 .searchBox {
@@ -79,26 +176,9 @@
 .search {
     margin: 1rem 0 1rem 0;
     cursor: pointer;
-    color: var(--link-color);
+    color: #8E8E8E;
 }
 
-.loginBottomLine {
-    height: 0;
-    width: 100%;
-    border: 1px solid var(--subcolor-lightgray);
-    margin: 1rem 0 1rem 0;
-}
-
-.signUpLink {
-    width: 500px;
-    height: 48px;
-    border: 1px solid var(--private-black);
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 48px;
-    cursor: pointer;
-    color: var(--subcolor-black3);
-    text-decoration: none;
+.search:hover {
+    color: var(--private-black);
 }
