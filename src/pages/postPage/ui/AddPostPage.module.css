@@ -44,7 +44,7 @@
 }
 
 .formContainer {
-  padding-top: 40px;
+  padding-top: 28px;
   padding-bottom: 40px;
 }
 
@@ -58,21 +58,37 @@
 .formContent {
   padding-right: 5%;
   padding-left: 5%;
+  margin-bottom: 30px;
 }
 
 .inputArea {
     display: flex;
+    gap: 20px;
     align-items: center;
     width: 100%;
     height: 100%;
-    border-bottom: 2px solid var(--subcolor-lightgray);
     padding: 0;
     min-height: 50px;
+    margin-bottom: 19px;
 }
 
 .select {
-    min-width: 200px;
-    margin-left: 20px;
+    min-width: 15%;
+    height: 48px;
+}
+
+.titleInput {
+  height: 48px;
+  padding-left: 20px;
+  background-color: #EFEFEF;
+  width: 85%;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.titleInput::placeholder {
+  color: #8E8E8E;
+  font-size: 16px;
 }
 
 .filesWrapper {
@@ -90,9 +106,14 @@
   padding-left: 16px;
 }
 
+.buttonContainer {
+  margin: 0 auto;
+}
+
 .buttonWrapper {
   display: flex;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .buttonCancel {

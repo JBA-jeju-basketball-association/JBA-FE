@@ -54,7 +54,7 @@ export const AddPostPage = () => {
       postImgs: postImgs,
     };
 
-    console.log(requestData)
+    console.log(requestData);
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -76,6 +76,17 @@ export const AddPostPage = () => {
     setForeword(selectedOption.label);
   };
 
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      height: 48,
+      borderRadius: 8,
+    }),
+    option: (provided: any, state: { isSelected: any }) => ({
+      ...provided,
+    }),
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -92,22 +103,21 @@ export const AddPostPage = () => {
         >
           <div className={styles.formWrapper}>
             <div className={styles.formContent}>
-              <input
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setTitle(e.target.value)
-                }
-                type={"text"}
-                className={styles.titleInput}
-                placeholder="제목을 입력해주세요"
-              />
               <div className={styles.inputArea}>
                 <Select
+                  styles={customStyles}
                   options={ForewordOptions}
                   placeholder="머리말"
                   className={styles.select}
-                  onChange={(e: SingleValue<any>) =>
-                    forewordHandler(e)
+                  onChange={(e: SingleValue<any>) => forewordHandler(e)}
+                />
+                <input
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setTitle(e.target.value)
                   }
+                  type={"text"}
+                  className={styles.titleInput}
+                  placeholder="제목을 입력해주세요"
                 />
               </div>
               {/* <div className={styles.inputArea2}>
@@ -125,17 +135,19 @@ export const AddPostPage = () => {
               <span className={styles.fileNull}>파일 업로드 자리</span>
               <div className={styles.subLine}></div>
             </div>
-            <div className={styles.buttonWrapper}>
-              <Button onClick={() => alert("작성이 완료되었습니다!")}>
-                작성 완료
-              </Button>
-              <Button
-                className={styles.buttonCancel}
-                // onClick={() => navigate(`/post/${category}`)}
-                onClick={() => alert("작성이 취소되었습니다.")}
-              >
-                취소
-              </Button>
+            <div className={styles.buttonContainer}>
+              <div className={styles.buttonWrapper}>
+                <Button onClick={() => alert("작성이 완료되었습니다!")}>
+                  작성 완료
+                </Button>
+                <Button
+                  className={styles.buttonCancel}
+                  // onClick={() => navigate(`/post/${category}`)}
+                  onClick={() => alert("작성이 취소되었습니다.")}
+                >
+                  취소
+                </Button>
+              </div>
             </div>
           </div>
         </form>
