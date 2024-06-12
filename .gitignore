@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .idea
+.idea/*
 JBA-FE.iml
 
 # testing
@@ -14,6 +15,8 @@ JBA-FE.iml
 /build
 
 # misc
+workspace.xml
+*.iml
 .DS_Store
 .env
 .env.local
