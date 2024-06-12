@@ -3,11 +3,11 @@ import styles from "./GalleryUpload.module.css";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Api } from "shared/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { UploadType, FileType } from "shared/type/GalleryType";
-import { GalleryImageInput } from "entities/galleryImageInput";
-
+import { GalleryImageInput } from "entities/gallery";
+import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 export const GalleryUpload = () => {
   const [titleValue, setTitleValue] = useState("");
   const [uploadFiles, setUploadFiles] = useState<FileType[]>([]);
@@ -57,30 +57,43 @@ export const GalleryUpload = () => {
     uploadData(data);
   };
 
+  const returnToGallery = () => {
+    navigate("/gallery");
+  };
+
   return (
     <form className={styles.container}>
-      <div className={styles.wrapper}>
-        <p className={styles.title}>갤러리제목</p>
-        <input
-          type="text"
-          className={styles.titleInput}
-          value={titleValue}
-          onChange={handleUploadTitle}
-        />
-        <p className={styles.upload}>첨부파일</p>
-        <GalleryImageInput
-          onUploadSuccess={handleImageUpload}
-          uploadFiles={uploadFiles}
-          setUploadFiles={setUploadFiles}
+      <div className={styles.listBtn}>
+        <RegitUpdateDeleteButton
+          content="목록"
+          onClickHandler={returnToGallery}
         />
       </div>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={handleDataUpload}
-      >
-        등록하기
-      </button>
+      <div className={styles.uploadWrapper}>
+        <div className={styles.contentWrapper}>
+          <input
+            type="text"
+            placeholder="제목을 입력해주세요"
+            className={styles.titleInput}
+            value={titleValue}
+            onChange={handleUploadTitle}
+          />
+          <GalleryImageInput
+            onUploadSuccess={handleImageUpload}
+            uploadFiles={uploadFiles}
+            setUploadFiles={setUploadFiles}
+          />
+        </div>
+      </div>
+      <div className={styles.uploadBtnWrapper}>
+        <button
+          className={styles.uploadBtn}
+          type="button"
+          onClick={handleDataUpload}
+        >
+          등록하기
+        </button>
+      </div>
     </form>
   );
 };

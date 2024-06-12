@@ -11,6 +11,9 @@ import { RegitUpdateDeleteButton } from "shared/ui";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
+import { useNavigate } from "react-router-dom";
+import { JwtDecoder } from "shared/lib";
+import { useUserStore } from "shared/model";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
@@ -103,7 +106,9 @@ export const GalleryDetailModal = ({
   const { title, files } = galleryDetail ?? { title: "", files: [] };
   const dotsRef = useRef<HTMLUListElement>(null);
   const queryClient = useQueryClient();
-
+  const navigate = useNavigate();
+  const { AccessToken } = useUserStore();
+  
   const settings = {
     dots: true,
     infinite: false,
@@ -150,6 +155,12 @@ export const GalleryDetailModal = ({
       }
     }
   };
+  const handleNavigateToEditPage = () => {
+    navigate(`/gallery/galleryedit?galleryId=${galleryId}`);
+  };
+
+  //모달은 페이지가 아니어서 useparams를 사용할 수 없다.
+  //대신에 쿼리를 강제로 추가해서 edit페이지로 넘겨줌
 
   return (
     <CommonModal
@@ -159,10 +170,22 @@ export const GalleryDetailModal = ({
     >
       <div className={styles.container}>
         <h1>{title}</h1>
-        <RegitUpdateDeleteButton
-          content="삭제하기"
-          onClickHandler={handleDeleteClick}
-        />
+        {/* //예비용 */}
+        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+          <div className={styles.handleBtn}>
+            <RegitUpdateDeleteButton
+              content="삭제하기"
+              onClickHandler={handleDeleteClick}
+            />
+            <RegitUpdateDeleteButton
+              content="수정하기"
+              onClickHandler={handleNavigateToEditPage}
+            />
+          </div>
+        ) : (
+          ""
+        )}
+        {/* //예비용 */}
         <CloseIcon
           width="30"
           height="30"

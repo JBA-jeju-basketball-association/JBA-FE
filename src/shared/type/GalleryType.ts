@@ -9,7 +9,7 @@ export type UploadType = {
 };
 
 export type GalleryCardType = {
-  galleryId?: number;
+  galleryId?: any;
   title?: string;
   fileName?: string;
   imgUrl?: string;

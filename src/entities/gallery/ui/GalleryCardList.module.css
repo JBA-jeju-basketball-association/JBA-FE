@@ -1,7 +1,5 @@
 .container {
   width: 100%;
-  height: 1040px;
-  /* 일단 고정값 */
   gap: 20px;
   display: flex;
   align-items: center;

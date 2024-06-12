@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GalleryCardList } from "entities/galleryCardList";
+import { GalleryCardList } from "entities/gallery";
 import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
