@@ -68,10 +68,6 @@ export const PostDetailPage = () => {
     files,
   } = postDetail;
 
-  console.log(files[0], "----파일----");
-  console.log(postImgs[0], "----이미지----");
-  console.log(downloadUrl, "----다운로드 리스트 ----");
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -80,7 +76,11 @@ export const PostDetailPage = () => {
         </div>
         <div className={styles.divideLine}></div>
         <ul className={styles.titleArea}>
-          <li className={styles.title}><span className={styles.titleContent}>{`[${foreword}] `+ title}</span></li>
+          <li className={styles.title}>
+            <span className={styles.titleContent}>
+              {!!foreword ? `[${foreword}] ` + title : title}
+            </span>
+          </li>
           <li className={styles.list}></li>
           {typeItems.map((item, index) => (
             <li key={index} className={styles.list}>
