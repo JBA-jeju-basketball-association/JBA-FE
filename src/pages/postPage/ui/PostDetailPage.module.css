@@ -76,7 +76,6 @@
   padding-left: 16px;
 }
 .buttonWrapper {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,5 +94,20 @@
 }
 
 .buttonEdit:hover {
+  background-color: var(--subcolor-black4);
+}
+
+.buttonDelete {
+  background-color: var(--primary-red);
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonDelete:hover {
   background-color: var(--subcolor-black4);
 }

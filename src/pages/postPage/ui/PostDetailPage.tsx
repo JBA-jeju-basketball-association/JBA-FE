@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import parse from "html-react-parser";
+import { useUserStore } from "../../../shared/model";
+import { JwtDecoder } from "../../../shared/lib";
 import styles from "./PostDetailPage.module.css";
+import { DeletePost } from "../api/DeletePost";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
   const navigate = useNavigate();
+  const { AccessToken } = useUserStore();
   const [downloadUrl, setDownloadUrl] = useState<string[]>([]);
 
   const typeItems = ["등록자", "등록일", "조회수"];
@@ -29,6 +33,21 @@ export const PostDetailPage = () => {
     queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
     select: (result: any) => result.data.data,
   });
+
+  const mutation = useMutation({
+    mutationFn: DeletePost,
+    onSuccess: () => {
+      alert("게시글이 삭제되었습니다.");
+      navigate(`/post/${category}`);
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
+
+  const deletePost = () => {
+    mutation.mutate({ postId });
+  };
 
   useEffect(() => {
     let fileList: string[] = [];
@@ -114,12 +133,23 @@ export const PostDetailPage = () => {
       </div>
       <div className={styles.buttonWrapper}>
         <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
-        <Button
-          className={styles.buttonEdit}
-          onClick={() => navigate(`/post/${category}/${postId}/update`)}
-        >
-          수정하기
-        </Button>
+
+        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+          <div className={styles.buttonWrapper}>
+            <Button
+              className={styles.buttonEdit}
+              onClick={() => navigate(`/post/${category}/${postId}/update`)}
+            >
+              수정하기
+            </Button>
+            <Button
+              className={styles.buttonDelete}
+              onClick={() => deletePost()}
+            >
+              삭제하기
+            </Button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
