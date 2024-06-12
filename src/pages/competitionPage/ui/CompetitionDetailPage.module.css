@@ -1,4 +1,5 @@
 .CompetitionDetailPage {
+    min-width: 1920px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -5,26 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/shared/model/Year.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/PrivateRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/model/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/model/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionTitleArea.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionTitleArea.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionTitleArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionTitleArea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/header/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/Header.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/Header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/pagination/ui/Pagination.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/pagination/ui/Pagination.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/pagination/ui/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/pagination/ui/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/competitionLabel/CompetitionDetailLabel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/competitionLabel/CompetitionDetailLabel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

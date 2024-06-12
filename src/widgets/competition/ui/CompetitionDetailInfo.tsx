@@ -68,7 +68,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <CompetitionDetailLabel name={"대회장소"}/>
                     <div className={style.info}>
                         {data?.places.map((p: any, index: number) => {
-                                return <p key={index}>- {p.placeName} ({p.address})</p>
+                                return <p key={index}>- {p.placeName} <br/>&nbsp;&nbsp;({p.address})</p>
                             }
                         )}
                     </div>

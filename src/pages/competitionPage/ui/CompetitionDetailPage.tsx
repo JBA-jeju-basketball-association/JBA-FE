@@ -9,9 +9,6 @@ import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetit
 
 export const CompetitionDetailPage = () => {
     const [infoFocused, setInfoFocused] = useState<boolean>(true);
-
-
-
     const {id} = useParams();
     const {data, isLoading, isError, error} = useQuery({
         queryKey:["getCompetitionDetail", id],
@@ -19,7 +16,6 @@ export const CompetitionDetailPage = () => {
         select:(result) => result?.data.data,
         gcTime:1000*60*10,
     })
-
 
     if (isLoading) {
         return <div>Loading.....</div>

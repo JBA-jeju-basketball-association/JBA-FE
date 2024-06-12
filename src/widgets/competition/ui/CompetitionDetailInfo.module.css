@@ -1,25 +1,25 @@
 .CompetitionDetailInfo {
-    border-top: 3px solid var(--private-black);
+    border-top: 2px solid #B5B5B5;
+    border-left: 2px solid #B5B5B5;
+    border-right: 2px solid #B5B5B5;
     display: flex;
     flex-direction: column;
+    width: 1096px;
 }
 
 .fullInfoArea {
     display: flex;
-    border-bottom: 1px solid var(--subcolor-black3);
-    border-right: 1px solid var(--private-black);
-    border-left: 1px solid var(--private-black);
+    border-bottom: 2px solid #B5B5B5;
+    min-height: 66px;
 }
 
 .halfInfoArea {
-    width: 520px;
-    min-height: 70px;
+    width: 50%;
     display: flex;
 }
 
 .infoArea {
-    width: 1040px;
-    min-height: 70px;
+    width: 100%;
     display: flex;
 }
 
@@ -31,6 +31,7 @@
 
 .info p {
     padding: 10px 20px 10px 20px;
+    color: #4B4B4B;
 }
 
 .info a {
