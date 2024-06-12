@@ -7,3 +7,4 @@ export {RegitUpdateDeleteButton} from "./regitUpdateDeleteButton/RegitUpdateDele
 export {NavigateAllItemBtn} from "./navigateAllItemBtn/navigateAllItemBtn"
 export {MainTitle} from "./mainTitle/MainTitle"
 export {GalleryCardContent} from "./galleryCardContent/GalleryCardContent"
+export {CheckBox} from "./checkBox/CheckBox"

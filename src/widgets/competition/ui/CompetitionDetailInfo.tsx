@@ -86,7 +86,6 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                         className={style.info}>{data?.competitionDetailAttachedFiles.map((f: competitionDetailAttachedFile, index: number) => {
                         return <a href={f.filePath} key={index}>{index + 1}. {f.fileName}</a>
                     })}</div>
-
                 </div>
             </div>
 

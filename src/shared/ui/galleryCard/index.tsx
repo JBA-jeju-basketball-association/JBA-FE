@@ -5,7 +5,7 @@ import { useState } from "react";
 import GalleryDetailModal from "features/galleryDetailModal/ui";
 import { useQuery } from "@tanstack/react-query";
 import {Api, NormalApi} from "shared/api";
-import useGalleryModalStore from "../../model/stores/GalleryModalStore";
+import {useGalleryModalStore} from "../../model";
 
 const GalleryCard = ({ title, imgUrl, galleryId }: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
