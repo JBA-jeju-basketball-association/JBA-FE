@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
+import { NormalApi } from "shared/api";
 
-export const DeletePost = () => {
-  
+export const DeletePost = ({ postId }: { postId?: string }) => {
+  return NormalApi.delete(`v1/api/post/${postId}`);
 };

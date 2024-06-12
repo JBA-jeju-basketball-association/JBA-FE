@@ -38,6 +38,9 @@ export const AddCompetitionPage = () => {
         )
     }
 
+    console.log(ckData, '---CkData---')
+    console.log(newCkImgUrls, '---newCkImgUrls---')
+
 
     const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
