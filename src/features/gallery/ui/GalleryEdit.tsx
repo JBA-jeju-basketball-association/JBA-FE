@@ -4,7 +4,7 @@ import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/Regit
 import { useNavigate } from "react-router-dom";
 import { FileType, UploadType } from "shared/type/GalleryType";
 import { GalleryImageInput } from "entities/gallery";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 
@@ -20,6 +20,7 @@ export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
   const [titleValue, setTitleValue] = useState("");
   const [uploadFiles, setUploadFiles] = useState<FileType[]>([]);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const handleUploadTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitleValue(e.target.value);
   };
@@ -31,6 +32,9 @@ export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
     onSuccess: () => {
       confirmAlert("success", "이미지 수정이 완료되었습니다.");
       navigate("/gallery");
+      queryClient.invalidateQueries({
+        queryKey: ["galleryDetail"],
+      });
     },
     onError: (e) => {
       console.log(e, "error");

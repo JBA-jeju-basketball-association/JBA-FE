@@ -5,7 +5,7 @@ import { useState } from "react";
 import { GalleryDetailModal } from "features/gallery";
 import { useQuery } from "@tanstack/react-query";
 import { NormalApi } from "shared/api";
-import useGalleryModalStore from "../../model/stores/GalleryModalStore";
+import { useGalleryModalStore } from "shared/model/stores/GalleryModalStore";
 
 export const GalleryCard = ({
   title,

@@ -119,7 +119,7 @@ export const GalleryDetailModal = ({
     prevArrow: <LeftIcon />,
     customPaging: (i: number) => (
       <img
-        src={files[i].fileUrl}
+        src={files[i]?.fileUrl}
         alt="도트 이미지"
         className={styles.dotImage}
       />
