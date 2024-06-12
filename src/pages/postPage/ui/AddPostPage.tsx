@@ -3,29 +3,32 @@ import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
-import { AddCompetitionLabel } from "../../../shared/ui";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
-import makeAnimated from "react-select/animated";
-import { value } from "shared/type/CompetitionType";
+import { useMutation } from "@tanstack/react-query";
+import AddPostRequest, {
+  PostImgsType,
+  requestPostData,
+} from "../api/AddPostRequest";
 import styles from "./AddPostPage.module.css";
-
-interface PostImgsType {
-  fileName: string;
-  imgUrl: string;
-}
 
 interface PostFilesType {
   fileName: string;
   fileUrl: string;
 }
 
-interface requestPostData {
-  title: string;
-  content: string;
-  foreword: string;
-  postImgs: PostImgsType[];
-}
+const customStyles = {
+  control: (provided: any) => ({
+    ...provided,
+    height: "48px",
+    borderRadius: "8px",
+    cursor: "pointer",
+  }),
+  option: (provided: any, state: { isSelected: any }) => ({
+    ...provided,
+    cursor: "pointer",
+  }),
+};
 
 export const AddPostPage = () => {
   const [title, setTitle] = useState<string>("");
@@ -45,6 +48,19 @@ export const AddPostPage = () => {
         ? "NEWS"
         : "자료실";
 
+  const mutation = useMutation({
+    mutationFn: AddPostRequest,
+    onSuccess: () => {
+      alert("작성이 완료되었습니다.");
+      navigate(`/post/${category}`)
+    },
+    onError: (e) => console.log(e),
+  });
+
+  const addPost = (params: { category?: string; data: requestPostData }) => {
+    mutation.mutate(params);
+  };
+
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const requestData: requestPostData = {
@@ -54,7 +70,10 @@ export const AddPostPage = () => {
       postImgs: postImgs,
     };
 
-    console.log(requestData);
+    addPost({
+      category,
+      data: requestData,
+    });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -74,17 +93,6 @@ export const AddPostPage = () => {
 
   const forewordHandler = (selectedOption: SingleValue<any>): void => {
     setForeword(selectedOption.label);
-  };
-
-  const customStyles = {
-    control: (provided: any) => ({
-      ...provided,
-      height: 48,
-      borderRadius: 8,
-    }),
-    option: (provided: any, state: { isSelected: any }) => ({
-      ...provided,
-    }),
   };
 
   return (
@@ -137,11 +145,10 @@ export const AddPostPage = () => {
             </div>
             <div className={styles.buttonContainer}>
               <div className={styles.buttonWrapper}>
-                <Button onClick={() => alert("작성이 완료되었습니다!")}>
-                  작성 완료
-                </Button>
+                <Button type="submit">작성 완료</Button>
                 <Button
                   className={styles.buttonCancel}
+                  type="button"
                   // onClick={() => navigate(`/post/${category}`)}
                   onClick={() => alert("작성이 취소되었습니다.")}
                 >
