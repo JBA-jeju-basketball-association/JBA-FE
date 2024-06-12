@@ -20,8 +20,6 @@ export const PostDetailPage = () => {
         ? "NEWS"
         : "자료실";
 
-  console.log(category, "----카테고리 확인 ----");
-
   const {
     isError,
     isLoading,

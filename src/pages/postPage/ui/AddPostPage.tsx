@@ -5,7 +5,7 @@ import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
 import { AddCompetitionLabel } from "../../../shared/ui";
 import { AddFiles } from "features/competition";
-import Select, { MultiValue } from "react-select";
+import Select, { MultiValue, SingleValue } from "react-select";
 import makeAnimated from "react-select/animated";
 import { value } from "shared/type/CompetitionType";
 import styles from "./AddPostPage.module.css";
@@ -50,9 +50,11 @@ export const AddPostPage = () => {
     const requestData: requestPostData = {
       title: title,
       content: content,
-      foreword: foreword[0],
+      foreword: foreword,
       postImgs: postImgs,
     };
+
+    console.log(requestData)
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -70,15 +72,10 @@ export const AddPostPage = () => {
     // );
   };
 
-  const forewordHandler = (values: MultiValue<any>): void => {
-    setForeword("");
-    values.map((item: value): void => {
-      setForeword(item.value);
-    });
+  const forewordHandler = (selectedOption: SingleValue<any>): void => {
+    setForeword(selectedOption.label);
   };
 
-  console.log(content, "----content---");
-  console.log(foreword, "----foreword----");
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -103,15 +100,16 @@ export const AddPostPage = () => {
                 className={styles.titleInput}
                 placeholder="제목을 입력해주세요"
               />
-              <Select
-                components={makeAnimated()}
-                options={ForewordOptions}
-                isMulti={true}
-                closeMenuOnSelect
-                placeholder="머리말"
-                className={styles.select}
-                onChange={(values: MultiValue<any>) => forewordHandler(values)}
-              />
+              <div className={styles.inputArea}>
+                <Select
+                  options={ForewordOptions}
+                  placeholder="머리말"
+                  className={styles.select}
+                  onChange={(e: SingleValue<any>) =>
+                    forewordHandler(e)
+                  }
+                />
+              </div>
               {/* <div className={styles.inputArea2}>
             <AddCompetitionLabel label={"첨부파일"} height={"double"} />
             <AddFiles files={postFiles} setFiles={setPostFiles} />
