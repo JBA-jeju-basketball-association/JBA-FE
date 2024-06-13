@@ -21,7 +21,7 @@ type ModalProps = {
  * <GalleryDetailModal/> 컴포넌트를 참고해주세요.
  */
 
-const CommnModal = ({
+export const CommonModal = ({
   children,
   isopen,
   onRequestClose,
@@ -48,4 +48,3 @@ const CommnModal = ({
   );
 };
 
-export default CommnModal;

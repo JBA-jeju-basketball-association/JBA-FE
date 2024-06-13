@@ -17,8 +17,11 @@ import {
 } from "../pages/postPage";
 import { Footer } from "../widgets/footer";
 import { useAxiosInterceptor } from "../shared/api/UseAxiosInterceptor";
-import GalleryUploadPage from "../pages/galleryUploadPage/ui";
-import GalleryPage from "pages/galleryPage/ui";
+import {
+  GalleryUploadPage,
+  GalleryPage,
+  GalleryEditPage,
+} from "pages/galleryPages";
 import { UpdateCompetitionPage } from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import "../shared/base.css";
 import { SignupForm } from "../features/signup/ui/SignupForm";
@@ -27,7 +30,7 @@ import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
-import {JbaHistoryPage} from "../pages/jbaHistoryPage/JbaHistoryPage";
+import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
 
 function App() {
   useAxiosInterceptor();
@@ -71,6 +74,8 @@ function App() {
             />
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
+            <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage />} />
+            <Route path={"/gallery/galleryedit"} element={<GalleryEditPage />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -79,7 +84,6 @@ function App() {
             element={<CompetitionDetailPage />}
           />
           <Route path={"/gallery"} element={<GalleryPage />} />
-          <Route path={"/galleryupload"} element={<GalleryUploadPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
           <Route path={"/post/:category/:postId"} element={<PostDetailPage />} />
         </Routes>
