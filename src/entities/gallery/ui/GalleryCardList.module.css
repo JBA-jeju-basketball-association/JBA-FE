@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+  padding: 15px 0;
+}

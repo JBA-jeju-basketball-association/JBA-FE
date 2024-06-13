@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/competitionLabel/CompetitionDetailLabel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/competitionLabel/CompetitionDetailLabel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/galleryCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/GalleryCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="fix-competition" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,7 +68,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TypeScript.BoxArea.tsx.executor": "Run",
-    "git-widget-placeholder": "fix-competition",
+    "git-widget-placeholder": "feature/gallery",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/JBA-FE",
@@ -94,7 +93,6 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage/ui" />
       <recent name="$PROJECT_DIR$/src/shared/ui" />
