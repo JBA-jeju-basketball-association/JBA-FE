@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "./galleryCard.module.css";
+import styles from "./GalleryCard.module.css";
 import { GalleryCardType } from "shared/type/GalleryType";
 import { useState } from "react";
 import { GalleryDetailModal } from "features/gallery";
