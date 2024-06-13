@@ -1,0 +1,54 @@
+.container {
+  width: 1320px;
+}
+.uploadWrapper {
+  width: 100%;
+  padding: 15px 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+}
+
+.contentWrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.titleInput {
+  width: 100%;
+  height: 48px;
+  background-color: var(--subcolor-black4);
+  border-radius: 5px;
+  text-indent: 10px;
+}
+
+.imageInput {
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+  border: 1px solid var(--subcolor-black1);
+}
+
+.listBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uploadBtnWrapper {
+  display: flex;
+  justify-content: center;
+}
+.uploadBtn {
+  background: var(--primary-color);
+  padding: 15px 40px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
