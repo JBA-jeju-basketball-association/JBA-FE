@@ -107,7 +107,7 @@ export const UpdateCompetitionPage = () => {
             <PageTitle pageName="대회수정"/>
             <form className={style.container} onSubmit={(e: React.FormEvent<HTMLFormElement>) => formSubmitHandler(e)}>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"대회명"} height={"normal"}/>
+                    <AddCompetitionLabel label={"대회명"} />
                     <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                            value={title}
                            type={"text"}
@@ -116,7 +116,7 @@ export const UpdateCompetitionPage = () => {
                     />
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"종별"} height={"normal"}/>
+                    <AddCompetitionLabel label={"종별"} />
                     {selectedDivisions &&
                         <Select
                             components={makeAnimated()}
@@ -133,16 +133,16 @@ export const UpdateCompetitionPage = () => {
 
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"날짜"} height={"normal"}/>
+                    <AddCompetitionLabel label={"날짜"} />
                     <CustomDatePicker startDate={startDate} setStartDate={setStartDate} endDate={endDate}
                                       setEndDate={setEndDate}/>
                 </div>
                 <div className={style.inputArea2}>
-                    <AddCompetitionLabel label={"장소"} height={"double"}/>
+                    <AddCompetitionLabel label={"장소"} />
                     <PlaceArea places={places} setPlaces={setPlaces}/>
                 </div>
                 <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"URL"} height={"normal"}/>
+                    <AddCompetitionLabel label={"URL"} />
                     <input type="text"
                            placeholder="대회 관련 URL을 입력해주세요"
                            className={style.urlInput}
@@ -151,7 +151,7 @@ export const UpdateCompetitionPage = () => {
                     />
                 </div>
                 <div className={style.inputArea2}>
-                    <AddCompetitionLabel label={"첨부파일"} height={"double"}/>
+                    <AddCompetitionLabel label={"첨부파일"} />
                     <UpdateFiles attachedFiles={data?.competitionDetailAttachedFiles} files={files} setFiles={setFiles} attachedFileList={attachedFileList} setAttachedFileList={setAttachedFileList}/>
                 </div>
                 <div className={style.CkEditorTitle}>

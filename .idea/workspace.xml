@@ -5,11 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/listLinkBtn/ListLinkBtn.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/listLinkBtn/ListLinkBtn.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/regitTitleInput/RegitTitleInput.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/regitTitleInput/RegitTitleInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/galleryCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/GalleryCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/AddFiles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/AddFiles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/AddFiles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/AddFiles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionStatusFilter.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/FileRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/FileRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/PlaceArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel/AddCompetitionLabel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel/AddCompetitionLabel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel/AddCompetitionLabel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel/AddCompetitionLabel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/pageTitle/PageTitle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +86,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TypeScript.BoxArea.tsx.executor": "Run",
-    "git-widget-placeholder": "feature/gallery",
+    "git-widget-placeholder": "fix-competition",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/JBA-FE",
@@ -136,6 +154,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

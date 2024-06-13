@@ -20,7 +20,7 @@ export default function MenuBar(){
                     onMouseEnter={() => { setFocuse(true)}}
                     onMouseLeave={() => setFocuse(false)}>
                 {Object.entries(menuName).map(([category, items],i,array) => (
-                <Menu MainMenu={category} subMene={items} iscenter={iscenter(array.length,i)} focuse={focuse}></Menu>
+                <Menu MainMenu={category} subMene={items} iscenter={iscenter(array.length,i)} focuse={focuse} key={i}></Menu>
                 ))}
                 </ul>
             </div>
@@ -46,9 +46,9 @@ function Menu({MainMenu,subMene,iscenter,focuse}:{MainMenu:string,subMene:string
             <Link to={menuLink[MainMenu]}>{MainMenu}</Link> 
             <ul className={`${Style.SubMenu} ${focuse ? Style.OnSubMenu : Style.OffSubMene}`}
             >
-                {subMene.map((mene)=>{
+                {subMene.map((mene:string, index:number)=>{
                     return(
-                    <li><Link to={menuLink[mene]}>{mene}</Link></li>)
+                    <li key={index}><Link to={menuLink[mene]}>{mene}</Link></li>)
 
                 })}
             </ul>

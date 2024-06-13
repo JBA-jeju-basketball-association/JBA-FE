@@ -1,6 +1,6 @@
 .statusButton {
-    width: 328px;
-    height: 46px;
+    width: 25%;
+    height: 100%;
     color: var(--primary-color);
     font-size: 16px;
     font-weight: bold;
@@ -9,8 +9,8 @@
 }
 
 .statusButtonFocused {
-    width: 328px;
-    height: 46px;
+    width: 25%;
+    height: 100%;
     background-color: var(--primary-color);
     color: white;
     font-size: 16px;

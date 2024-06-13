@@ -95,16 +95,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <div className={style.contentArea} ref={containerRef}/>
                 </div>
             </div>
-            {data?.places.length !== 0 ? <KakaoMap places={data?.places}/> : ""}
-            {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
-                <div className={style.updateDeleteButtonArea}>
-                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
-                    <RegitUpdateDeleteButton onClickHandler={() => deleteHandler()} content={"삭제"} />
-                </div>
-                :
-                null
-            }
-
+            {/*{data?.places.length !== 0 ? <KakaoMap places={data?.places}/> : ""}*/}
         </div>
     );
 };
