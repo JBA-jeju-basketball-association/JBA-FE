@@ -5,7 +5,12 @@ import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
 import {CustomDatePicker} from "../../../features/datepicker";
 import {PlaceArea,UpdateFiles} from "../../../features/competition";
-import {AddCompetitionLabel, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {
+    AddCompetitionLabel,
+    ListLinkBtn,
+    PageTitle,
+    RegitTitleInput,
+} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
 import {DivisionOptions, divisionType} from "../../../shared/model/DivisionOptions";
 import FetchUpdateCompetition from "../api/FetchUpdateCompetition";
@@ -13,7 +18,7 @@ import {IFileTypes, updateRequestData, competitionDetailAttachedFile, place} fro
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 import {useQuery} from "@tanstack/react-query";
 import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 
@@ -37,6 +42,7 @@ export const UpdateCompetitionPage = () => {
     const [ckData, setCkData] = useState<string>("");
     const [attachedFileList, setAttachedFileList] = useState<competitionDetailAttachedFile[]>([])
     const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+    const navigate = useNavigate();
 
 
     const divisionHandler = (values:MultiValue<any>):void => {
@@ -49,7 +55,7 @@ export const UpdateCompetitionPage = () => {
     }
 
 
-    const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    const formSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
         const requestData:updateRequestData = {
@@ -105,18 +111,14 @@ export const UpdateCompetitionPage = () => {
     return (
         <div className={style.AddCompetitionPage}>
             <PageTitle pageName="대회수정"/>
-            <form className={style.container} onSubmit={(e: React.FormEvent<HTMLFormElement>) => formSubmitHandler(e)}>
-                <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"대회명"} />
-                    <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
-                           value={title}
-                           type={"text"}
-                           className={style.titleInput}
-                           placeholder="대회명을 입력해주세요"
-                    />
-                </div>
-                <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"종별"} />
+            <div className={style.listLinkArea}>
+                <ListLinkBtn content={"목록"} linkFC={() => navigate("/competition")}/>
+            </div>
+            <div className={style.topBar}></div>
+            <RegitTitleInput placeholder={"대회명을 입력해주세요."} title={title} setTitle={setTitle}/>
+            <form className={style.containerBox}>
+                <div className={style.competitionInputArea}>
+                    <AddCompetitionLabel label={"종별"}/>
                     {selectedDivisions &&
                         <Select
                             components={makeAnimated()}
@@ -132,17 +134,17 @@ export const UpdateCompetitionPage = () => {
                     }
 
                 </div>
-                <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"날짜"} />
+                <div className={style.competitionInputArea}>
+                    <AddCompetitionLabel label={"날짜"}/>
                     <CustomDatePicker startDate={startDate} setStartDate={setStartDate} endDate={endDate}
                                       setEndDate={setEndDate}/>
                 </div>
-                <div className={style.inputArea2}>
-                    <AddCompetitionLabel label={"장소"} />
+                <div className={style.competitionInputArea2}>
+                    <AddCompetitionLabel label={"장소"}/>
                     <PlaceArea places={places} setPlaces={setPlaces}/>
                 </div>
-                <div className={style.inputArea}>
-                    <AddCompetitionLabel label={"URL"} />
+                <div className={style.competitionInputArea}>
+                    <AddCompetitionLabel label={"URL"}/>
                     <input type="text"
                            placeholder="대회 관련 URL을 입력해주세요"
                            className={style.urlInput}
@@ -150,9 +152,10 @@ export const UpdateCompetitionPage = () => {
                            value={relatedURL === null ? "" : relatedURL}
                     />
                 </div>
-                <div className={style.inputArea2}>
-                    <AddCompetitionLabel label={"첨부파일"} />
-                    <UpdateFiles attachedFiles={data?.competitionDetailAttachedFiles} files={files} setFiles={setFiles} attachedFileList={attachedFileList} setAttachedFileList={setAttachedFileList}/>
+                <div className={style.competitionInputArea2}>
+                    <AddCompetitionLabel label={"첨부파일"}/>
+                    <UpdateFiles attachedFiles={data?.competitionDetailAttachedFiles} files={files} setFiles={setFiles}
+                                 attachedFileList={attachedFileList} setAttachedFileList={setAttachedFileList}/>
                 </div>
                 <div className={style.CkEditorTitle}>
                     <p>내용</p>
@@ -160,8 +163,10 @@ export const UpdateCompetitionPage = () => {
                 <div className={style.CkEditor}>
                     <CkEditor ckData={ckData} setCkData={setCkData} setNewCkImgUrls={setNewCkImgUrls}/>
                 </div>
-                <RegitUpdateDeleteButton content={"수정"}/>
             </form>
+            <div className={style.bottomBar}></div>
+            <ListLinkBtn content={"수정"} handleFC={(e) => formSubmitHandler(e)}/>
+
         </div>
     );
 }
