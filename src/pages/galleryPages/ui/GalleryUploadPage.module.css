@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  min-width: 1920px;
 }
 
 .container > h1 {
