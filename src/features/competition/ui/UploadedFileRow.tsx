@@ -1,6 +1,7 @@
 import React from 'react';
 import style from "./UploadedFileRow.module.css";
 import {competitionDetailAttachedFile} from "../../../shared/type/CompetitionType";
+import {TiDelete} from "react-icons/ti";
 
 type Props = {
     index: number;
@@ -23,7 +24,7 @@ export const UploadedFileRow = ({index, attachedFile, setAttachedFileList}:Props
                 className={style.FilesFilter}
                 onClick={() => fileCancelHandler()}
             >
-                X
+                <TiDelete style={{marginTop: "2px"}} size={16}/>
             </div>
         </div>
     );

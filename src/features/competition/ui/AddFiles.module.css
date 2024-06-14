@@ -68,3 +68,8 @@
 .FilesFilter:hover {
     opacity: 0.7;
 }
+
+.boxContent {
+    color: #8E8E8E;
+    text-align: center;
+}

@@ -120,12 +120,12 @@ export const AddFiles = ({files, setFiles}: Props) => {
                 htmlFor="fileUpload"
                 ref={dragRef}
             >
-                <div>파일 첨부</div>
+                <p className={style.boxContent}>파일 첨부<br/>Drag & Drop</p>
             </label>
             <div className={style.Files}>
                 {files.length > 0 &&
-                    files.map((file: IFileTypes) => {
-                        return <FileRow file={file} handleFilterFile={handleFilterFile} />
+                    files.map((file: IFileTypes, index:number) => {
+                        return <FileRow file={file} handleFilterFile={handleFilterFile} key={index}/>
                     })}
             </div>
         </div>

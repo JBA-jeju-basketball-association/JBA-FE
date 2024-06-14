@@ -1,0 +1,11 @@
+.ListLinkBtn {
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    width: 70px;
+    height: 50px;
+    color: white;
+}
+
+.ListLinkBtn:hover {
+    color: var(--subcolor-black3);
+}

@@ -2,6 +2,7 @@
     width: 900px;
     height: 100px;
     display: flex;
+    align-items: center;
 }
 
 .closeButtonArea {
@@ -70,13 +71,10 @@
     align-items: center;
 }
 
-.buttonArea button {
-    width: 70%;
-    height: 70%;
-    border: 1px solid var(--subcolor-gold3);
-    border-radius: 10px;
-    background-color: var(--primary-color);
-    font-size: 20px;
+.searchAddressBtn {
+    text-decoration-line: underline;
+    font-size: 16px;
+    margin: 0 20px;
 }
 
 .rightBox {
@@ -95,7 +93,12 @@
 }
 
 .placeName button {
+    color: #4B4B4B;
     margin-left: 5px;
     font-size: 18px;
+}
+
+.placeName button:hover {
+    color: black;
 }
 

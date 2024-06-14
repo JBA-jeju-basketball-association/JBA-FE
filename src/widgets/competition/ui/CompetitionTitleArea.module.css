@@ -1,13 +1,13 @@
 .listTitleArea {
     display: flex;
-    width: 1200px;
-    height: 50px;
-    border-top: 2px solid var(--private-black);
-    border-bottom: 2px solid var(--private-black);
+    width: 1320px;
+    height: 60px;
+    border-top: 4px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .listTitleArea div {
-    height: 50px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,14 +22,10 @@
     width: 100px;
 }
 
-.listTitleLabel140 {
-    width: 140px;
-}
-
 .listTitleLabel280 {
     width: 280px;
 }
 
-.listTitleLabel480 {
-    width: 480px;
+.listTitleLabel740 {
+    width: 740px;
 }
