@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import DaumPostcode, {Address} from "react-daum-postcode";
 import axios from "axios";
 import {place} from "../../../shared/type/CompetitionType";
+import { TiDelete } from "react-icons/ti";
+
 
 type props = {
     places: place[];
@@ -125,15 +127,13 @@ export const PlaceArea = ({places, setPlaces}:props) => {
                 </div>
             </Modal>
 
-            <div className={style.buttonArea}>
-                <button type={"button"} onClick={() => setIsOpen(true)}>등록</button>
-            </div>
+            <p className={style.searchAddressBtn} onClick={() => setIsOpen(true)}>주소 찾기</p>
             <section className={style.rightBox}>
                 <ul className={style.placeList}>
                     {places?.map((place: place, index: number) => (
                         <li key={index} className={style.placeName}>
                             <p>{place.placeName}</p>
-                            <button onClick={(e) => deletePlace(e, index)}>X</button>
+                            <button onClick={(e) => deletePlace(e, index)}><TiDelete style={{marginTop: "5px"}} size={16}/></button>
                         </li>
                     ))}
                 </ul>

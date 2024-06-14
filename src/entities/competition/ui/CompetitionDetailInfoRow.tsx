@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "../../../widgets/competition/ui/CompetitionDetailInfo.module.css";
+import style from "./CompetitionDetailInfoRow.module.css"
 import {CompetitionDetailLabel} from "../../../shared/ui";
 
 type Props = {

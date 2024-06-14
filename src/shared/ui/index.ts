@@ -10,3 +10,5 @@ export { GalleryCardContent } from "./galleryCardContent/GalleryCardContent";
 export { CheckBox } from "./checkBox/CheckBox";
 export { GalleryCard } from "./galleryCard/GalleryCard";
 export { CommonModal } from "./commonModal/CommonModal";
+export { ListLinkBtn } from "./listLinkBtn/ListLinkBtn";
+export { RegitTitleInput } from "./regitTitleInput/RegitTitleInput";

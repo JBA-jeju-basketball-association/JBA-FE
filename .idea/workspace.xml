@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/gallery/ui/GalleryDetailModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/galleryCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/GalleryCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/galleryCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/FloorBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ResultRow.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +71,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TypeScript.BoxArea.tsx.executor": "Run",
-    "git-widget-placeholder": "feature/gallery",
+    "git-widget-placeholder": "fix-competition",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/JBA-FE",
@@ -93,6 +96,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/competitionPage/ui/update" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage/ui" />
       <recent name="$PROJECT_DIR$/src/shared/ui" />
@@ -136,6 +140,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

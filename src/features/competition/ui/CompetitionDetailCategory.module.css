@@ -1,37 +1,33 @@
 .CompetitionDetailCategory {
-    width: 1040px;
-    height: 70px;
-    border: 1px solid var(--primary-color);
-    margin-top: 50px;
-    margin-bottom: 50px;
+    width: 1096px;
+    height: 46px;
+    border: 2px solid var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
 .isFocused {
-    width: 520px;
-    height: 70px;
+    width: 548px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
+    font-size: 16px;
     font-weight: bold;
     background-color: var(--primary-color);
     color: white;
 }
 
 .isNotFocused {
-    width: 520px;
-    height: 70px;
+    width: 548px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 26px;
+    font-size: 16px;
     font-weight: bold;
     background-color: white;
     color: var(--primary-color);
-}
-
-.modal {
-    margin: 20px;
 }
