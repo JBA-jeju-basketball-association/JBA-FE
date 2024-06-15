@@ -28,6 +28,7 @@ export const GalleryPage = () => {
           page: page - 1,
           size: 9,
           official: false,
+          keyword: searchKeyword,
         },
       }),
   });
@@ -36,7 +37,8 @@ export const GalleryPage = () => {
   const totalPage: number = galleryData?.data.data.totalPages ?? 0;
 
   const findTargetPage = () => {
-    console.log("findTargetPage");
+    setPage(1);
+    refetch();
   };
 
   return (

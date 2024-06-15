@@ -79,7 +79,7 @@ export const GalleryUpload = () => {
       </div>
       <div className={styles.uploadBtnWrapper}>
         <RegitUpdateDeleteButton
-          content="취소하기"
+          content="작성취소"
           onClickHandler={returnToGallery}
         />
         <button

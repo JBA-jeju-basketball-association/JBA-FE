@@ -91,7 +91,7 @@ export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
       </div>
       <div className={styles.editBtnWrapper}>
         <RegitUpdateDeleteButton
-          content="취소하기"
+          content="작성취소"
           onClickHandler={returnToGallery}
         />
         <button
