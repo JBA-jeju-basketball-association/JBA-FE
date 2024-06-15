@@ -85,14 +85,15 @@ const SlideContainer = styled.div`
     position: absolute;
     right: 0;
     top: 40%;
+    z-index: 102;
   }
 
   .slick-prev {
     width: 40px;
     height: 40px;
-    position: absolute;
     left: 0;
     top: 40%;
+    z-index: 102;
   }
 `;
 
@@ -149,7 +150,7 @@ export const GalleryDetailModal = ({
   const handleNavigateToEditPage = () => {
     navigate(`/gallery/galleryedit?galleryId=${galleryId}`, {
       state: { galleryDetail, galleryId },
-      //edit페이지로 state 정보를 넘김 
+      //edit페이지로 state 정보를 넘김
     });
   };
 
@@ -200,4 +201,3 @@ export const GalleryDetailModal = ({
     </CommonModal>
   );
 };
-
