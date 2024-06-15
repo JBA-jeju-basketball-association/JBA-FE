@@ -3,14 +3,13 @@ import { GalleryCardList } from "entities/gallery";
 import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
-import { useQuery } from "@tanstack/react-query";
 import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 import { GalleryCardType } from "shared/type/GalleryType";
 import { PageTitle } from "shared/ui";
-import { NormalApi } from "shared/api";
 import { useNavigate } from "react-router-dom";
 import { JwtDecoder } from "shared/lib";
 import { useUserStore } from "shared/model";
+import { useGalleryDatas } from "../api/useGalleryDatas";
 
 export const GalleryPage = () => {
   const [page, setPage] = useState(1);
@@ -19,18 +18,9 @@ export const GalleryPage = () => {
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
 
-  // 페이지 전체 조회하는 쿼리
-  const { data: galleryData, refetch } = useQuery({
-    queryKey: ["galleries", page],
-    queryFn: () =>
-      NormalApi.get(`/v1/api/gallery`, {
-        params: {
-          page: page - 1,
-          size: 9,
-          official: false,
-          keyword: searchKeyword,
-        },
-      }),
+  const { data: galleryData, refetch } = useGalleryDatas({
+    page,
+    searchKeyword,
   });
 
   const galleries: GalleryCardType[] = galleryData?.data.data.galleries ?? [];

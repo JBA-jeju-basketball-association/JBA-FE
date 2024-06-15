@@ -8,18 +8,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { RegitUpdateDeleteButton } from "shared/ui";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useNavigate } from "react-router-dom";
 import { JwtDecoder } from "shared/lib";
 import { useUserStore } from "shared/model";
+import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
   setModalOpen: (isOpen: boolean) => void;
   galleryDetail: GalleryDetailProps | undefined;
-  galleryId?: number | undefined;
+  galleryId: number;
 };
 
 const customModalStyles: ReactModal.Styles = {
@@ -105,10 +104,9 @@ export const GalleryDetailModal = ({
 }: GalleryDetailModalProps) => {
   const { title, files } = galleryDetail ?? { title: "", files: [] };
   const dotsRef = useRef<HTMLUListElement>(null);
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
-  
+
   const settings = {
     dots: true,
     infinite: false,
@@ -137,30 +135,20 @@ export const GalleryDetailModal = ({
     },
   };
 
-  const { mutate: deleteData } = useMutation({
-    mutationKey: ["galleryDelete"],
-    mutationFn: (galleryId: number) =>
-      Api.delete(`/v1/api/gallery/${galleryId}`),
-    onSuccess: () => {
-      setModalOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["galleries"] });
-    },
-  });
+  const { mutate: deleteData } = useGalleryDelete({ galleryId, setModalOpen });
 
   const handleDeleteClick = async () => {
     if (galleryId) {
       const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
       if (confirm) {
-        deleteData(galleryId);
+        deleteData();
       }
     }
   };
+
   const handleNavigateToEditPage = () => {
     navigate(`/gallery/galleryedit?galleryId=${galleryId}`);
   };
-
-  //모달은 페이지가 아니어서 useparams를 사용할 수 없다.
-  //대신에 쿼리를 강제로 추가해서 edit페이지로 넘겨줌
 
   return (
     <CommonModal

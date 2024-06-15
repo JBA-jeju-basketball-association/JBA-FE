@@ -3,9 +3,9 @@ import styles from "./GalleryCard.module.css";
 import { GalleryCardType } from "shared/type/GalleryType";
 import { useState } from "react";
 import { GalleryDetailModal } from "features/gallery";
-import { useQuery } from "@tanstack/react-query";
 import { NormalApi } from "shared/api";
 import { useGalleryModalStore } from "shared/model/stores/GalleryModalStore";
+import { useGalleryDetailData } from "pages/galleryPages/api/useGalleryDetailData";
 
 export const GalleryCard = ({
   title,
@@ -15,10 +15,9 @@ export const GalleryCard = ({
 }: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const { data: galleryDetailData } = useQuery({
-    queryKey: ["galleryDetail", galleryId],
-    queryFn: () => NormalApi.get(`/v1/api/gallery/${galleryId}`),
-    enabled: modalOpen,
+  const { data: galleryDetailData } = useGalleryDetailData({
+    galleryId,
+    modalOpen,
   });
 
   const modalClick = () => {

@@ -1,0 +1,58 @@
+.container {
+  width: 1320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+}
+.titleInput {
+  width: 100%;
+  height: 48px;
+  background-color: var(--subcolor-black4);
+  border-radius: 5px;
+  text-indent: 10px;
+}
+
+.imageInput {
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+  border: 1px solid var(--subcolor-black1);
+}
+
+.listBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.handleBtnWrapper {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.handleBtn {
+  width: 100px;
+  height: 40px !important;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
