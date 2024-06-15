@@ -30,7 +30,7 @@ export const GalleryPage = () => {
     setPage(1);
     refetch();
   };
-  
+
   useEffect(() => {
     refetch();
   }, [searchKeyword, searchCategory]);
@@ -48,7 +48,7 @@ export const GalleryPage = () => {
               onClickHandler={() => navigate("galleryupload")}
             />
           ) : (
-            ""
+            <div></div>
           )}
           <SearchBar
             searchCategory={searchCategory}

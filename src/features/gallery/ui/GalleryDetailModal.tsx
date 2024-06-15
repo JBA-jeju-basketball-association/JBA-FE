@@ -85,7 +85,7 @@ const SlideContainer = styled.div`
     position: absolute;
     right: 0;
     top: 40%;
-    z-index: 102;
+    z-index: 103;
   }
 
   .slick-prev {
@@ -93,7 +93,7 @@ const SlideContainer = styled.div`
     height: 40px;
     left: 0;
     top: 40%;
-    z-index: 102;
+    z-index: 103;
   }
 `;
 
