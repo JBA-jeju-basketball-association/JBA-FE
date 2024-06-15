@@ -6,7 +6,7 @@ type Props = {
 }
 export const PageTitle = ({pageName} : Props) => {
     return (
-        <h1 className={style.page_title}>
+        <h1 className={style.pageTitle}>
             {pageName}
         </h1>
     );

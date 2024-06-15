@@ -133,7 +133,7 @@ export const UpdateFiles = ({attachedFiles, files, setFiles, attachedFileList, s
                 {attachedFileList.map((item, index) => {
                     return <UploadedFileRow key={index} index={index} attachedFile={item} setAttachedFileList={setAttachedFileList}/>
                 })}
-                {files.length > 0 && files.map((file: IFileTypes, index) => {
+                {files.length > 0 && files.map((file: IFileTypes, index:number) => {
                         return <FileRow key={index} file={file} handleFilterFile={handleFilterFile} />
                     })}
             </div>
