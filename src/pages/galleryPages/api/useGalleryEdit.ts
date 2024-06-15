@@ -12,7 +12,7 @@ export const useGalleryEdit = (galleryId: string) => {
     mutationFn: (data: UploadType) =>
       Api.put(`/v1/api/gallery/${galleryId}`, data),
     onSuccess: () => {
-      confirmAlert("success", "이미지 수정이 완료되었습니다.");
+      confirmAlert("success", "수정이 완료되었습니다.");
       navigate("/gallery");
       queryClient.invalidateQueries({
         queryKey: ["galleryDetail"],

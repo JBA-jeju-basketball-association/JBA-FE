@@ -2,6 +2,7 @@ import React from "react";
 import { FileType, UploadType } from "shared/type/GalleryType";
 import { GalleryForm } from "shared/ui";
 import { useGalleryEdit } from "pages/galleryPages/api/useGalleryEdit";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 type EditType = {
   galleryDetail: {
@@ -15,8 +16,11 @@ type EditType = {
 export const GalleryEdit = ({ galleryDetail, galleryId }: EditType) => {
   const { mutate: editData } = useGalleryEdit(galleryId);
 
-  const handleEdit = (data: UploadType) => {  
-    editData(data);
+  const handleEdit = async (data: UploadType) => {
+    const cofirm = await confirmAlert("question", "수정하시겠습니까?");
+    if (cofirm) {
+      editData(data);
+    }
   };
 
   return (

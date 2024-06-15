@@ -15,7 +15,7 @@ export const useGalleryUpload = () => {
         },
       }),
     onSuccess: () => {
-      confirmAlert("success", "이미지 등록이 완료되었습니다.");
+      confirmAlert("success", "등록이 완료되었습니다.");
       navigate("/gallery");
     },
     onError: (e) => {
