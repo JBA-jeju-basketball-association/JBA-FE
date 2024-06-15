@@ -63,29 +63,25 @@ export const GalleryUpload = () => {
 
   return (
     <form className={styles.container}>
-      <div className={styles.listBtn}>
-        <RegitUpdateDeleteButton
-          content="목록"
-          onClickHandler={returnToGallery}
+      <div className={styles.contentWrapper}>
+        <input
+          type="text"
+          placeholder="제목을 입력해주세요"
+          className={styles.titleInput}
+          value={titleValue}
+          onChange={handleUploadTitle}
+        />
+        <GalleryImageInput
+          onUploadSuccess={handleImageUpload}
+          uploadFiles={uploadFiles}
+          setUploadFiles={setUploadFiles}
         />
       </div>
-      <div className={styles.uploadWrapper}>
-        <div className={styles.contentWrapper}>
-          <input
-            type="text"
-            placeholder="제목을 입력해주세요"
-            className={styles.titleInput}
-            value={titleValue}
-            onChange={handleUploadTitle}
-          />
-          <GalleryImageInput
-            onUploadSuccess={handleImageUpload}
-            uploadFiles={uploadFiles}
-            setUploadFiles={setUploadFiles}
-          />
-        </div>
-      </div>
       <div className={styles.uploadBtnWrapper}>
+        <RegitUpdateDeleteButton
+          content="취소하기"
+          onClickHandler={returnToGallery}
+        />
         <button
           className={styles.uploadBtn}
           type="button"

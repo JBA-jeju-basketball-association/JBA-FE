@@ -75,29 +75,25 @@ export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
 
   return (
     <form className={styles.container}>
-      <div className={styles.listBtn}>
-        <RegitUpdateDeleteButton
-          content="목록"
-          onClickHandler={returnToGallery}
+      <div className={styles.contentWrapper}>
+        <input
+          className={styles.titleInput}
+          type="text"
+          placeholder="제목을 입력해주세요"
+          value={titleValue}
+          onChange={handleUploadTitle}
+        />
+        <GalleryImageInput
+          onUploadSuccess={handleImageUpload}
+          uploadFiles={uploadFiles || []}
+          setUploadFiles={setUploadFiles}
         />
       </div>
-      <div className={styles.editWrapper}>
-        <div className={styles.contentWrapper}>
-          <input
-            className={styles.titleInput}
-            type="text"
-            placeholder="제목을 입력해주세요"
-            value={titleValue}
-            onChange={handleUploadTitle}
-          />
-          <GalleryImageInput
-            onUploadSuccess={handleImageUpload}
-            uploadFiles={uploadFiles || []}
-            setUploadFiles={setUploadFiles}
-          />
-        </div>
-      </div>
       <div className={styles.editBtnWrapper}>
+        <RegitUpdateDeleteButton
+          content="취소하기"
+          onClickHandler={returnToGallery}
+        />
         <button
           className={styles.editBtn}
           type="button"
