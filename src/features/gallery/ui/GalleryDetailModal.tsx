@@ -147,7 +147,10 @@ export const GalleryDetailModal = ({
   };
 
   const handleNavigateToEditPage = () => {
-    navigate(`/gallery/galleryedit?galleryId=${galleryId}`);
+    navigate(`/gallery/galleryedit?galleryId=${galleryId}`, {
+      state: { galleryDetail, galleryId },
+      //edit페이지로 state 정보를 넘김 
+    });
   };
 
   return (
@@ -197,3 +200,4 @@ export const GalleryDetailModal = ({
     </CommonModal>
   );
 };
+

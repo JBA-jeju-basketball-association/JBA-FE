@@ -4,7 +4,7 @@ import { GalleryForm } from "shared/ui";
 import { useGalleryEdit } from "pages/galleryPages/api/useGalleryEdit";
 
 type EditType = {
-  gallery: {
+  galleryDetail: {
     title: string;
     files: FileType[];
   };
@@ -12,7 +12,7 @@ type EditType = {
 };
 //쿼리파라미터에서 가져온 id는 문자열
 
-export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
+export const GalleryEdit = ({ galleryDetail, galleryId }: EditType) => {
   const { mutate: editData } = useGalleryEdit(galleryId);
 
   const handleEdit = (data: UploadType) => {
@@ -23,8 +23,8 @@ export const GalleryEdit = ({ gallery, galleryId }: EditType) => {
     <GalleryForm
       buttonText="수정하기"
       onSubmit={handleEdit}
-      initialTitle={gallery.title}
-      initialFiles={gallery.files}
+      initialTitle={galleryDetail.title}
+      initialFiles={galleryDetail.files}
     />
   );
 };
