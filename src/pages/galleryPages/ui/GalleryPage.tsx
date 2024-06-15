@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GalleryCardList } from "entities/gallery";
 import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
@@ -30,6 +30,10 @@ export const GalleryPage = () => {
     setPage(1);
     refetch();
   };
+  
+  useEffect(() => {
+    refetch();
+  }, [searchKeyword, searchCategory]);
 
   return (
     <div className={styles.container}>

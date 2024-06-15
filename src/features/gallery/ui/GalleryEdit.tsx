@@ -15,7 +15,7 @@ type EditType = {
 export const GalleryEdit = ({ galleryDetail, galleryId }: EditType) => {
   const { mutate: editData } = useGalleryEdit(galleryId);
 
-  const handleEdit = (data: UploadType) => {
+  const handleEdit = (data: UploadType) => {  
     editData(data);
   };
 
