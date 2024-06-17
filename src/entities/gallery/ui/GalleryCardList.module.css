@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  min-width: 1320px;
   gap: 20px;
   display: flex;
   align-items: center;

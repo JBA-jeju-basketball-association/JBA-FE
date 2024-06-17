@@ -1,5 +1,5 @@
 .container {
-  min-width: 1920px;
+  min-width: 1440px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .buttonWrapper {
   display: flex;
   justify-content: space-between;

@@ -2,24 +2,17 @@ import React from "react";
 import styles from "./GalleryEditPage.module.css";
 import { GalleryEdit } from "features/gallery";
 import { PageTitle } from "shared/ui";
-import { useQuery } from "@tanstack/react-query";
-import { NormalApi } from "shared/api";
+import { useLocation } from "react-router-dom";
 
 export const GalleryEditPage = () => {
-  const galleryId = new URLSearchParams(window.location.search).get(
-    "galleryId"
-  );
-  const { data: galleryEditData } = useQuery({
-    queryKey: ["galleryEditDetail"],
-    queryFn: () => NormalApi.get(`/v1/api/gallery/${galleryId}`),
-  });
-
-  const gallery = galleryEditData?.data?.data ?? [];
+  const location = useLocation();
+  // url에 담긴 정보 확인
+  const { galleryId, galleryDetail } = location.state;
 
   return (
     <div className={styles.container}>
       <PageTitle pageName="갤러리 수정" />
-      <GalleryEdit gallery={gallery} galleryId={galleryId!} />
+      <GalleryEdit galleryDetail={galleryDetail} galleryId={galleryId!} />
     </div>
   );
 };

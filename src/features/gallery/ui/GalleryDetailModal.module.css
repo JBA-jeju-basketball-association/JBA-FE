@@ -34,6 +34,8 @@
 }
 
 .handleBtn {
+  display: flex;
+  gap: 10px;
   position: absolute;
   top: 0;
   right: 40px;
