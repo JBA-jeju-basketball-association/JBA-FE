@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-width: 1920px;
+    /*width: 100%;*/
+    min-width: 1440px;
     z-index: 10;
 }
 .MenuBar_Inner{
