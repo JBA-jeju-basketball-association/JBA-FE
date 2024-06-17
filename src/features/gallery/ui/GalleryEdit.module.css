@@ -1,15 +1,9 @@
 .container {
   width: 1320px;
-}
-.editWrapper {
-  width: 100%;
-  padding: 15px 0;
-  margin: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 4px solid var(--primary-color);
-  border-bottom: 4px solid var(--primary-color);
+  flex-direction: column;
 }
 
 .contentWrapper {
@@ -19,6 +13,9 @@
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+  padding: 20px 0;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
 }
 .titleInput {
   width: 100%;
@@ -39,15 +36,23 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .editBtnWrapper {
+  width: 80%;
+  height: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
 }
+
 .editBtn {
-  background: var(--primary-color);
-  padding: 15px 40px;
+  width: 100px;
+  height: 40px !important;
   border-radius: 5px;
-  font-size: 20px;
-  font-weight: bold;
+  background-color: var(--primary-color);
   color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
 }

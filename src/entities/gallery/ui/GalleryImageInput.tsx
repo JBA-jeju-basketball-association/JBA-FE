@@ -79,7 +79,7 @@ export const GalleryImageInput = ({
   return (
     <div className={styles.container}>
       <label htmlFor="fileUpload" className={styles.fileLabel}>
-        <div>파일 첨부</div>
+        <div>이미지 업로드</div>
       </label>
       <input
         type="file"
