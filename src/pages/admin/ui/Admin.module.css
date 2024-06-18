@@ -1,0 +1,30 @@
+.logo {
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+}
+
+.backHomeBtn {
+    margin: 0 10px;
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+}
+
+.emailArea {
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #1a9aef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
