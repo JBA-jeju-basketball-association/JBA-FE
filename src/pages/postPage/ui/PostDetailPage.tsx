@@ -55,7 +55,6 @@ export const PostDetailPage = () => {
     const postFile = postDetail?.files?.[0]?.fileUrl;
     postImage && fileList.push(postImage);
     postFile && fileList.push(postFile);
-    console.log(fileList, "----파일리스트---");
     if (fileList) {
       for (let i = 0; i < fileList.length - 1; i++) {
         fetch(fileList[i])
