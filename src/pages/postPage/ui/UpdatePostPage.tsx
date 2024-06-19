@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
+import OfficialOptions from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -32,16 +33,23 @@ const customStyles = {
 };
 
 export const UpdatePostPage = () => {
+  let { category, postId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  let isOfficialQuery = searchParams.get("isAnnouncement");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [foreword, setForeword] = useState<string>("");
+  const [isOfficial, setIsOfficial] = useState<string>(
+    isOfficialQuery === "true" ? "공지사항" : "일반"
+  );
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
   const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
   const [postData, setPostData] = useState(null);
 
   const navigate = useNavigate();
-  let { category, postId } = useParams();
+  console.log(isOfficial, postId, category);
+
   const detailTitle =
     category === "notice"
       ? "공지사항"
@@ -74,6 +82,7 @@ export const UpdatePostPage = () => {
     category?: string;
     data: requestPostData;
     postId?: string;
+    isOfficial?: string;
   }) => {
     mutation.mutate(params);
   };
@@ -91,6 +100,7 @@ export const UpdatePostPage = () => {
       category,
       data: requestData,
       postId,
+      isOfficial,
     });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
@@ -113,16 +123,25 @@ export const UpdatePostPage = () => {
     setForeword(selectedOption.label);
   };
 
+  const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
+    setIsOfficial(selectedOption.label);
+    if (selectedOption.label === "일반") {
+      setForeword("");
+    }
+  };
+
   useEffect(() => {
     if (postDetail) {
       setTitle(postDetail.title);
       setContent(postDetail.content);
-      setForeword(postDetail.foreword);
       setPostImgs(postDetail.postImgs);
+      if (isOfficialQuery === "true") {
+        setForeword(postDetail.foreword);
+      } else {
+        setForeword("");
+      }
     }
   }, [postDetail]);
-
-  console.log(postDetail);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
@@ -146,11 +165,23 @@ export const UpdatePostPage = () => {
               <div className={styles.inputArea}>
                 <Select
                   styles={customStyles}
+                  options={OfficialOptions}
+                  placeholder="종류"
+                  className={styles.select}
+                  onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
+                  value={{
+                    label: `${isOfficial}`,
+                    value: "initialValue",
+                  }}
+                />
+                <Select
+                  styles={customStyles}
                   options={ForewordOptions}
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
-                  value={{ label: `${foreword}`, value:  'initailValue'}}
+                  value={{ label: `${foreword}`, value: "initailValue" }}
+                  isDisabled={isOfficial === "일반" ? true : false}
                 />
                 <input
                   value={title}
@@ -184,8 +215,8 @@ export const UpdatePostPage = () => {
                   className={styles.buttonCancel}
                   type="button"
                   onClick={() => {
-                    alert("작성이 취소되었습니다.")
-                    navigate(`/post/${category}`)
+                    alert("작성이 취소되었습니다.");
+                    navigate(`/post/${category}`);
                   }}
                 >
                   취소
