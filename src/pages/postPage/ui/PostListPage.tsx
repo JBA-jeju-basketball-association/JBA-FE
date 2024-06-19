@@ -27,7 +27,7 @@ export const PostListPage = () => {
     isError,
     data: postList,
   } = useQuery<PostListData>({
-    queryKey: ["postList", page, category],
+    queryKey: ["postList", `${page}`, `${category}`],
     queryFn: () =>
       NormalApi.get(`/v1/api/post/${category}?page=${page - 1}&size=10`),
     select: (result: any) => result.data.data,
