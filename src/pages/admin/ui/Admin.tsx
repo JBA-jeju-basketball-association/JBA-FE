@@ -3,14 +3,14 @@ import React, {useState} from 'react';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    UploadOutlined,
+    PictureOutlined,
     UserOutlined,
-    VideoCameraOutlined,
+    BookOutlined,
+    CalendarOutlined
 } from '@ant-design/icons';
 import style from "./Admin.module.css"
 import {JwtDecoder} from "../../../shared/lib";
 import {useUserStore} from "../../../shared/model";
-import {Route, Routes, useNavigate} from "react-router-dom";
 import {AdminUser} from "./AdminUser";
 import {AdminCompetition} from "./AdminCompetition";
 import {AdminPost} from "./AdminPost";
@@ -26,7 +26,9 @@ export const Admin = () => {
     } = theme.useToken();
     const {AccessToken} = useUserStore();
 
-
+    if (AccessToken) {
+        console.log(JwtDecoder(AccessToken))
+    }
 
     return (
         <Layout>
@@ -45,19 +47,19 @@ export const Admin = () => {
                         },
                         {
                             key: '2',
-                            icon: <VideoCameraOutlined />,
+                            icon: <CalendarOutlined />,
                             label: '대회 관리',
                             onClick: () => setSelectedMenu(adminMenu[1])
                         },
                         {
                             key: '3',
-                            icon: <UploadOutlined />,
+                            icon: <BookOutlined />,
                             label: '게시물 관리',
                             onClick: () => setSelectedMenu(adminMenu[2])
                         },
                         {
                             key: '4',
-                            icon: <UploadOutlined />,
+                            icon: <PictureOutlined />,
                             label: '갤러리 관리',
                             onClick: () => setSelectedMenu(adminMenu[3])
                         },
