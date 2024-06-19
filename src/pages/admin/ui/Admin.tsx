@@ -26,10 +26,6 @@ export const Admin = () => {
     } = theme.useToken();
     const {AccessToken} = useUserStore();
 
-    if (AccessToken) {
-        console.log(JwtDecoder(AccessToken))
-    }
-
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -79,7 +75,7 @@ export const Admin = () => {
                         }}
                     />
                     <div className={style.headerRight}>
-                        {AccessToken && <div className={style.emailArea}><p>{JwtDecoder(AccessToken).sub.split("@")[0]}</p></div>}
+                        {AccessToken && <div className={style.emailArea}><p>{JwtDecoder(AccessToken).aud}</p></div>}
                         <button
                             className={style.backHomeBtn}
                             onClick={() => window.location.href = "/"}
