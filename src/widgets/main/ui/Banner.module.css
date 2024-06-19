@@ -7,7 +7,7 @@
 }
 .Banner {
     background-image: url("/public/mainImg/banner.jpeg");
-    min-width: 1920px;
+    min-width: 1440px;
     max-height: 828px;
     background-repeat: no-repeat;
     background-size: cover;

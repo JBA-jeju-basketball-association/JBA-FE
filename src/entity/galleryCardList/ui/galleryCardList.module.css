@@ -1,8 +1,0 @@
-.container {
-  width: 1260px;
-  height: 630px;
-  gap: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}

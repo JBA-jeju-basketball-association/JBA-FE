@@ -1,6 +1,7 @@
 import React from 'react';
 import style from "./UpdateFiles.module.css";
 import {IFileTypes} from "../../../shared/type/CompetitionType";
+import {TiDelete} from "react-icons/ti";
 
 type Props = {
     file: IFileTypes;
@@ -14,7 +15,7 @@ export const FileRow = ({file, handleFilterFile}:Props) => {
                 className={style.FilesFilter}
                 onClick={() => handleFilterFile(file.id)}
             >
-                X
+                <TiDelete style={{marginTop: "2px"}} size={16}/>
             </div>
         </div>
     );

@@ -3,14 +3,12 @@ import style from "./AddCompetitionLabel.module.css"
 
 type Props = {
     label: string;
-    height: string;
 }
-export const AddCompetitionLabel = ({label, height}:Props) => {
+export const AddCompetitionLabel = ({label}:Props) => {
 
     return (
-        <label className={height === "normal" ? style.AddCompetitionLabel : style.AddCompetitionLabelDouble}>
+            <div className={style.AddCompetitionLabel}>
                 {label}
-        </label>
-
+            </div>
     );
 };

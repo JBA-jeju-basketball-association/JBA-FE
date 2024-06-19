@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="" />
+    <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/MenuBar/ui/MenuBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/MenuBar/ui/MenuBar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryEditPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryEditPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryUploadPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryUploadPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/mainPage/ui/Main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/mainPage/ui/Main.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/AddPostPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/AddPostPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/PostDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/PostDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/PostListPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/PostListPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/UpdatePostPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/UpdatePostPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/footer/ui/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/footer/ui/Footer.module.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +42,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="fix-competition" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -57,7 +83,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;TypeScript.BoxArea.tsx.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fix-loginPage&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fix-competition&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/JBA-FE&quot;,
@@ -82,6 +108,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/competitionPage/ui/update" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage" />
       <recent name="$PROJECT_DIR$/src/pages/loginPage/ui" />
       <recent name="$PROJECT_DIR$/src/shared/ui" />
@@ -125,6 +152,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

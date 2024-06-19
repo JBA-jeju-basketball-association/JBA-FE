@@ -26,13 +26,11 @@ export const Pagination = ({totalPages, page, setPage}:Props) => {
 
     const handleLeftRightButton = (num:number):void => {
         setPage(page + num)
-        window.scrollTo(0, 80);
     }
 
     const handleSelectPage = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>):void => {
         // @ts-ignore
         const num: number = parseInt(e.target.innerHTML);
-        window.scrollTo(0, 80);
         setPage(num);
     }
 

@@ -1,0 +1,25 @@
+.container {
+  min-width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  max-width: 1320px;
+  margin-bottom: 50px;
+}
+
+.titleWrapper {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}

@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-width: 1920px;
+    /*width: 100%;*/
+    min-width: 1440px;
     z-index: 10;
 }
 .MenuBar_Inner{
@@ -32,7 +32,7 @@
     float: left;
     position: relative; /* 추가: .Li 요소에 상대적인 위치 설정 */
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
 
 }
 
@@ -63,7 +63,7 @@
 }
 
 .SubMenu li:hover {
-    font-weight: bolder;
+    color: var(--primary-color);
 }
 
 .BackGround{
