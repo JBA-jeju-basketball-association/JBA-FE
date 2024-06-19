@@ -65,9 +65,9 @@ const SlideContainer = styled.div`
 
   .dots_custom li {
     cursor: pointer;
-    width: 190px;
-    height: 140px;
-    flex: 0 0 190px;
+    width: 200px;
+    height: 130px;
+    flex: 0 0 200px;
   }
 
   .dots_custom li img {
