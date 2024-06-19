@@ -2,10 +2,10 @@ import base64 from "base-64"
 export function JwtDecoder(jwtToken:string){
 
     //jwt토큰 디코딩
-    let payload:string = jwtToken.substring(jwtToken.indexOf('.')+1,jwtToken.lastIndexOf('.'));
-    let decodingInfo:string = base64.decode(payload);
-    let decodingInfoJson = JSON.parse(decodingInfo);
+    let payload = jwtToken.split('.')[1]; // Base64 URL part of JWT
+    let decodedPayload = base64.decode(payload);
+    let utf8Payload = decodeURIComponent(escape(decodedPayload)); // Ensure UTF-8 encoding
 
-    return decodingInfoJson;
+    return JSON.parse(utf8Payload);
 
 }
