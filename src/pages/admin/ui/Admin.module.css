@@ -1,3 +1,7 @@
+.Layout {
+    min-width: 1440px;
+}
+
 .logo {
     color: var(--primary-color);
     display: flex;

@@ -27,7 +27,7 @@ export const Admin = () => {
     const {AccessToken} = useUserStore();
 
     return (
-        <Layout>
+        <Layout className={style.Layout}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className={style.logo} ><p>JBA-Admin</p></div>
                 <Menu
