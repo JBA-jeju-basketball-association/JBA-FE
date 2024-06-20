@@ -11,7 +11,7 @@ export const PrivateRoute  = () => {
 
     if (AccessToken) {
         const decodedToken:any = JwtDecoder(AccessToken);
-        if (decodedToken.role === "ROLE_MASTER") {
+        if (decodedToken.role === "ROLE_MASTER" || decodedToken.role === "ROLE_ADMIN") {
             return <Outlet />
         }else {
             confirmAlert("warning", "권한이 없습니다.")

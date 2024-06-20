@@ -6,6 +6,7 @@
 .pnp.js
 .idea
 .idea/*
+.idea/workspace.xml
 JBA-FE.iml
 
 # testing
