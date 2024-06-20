@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
+import OfficialOptions from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useMutation } from "@tanstack/react-query";
@@ -32,6 +33,7 @@ export const AddPostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [foreword, setForeword] = useState<string>("");
+  const [isOfficial, setIsOfficial] = useState<boolean>(false);
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
   const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
@@ -54,7 +56,7 @@ export const AddPostPage = () => {
     onError: (e) => console.log(e),
   });
 
-  const addPost = (params: { category?: string; data: requestPostData }) => {
+  const addPost = (params: { category?: string; data: requestPostData, isOfficial?: boolean }) => {
     mutation.mutate(params);
   };
 
@@ -70,6 +72,7 @@ export const AddPostPage = () => {
     addPost({
       category,
       data: requestData,
+      isOfficial,
     });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
@@ -92,6 +95,10 @@ export const AddPostPage = () => {
     setForeword(selectedOption.label);
   };
 
+  const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
+    setIsOfficial(selectedOption.value);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -109,6 +116,13 @@ export const AddPostPage = () => {
           <div className={styles.formWrapper}>
             <div className={styles.formContent}>
               <div className={styles.inputArea}>
+              <Select
+                styles={customStyles}
+                options={OfficialOptions}
+                placeholder="종류"
+                className={styles.select}
+                onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
+              />
                 <Select
                   styles={customStyles}
                   options={ForewordOptions}

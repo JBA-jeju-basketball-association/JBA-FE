@@ -84,6 +84,7 @@ export const PostDetailPage = () => {
     content,
     postImgs,
     files,
+    isAnnouncement,
   } = postDetail;
 
   return (
@@ -137,7 +138,7 @@ export const PostDetailPage = () => {
           <div className={styles.buttonWrapper}>
             <Button
               className={styles.buttonEdit}
-              onClick={() => navigate(`/post/${category}/${postId}/update`)}
+              onClick={() => navigate(`/post/${category}/${postId}/update?isAnnouncement=${isAnnouncement}`)}
             >
               수정하기
             </Button>

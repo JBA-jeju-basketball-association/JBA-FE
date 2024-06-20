@@ -11,17 +11,22 @@ export interface requestPostData {
 const AddPostRequest = (params: {
   category?: string;
   data: requestPostData;
+  isOfficial?: boolean;
 }) => {
-  const { category, data } = params;
+  const { category, data, isOfficial } = params;
   const formData = new FormData();
-  console.log(formData, '---폼데이터---')
+  console.log(formData, "---폼데이터---");
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   formData.append("body", blob);
-  const request = NormalApi.post(`v1/api/post/${category}`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const request = NormalApi.post(
+    `v1/api/post/${category}${isOfficial ? `?isOfficial=${isOfficial}` : ""}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
   return request;
 };
 
