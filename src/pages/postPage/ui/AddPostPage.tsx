@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
+import getFilesUrl from "../api/GetFilesUrlRequest";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
 import OfficialOptions from "../../../shared/model/officialOptions";
@@ -56,7 +57,11 @@ export const AddPostPage = () => {
     onError: (e) => console.log(e),
   });
 
-  const addPost = (params: { category?: string; data: requestPostData, isOfficial?: boolean }) => {
+  const addPost = (params: {
+    category?: string;
+    data: requestPostData;
+    isOfficial?: boolean;
+  }) => {
     mutation.mutate(params);
   };
 
@@ -99,6 +104,18 @@ export const AddPostPage = () => {
     setIsOfficial(selectedOption.value);
   };
 
+  const handleInputChange = async (files: FileList | null) => {
+    // let fileList = [];
+    // if (files !== null) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     fileList.push(files[i])
+    //   }
+    // }
+    // 1. url 발급 및 버켓 담기
+    getFilesUrl(files);
+    // 2. 담기 성공하면 setPostFile로 상태 변경
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -116,13 +133,13 @@ export const AddPostPage = () => {
           <div className={styles.formWrapper}>
             <div className={styles.formContent}>
               <div className={styles.inputArea}>
-              <Select
-                styles={customStyles}
-                options={OfficialOptions}
-                placeholder="종류"
-                className={styles.select}
-                onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
-              />
+                <Select
+                  styles={customStyles}
+                  options={OfficialOptions}
+                  placeholder="종류"
+                  className={styles.select}
+                  onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
+                />
                 <Select
                   styles={customStyles}
                   options={ForewordOptions}
@@ -151,7 +168,13 @@ export const AddPostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <span className={styles.fileNull}>파일 업로드 자리</span>
+              <input
+                type="file"
+                name="uploadFile"
+                id="uploadFile"
+                multiple
+                onChange={(e) => handleInputChange(e.target.files)}
+              />
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>
@@ -160,8 +183,8 @@ export const AddPostPage = () => {
                 <Button
                   className={styles.buttonCancel}
                   type="button"
-                  // onClick={() => navigate(`/post/${category}`)}
-                  onClick={() => alert("작성이 취소되었습니다.")}
+                  onClick={() => navigate(`/post/${category}`)}
+                  // onClick={() => alert("작성이 취소되었습니다.")}
                 >
                   취소
                 </Button>

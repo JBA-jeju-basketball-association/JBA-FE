@@ -15,7 +15,6 @@ const AddPostRequest = (params: {
 }) => {
   const { category, data, isOfficial } = params;
   const formData = new FormData();
-  console.log(formData, "---폼데이터---");
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   formData.append("body", blob);
   const request = NormalApi.post(
