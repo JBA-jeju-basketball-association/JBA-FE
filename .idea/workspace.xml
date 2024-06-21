@@ -6,25 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/MenuBar/ui/MenuBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/MenuBar/ui/MenuBar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddCompetitionPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/AddResultPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/UpdateCompetitionResultPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryEditPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryEditPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryUploadPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/galleryPages/ui/GalleryUploadPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/loginPage/ui/LoginPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/mainPage/ui/Main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/mainPage/ui/Main.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/AddPostPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/AddPostPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/PostDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/PostDetailPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/PostListPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/PostListPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/postPage/ui/UpdatePostPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/postPage/ui/UpdatePostPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/footer/ui/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/footer/ui/Footer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/Api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/Api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,31 +62,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TypeScript.BoxArea.tsx.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fix-competition&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/JBA-FE&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TypeScript.BoxArea.tsx.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/JBA-FE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel" />
