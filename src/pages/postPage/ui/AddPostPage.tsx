@@ -116,8 +116,6 @@ export const AddPostPage = () => {
     }
   }, [OfficialState]);
 
-  console.log(OfficialState, "---isOfficial---");
-
   // const handleInputChange = async (files: FileList | null) => {
   //   // 1. url 발급 및 버켓 담기
   //   const response = await getFilesUrl(files);

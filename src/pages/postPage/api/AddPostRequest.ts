@@ -18,13 +18,14 @@ const AddPostRequest = (params: {
   const { category, data, OfficialState, postFiles } = params;
   const officialBoolean = OfficialState === "official" ? true : false;
   const formData = new FormData();
+  const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+  formData.append("body", blob);
   if (!!postFiles) {
     for (let i = 0; i < postFiles.length; i++) {
       formData.append("uploadFiles", postFiles[i]);
+      console.log(postFiles[i], '----postFiles---')
     }
   }
-  const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
-  formData.append("body", blob);
   const request = NormalApi.post(
     `v1/api/post/${category}${officialBoolean ? `?isOfficial=${officialBoolean}` : ""}`,
     formData,
