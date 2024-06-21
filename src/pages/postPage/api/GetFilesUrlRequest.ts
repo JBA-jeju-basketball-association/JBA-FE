@@ -1,12 +1,15 @@
 import { NormalApi } from "../../../shared/api/NormalApi";
 
-const getFilesUrl = async (files: FileList | null) => {
-  console.log(files, '-----files----')
+export interface PostFilesType {
+  fileName: string;
+  fileUrl: string;
+}
+
+const getFilesUrl = async (files: FileList | null): Promise<PostFilesType[]> => {
   const formData = new FormData();
   if(files !== null) {
     for(let i = 0; i < files.length; i++) {
-      const blob = new Blob([JSON.stringify(files[i])], { type: "application/json" });
-      formData.append("uploadFiles", blob);
+      formData.append("uploadFiles", files[i]);
     }
   }
   const reponse = await NormalApi.post(
@@ -18,8 +21,8 @@ const getFilesUrl = async (files: FileList | null) => {
       },
     }
   );
-  console.log(reponse.data, '-----reponse.data-----');
-  return reponse;
+  const responseFileList = reponse.data.data
+  return responseFileList;
 };
 
 export default getFilesUrl;

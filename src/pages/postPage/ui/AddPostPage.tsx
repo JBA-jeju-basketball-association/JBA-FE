@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
-import getFilesUrl from "../api/GetFilesUrlRequest";
+import getFilesUrl, { PostFilesType } from "../api/GetFilesUrlRequest";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
 import OfficialOptions from "../../../shared/model/officialOptions";
@@ -11,11 +11,6 @@ import { useMutation } from "@tanstack/react-query";
 import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
 import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
-
-interface PostFilesType {
-  fileName: string;
-  fileUrl: string;
-}
 
 const customStyles = {
   control: (provided: any) => ({
@@ -33,10 +28,14 @@ const customStyles = {
 export const AddPostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [foreword, setForeword] = useState<string>("");
-  const [isOfficial, setIsOfficial] = useState<boolean>(false);
+  const [foreword, setForeword] = useState<
+    "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
+  >("");
+  const [OfficialState, setOfficialState] = useState<"official" | "normal">(
+    "normal"
+  );
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
-  const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
+  const [postFiles, setPostFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
 
   const navigate = useNavigate();
@@ -60,25 +59,30 @@ export const AddPostPage = () => {
   const addPost = (params: {
     category?: string;
     data: requestPostData;
-    isOfficial?: boolean;
+    OfficialState: "official" | "normal";
+    postFiles: FileList | null;
   }) => {
     mutation.mutate(params);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const requestData: requestPostData = {
-      title: title,
-      content: content,
-      foreword: foreword,
-      postImgs: postImgs,
-    };
-
-    addPost({
-      category,
-      data: requestData,
-      isOfficial,
-    });
+    const forewordOption = ForewordOptions.find(
+      (option) => option.value === foreword
+    );
+      const forewordLabel = forewordOption ? forewordOption.label : '';
+      const requestData: requestPostData = {
+        title,
+        content,
+        foreword: forewordLabel,
+        postImgs,
+      };
+      addPost({
+        category,
+        data: requestData,
+        OfficialState,
+        postFiles,
+      });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -97,24 +101,29 @@ export const AddPostPage = () => {
   };
 
   const forewordHandler = (selectedOption: SingleValue<any>): void => {
-    setForeword(selectedOption.label);
+    setForeword(selectedOption.value);
   };
 
   const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
-    setIsOfficial(selectedOption.value);
+    setOfficialState(selectedOption.value);
   };
 
-  const handleInputChange = async (files: FileList | null) => {
-    // let fileList = [];
-    // if (files !== null) {
-    //   for (let i = 0; i < files.length; i++) {
-    //     fileList.push(files[i])
-    //   }
-    // }
-    // 1. url 발급 및 버켓 담기
-    getFilesUrl(files);
-    // 2. 담기 성공하면 setPostFile로 상태 변경
-  };
+  useEffect(() => {
+    if (OfficialState === "normal") {
+      setForeword("");
+    } else {
+      setForeword("notice");
+    }
+  }, [OfficialState]);
+
+  console.log(OfficialState, "---isOfficial---");
+
+  // const handleInputChange = async (files: FileList | null) => {
+  //   // 1. url 발급 및 버켓 담기
+  //   const response = await getFilesUrl(files);
+  //   // 2. 담기 성공하면 setPostFile로 상태 변경
+  //   setPostFiles();
+  // };
 
   return (
     <div className={styles.container}>
@@ -146,6 +155,7 @@ export const AddPostPage = () => {
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
+                  isDisabled={OfficialState === "official" ? false : true}
                 />
                 <input
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -173,7 +183,7 @@ export const AddPostPage = () => {
                 name="uploadFile"
                 id="uploadFile"
                 multiple
-                onChange={(e) => handleInputChange(e.target.files)}
+                onChange={(e) => setPostFiles(e.target.files)}
               />
               <div className={styles.subLine}></div>
             </div>

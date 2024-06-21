@@ -1,24 +1,32 @@
 import { NormalApi } from "../../../shared/api/NormalApi";
 import { PostImgsType } from "shared/type/PostType";
+import { PostFilesType } from "./GetFilesUrlRequest";
 
 export interface requestPostData {
   title: string;
   content: string;
-  foreword: string;
+  foreword: "안내" | "개최" | "합격자 발표" | "입찰" | "기타" | "";
   postImgs: PostImgsType[];
 }
 
 const AddPostRequest = (params: {
   category?: string;
   data: requestPostData;
-  isOfficial?: boolean;
+  OfficialState: "official" | "normal";
+  postFiles: FileList | null;
 }) => {
-  const { category, data, isOfficial } = params;
+  const { category, data, OfficialState, postFiles } = params;
+  const officialBoolean = OfficialState === "official" ? true : false;
   const formData = new FormData();
+  if (!!postFiles) {
+    for (let i = 0; i < postFiles.length; i++) {
+      formData.append("uploadFiles", postFiles[i]);
+    }
+  }
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   formData.append("body", blob);
   const request = NormalApi.post(
-    `v1/api/post/${category}${isOfficial ? `?isOfficial=${isOfficial}` : ""}`,
+    `v1/api/post/${category}${officialBoolean ? `?isOfficial=${officialBoolean}` : ""}`,
     formData,
     {
       headers: {
