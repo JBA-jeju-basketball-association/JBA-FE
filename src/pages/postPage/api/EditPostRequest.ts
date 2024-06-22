@@ -3,19 +3,24 @@ import { requestPostData } from "./AddPostRequest";
 
 const EditPostRequest = (params: {
   category?: string;
-  data: requestPostData;
+  requestData: requestPostData;
   postId?: string;
+  officialState: "official" | "normal";
 }) => {
-  const { category, data, postId } = params;
+  const { category, requestData, postId, officialState } = params;
+  const officialBoolean = officialState === "official" ? true : false;
   const formData = new FormData();
-  console.log(formData, "---폼데이터---");
-  const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+  const blob = new Blob([JSON.stringify(requestData)], { type: "application/json" });
   formData.append("body", blob);
-  const request = NormalApi.put(`v1/api/post/${category}/${postId}`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const request = NormalApi.put(
+    `v1/api/post/${category}/${postId}${`?isOfficial=${officialBoolean}`}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
   return request;
 };
 
