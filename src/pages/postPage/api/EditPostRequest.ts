@@ -3,15 +3,14 @@ import { requestPostData } from "./AddPostRequest";
 
 const EditPostRequest = (params: {
   category?: string;
-  data: requestPostData;
+  requestData: requestPostData;
   postId?: string;
-  isOfficial?: string;
+  officialState: "official" | "normal";
 }) => {
-  const { category, data, postId, isOfficial } = params;
-  const officialBoolean = isOfficial === "공지사항" ? true : false;
-  console.log(officialBoolean, "-----officialBoolean------");
+  const { category, requestData, postId, officialState } = params;
+  const officialBoolean = officialState === "official" ? true : false;
   const formData = new FormData();
-  const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+  const blob = new Blob([JSON.stringify(requestData)], { type: "application/json" });
   formData.append("body", blob);
   const request = NormalApi.put(
     `v1/api/post/${category}/${postId}${`?isOfficial=${officialBoolean}`}`,

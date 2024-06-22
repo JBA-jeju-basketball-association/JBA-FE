@@ -25,6 +25,11 @@ export interface PostImgsType {
   fileName: string;
   imgUrl: string;
 }
+//파일 타입
+export interface FilesType {
+  fileName: string;
+  fileUrl: string;
+}
 
 // 게시글 타입 정의
 export interface PostDetailType {
