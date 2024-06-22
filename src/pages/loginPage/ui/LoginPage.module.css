@@ -1,6 +1,6 @@
 /* 전체 화면 배경 설정 */
 .LoginPage {
-    min-width: 1920px;
+    min-width: 1440px;
     min-height: 1080px;
     background-image: url("/public/loginPage/loginPagebackgroundImg.jpg");
     background-size: cover;

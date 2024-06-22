@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
+import getFilesUrl, { PostFilesType } from "../api/GetFilesUrlRequest";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
+import OfficialOptions from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useMutation } from "@tanstack/react-query";
 import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
 import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
-
-interface PostFilesType {
-  fileName: string;
-  fileUrl: string;
-}
 
 const customStyles = {
   control: (provided: any) => ({
@@ -31,9 +28,14 @@ const customStyles = {
 export const AddPostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [foreword, setForeword] = useState<string>("");
+  const [foreword, setForeword] = useState<
+    "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
+  >("");
+  const [OfficialState, setOfficialState] = useState<"official" | "normal">(
+    "normal"
+  );
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
-  const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
+  const [postFiles, setPostFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
 
   const navigate = useNavigate();
@@ -54,23 +56,33 @@ export const AddPostPage = () => {
     onError: (e) => console.log(e),
   });
 
-  const addPost = (params: { category?: string; data: requestPostData }) => {
+  const addPost = (params: {
+    category?: string;
+    data: requestPostData;
+    OfficialState: "official" | "normal";
+    postFiles: FileList | null;
+  }) => {
     mutation.mutate(params);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const requestData: requestPostData = {
-      title: title,
-      content: content,
-      foreword: foreword,
-      postImgs: postImgs,
-    };
-
-    addPost({
-      category,
-      data: requestData,
-    });
+    const forewordOption = ForewordOptions.find(
+      (option) => option.value === foreword
+    );
+      const forewordLabel = forewordOption ? forewordOption.label : '';
+      const requestData: requestPostData = {
+        title,
+        content,
+        foreword: forewordLabel,
+        postImgs,
+      };
+      addPost({
+        category,
+        data: requestData,
+        OfficialState,
+        postFiles,
+      });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -89,8 +101,27 @@ export const AddPostPage = () => {
   };
 
   const forewordHandler = (selectedOption: SingleValue<any>): void => {
-    setForeword(selectedOption.label);
+    setForeword(selectedOption.value);
   };
+
+  const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
+    setOfficialState(selectedOption.value);
+  };
+
+  useEffect(() => {
+    if (OfficialState === "normal") {
+      setForeword("");
+    } else {
+      setForeword("notice");
+    }
+  }, [OfficialState]);
+
+  // const handleInputChange = async (files: FileList | null) => {
+  //   // 1. url 발급 및 버켓 담기
+  //   const response = await getFilesUrl(files);
+  //   // 2. 담기 성공하면 setPostFile로 상태 변경
+  //   setPostFiles();
+  // };
 
   return (
     <div className={styles.container}>
@@ -111,10 +142,18 @@ export const AddPostPage = () => {
               <div className={styles.inputArea}>
                 <Select
                   styles={customStyles}
+                  options={OfficialOptions}
+                  placeholder="종류"
+                  className={styles.select}
+                  onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
+                />
+                <Select
+                  styles={customStyles}
                   options={ForewordOptions}
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
+                  isDisabled={OfficialState === "official" ? false : true}
                 />
                 <input
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -137,7 +176,13 @@ export const AddPostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <span className={styles.fileNull}>파일 업로드 자리</span>
+              <input
+                type="file"
+                name="uploadFile"
+                id="uploadFile"
+                multiple
+                onChange={(e) => setPostFiles(e.target.files)}
+              />
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>
@@ -146,8 +191,8 @@ export const AddPostPage = () => {
                 <Button
                   className={styles.buttonCancel}
                   type="button"
-                  // onClick={() => navigate(`/post/${category}`)}
-                  onClick={() => alert("작성이 취소되었습니다.")}
+                  onClick={() => navigate(`/post/${category}`)}
+                  // onClick={() => alert("작성이 취소되었습니다.")}
                 >
                   취소
                 </Button>

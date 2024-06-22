@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./App.css";
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import {
   AddCompetitionPage,
   AddResultPage,
@@ -25,20 +25,25 @@ import {
 import { UpdateCompetitionPage } from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import "../shared/base.css";
 import { SignupForm } from "../features/signup/ui/SignupForm";
-import Header from "./header/Header";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
 import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
+import {Header} from "../widgets/header";
+import {Admin} from "../pages/admin";
 
 function App() {
   useAxiosInterceptor();
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
     <div>
-      <Header />
+      {!isAdminRoute && <Header/>}
       <div className={style.wrapper}>
         <Routes>
+          <Route path={"/admin"} element={<Admin />}/>
           <Route
             path="signup"
             element={
@@ -88,7 +93,7 @@ function App() {
           <Route path={"/post/:category/:postId"} element={<PostDetailPage />} />
         </Routes>
       </div>
-      <Footer></Footer>
+      {!isAdminRoute && <Footer/>}
     </div>
   );
 }
