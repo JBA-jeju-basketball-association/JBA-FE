@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/loadingSpinner/LoadingSpinner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchGetCompetitionList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/api/Api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/Api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/NormalApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/competition/ui/CompetitionDetailInfoRow.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionDetailInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionResult.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import style from "./CompetitionPage.module.css"
-import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
@@ -52,6 +52,10 @@ export const CompetitionPage = () => {
                 })
             }
         }
+    }
+
+    if (isLoading) {
+        return <LoadingSpinner />
     }
     return (
         <div className={style.CompetitionPage}>

@@ -13,3 +13,4 @@ export { CommonModal } from "./commonModal/CommonModal";
 export { ListLinkBtn } from "./listLinkBtn/ListLinkBtn";
 export { RegitTitleInput } from "./regitTitleInput/RegitTitleInput";
 export {GalleryForm} from "./galleryForm/GalleryForm";
+export {LoadingSpinner} from "./loadingSpinner/LoadingSpinner";

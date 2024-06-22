@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ListLinkBtn, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {ListLinkBtn, LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import style from "./CompetitionDetailPage.module.css"
 import {CompetitionDetailInfo, CompetitionDetailTitle, competitionStatusCalculator,CompetitionResult} from "../../../widgets/competition";
 import {CompetitionDetailCategory} from "../../../features/competition";
@@ -39,7 +39,7 @@ export const CompetitionDetailPage = () => {
     }
 
     if (isLoading) {
-        return <div>Loading.....</div>
+        return <LoadingSpinner />
     }
 
     return (

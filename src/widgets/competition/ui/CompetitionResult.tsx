@@ -10,7 +10,7 @@ import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import {JwtDecoder} from "../../../shared/lib";
 import {useUserStore} from "../../../shared/model";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
-import {RegitUpdateDeleteButton} from "../../../shared/ui";
+import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
 
 export const CompetitionResult = () => {
     const {id} = useParams();
@@ -39,7 +39,9 @@ export const CompetitionResult = () => {
             });
     }
 
-
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
 
     return (
         <div className={style.CompetitionResult}>
