@@ -7,25 +7,3 @@
 .ck-editor__editable {
     min-height: 30rem;
   }
-
-  /* 임시: 에디터 폰트 사이즈  */
-
-  .text-tiny {
-    font-size: 0.7em;
-  }
-  .text-small {
-    font-size: 0.75em;
-  }
-  .text-normal {
-    font-size: 1em;
-  }
-  .text-big {
-    font-size: 1.4em;
-  }
-  .text-large {
-    font-size: 1.8em;
-  }
-
-  li, ol, ul {
-    list-style: inside;
-  }

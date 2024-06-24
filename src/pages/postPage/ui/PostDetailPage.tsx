@@ -3,13 +3,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
-import parse from "html-react-parser";
 import { useUserStore } from "../../../shared/model";
 import { JwtDecoder } from "../../../shared/lib";
 import { PostImgsType, FilesType } from "shared/type/PostType";
 import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
-import { CkEditor } from "features/ckEditor";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
