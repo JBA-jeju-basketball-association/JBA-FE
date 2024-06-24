@@ -9,6 +9,7 @@ import { JwtDecoder } from "../../../shared/lib";
 import { PostImgsType, FilesType } from "shared/type/PostType";
 import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
+import { CkEditor } from "features/ckEditor";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
@@ -103,8 +104,6 @@ export const PostDetailPage = () => {
     isAnnouncement,
   } = postDetail;
 
-  console.log(downloadUrl, '---downloadUrl---')
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -130,7 +129,9 @@ export const PostDetailPage = () => {
           <li className={styles.list}>{viewCount}</li>
         </ul>
         <div className={styles.subLine}></div>
-        <div className={styles.content}>{parse(content)}</div>
+        <div className={styles.content}>
+          {parse(content)}
+        </div>
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
           {downloadUrl[0] && (

@@ -62,7 +62,16 @@
   padding-bottom: 40px;
   padding-right: 10%;
   padding-left: 10%;
+  scrollbar-width: 0;
+  overflow: scroll;
+
+  img {
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+  }
 }
+
 .filesWrapper {
   display: flex;
   flex-direction: column;
