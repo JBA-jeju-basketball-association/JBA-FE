@@ -129,9 +129,8 @@ export const PostDetailPage = () => {
           <li className={styles.list}>{viewCount}</li>
         </ul>
         <div className={styles.subLine}></div>
-        <div className={styles.content}>
-          {parse(content)}
-        </div>
+        {/* 에디터 콘텐츠 화면 */}
+        <div className='ck-content'  dangerouslySetInnerHTML={{ __html: content }} />
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
           {downloadUrl[0] && (

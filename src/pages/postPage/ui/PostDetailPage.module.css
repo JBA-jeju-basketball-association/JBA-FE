@@ -66,8 +66,7 @@
   overflow: scroll;
 
   img {
-    display: block;
-    margin: 10px auto;
+    border-radius: 5px;
     width: 50%;
   }
 }
@@ -120,3 +119,4 @@
 .buttonDelete:hover {
   background-color: var(--subcolor-black4);
 }
+
