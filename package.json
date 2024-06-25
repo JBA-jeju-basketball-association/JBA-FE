@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.3.1",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@ckeditor/ckeditor5-media-embed": "^41.4.2",
     "@ckeditor/ckeditor5-react": "^6.2.0",
     "@tanstack/react-query": "^5.28.14",
@@ -85,5 +85,14 @@
     "prettier": "^3.2.5",
     "react-embedly": "^0.3.5",
     "typescript-plugin-css-modules": "^5.1.0"
+  },
+  "resolutions": {
+    "@ckeditor/ckeditor5-core": "41.4.2",
+    "@ckeditor/ckeditor5-ui": "41.4.2",
+    "@ckeditor/ckeditor5-editor-classic": "41.4.2",
+    "@ckeditor/ckeditor5-basic-styles": "41.4.2",
+    "@ckeditor/ckeditor5-paragraph": "41.4.2",
+    "@ckeditor/ckeditor5-heading": "41.4.2",
+    "@ckeditor/ckeditor5-essentials": "41.4.2"
   }
 }
