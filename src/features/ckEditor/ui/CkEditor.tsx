@@ -60,11 +60,10 @@ export const CkEditor = ({ ckData, setCkData, setNewCkImgUrls }: Props) => {
         "tableCellProperties",
         "tableProperties",
       ],
-      mediaEmbed: {
-        previewsInData: true,
-      },
     },
-
+    mediaEmbed: {
+      previewsInData:true
+  },
     extraPlugins: [uploadPlugin],
   };
 
