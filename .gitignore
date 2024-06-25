@@ -8,6 +8,7 @@
 .idea/*
 .idea/workspace.xml
 JBA-FE.iml
+ckeditor5//node_modules
 
 # testing
 /coverage
