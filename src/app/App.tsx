@@ -43,7 +43,6 @@ function App() {
       {!isAdminRoute && <Header/>}
       <div className={style.wrapper}>
         <Routes>
-          <Route path={"/admin"} element={<Admin />}/>
           <Route
             path="signup"
             element={
@@ -81,6 +80,7 @@ function App() {
             <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
             <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage />} />
             <Route path={"/gallery/galleryedit"} element={<GalleryEditPage />} />
+            <Route path={"/admin"} element={<Admin />}/>
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
