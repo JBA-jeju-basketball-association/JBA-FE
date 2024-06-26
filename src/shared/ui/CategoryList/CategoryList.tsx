@@ -3,9 +3,12 @@ import styles from "./CategoryList.module.css";
 import { Category, CategoryProps } from "shared/type/AdminType";
 import { DownIcon } from "utils/icon";
 
-export const CategoryList = ({ categorys }: CategoryProps) => {
+export const CategoryList = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}: CategoryProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(categorys[0]);
 
   const handleDropDown = () => {
     setIsVisible(!isVisible);
@@ -31,7 +34,7 @@ export const CategoryList = ({ categorys }: CategoryProps) => {
       <div className={styles.selectOption}>{selectedCategory.list}</div>
       {isVisible && (
         <ul className={styles.categoryWrapper}>
-          {categorys.map((category) => (
+          {categories.map((category) => (
             <li
               key={category.id}
               className={styles.categoryLabel}

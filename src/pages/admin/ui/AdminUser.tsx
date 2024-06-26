@@ -3,8 +3,8 @@ import { AdminSearchForm } from "features/admin/";
 import styles from "./AdminUser.module.css";
 
 export const AdminUser = () => {
-  const label = ["검색어", "가입일시", "권한"];
-  const categorys = [
+  const label = ["검색어", "권한", "가입일시"];
+  const categories = [
     [
       { id: 1, list: "이름" },
       { id: 2, list: "이메일" },
@@ -31,7 +31,7 @@ export const AdminUser = () => {
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminSearchForm categorys={categorys} label={label} />
+        <AdminSearchForm categories={categories} label={label} />
       </div>
       <div className={styles.listWrapper}>목록 영역</div>
     </div>

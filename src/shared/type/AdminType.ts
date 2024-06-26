@@ -4,13 +4,16 @@ export type Category = {
 };
 
 export type CategoryProps = {
-  categorys: Category[];
+  categories: Category[];
+  selectedCategory: Category;
+  setSelectedCategory: (category: Category) => void;
 };
 
 export type AdminBasicFormProps = CategoryProps & {
   label: string;
+  selectedCategory: Category;
 };
 export type AdminSearchFormProps = {
   label: string[];
-  categorys: Category[][];
+  categories: Category[][];
 };
