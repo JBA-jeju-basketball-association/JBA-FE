@@ -1,0 +1,18 @@
+.container {
+  width: 464px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.container > label{
+  font-weight: bold;
+}
+
+.container > input{
+  width: 270px;
+  height: 30px;
+  border: 1px solid var(--subcolor-black5);
+
+}

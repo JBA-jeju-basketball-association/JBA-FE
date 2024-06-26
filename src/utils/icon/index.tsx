@@ -64,3 +64,11 @@ export const MeatballIcon = ({ ...props }: IconPropsType) => {
     </IconTemplate>
   );
 };
+
+export const DownIcon = ({ ...props }: IconPropsType) => {
+  return (
+    <IconTemplate {...props}>
+      <path d="M6.41,9H17.59a1,1,0,0,1,.7,1.71l-5.58,5.58a1,1,0,0,1-1.42,0L5.71,10.71A1,1,0,0,1,6.41,9Z" />
+    </IconTemplate>
+  );
+};

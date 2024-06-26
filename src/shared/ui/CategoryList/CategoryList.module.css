@@ -20,6 +20,8 @@
 .categoryWrapper {
   width: 100%;
   background: white;
+  z-index: 2;
+  position: absolute;
 }
 .categoryLabel {
   width: 100%;
