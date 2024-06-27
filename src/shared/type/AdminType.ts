@@ -1,19 +1,20 @@
 export type Category = {
-  id: number;
   list: string;
 };
 
 export type CategoryProps = {
-  categories: Category[];
-  selectedCategory: Category;
-  setSelectedCategory: (category: Category) => void;
+  categories?: Category[];
+  selectedCategory?: Category;
+  setSelectedCategory?: (category: Category) => void;
 };
 
 export type AdminBasicFormProps = CategoryProps & {
   label: string;
-  selectedCategory: Category;
+  showCategory?: boolean;
 };
+
 export type AdminSearchFormProps = {
   label: string[];
   categories: Category[][];
 };
+

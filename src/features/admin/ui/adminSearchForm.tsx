@@ -11,34 +11,31 @@ export const AdminSearchForm = ({
   const [selectedCategories, setSelectedCategories] = useState([
     categories[0][0],
     categories[1][0],
-    categories[2][0],
   ]);
 
   const handleResetCategory = () => {
-    setSelectedCategories([
-      categories[0][0],
-      categories[1][0],
-      categories[2][0],
-    ]);
+    setSelectedCategories([categories[0][0], categories[1][0]]);
   };
   return (
     <div className={styles.container}>
       <div className={styles.basicForm}>
-        {label.map((label, index) => (
-          <AdminBasicForm
-            key={index}
-            categories={categories[index]}
-            label={label}
-            selectedCategory={selectedCategories[index]}
-            setSelectedCategory={(category) =>
-              setSelectedCategories([
-                index === 0 ? category : selectedCategories[0],
-                index === 1 ? category : selectedCategories[1],
-                index === 2 ? category : selectedCategories[2],
-              ])
-            }
-          />
-        ))}
+        <AdminBasicForm
+          categories={categories[0]}
+          label={label[0]}
+          selectedCategory={selectedCategories[0]}
+          setSelectedCategory={(category) =>
+            setSelectedCategories([category, selectedCategories[1]])
+          }
+        />
+        <AdminBasicForm
+          categories={categories[1]}
+          label={label[1]}
+          selectedCategory={selectedCategories[1]}
+          setSelectedCategory={(category) =>
+            setSelectedCategories([selectedCategories[0], category])
+          }
+        />
+        <AdminBasicForm label={label[2]} showCategory={false} />
       </div>
       <div className={styles.button}>
         <Button>검색</Button>
@@ -47,6 +44,3 @@ export const AdminSearchForm = ({
     </div>
   );
 };
-
-// //여기는 회원관리 페이지의 검색 폼, 버튼까지 추가된 것들
-// //label이 하나만 넘어가니까 string

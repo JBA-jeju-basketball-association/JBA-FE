@@ -16,10 +16,10 @@ export const CategoryList = ({
   //드랍다운 토글
 
   const handleSelectOption = (category: Category) => {
-    setSelectedCategory(category);
-    //선택한 카테고리 변경
+    if (setSelectedCategory) {
+      setSelectedCategory(category);
+    }
     setIsVisible(false);
-    //드랍다운 닫기
   };
 
   return (
@@ -31,12 +31,12 @@ export const CategoryList = ({
         onClick={handleDropDown}
         className={styles.icon}
       />
-      <div className={styles.selectOption}>{selectedCategory.list}</div>
+      <div className={styles.selectOption}>{selectedCategory?.list}</div>
       {isVisible && (
         <ul className={styles.categoryWrapper}>
-          {categories.map((category) => (
+          {categories?.map((category, index) => (
             <li
-              key={category.id}
+              key={index}
               className={styles.categoryLabel}
               onClick={() => handleSelectOption(category)}
             >

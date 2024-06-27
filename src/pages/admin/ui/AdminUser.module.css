@@ -17,4 +17,10 @@
   width: 90%;
   height: 700px;
   margin-top: 50px;
+  padding: 20px;
+}
+
+.listLength{
+  width: 300px;
+  display: flex;
 }

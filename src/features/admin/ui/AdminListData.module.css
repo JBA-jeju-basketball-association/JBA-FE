@@ -1,0 +1,5 @@
+.container{
+  width: 100%;
+  border: 1px solid var(--subcolor-black5);
+  margin-top: 20px;
+}

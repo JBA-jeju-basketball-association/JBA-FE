@@ -14,3 +14,4 @@ export { ListLinkBtn } from "./listLinkBtn/ListLinkBtn";
 export { RegitTitleInput } from "./regitTitleInput/RegitTitleInput";
 export { GalleryForm } from "./galleryForm/GalleryForm";
 export { CategoryList } from "./CategoryList/CategoryList";
+export { AdminListDataContainer } from "./adminListDataContainer/AdminListDataContainer";

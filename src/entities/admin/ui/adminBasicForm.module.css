@@ -1,18 +1,18 @@
 .container {
-  width: 464px;
+  width: 500px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
 
-.container > label{
+.container > label {
+  width: 25%;
   font-weight: bold;
 }
 
-.container > input{
-  width: 270px;
+.basicFormInput {
+  width: 150%;
   height: 30px;
   border: 1px solid var(--subcolor-black5);
-
+  border-radius: 5px;
 }

@@ -1,5 +1,5 @@
 .container {
-  width: 125px;
+  width: 70%;
   height: 30px;
   background: white;
   position: relative;
@@ -16,6 +16,7 @@
 .selectOption {
   text-align: center;
   padding: 5px 0;
+  height: 30px;
 }
 
 .categoryWrapper {
