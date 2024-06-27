@@ -1,6 +1,7 @@
 import {NormalApi} from "../../../shared/api";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
-import {useNavigate} from "react-router-dom";
+import {postCompetitionSchedule} from "../../../shared/type/CompetitionType";
+import React from "react";
 
 
 export default function fetchCompetitionInfo(id:string|undefined) {

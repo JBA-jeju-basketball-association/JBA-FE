@@ -12,7 +12,7 @@ export default function FetchAddCompetition(requestData:requestData, files:IFile
         formData.append("requestFiles", files[i].object)
     }
 
-    return Api.post("/v1/api/competition/add-competition-info", formData, {
+    return Api.post("/v1/api/competition/post/competition-info", formData, {
         headers: {
             "Content-Type": "multipart/form-data"
         }

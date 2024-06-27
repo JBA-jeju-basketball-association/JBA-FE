@@ -5,7 +5,7 @@ import {
   AddCompetitionPage,
   AddResultPage,
   CompetitionDetailPage,
-  CompetitionPage,
+  CompetitionPage, PostCompetitionSchedulePage,
   PrivateRoute,
   UpdateCompetitionResultPage,
 } from "../pages/competitionPage";
@@ -73,6 +73,7 @@ function App() {
               path="/competition/add-result/:id"
               element={<AddResultPage />}
             />
+            <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
             <Route
               path="/competition/update-result/:id"
               element={<UpdateCompetitionResultPage />}

@@ -86,3 +86,33 @@ export type competitionResult = {
     fileUrl: string;
     fileName: string;
 }
+
+
+
+
+export type postCompetitionSchedule = {
+    division:string;
+    postCompetitionScheduleRow: postCompetitionScheduleRow[];
+}
+
+export type postCompetitionScheduleRow = {
+    gameNumber: number;
+    startDate: Date | null;
+    floor: string;
+    place: string;
+    homeName: string;
+    awayName: string;
+    state5x5: boolean;
+}
+
+export type postCompetitionScheduleRowForGameNumber = {
+    divisionNum: number;
+    rowNum: number
+    gameNumber: number;
+    startDate: Date | null;
+    floor: string;
+    place: string;
+    homeName: string;
+    awayName: string;
+    state5x5: boolean;
+}

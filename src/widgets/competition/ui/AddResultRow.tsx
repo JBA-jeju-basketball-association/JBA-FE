@@ -124,8 +124,8 @@ export const  AddResultRow = ({index, resultIndex, resultList, setResultList, di
     return (
         <div className={style.Result}>
             <div className={style.leftSide}>
-                <CustomDatePickerWithTime startDate={resultList[index].competitionResult[resultIndex].startTime}
-                                          setStartDate={setStartDate}/>
+                {/*<CustomDatePickerWithTime startDate={resultList[index].competitionResult[resultIndex].startTime}*/}
+                {/*                          setStartDate={setStartDate}/>*/}
                 {resultList && divisions?
                     <Select
                         components={makeAnimated()}
