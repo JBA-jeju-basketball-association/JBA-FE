@@ -18,3 +18,9 @@
   height: 700px;
   margin-top: 50px;
 }
+
+.listLength {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}

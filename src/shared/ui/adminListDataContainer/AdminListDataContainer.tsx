@@ -1,19 +1,12 @@
 import React from "react";
-import styles from "./AdminListDataContainer.css";
+import styles from "./AdminListDataContainer.module.css";
 
 type AdminListDataContainerProps = {
-  title: string[];
   content: string[];
 };
 
 export const AdminListDataContainer = ({
-  title,
   content,
 }: AdminListDataContainerProps) => {
-  return (
-    <div className={styles.container}>
-      <h1>{title}</h1>
-      <div>{content}</div>
-    </div>
-  );
+  return <div>{content}</div>;
 };
