@@ -112,7 +112,22 @@ export type getScheduleResponse = {
 
 export type getScheduleResponseRow = {
     gameNumber: number;
-    startDate: Date;
+    startDate: Date | null;
+    floor: string;
+    place: string;
+    homeName: string;
+    awayName: string;
+    state5x5: boolean;
+}
+
+export type updateCompetitionSchedule = {
+    division:string;
+    updateCompetitionScheduleRow: updateCompetitionScheduleRow[];
+}
+
+export type updateCompetitionScheduleRow = {
+    gameNumber: number;
+    startDate: Date | null;
     floor: string;
     place: string;
     homeName: string;

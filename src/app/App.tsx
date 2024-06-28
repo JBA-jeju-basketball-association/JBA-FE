@@ -32,6 +32,7 @@ import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
 import {Header} from "../widgets/header";
 import {Admin} from "../pages/admin";
+import {UpdateCompetitionSchedulePage} from "../pages/competitionPage/ui/UpdateCompetitionSchedulePage";
 
 function App() {
   useAxiosInterceptor();
@@ -74,6 +75,7 @@ function App() {
               element={<AddResultPage />}
             />
             <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
+            <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
             <Route
               path="/competition/update-result/:id"
               element={<UpdateCompetitionResultPage />}

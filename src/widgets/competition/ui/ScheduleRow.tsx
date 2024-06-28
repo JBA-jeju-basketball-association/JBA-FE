@@ -13,7 +13,7 @@ export const ScheduleRow = ({data}:Props) => {
                 <p>{data.gameNumber}</p>
             </div>
             <div className={style.startDateArea}>
-                <p>{formatDate(new Date(data.startDate))}</p>
+                <p>{data.startDate ? formatDate(new Date(data.startDate)) : null}</p>
             </div>
             <div className={style.floorArea}>
                 <p>{data.floor+ " " + (data.state5x5 ? "" : "(3x3)")}</p>

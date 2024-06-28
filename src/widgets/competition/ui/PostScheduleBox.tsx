@@ -45,7 +45,7 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
                     if (target.place === list[y].place) {
                         for (let u:number = 0; u < list[y].rowList.length; u++) {
                             // @ts-ignore
-                            if (target.startDate && list[y].rowList[u].startDate && (target.startDate?.getTime() > list[y].rowList[u].startDate.getTime())) {
+                            if (target.startDate && list[y].rowList[u].startDate && (new Date(target.startDate)?.getTime() > new Date(list[y].rowList[u].startDate).getTime())) {
                                 num++
                             }
                         }
@@ -73,6 +73,7 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
         setPostCompetitionScheduleList(prevState => {
             const scheduleList:postCompetitionSchedule[] = [...prevState]
             scheduleList[index].postCompetitionScheduleRow.push(initial);
+            // scheduleList[index].postCompetitionScheduleRow =[...scheduleList[index].postCompetitionScheduleRow, initial];
             return scheduleList
         })
         setGameNumber()
@@ -140,22 +141,15 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
         setPostCompetitionScheduleList(prevState => {
             const scheduleList:postCompetitionSchedule[] = [...prevState];
             scheduleList[index].postCompetitionScheduleRow[rowIndex].state5x5 = isChecked;
-            console.log(scheduleList[index].postCompetitionScheduleRow[rowIndex].state5x5)
             return scheduleList
         })
     }
-
-
-    useEffect(() => {
-        console.log(postCompetitionScheduleList)
-    }, [postCompetitionScheduleList]);
-
 
     return (
         <div className={style.PostScheduleBox}>
             <p>{postCompetitionScheduleList[index]?.division}</p>
 
-                {postCompetitionScheduleList[index]?.postCompetitionScheduleRow.map((r:postCompetitionScheduleRow, rowIndex:number) => {
+                {postCompetitionScheduleList[index]?.postCompetitionScheduleRow?.map((r:postCompetitionScheduleRow, rowIndex:number) => {
                     return (
                         <div className={style.rowArea} key={rowIndex}>
                             <div className={style.row}>
@@ -172,6 +166,7 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
                                         type={"text"}
                                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => floorHandler(event, rowIndex)}
                                         placeholder={"floor"}
+                                        value={postCompetitionScheduleList[index].postCompetitionScheduleRow[rowIndex].floor || ""}
                                     />
                                 </div>
                                 <div className={style.placeArea}>
@@ -191,17 +186,20 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
                                     <input type={"text"}
                                            onChange={(e:React.ChangeEvent<HTMLInputElement>) => homeNameHandler(e,rowIndex)}
                                            placeholder={"홈팀명"}
+                                           value={postCompetitionScheduleList[index].postCompetitionScheduleRow[rowIndex].homeName || ""}
                                     />
                                     <p>VS</p>
                                     <input type={"text"}
                                            onChange={(e:React.ChangeEvent<HTMLInputElement>) => awayNameHandler(e,rowIndex)}
                                            placeholder={"어웨이팀명"}
+                                           value={postCompetitionScheduleList[index].postCompetitionScheduleRow[rowIndex].awayName || ""}
                                     />
                                 </div>
                                 <div className={style.checkBox}>
                                     <CheckBox isChecked={!postCompetitionScheduleList[index].postCompetitionScheduleRow[rowIndex].state5x5}
                                               setFC={(checked:boolean) => is5x5Handler(rowIndex, !checked)}
-                                              content={"3X3"} />
+                                              content={"3X3"}
+                                    />
                                 </div>
                             </div>
                             <button onClick={() => minusHandler(rowIndex)} className={style.minusBtn}>-</button>
