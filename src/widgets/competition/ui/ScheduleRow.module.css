@@ -1,0 +1,74 @@
+.ScheduleRow {
+    width: 1098px;
+    min-height: 48px;
+    border-bottom: 1px solid #B5B5B5;
+    display: flex;
+}
+.gameNumberArea {
+    width: 48px;
+    border-right: 1px solid #B5B5B5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4E7C9;
+}
+
+.startDateArea {
+    width: 189px;
+    border-right: 1px solid #B5B5B5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4E7C9;
+}
+
+.floorArea {
+    width: 139px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #B5B5B5;
+    background-color: #F4E7C9;
+    overflow-wrap: break-word;
+}
+
+.placeArea {
+    width: 199px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #B5B5B5;
+    background-color: #F4E7C9;
+    overflow-wrap: break-word;
+}
+
+.homeAwayArea {
+    width: 519px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeNameArea {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 220px;
+    padding-left: 10px;
+    overflow-wrap: break-word;
+}
+
+.vsArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 59px;
+}
+
+.awayNameArea {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    padding-right: 10px;
+    overflow-wrap: break-word;
+}

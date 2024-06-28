@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {ListLinkBtn, LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import style from "./CompetitionDetailPage.module.css"
-import {CompetitionDetailInfo, CompetitionDetailTitle, competitionStatusCalculator,CompetitionResult} from "../../../widgets/competition";
+import {
+    CompetitionDetailInfo,
+    CompetitionDetailTitle,
+    competitionStatusCalculator,
+    CompetitionResult,
+    Schedule
+} from "../../../widgets/competition";
 import {CompetitionDetailCategory} from "../../../features/competition";
 import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
@@ -44,21 +50,25 @@ export const CompetitionDetailPage = () => {
 
     return (
         <div className={style.CompetitionDetailPage}>
-            <PageTitle pageName={"대회정보"} />
+            <PageTitle pageName={"대회정보"}/>
             <div className={style.listLinkArea}>
-                <ListLinkBtn content={"목록"} linkFC={() => navigate("/competition")} />
+                <ListLinkBtn content={"목록"} linkFC={() => navigate("/competition")}/>
                 {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
                     <div className={style.updateDeleteButtonArea}>
-                        <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
-                        <RegitUpdateDeleteButton onClickHandler={() => deleteHandler()} content={"삭제"} />
+                        <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"}/>
+                        <RegitUpdateDeleteButton onClickHandler={() => deleteHandler()} content={"삭제"}/>
                     </div>
                     :
                     null
                 }
             </div>
-            <CompetitionDetailTitle  status={competitionStatusCalculator(data?.startDate, data?.endDate)} title={data?.title}/>
-            <CompetitionDetailCategory existResult={data?.existResult} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
-            {infoFocused?<CompetitionDetailInfo data={data && data}/>:<CompetitionResult/>}
+            <CompetitionDetailTitle status={competitionStatusCalculator(data?.startDate, data?.endDate)}
+                                    title={data?.title}/>
+            <CompetitionDetailCategory phase={data?.phase} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
+            {infoFocused ? <CompetitionDetailInfo data={data && data}/> : data?.phase === "SCHEDULE" ?
+                <Schedule id={id} places={data?.places}/> : "결과"}
+            <div className={style.bottomLine}></div>
+
         </div>
     );
 };

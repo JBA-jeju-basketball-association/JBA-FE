@@ -5,25 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="545f9624-a69d-40fe-b0de-db3d81696403" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchPostSchedule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/PostCompetitionSchedulePage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/PostCompetitionSchedulePage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/PostScheduleBox.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/PostScheduleBox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchDeleteSchedule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchGetSchedule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/Schedule.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/Schedule.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ScheduleDivisionBox.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ScheduleDivisionBox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ScheduleRow.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/competition/ui/ScheduleRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePickerWithTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/datepicker/ui/CustomDatePickerWithTime.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddCompetition.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchAddCompetition.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchUpdateCompetition.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/api/FetchUpdateCompetition.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/api/UseAxiosInterceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/UseAxiosInterceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/competition/ui/CompetitionDetailCategory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/competitionPage/ui/CompetitionDetailPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/type/CompetitionType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/type/CompetitionType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/checkBox/CheckBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/checkBox/CheckBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/api/FetchCompetitionInfo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/competition/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/model/CompetitionDetailMakeDivisionText.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/model/CompetitionDetailMakeDivisionText.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/AddResultRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/CompetitionRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/competition/ui/PostScheduleBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/competition/ui/PostScheduleBox.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,31 +72,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TypeScript.BoxArea.tsx.executor": "Run",
-    "git-widget-placeholder": "develop",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/Desktop/JBA-FE",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TypeScript.BoxArea.tsx.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/JBA-FE&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/shinhansol/IdeaProjects/JBA-FE/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/shared/ui/addCompetitionLabel" />
@@ -135,7 +131,8 @@
       <workItem from="1711817219591" duration="37547000" />
       <workItem from="1712049363597" duration="26101000" />
       <workItem from="1718074217305" duration="219000" />
-      <workItem from="1719205958837" duration="33047000" />
+      <workItem from="1719205958837" duration="33851000" />
+      <workItem from="1719476768856" duration="12369000" />
     </task>
     <servers />
   </component>

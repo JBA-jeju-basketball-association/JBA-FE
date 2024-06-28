@@ -105,11 +105,14 @@ export type postCompetitionScheduleRow = {
     state5x5: boolean;
 }
 
-export type postCompetitionScheduleRowForGameNumber = {
-    divisionNum: number;
-    rowNum: number
+export type getScheduleResponse = {
+    division: string;
+    getScheduleRows: getScheduleResponseRow[]
+}
+
+export type getScheduleResponseRow = {
     gameNumber: number;
-    startDate: Date | null;
+    startDate: Date;
     floor: string;
     place: string;
     homeName: string;

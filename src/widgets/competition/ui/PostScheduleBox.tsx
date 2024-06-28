@@ -3,7 +3,7 @@ import style from "./PostScheduleBox.module.css"
 import {
     place,
     postCompetitionSchedule,
-    postCompetitionScheduleRow, postCompetitionScheduleRowForGameNumber
+    postCompetitionScheduleRow
 } from "../../../shared/type/CompetitionType";
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
