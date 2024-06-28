@@ -23,3 +23,15 @@ export const galleryCategories = [
     { id: 3, list: "엊그제" },
   ],
 ];
+export const galleryListTitles = [
+  "갤러리 아이디",
+  "유저 이메일",
+  '편집',
+  "조회 권한",
+  "이미지",
+  "제목",
+  "상태",
+  "등록 일시",
+  "최종 수정 일시",
+  "삭제 일시",
+];

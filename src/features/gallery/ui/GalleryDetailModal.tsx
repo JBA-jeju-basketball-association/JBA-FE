@@ -136,17 +136,6 @@ export const GalleryDetailModal = ({
     },
   };
 
-  const { mutate: deleteData } = useGalleryDelete({ galleryId, setModalOpen });
-
-  const handleDeleteClick = async () => {
-    if (galleryId) {
-      const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
-      if (confirm) {
-        deleteData();
-      }
-    }
-  };
-
   const handleNavigateToEditPage = () => {
     navigate(`/gallery/galleryedit?galleryId=${galleryId}`, {
       state: { galleryDetail, galleryId },
@@ -165,10 +154,6 @@ export const GalleryDetailModal = ({
         {/* //예비용 */}
         {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
           <div className={styles.handleBtn}>
-            <RegitUpdateDeleteButton
-              content="삭제하기"
-              onClickHandler={handleDeleteClick}
-            />
             <RegitUpdateDeleteButton
               content="수정하기"
               onClickHandler={handleNavigateToEditPage}

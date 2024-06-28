@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AdminSearchForm, AdminListData } from "features/admin/";
+import { AdminSearchForm, AdminGalleryListData } from "features/admin/";
 import styles from "./AdminUser.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -7,6 +7,7 @@ import {
   userLabel,
   userCategories,
   userListLength,
+  userListTitles,
 } from "../adminUtils/adminUserTitle";
 
 export const AdminUser = () => {
@@ -19,10 +20,10 @@ export const AdminUser = () => {
         <AdminSearchForm categories={userCategories} label={userLabel} />
       </div>
       <div className={styles.listWrapper}>
-        <p className={styles.listLength}>
+        <div className={styles.listLength}>
           총 n건 <CategoryList categories={userListLength} /> 개씩 보기
-        </p>
-        <AdminListData />
+        </div>
+        {/* <AdminListData titles={userListTitles} /> */}
         <Pagination totalPages={totalPage} page={page} setPage={setPage} />
       </div>
     </div>
