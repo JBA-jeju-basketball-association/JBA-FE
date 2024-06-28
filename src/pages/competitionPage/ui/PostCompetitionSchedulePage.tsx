@@ -7,6 +7,7 @@ import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetit
 import {CompetitionDetailTitle, competitionStatusCalculator, PostScheduleBox} from "../../../widgets/competition";
 import {postCompetitionSchedule, postCompetitionScheduleRow} from "../../../shared/type/CompetitionType";
 import FetchPostSchedule from "../api/FetchPostSchedule";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 
 export const PostCompetitionSchedulePage = () => {
     const [postCompetitionScheduleList, setPostCompetitionScheduleList] = useState<postCompetitionSchedule[]>([]);
@@ -25,9 +26,9 @@ export const PostCompetitionSchedulePage = () => {
     })
 
     const submitHandler = () => {
-        if (id) {
-            FetchPostSchedule(id, postCompetitionScheduleList)
-        }
+        confirmAndCancelAlertWithLoading("question", "대회일정 등록", "대회일정을 등록하시겠습니까?", async () =>{
+            id && FetchPostSchedule(id, postCompetitionScheduleList)
+        })
     }
 
     useEffect(() => {

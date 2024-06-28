@@ -4,7 +4,6 @@ import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 
 export default function FetchPostSchedule(id:string, postCompetitionScheduleList:postCompetitionSchedule[]) {
-    console.log(postCompetitionScheduleList)
     const request:{request: postCompetitionSchedule[]} = {request: postCompetitionScheduleList}
     return Api.post(`/v1/api/competition/post/schedule/${id}`, request)
         .then(res => {
@@ -36,6 +35,11 @@ export default function FetchPostSchedule(id:string, postCompetitionScheduleList
                 confirmAlert("warning", "대회를 찾을 수 없습니다.")
                     .then(res => {
                         if (res.isConfirmed) window.location.href = "/competition"
+                    })
+            else if (errMessage === "이미 일정이 등록된 대회입니다.")
+                confirmAlert("warning", "이미 일정이 등록된 대회입니다.")
+                    .then(res => {
+                        if (res.isConfirmed) window.location.href = `/competition/${id}`
                     })
 
         })
