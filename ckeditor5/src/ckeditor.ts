@@ -107,7 +107,10 @@ class Editor extends ClassicEditor {
 				'tableRow',
 				'mergeTableCells'
 			]
-		}
+		},
+		mediaEmbed: {
+			previewsInData: true,
+		},
 	};
 }
 
