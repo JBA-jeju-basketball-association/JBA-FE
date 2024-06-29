@@ -1,10 +1,11 @@
 export type Category = {
-  list: string;
+  list: string | number;
 };
 export type CategoryProps = {
   categories?: Category[];
   selectedCategory?: Category;
-  setSelectedCategory?: (category: Category) => void;
+  // setSelectedCategory?: (category: Category) => void;
+  setSelectedCategory?: any;
 };
 
 export type AdminBasicFormProps = CategoryProps & {
@@ -16,7 +17,6 @@ export type AdminSearchFormProps = {
   label: string[];
   categories: Category[][];
 };
-
 
 // 관리자페이지 갤러리 리스트 타입들
 export type File = {
@@ -42,4 +42,3 @@ export type AdminListProps = {
   titles: string[];
   lists: GalleryListsType[];
 };
-

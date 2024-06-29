@@ -20,8 +20,14 @@
   padding: 20px;
 }
 
+
 .listLength {
-  width: 400px;
+  width: 300px;
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+.CategoryListWrapper{
+  width: 100px;
 }

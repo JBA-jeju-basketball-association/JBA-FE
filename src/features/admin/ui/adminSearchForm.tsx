@@ -23,7 +23,7 @@ export const AdminSearchForm = ({
           categories={categories[0]}
           label={label[0]}
           selectedCategory={selectedCategories[0]}
-          setSelectedCategory={(category) =>
+          setSelectedCategory={(category: any) =>
             setSelectedCategories([category, selectedCategories[1]])
           }
         />
@@ -31,7 +31,7 @@ export const AdminSearchForm = ({
           categories={categories[1]}
           label={label[1]}
           selectedCategory={selectedCategories[1]}
-          setSelectedCategory={(category) =>
+          setSelectedCategory={(category: any) =>
             setSelectedCategories([selectedCategories[0], category])
           }
         />

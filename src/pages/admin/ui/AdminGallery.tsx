@@ -14,25 +14,38 @@ import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
 
 export const AdminGallery = () => {
   const [page, setPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(
+    galleryListLength[0]
+  );
 
-  const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({ page });
+  const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({
+    page,
+    galleryListLength: selectedCategory.list,
+  });
 
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
 
   useEffect(() => {
     refetch();
-  }, [page]);
+  }, [page, selectedCategory]);
 
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminSearchForm categories={galleryCategories} label={galleryLabel} />
+        {/* <AdminSearchForm categories={galleryCategories} label={galleryLabel} /> */}
       </div>
       <div className={styles.listWrapper}>
         <div className={styles.listLength}>
           총 {adminGalleryData.totalGalleries}건
-          <CategoryList categories={galleryListLength} /> 개씩 보기
+          <div className={styles.CategoryListWrapper}>
+            <CategoryList
+              categories={galleryListLength}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+          개씩 보기
         </div>
         <AdminGalleryListData
           titles={galleryListTitles}
