@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 import { AdminListProps } from "shared/type/AdminType";
+import { useGalleryModalStore } from "shared/model";
 
 export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
   const navigate = useNavigate();
@@ -13,18 +14,23 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
     return isOfficial ? "스태프" : "일반";
   };
 
-  const { mutate: deleteGallery } = useGalleryDelete();
+  const { setForceModalOpen, setGalleryIdFromMain }: any = useGalleryModalStore(
+    (state) => state
+  );
+
+  const handleNavigateToDetailPage = (galleryId: number) => {
+    setForceModalOpen(true);
+    setGalleryIdFromMain(galleryId);
+    navigate("/gallery");
+  };
+  //상세페이지 이동
 
   const handleNavigateToEditPage = (galleryId: number) => {
     navigate(`/admin/galleryedit/${galleryId}`);
   };
   //수정페이지 이동
 
-  const handleNavigateToDetailPage = (galleryId: number) => {
-    // navigate(`/gallery?gallerId=${galleryId}`);
-    console.log("클릭");
-  };
-  //상세보기 이동
+  const { mutate: deleteGallery } = useGalleryDelete();
 
   const handleDeleteClick = async (galleryId: number) => {
     const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
@@ -62,7 +68,10 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
                 className={styles.listImg}
               />
             </span>
-            <span className={styles.titleSpan} onClick={() => handleNavigateToDetailPage(list.gallerId)}>
+            <span
+              className={styles.titleSpan}
+              onClick={() => handleNavigateToDetailPage(list.galleryId)}
+            >
               {list.title}
             </span>
             <span>{list.galleryStatus}</span>
