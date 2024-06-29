@@ -8,18 +8,23 @@ import { AdminListProps } from "shared/type/AdminType";
 
 export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
   const navigate = useNavigate();
-  console.log(lists);
 
   const isOfficial = (isOfficial: boolean) => {
     return isOfficial ? "스태프" : "일반";
   };
 
-  const handleUpdateClick = (galleryId: number) => {
-    // navigate(`/gallery/galleryedit?galleryId=${galleryId}`);
-    console.log("클릭", galleryId);
-  };
-
   const { mutate: deleteGallery } = useGalleryDelete();
+
+  const handleNavigateToEditPage = (galleryId: number) => {
+    navigate(`/admin/galleryedit/${galleryId}`);
+  };
+  //수정페이지 가는 함수 - 구현
+
+  const handleDetailClick = (galleryId: number) => {
+    // navigate(`/gallery?gallerId=${galleryId}`);
+    console.log("클릭");
+  };
+  //상세보기 가는 함수
 
   const handleDeleteClick = async (galleryId: number) => {
     const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
@@ -27,6 +32,7 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
       deleteGallery(galleryId);
     }
   };
+  //삭제하는 함수 - 구현
 
   return (
     <div className={styles.container}>
@@ -41,7 +47,7 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
             <span>{list.galleryId}</span>
             <span>{list.email}</span>
             <span className={styles.btn}>
-              <Button onClick={() => handleUpdateClick(list.galleryId)}>
+              <Button onClick={() => handleNavigateToEditPage(list.galleryId)}>
                 수정
               </Button>
               <Button onClick={() => handleDeleteClick(list.galleryId)}>
@@ -49,7 +55,7 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
               </Button>
             </span>
             <span>{isOfficial(list.isOfficial)}</span>
-            <span>
+            <span onClick={() => handleDetailClick(list.gallerId)}>
               <img
                 src={list.thumbnail}
                 alt="thumbnail"

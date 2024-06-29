@@ -136,13 +136,6 @@ export const GalleryDetailModal = ({
     },
   };
 
-  const handleNavigateToEditPage = () => {
-    navigate(`/gallery/galleryedit?galleryId=${galleryId}`, {
-      state: { galleryDetail, galleryId },
-      //edit페이지로 state 정보를 넘김
-    });
-  };
-
   return (
     <CommonModal
       isopen={modalOpen}
@@ -151,18 +144,6 @@ export const GalleryDetailModal = ({
     >
       <div className={styles.container}>
         <h1>{title}</h1>
-        {/* //예비용 */}
-        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
-          <div className={styles.handleBtn}>
-            <RegitUpdateDeleteButton
-              content="수정하기"
-              onClickHandler={handleNavigateToEditPage}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-        {/* //예비용 */}
         <CloseIcon
           width="30"
           height="30"

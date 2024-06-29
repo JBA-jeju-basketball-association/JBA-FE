@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./App.css";
-import {Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import {
   AddCompetitionPage,
   AddResultPage,
@@ -30,17 +30,17 @@ import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
-import {Header} from "../widgets/header";
-import {Admin} from "../pages/admin";
+import { Header } from "../widgets/header";
+import { Admin } from "../pages/admin";
 
 function App() {
   useAxiosInterceptor();
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
     <div>
-      {!isAdminRoute && <Header/>}
+      {!isAdminRoute && <Header />}
       <div className={style.wrapper}>
         <Routes>
           <Route
@@ -77,10 +77,20 @@ function App() {
               element={<UpdateCompetitionResultPage />}
             />
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
-            <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
-            <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage />} />
-            <Route path={"/gallery/galleryedit"} element={<GalleryEditPage />} />
-            <Route path={"/admin"} element={<Admin />}/>
+            <Route
+              path={"/post/:category/:postId/update"}
+              element={<UpdatePostPage />}
+            />
+            <Route
+              path={"/gallery/galleryupload"}
+              element={<GalleryUploadPage />}
+            />
+            <Route
+              path={"/admin/galleryedit/:galleryId"}
+              element={<GalleryEditPage />}
+            />
+            <Route path={"/admin/"} element={<Admin />} />
+            <Route path={"/admin/:menu"} element={<Admin />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -90,10 +100,13 @@ function App() {
           />
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
-          <Route path={"/post/:category/:postId"} element={<PostDetailPage />} />
+          <Route
+            path={"/post/:category/:postId"}
+            element={<PostDetailPage />}
+          />
         </Routes>
       </div>
-      {!isAdminRoute && <Footer/>}
+      {!isAdminRoute && <Footer />}
     </div>
   );
 }

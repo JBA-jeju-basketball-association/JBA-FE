@@ -9,7 +9,7 @@ type EditType = {
     title: string;
     files: FileType[];
   };
-  galleryId: string;
+  galleryId: number;
 };
 //쿼리파라미터에서 가져온 id는 문자열
 

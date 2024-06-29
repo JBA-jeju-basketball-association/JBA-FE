@@ -4,7 +4,6 @@
   border-bottom: 1px solid var(--subcolor-black5);
   margin-top: 20px;
   padding-bottom: 10px;
-  overflow-x: scroll;
 }
 /* 리스트 타이틀 */
 .titleWrapper {
@@ -28,6 +27,7 @@
   width: 100%;
   height: 500px;
   padding: 0 5px;
+  overflow: scroll;
 }
 
 .listWrapper {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AdminGallery.module.css";
 import { AdminSearchForm } from "features/admin/";
 import { Pagination } from "widgets/pagination";
@@ -20,6 +20,10 @@ export const AdminGallery = () => {
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
 
+  useEffect(() => {
+    setPage(1);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
@@ -39,4 +43,3 @@ export const AdminGallery = () => {
     </div>
   );
 };
-
