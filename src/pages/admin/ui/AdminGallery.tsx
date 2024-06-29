@@ -15,14 +15,14 @@ import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
 export const AdminGallery = () => {
   const [page, setPage] = useState(1);
 
-  const { data: adminGalleryDatas } = useAdminGalleryDatas({ page });
+  const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({ page });
 
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
 
   useEffect(() => {
-    setPage(1);
-  }, []);
+    refetch();
+  }, [page]);
 
   return (
     <div className={styles.container}>
