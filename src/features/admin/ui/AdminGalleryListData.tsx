@@ -18,13 +18,13 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
   const handleNavigateToEditPage = (galleryId: number) => {
     navigate(`/admin/galleryedit/${galleryId}`);
   };
-  //수정페이지 가는 함수 - 구현
+  //수정페이지 이동
 
-  const handleDetailClick = (galleryId: number) => {
+  const handleNavigateToDetailPage = (galleryId: number) => {
     // navigate(`/gallery?gallerId=${galleryId}`);
     console.log("클릭");
   };
-  //상세보기 가는 함수
+  //상세보기 이동
 
   const handleDeleteClick = async (galleryId: number) => {
     const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
@@ -32,7 +32,7 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
       deleteGallery(galleryId);
     }
   };
-  //삭제하는 함수 - 구현
+  //삭제
 
   return (
     <div className={styles.container}>
@@ -55,14 +55,16 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
               </Button>
             </span>
             <span>{isOfficial(list.isOfficial)}</span>
-            <span onClick={() => handleDetailClick(list.gallerId)}>
+            <span>
               <img
                 src={list.thumbnail}
                 alt="thumbnail"
                 className={styles.listImg}
               />
             </span>
-            <span>{list.title}</span>
+            <span className={styles.titleSpan} onClick={() => handleNavigateToDetailPage(list.gallerId)}>
+              {list.title}
+            </span>
             <span>{list.galleryStatus}</span>
             <span>{list.createAt}</span>
             <span>{list.updateAt ? list.updateAt : "없음"}</span>

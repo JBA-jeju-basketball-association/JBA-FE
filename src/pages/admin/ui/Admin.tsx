@@ -31,17 +31,22 @@ export const Admin = () => {
   const { AccessToken } = useUserStore();
   const navigate = useNavigate();
   const { menu } = useParams();
+  //현재 선택된 메뉴 패스파라미터에서 받아옴
 
   useEffect(() => {
     if (menu !== undefined && adminMenu.includes(menu)) {
+      //해당 메뉴가 존재하고 adminMenu에 포함되어 있을 때
       setSelectedMenu(menu);
+      //해당 메뉴로 선택
     }
   }, [menu]);
+  //수정 작업 후 관리자페이지로 돌아올 때 해당 메뉴로 이동
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
     navigate(`/admin/${menu}`);
   };
+  //메뉴 클릭 시 해당 메뉴로 이동
 
   return (
     <Layout className={style.Layout}>
