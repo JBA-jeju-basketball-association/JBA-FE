@@ -1,8 +1,4 @@
-export const userListLength = [
-  { list: "20개" },
-  { list: "50개" },
-  { list: "100개" },
-];
+export const userListLength = [{ list: 20 }, { list: 50 }, { list: 100 }];
 
 export const userLabel = ["검색어", "권한", "가입일시"];
 

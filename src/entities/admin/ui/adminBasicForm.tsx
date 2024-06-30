@@ -1,3 +1,4 @@
+// AdminBasicForm.tsx
 import React, { useState } from "react";
 import { CategoryList } from "shared/ui";
 import { AdminBasicFormProps } from "shared/type/AdminType";
@@ -10,20 +11,30 @@ export const AdminBasicForm = ({
   selectedCategory,
   setSelectedCategory,
   showCategory = true,
+  value,
+  onChange,
 }: AdminBasicFormProps) => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+
   return (
     <div className={styles.container}>
       <label>{label}</label>
       {showCategory ? (
         <>
-          <CategoryList
-            categories={categories}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
+          <div className={styles.CategoryListWrapper}>
+            <CategoryList
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+          <input
+            type="text"
+            className={styles.basicFormInput}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
           />
-          <input type="text" className={styles.basicFormInput} />
         </>
       ) : (
         <CustomDatePicker
@@ -36,5 +47,3 @@ export const AdminBasicForm = ({
     </div>
   );
 };
-
-// //여기는 드랍다운에 + 인풋

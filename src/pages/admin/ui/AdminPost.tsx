@@ -11,7 +11,7 @@ export const AdminPost = () => {
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminSearchForm categories={postCategories} label={postLabel} />
+        {/* <AdminSearchForm categories={postCategories} label={postLabel} /> */}
       </div>
       <div className={styles.listWrapper}>목록 영역</div>
     </div>

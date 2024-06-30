@@ -1,21 +1,28 @@
 export type Category = {
   list: string | number;
 };
+
 export type CategoryProps = {
-  categories?: Category[];
-  selectedCategory?: Category;
-  // setSelectedCategory?: (category: Category) => void;
-  setSelectedCategory?: any;
+  categories: Category[];
+  selectedCategory: Category;
+  setSelectedCategory: any;
 };
+////////////////////////////////////////
 
 export type AdminBasicFormProps = CategoryProps & {
+  categories: Category;
   label: string;
-  showCategory?: boolean;
+  selectedCategory: any;
+  setSelectedCategory: any;
+  showCategory: boolean;
+  value: string;
+  onChange: any;
 };
 
 export type AdminSearchFormProps = {
+  gallerySearchCriteria: Category[];
   label: string[];
-  categories: Category[][];
+  showCategory: boolean;
 };
 
 // 관리자페이지 갤러리 리스트 타입들

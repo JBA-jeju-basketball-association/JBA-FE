@@ -11,10 +11,10 @@ export const AdminCompetition = () => {
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminSearchForm
+        {/* <AdminSearchForm
           categories={competitionCategories}
           label={competitionLabel}
-        />
+        /> */}
       </div>
       <div className={styles.listWrapper}>목록 영역</div>
     </div>

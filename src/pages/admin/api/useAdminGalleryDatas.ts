@@ -4,11 +4,13 @@ import { Api } from "shared/api";
 type useAdminGalleryDataProps = {
   page: number;
   galleryListLength: any;
+
 };
 
 export const useAdminGalleryDatas = ({
   page,
   galleryListLength,
+
 }: useAdminGalleryDataProps) => {
   return useQuery({
     queryKey: ["adminGallery"],
@@ -17,10 +19,9 @@ export const useAdminGalleryDatas = ({
         params: {
           page: page - 1,
           size: galleryListLength,
-          // searchCriteriaString: false,
+         
         },
       }),
   });
 };
 
-//searchCriteriaString는 카테고리 검색을 위한 문자열

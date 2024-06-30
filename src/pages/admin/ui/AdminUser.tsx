@@ -12,16 +12,25 @@ import {
 
 export const AdminUser = () => {
   const [page, setPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(
+    userListLength[0]
+  );
   const totalPage = 10;
 
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminSearchForm categories={userCategories} label={userLabel} />
+        {/* <AdminSearchForm categories={userCategories} label={userLabel} /> */}
       </div>
       <div className={styles.listWrapper}>
         <div className={styles.listLength}>
-          총 n건 <CategoryList categories={userListLength} /> 개씩 보기
+          총 n건
+          <CategoryList
+            categories={userListLength}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+          개씩 보기
         </div>
         {/* <AdminListData titles={userListTitles} /> */}
         <Pagination totalPages={totalPage} page={page} setPage={setPage} />

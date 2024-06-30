@@ -82,7 +82,7 @@ function App() {
               element={<UpdatePostPage />}
             />
             <Route
-              path={"/gallery/galleryupload"}
+              path={"/admin/galleryupload"}
               element={<GalleryUploadPage />}
             />
             <Route
