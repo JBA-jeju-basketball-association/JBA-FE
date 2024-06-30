@@ -4,15 +4,18 @@ import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
-import { AdminListProps } from "shared/type/AdminType";
+import { AdminGalleryListProps } from "shared/type/AdminType";
 import { useGalleryModalStore } from "shared/model";
 
-export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
+export const AdminGalleryListData = ({
+  titles,
+  lists,
+}: AdminGalleryListProps) => {
+  const { mutate: deleteGallery } = useGalleryDelete();
+
   const navigate = useNavigate();
 
-  const isOfficial = (isOfficial: boolean) => {
-    return isOfficial ? "스태프" : "일반";
-  };
+  const isOfficial = (isOfficial: boolean) => (isOfficial ? "스태프" : "일반");
 
   const { setForceModalOpen, setGalleryIdFromMain }: any = useGalleryModalStore(
     (state) => state
@@ -29,8 +32,6 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
     navigate(`/admin/galleryedit/${galleryId}`);
   };
   //수정페이지 이동
-
-  const { mutate: deleteGallery } = useGalleryDelete();
 
   const handleDeleteClick = async (galleryId: number) => {
     const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
@@ -76,8 +77,8 @@ export const AdminGalleryListData = ({ titles, lists }: AdminListProps) => {
             </span>
             <span>{list.galleryStatus}</span>
             <span>{list.createAt}</span>
-            <span>{list.updateAt ? list.updateAt : "없음"}</span>
-            <span>{list.deleteAt ? list.deleteAt : "없음"}</span>
+            <span>{list.updateAt || "없음"}</span>
+            <span>{list.deleteAt || "없음"}</span>
           </div>
         ))}
       </div>

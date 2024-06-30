@@ -15,6 +15,24 @@
 .listWrapper {
   background: beige;
   width: 90%;
-  height: 700px;
   margin-top: 50px;
+  padding: 20px;
+}
+
+.listLengthBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listLength {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.CategoryListWrapper {
+  width: 100px;
 }
