@@ -77,7 +77,7 @@ export const UpdateCompetitionSchedulePage = () => {
 
     return (
         <div className={style.UpdateCompetitionSchedulePage}>
-            <PageTitle pageName={"대회일정등록"}/>
+            <PageTitle pageName={"대회일정수정"}/>
             <CompetitionDetailTitle status={competitionStatusCalculator(detailData?.startDate, detailData?.endDate)} title={detailData?.title}/>
             {detailData?.divisions?.map((division:string, index:number) => {
                 return <PostScheduleBox key={index}

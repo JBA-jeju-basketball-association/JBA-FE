@@ -27,6 +27,13 @@ export const Schedule = ({id, places}:Props) => {
         return <LoadingSpinner />
     }
 
+    const postResultHandler = () => {
+        confirmAndCancelAlertWithLoading("question", "결과등록", "대회결과 등록페이지로 이동하시겠습니까?")
+            .then(res => {
+                if(res.isConfirmed && id) window.location.href = `/competition/post/result/${id}`
+            })
+    }
+
     const updateHandler = () => {
         confirmAndCancelAlertWithLoading("question", "수정", "대회일정 수정페이지로 이동하시겠습니까?")
             .then(res => {
@@ -55,6 +62,7 @@ export const Schedule = ({id, places}:Props) => {
                 return <ScheduleDivisionBox key={index} data={data}/>
             })}
             <div className={style.updateDeleteBtnArea}>
+                <RegitUpdateDeleteButton content={"결과등록"} onClickHandler={postResultHandler}/>
                 <RegitUpdateDeleteButton content={"수정"} onClickHandler={updateHandler}/>
                 <RegitUpdateDeleteButton content={"삭제"} onClickHandler={deleteHandler}/>
             </div>

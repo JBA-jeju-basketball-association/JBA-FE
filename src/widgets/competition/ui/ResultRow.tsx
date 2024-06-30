@@ -1,44 +1,69 @@
 import React from 'react';
 import style from "./ResultRow.module.css"
-import {competitionResult} from "../../../shared/type/CompetitionType";
+import {getCompetitionResultRow} from "../../../shared/type/CompetitionType";
 import formatDate from "../../../shared/lib/formatDate";
-import {DivisionOptions} from "../../../shared/model/DivisionOptions";
+import {MdOutlineDriveFolderUpload} from "react-icons/md";
+import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 
 type Props = {
-    results:competitionResult;
+    data:getCompetitionResultRow;
 }
-export const ResultRow = ({results}:Props) => {
+export const ResultRow = ({data}:Props) => {
 
-    const fileLocationHandler =  () => {
-        if (results.fileUrl !== "" && results.fileName !== null) {
-            window.location.href = results.fileUrl
+
+    function fileHandler() {
+        if(data.filePath) {
+            const a = document.createElement('a');
+            a.href = data.filePath;
+            a.download = data.fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }else {
-            alert("경기기록이 없습니다.")
+            confirmAlert("warning", "파일이 없습니다.")
         }
     }
+
     return (
         <div className={style.ResultRow}>
-            <div className={style.timeArea}>
-                <p>{formatDate(new Date(results.startTime))}</p>
+            <div className={style.gameNumberArea}>
+                <p>{data.gameNumber}</p>
             </div>
-            <div className={style.divisionArea}>
-                <p>{DivisionOptions.map((item => item.value === results.division ? item.label : ""))}</p>
+            <div className={style.startDateArea}>
+                <p>{data.startDate ? formatDate(new Date(data.startDate)) : null}</p>
             </div>
-            <div className={style.pointArea}>
-                <div className={style.homePointArea}>
-                    <p className={style.teamName}>{results.homeName}</p>
-                    <p className={results.homeScore > results.awayScore ? style.winPoint : ""}>{results.homeScore}</p>
+            <div className={style.floorArea}>
+                <p>{data.floor + (data.state5x5 ? "" : "(3x3)")}</p>
+            </div>
+            <div className={style.placeArea}>
+                <p>{data.place}</p>
+            </div>
+            <div className={style.homeAwayArea}>
+                <div className={style.homeNameArea}>
+                    <p>{data.homeName}</p>
                 </div>
-                <p className={style.vsText}>vs</p>
-                <div className={style.awayPointArea}>
-                    <p className={results.homeScore < results.awayScore ? style.winPoint : ""}>{results.awayScore}</p>
-                    <p className={style.teamName}>{results.awayName}</p>
+                <div
+                    className={data.homeScore === data.awayScore ? style.drawnScore : data.homeScore > data.awayScore ? style.winScore : style.loseScore}>
+                    <p>{data.homeScore}</p>
+                </div>
+                <div className={style.vsArea}>
+                    <p>vs</p>
+                </div>
+                <div
+                    className={data.homeScore === data.awayScore ? style.drawnScore : data.homeScore > data.awayScore ? style.loseScore : style.winScore}>
+                    <p>{data.awayScore}</p>
+                </div>
+                <div className={style.awayNameArea}>
+                    <p>{data.awayName}</p>
                 </div>
             </div>
-            <button className={style.fileBtn} onClick={() => fileLocationHandler()}>
-                경기기록보기 &gt;
-            </button>
+            <div className={style.fileArea}>
+                <a className={style.fileBtn} onClick={fileHandler}>
+                    <MdOutlineDriveFolderUpload size={24}/>
+                    <p>파일</p>
+                </a>
+            </div>
         </div>
     );
 };

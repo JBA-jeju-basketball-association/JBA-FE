@@ -111,6 +111,7 @@ export type getScheduleResponse = {
 }
 
 export type getScheduleResponseRow = {
+    competitionResultId: number;
     gameNumber: number;
     startDate: Date | null;
     floor: string;
@@ -120,17 +121,35 @@ export type getScheduleResponseRow = {
     state5x5: boolean;
 }
 
-export type updateCompetitionSchedule = {
-    division:string;
-    updateCompetitionScheduleRow: updateCompetitionScheduleRow[];
+export interface postCompetitionResult {
+    division: string;
+    postResultRequestRows: postResultRequestRows[];
 }
 
-export type updateCompetitionScheduleRow = {
+export interface postResultRequestRows extends postCompetitionScheduleRow{
+    competitionResultId: number | null;
+    homeScore: number | null;
+    awayScore: number | null;
+    filePath: string;
+    fileName: string;
+}
+
+export type getCompetitionResult = {
+    division: string;
+    getResultResponseRows: getCompetitionResultRow[];
+}
+
+export type getCompetitionResultRow = {
+    competitionResultId: string;
     gameNumber: number;
     startDate: Date | null;
     floor: string;
     place: string;
     homeName: string;
+    homeScore: number;
     awayName: string;
+    awayScore: number;
+    filePath: string;
+    fileName: string;
     state5x5: boolean;
 }

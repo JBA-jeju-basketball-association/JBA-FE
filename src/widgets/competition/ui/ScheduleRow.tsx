@@ -16,7 +16,7 @@ export const ScheduleRow = ({data}:Props) => {
                 <p>{data.startDate ? formatDate(new Date(data.startDate)) : null}</p>
             </div>
             <div className={style.floorArea}>
-                <p>{data.floor+ " " + (data.state5x5 ? "" : "(3x3)")}</p>
+                <p>{data.floor + (data.state5x5 ? "" : "(3x3)")}</p>
             </div>
             <div className={style.placeArea}>
                 <p>{data.place}</p>

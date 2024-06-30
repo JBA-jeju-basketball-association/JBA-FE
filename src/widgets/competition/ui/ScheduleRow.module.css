@@ -23,7 +23,8 @@
 }
 
 .floorArea {
-    width: 139px;
+    width: 129px;
+    padding: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -22,9 +22,9 @@ export const ResultList = ({resultList, divisionSelect}:Props) => {
                 <p>{resultList.floor}</p>
             </div>
             <div className={style.rowArea}>
-                {filteredResult.map((results:competitionResult, index:number) => {
-                        return <ResultRow results={results} key={index}/>;
-                })}
+                {/*{filteredResult.map((results:competitionResult, index:number) => {*/}
+                {/*        return <ResultRow results={results} key={index}/>;*/}
+                {/*})}*/}
             </div>
 
         </div>

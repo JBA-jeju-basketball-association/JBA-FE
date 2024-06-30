@@ -4,8 +4,7 @@ import style from "./CompetitionDetailPage.module.css"
 import {
     CompetitionDetailInfo,
     CompetitionDetailTitle,
-    competitionStatusCalculator,
-    CompetitionResult,
+    competitionStatusCalculator, GetCompetitionResult,
     Schedule
 } from "../../../widgets/competition";
 import {CompetitionDetailCategory} from "../../../features/competition";
@@ -65,8 +64,8 @@ export const CompetitionDetailPage = () => {
             <CompetitionDetailTitle status={competitionStatusCalculator(data?.startDate, data?.endDate)}
                                     title={data?.title}/>
             <CompetitionDetailCategory phase={data?.phase} infoFocused={infoFocused} setInfoFocused={setInfoFocused}/>
-            {infoFocused ? <CompetitionDetailInfo data={data && data}/> : data?.phase === "SCHEDULE" ?
-                <Schedule id={id} places={data?.places}/> : "결과"}
+            {infoFocused ? <CompetitionDetailInfo data={data && data}/> : data?.phase === "FINISH" ?
+                <GetCompetitionResult id={id} /> : <Schedule id={id} places={data?.places}/>}
             <div className={style.bottomLine}></div>
 
         </div>

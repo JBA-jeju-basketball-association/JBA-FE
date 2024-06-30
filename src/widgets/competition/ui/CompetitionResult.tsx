@@ -3,7 +3,7 @@ import Select, {SingleValue} from "react-select";
 import style from "./CompetitionResult.module.css";
 import {useQuery} from "@tanstack/react-query";
 import {useNavigate, useParams} from "react-router-dom";
-import fetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
+import FetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultList} from "./ResultList";
 import {competitionResultList} from "../../../shared/type/CompetitionType";
 import {DivisionOptions} from "../../../shared/model/DivisionOptions";
@@ -21,7 +21,7 @@ export const CompetitionResult = () => {
 
     const {data, isLoading, isError, error} = useQuery({
         queryKey: ["getCompetitionResult", id],
-        queryFn: () => fetchGetCompetitionResult(id),
+        queryFn: () => FetchGetCompetitionResult(id),
         select: (result) => result?.data.data,
         gcTime:1000*60*10,
         staleTime:1000*60
