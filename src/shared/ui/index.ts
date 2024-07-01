@@ -12,4 +12,6 @@ export { GalleryCard } from "./galleryCard/GalleryCard";
 export { CommonModal } from "./commonModal/CommonModal";
 export { ListLinkBtn } from "./listLinkBtn/ListLinkBtn";
 export { RegitTitleInput } from "./regitTitleInput/RegitTitleInput";
+export { CategoryList } from "./CategoryList/CategoryList";
 export {GalleryForm} from "./galleryForm/GalleryForm";
+export {LoadingSpinner} from "./loadingSpinner/LoadingSpinner";

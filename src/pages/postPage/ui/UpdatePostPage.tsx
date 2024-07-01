@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
-import ForewordOptions from "../../../shared/model/forewordOptions";
+import ForewordOptions, {
+  forewordOptionType,
+} from "../../../shared/model/forewordOptions";
+import OfficialOptions, {
+  OfficialOptionType,
+} from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -32,16 +37,24 @@ const customStyles = {
 };
 
 export const UpdatePostPage = () => {
+  let { category, postId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  let isOfficialQuery = searchParams.get("isAnnouncement");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [foreword, setForeword] = useState<string>("");
+  const [foreword, setForeword] = useState<
+    "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
+  >("");
+  const [officialState, setOfficialState] = useState<"official" | "normal">(
+    isOfficialQuery === "true" ? "official" : "normal"
+  );
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
   const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
   const [postData, setPostData] = useState(null);
 
   const navigate = useNavigate();
-  let { category, postId } = useParams();
+
   const detailTitle =
     category === "notice"
       ? "공지사항"
@@ -72,26 +85,32 @@ export const UpdatePostPage = () => {
 
   const editPost = (params: {
     category?: string;
-    data: requestPostData;
+    requestData: requestPostData;
     postId?: string;
+    officialState: "official" | "normal";
   }) => {
     mutation.mutate(params);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const requestData: requestPostData = {
-      title: title,
-      content: content,
-      foreword: foreword,
-      postImgs: postImgs,
-    };
-
-    editPost({
-      category,
-      data: requestData,
-      postId,
-    });
+    const forewordOption = ForewordOptions.find(
+      (option) => option.value === foreword
+    );
+      const forewordLabel = forewordOption ? forewordOption.label : ''
+      const requestData: requestPostData = {
+        title,
+        content,
+        foreword: forewordLabel,
+        postImgs,
+      };
+      editPost({
+        category,
+        requestData,
+        postId,
+        officialState,
+      });
+    
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -104,25 +123,53 @@ export const UpdatePostPage = () => {
     //   "대회를 등록하시겠습니까?",
     //   "",
     //   async () => {
-    //     await FetchAddCompetition(requestData, files);
+    //     await FetchPostCompetition(requestData, files);
     //   }
     // );
   };
 
+  const handleForewordValue = (): forewordOptionType | undefined => {
+    return ForewordOptions.find((option) => option.value === foreword);
+  };
+
+  const handleOfficialValue = (): OfficialOptionType | undefined => {
+    return OfficialOptions.find((option) => option.value === officialState);
+  };
+
+  const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
+    setOfficialState(selectedOption.value);
+  };
+
   const forewordHandler = (selectedOption: SingleValue<any>): void => {
-    setForeword(selectedOption.label);
+    setForeword(selectedOption.value);
   };
 
   useEffect(() => {
     if (postDetail) {
       setTitle(postDetail.title);
       setContent(postDetail.content);
-      setForeword(postDetail.foreword);
       setPostImgs(postDetail.postImgs);
+      if (isOfficialQuery === "true") {
+        ForewordOptions.map((option) => {
+          if (option.label === postDetail.foreword) {
+            setForeword(option.value);
+          }
+        });
+      } else {
+        setForeword("");
+      }
     }
   }, [postDetail]);
 
-  console.log(postDetail);
+  useEffect(() => {
+    if (officialState === "normal") {
+      setForeword("");
+      setSearchParams({ isAnnouncement: "false" });
+    } else {
+      setForeword("notice");
+      setSearchParams({ isAnnouncement: "true" });
+    }
+  }, [officialState]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
@@ -145,12 +192,25 @@ export const UpdatePostPage = () => {
             <div className={styles.formContent}>
               <div className={styles.inputArea}>
                 <Select
+                  name="official"
+                  id="official"
+                  styles={customStyles}
+                  options={OfficialOptions}
+                  placeholder="종류"
+                  className={styles.select}
+                  onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
+                  value={handleOfficialValue()}
+                />
+                <Select
+                  name="foreword"
+                  id="foreword"
                   styles={customStyles}
                   options={ForewordOptions}
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
-                  value={{ label: `${foreword}`, value:  'initailValue'}}
+                  value={handleForewordValue()}
+                  isDisabled={officialState === "normal" ? true : false}
                 />
                 <input
                   value={title}
@@ -184,8 +244,8 @@ export const UpdatePostPage = () => {
                   className={styles.buttonCancel}
                   type="button"
                   onClick={() => {
-                    alert("작성이 취소되었습니다.")
-                    navigate(`/post/${category}`)
+                    alert("작성이 취소되었습니다.");
+                    navigate(`/post/${category}`);
                   }}
                 >
                   취소

@@ -6,26 +6,18 @@ import style from "./CustomDatePickerWithTime.module.css"
 
 type Props = {
     startDate: Date | null;
-    setStartDate(date:Date | null): void
+    setStartDate(date:Date | null, rowIndex:number): void;
+    rowIndex: number;
 }
 
-export const CustomDatePickerWithTime = ({startDate, setStartDate}:Props) => {
-
-    const filterPassedTime = (time:any):boolean => {
-        const currentDate:Date = new Date();
-        let selectedDate:Date = new Date(time);
-        return currentDate.getTime() > selectedDate.getTime();
-    };
-
-
-
+export const CustomDatePickerWithTime = ({startDate, setStartDate, rowIndex}:Props) => {
 
     return (
         <div className={style.datepicker}>
             {startDate &&
                 <DatePicker
                     startDate={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    onChange={(date) => setStartDate(date, rowIndex)}
                     selected={new Date(startDate)}
                     showTimeSelect
                     timeIntervals={10}
@@ -33,7 +25,6 @@ export const CustomDatePickerWithTime = ({startDate, setStartDate}:Props) => {
                     dateFormat="yyyy. M. d. aa h:mm "
                     locale={ko}
                     showPopperArrow={false}
-                    filterTime={filterPassedTime}
                     customInput={
                         <input className={style.inputStyle}/>
                     }

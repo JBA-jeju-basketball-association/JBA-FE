@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^41.3.1",
-    "@ckeditor/ckeditor5-react": "^6.2.0",
+    "@ckeditor/ckeditor5-build-classic": "^42.0.0",
+    "@ckeditor/ckeditor5-media-embed": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^8.0.0",
     "@tanstack/react-query": "^5.28.14",
     "@tanstack/react-query-devtools": "^5.28.14",
     "@testing-library/jest-dom": "^5.14.1",
@@ -15,7 +16,7 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-modal": "^3.16.3",
-    "antd": "^5.18.2",
+    "antd": "^5.18.3",
     "axios": "^1.6.8",
     "base-64": "^1.0.0",
     "ckeditor5-custom-build": "file:./ckeditor5",
@@ -38,6 +39,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
+    "react-spinners": "^0.13.8",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.11",
     "sweetalert2": "^11.10.8",
@@ -82,6 +84,16 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
     "prettier": "^3.2.5",
+    "react-embedly": "^0.3.5",
     "typescript-plugin-css-modules": "^5.1.0"
+  },
+  "resolutions": {
+    "@ckeditor/ckeditor5-core": "41.4.2",
+    "@ckeditor/ckeditor5-ui": "41.4.2",
+    "@ckeditor/ckeditor5-editor-classic": "41.4.2",
+    "@ckeditor/ckeditor5-basic-styles": "41.4.2",
+    "@ckeditor/ckeditor5-paragraph": "41.4.2",
+    "@ckeditor/ckeditor5-heading": "41.4.2",
+    "@ckeditor/ckeditor5-essentials": "41.4.2"
   }
 }

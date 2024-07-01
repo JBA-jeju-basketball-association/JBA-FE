@@ -15,7 +15,7 @@ export const AnnouncementCard = ({data}:Props) => {
                 <h2 className={style.title}>{data?.title}</h2>
             </div>
             <div className={style.dateArea}>
-                <p className={style.regitDate}>{data?.createAt}</p>
+                <p>{data?.createAt}</p>
             </div>
         </div>
     );

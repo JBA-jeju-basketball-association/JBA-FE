@@ -1,13 +1,12 @@
 import React from "react";
 import style from "./App.css";
-import {Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import {
-  AddCompetitionPage,
-  AddResultPage,
+  PostCompetitionPage,
   CompetitionDetailPage,
-  CompetitionPage,
+  CompetitionPage, PostCompetitionResultPage, PostCompetitionSchedulePage,
   PrivateRoute,
-  UpdateCompetitionResultPage,
+  UpdateCompetitionResultPage, UpdateCompetitionPage, UpdateCompetitionSchedulePage
 } from "../pages/competitionPage";
 import {
   AddPostPage,
@@ -22,7 +21,6 @@ import {
   GalleryPage,
   GalleryEditPage,
 } from "pages/galleryPages";
-import { UpdateCompetitionPage } from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import "../shared/base.css";
 import { SignupForm } from "../features/signup/ui/SignupForm";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
@@ -30,20 +28,19 @@ import Logo from "shared/ui/Logo/Logo";
 import { LoginPage } from "../pages/loginPage";
 import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
-import {Header} from "../widgets/header";
-import {Admin} from "../pages/admin";
+import { Header } from "../widgets/header";
+import { Admin } from "../pages/admin";
 
 function App() {
   useAxiosInterceptor();
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
     <div>
-      {!isAdminRoute && <Header/>}
+      {!isAdminRoute && <Header />}
       <div className={style.wrapper}>
         <Routes>
-          <Route path={"/admin"} element={<Admin />}/>
           <Route
             path="signup"
             element={
@@ -64,36 +61,40 @@ function App() {
             }
           />
           <Route element={<PrivateRoute />}>
-            <Route path="/add-competition" element={<AddCompetitionPage />} />
-            <Route
-              path="/competition/update-competition/:id"
-              element={<UpdateCompetitionPage />}
-            />
-            <Route
-              path="/competition/add-result/:id"
-              element={<AddResultPage />}
-            />
-            <Route
-              path="/competition/update-result/:id"
-              element={<UpdateCompetitionResultPage />}
-            />
+            <Route path="/competition/post" element={<PostCompetitionPage />} />
+            <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
+            <Route path="/competition/post/result/:id" element={<PostCompetitionResultPage/>}/>
+            <Route path="/competition/update/:id" element={<UpdateCompetitionPage/>}/>
+            <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
+            <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
-            <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
-            <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage />} />
-            <Route path={"/gallery/galleryedit"} element={<GalleryEditPage />} />
+            <Route
+              path={"/post/:category/:postId/update"}
+              element={<UpdatePostPage />}
+            />
+            <Route
+              path={"/admin/galleryupload"}
+              element={<GalleryUploadPage />}
+            />
+            <Route
+              path={"/admin/galleryedit/:galleryId"}
+              element={<GalleryEditPage />}
+            />
+            <Route path={"/admin/"} element={<Admin />} />
+            <Route path={"/admin/:menu"} element={<Admin />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route
-            path={"/competition/:id"}
-            element={<CompetitionDetailPage />}
-          />
+          <Route path={"/competition/:id"} element={<CompetitionDetailPage />}/>
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
-          <Route path={"/post/:category/:postId"} element={<PostDetailPage />} />
+          <Route
+            path={"/post/:category/:postId"}
+            element={<PostDetailPage />}
+          />
         </Routes>
       </div>
-      {!isAdminRoute && <Footer/>}
+      {!isAdminRoute && <Footer />}
     </div>
   );
 }

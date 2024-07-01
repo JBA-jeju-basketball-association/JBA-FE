@@ -14,6 +14,7 @@
 
 .titleArea {
     margin-top: 36px;
+    overflow-wrap: break-word;
 }
 
 .dateArea {
