@@ -8,6 +8,8 @@ import { Post, PostListData } from "../../../shared/type/PostType";
 import { SearchBar } from "widgets/searchBar";
 import styles from "./PostListPage.module.css";
 import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {JwtDecoder} from "../../../shared/lib";
+import {useUserStore} from "../../../shared/model";
 
 export const PostListPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -15,6 +17,7 @@ export const PostListPage = () => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   let { category } = useParams();
   const navigate = useNavigate();
+  const {AccessToken} = useUserStore()
   category = category as string;
   const title =
     category === "notice"
@@ -52,32 +55,36 @@ export const PostListPage = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.titleArea}>
-          <span className={styles.title}>{title}</span>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.titleArea}>
+            <span className={styles.title}>{title}</span>
+          </div>
+          <div className={styles.searchBarArea}>
+            {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+                <RegitUpdateDeleteButton
+                    content="등록하기"
+                    onClickHandler={() => navigate(`/post/${category}/add`)}
+                />
+            ) : (
+                <div></div>
+            )}
+            <SearchBar
+                setSearchKeyword={setSearchKeyword}
+                handleSearch={() => findTargetPage()}
+            />
+          </div>
+          <div className={styles.divideLine}></div>
+          <PostListTable postListData={postList?.posts}/>
+          <div className={styles.divideLine}></div>
+          {postList && (
+              <Pagination
+                  totalPages={Math.max(1, postList?.totalPages)}
+                  page={page}
+                  setPage={setPage}
+              />
+          )}
         </div>
-        <div className={styles.searchBarArea}>
-          <RegitUpdateDeleteButton
-              content="등록하기"
-              onClickHandler={() => navigate(`/post/${category}/add`)}
-          />
-          <SearchBar
-              setSearchKeyword={setSearchKeyword}
-              handleSearch={() => findTargetPage()}
-          />
-        </div>
-        <div className={styles.divideLine}></div>
-        <PostListTable postListData={postList?.posts} />
-        <div className={styles.divideLine}></div>
-        {postList && (
-          <Pagination
-            totalPages={Math.max(1, postList?.totalPages)}
-            page={page}
-            setPage={setPage}
-          />
-        )}
       </div>
-    </div>
   );
 };
