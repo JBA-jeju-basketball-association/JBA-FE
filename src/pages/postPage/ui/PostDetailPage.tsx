@@ -146,6 +146,8 @@ export const PostDetailPage = () => {
     isAnnouncement,
   } = postDetail;
 
+  console.log(postDetail, '---postDetail---');
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

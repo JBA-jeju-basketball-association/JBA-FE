@@ -22,11 +22,13 @@ export interface PostDataResponse {
 
 // 이미지 타입 정의
 export interface PostImgsType {
+  fileId: number;
   fileName: string;
   imgUrl: string;
 }
 //파일 타입
 export interface FilesType {
+  fileId: number;
   fileName: string;
   fileUrl: string;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
@@ -12,16 +12,9 @@ import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
-import { requestPostData } from "../api/AddPostRequest";
-import EditPostRequest from "../api/EditPostRequest";
-import parse from "html-react-parser";
+import EditPostRequest, { EditRequestPostData } from "../api/EditPostRequest";
 import styles from "./UpdatePostPage.module.css";
-import { PostDetailType, PostImgsType } from "shared/type/PostType";
-
-interface PostFilesType {
-  fileName: string;
-  fileUrl: string;
-}
+import { FilesType, PostDetailType, PostImgsType } from "shared/type/PostType";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -42,14 +35,23 @@ export const UpdatePostPage = () => {
   let isOfficialQuery = searchParams.get("isAnnouncement");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  // 드롭다운을 통한 머리말 상태관리
   const [foreword, setForeword] = useState<
     "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
   >("");
+  // 드롭 다운을 통한 공지, 일반 게시글 종류 상태관리
   const [officialState, setOfficialState] = useState<"official" | "normal">(
     isOfficialQuery === "true" ? "official" : "normal"
   );
+  // 기존 내용
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
-  const [postFiles, setPostFiles] = useState<PostFilesType[]>([]);
+  const [postFiles, setPostFiles] = useState<FilesType[]>([]);
+  const [filePreview, setFilePreview] = useState<(FilesType | PostImgsType)[]>(
+    []
+  );
+
+  // 수정 후 보낼 내용
+  const [remainingFiles, setRemainingFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
   const [postData, setPostData] = useState(null);
 
@@ -85,9 +87,10 @@ export const UpdatePostPage = () => {
 
   const editPost = (params: {
     category?: string;
-    requestData: requestPostData;
+    requestData: EditRequestPostData;
     postId?: string;
     officialState: "official" | "normal";
+    remainingFiles: FileList | null;
   }) => {
     mutation.mutate(params);
   };
@@ -97,20 +100,20 @@ export const UpdatePostPage = () => {
     const forewordOption = ForewordOptions.find(
       (option) => option.value === foreword
     );
-      const forewordLabel = forewordOption ? forewordOption.label : ''
-      const requestData: requestPostData = {
-        title,
-        content,
-        foreword: forewordLabel,
-        postImgs,
-      };
-      editPost({
-        category,
-        requestData,
-        postId,
-        officialState,
-      });
-    
+    const forewordLabel = forewordOption ? forewordOption.label : "";
+    const requestData: EditRequestPostData = {
+      title,
+      content,
+      foreword: forewordLabel,
+      postImgs,
+    };
+    editPost({
+      category,
+      requestData,
+      postId,
+      officialState,
+      remainingFiles,
+    });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {
@@ -144,11 +147,27 @@ export const UpdatePostPage = () => {
     setForeword(selectedOption.value);
   };
 
+  // file preview "x"버튼 핸들 함수
+  const handleDeleteButtonClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    fileName: string
+  ) => {
+    // form event 
+    e.preventDefault();
+    // 데이터 상태관리 해주기 -> 유즈 이펙트로 인한 프리뷰 업데이트 
+    const filteredImgs = postImgs.filter((item) => item.fileName !== fileName)
+    const filteredFiles = postFiles.filter((item) => item.fileName !== fileName)
+    setPostImgs([...filteredImgs]);
+    setPostFiles(filteredFiles);
+  };
+
+  // 게시글 상세 내용 가져오기
   useEffect(() => {
     if (postDetail) {
       setTitle(postDetail.title);
       setContent(postDetail.content);
       setPostImgs(postDetail.postImgs);
+      setPostFiles(postDetail.files);
       if (isOfficialQuery === "true") {
         ForewordOptions.map((option) => {
           if (option.label === postDetail.foreword) {
@@ -160,6 +179,18 @@ export const UpdatePostPage = () => {
       }
     }
   }, [postDetail]);
+
+  // 게시글 상세 내용 가져온 후, file + postImgs 합쳐서 화면에 미리 보기 위해서 상태로 관리
+  useEffect(() => {
+    let fileBucket: (FilesType | PostImgsType)[] = [];
+    if (!!postImgs) {
+      fileBucket.push(...postImgs);
+    }
+    if (!!postFiles) {
+      fileBucket.push(...postFiles);
+    }
+    setFilePreview(fileBucket);
+  }, [postImgs, postFiles]);
 
   useEffect(() => {
     if (officialState === "normal") {
@@ -173,6 +204,8 @@ export const UpdatePostPage = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
+
+  console.log(postDetail, "---postDetail---");
 
   return (
     <div className={styles.container}>
@@ -234,7 +267,24 @@ export const UpdatePostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <span className={styles.fileNull}>파일 업로드 자리</span>
+              <input
+                type="file"
+                name="uploadFile"
+                id="uploadFile"
+                multiple
+                onChange={(e) => setRemainingFiles(e.target.files)}
+              />
+              {filePreview.map((file) => (
+                <div key={file.fileId} className={styles.fileItemWrapper}>
+                  <span className={styles.fileItemText}>{file.fileName}</span>
+                  <button
+                    onClick={(e) => handleDeleteButtonClick(e, file.fileName)}
+                    className={styles.deleteButton}
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>
