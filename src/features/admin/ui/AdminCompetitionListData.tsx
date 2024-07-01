@@ -3,42 +3,19 @@ import styles from "./AdminGalleryListData.module.css";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
-import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
-import { AdminGalleryListProps, GalleryListsType } from "shared/type/AdminType";
-import { useGalleryModalStore } from "shared/model";
+import { AdminGalleryListProps } from "shared/type/AdminType";
 
-export const AdminGalleryListData = ({
+export const AdminCompetitionListData = ({
   titles,
   lists,
 }: AdminGalleryListProps) => {
-  const { mutate: deleteGallery } = useGalleryDelete();
-
-  const navigate = useNavigate();
-
-  const isOfficial = (isOfficial: boolean) => (isOfficial ? "스태프" : "일반");
-
-  const { setForceModalOpen, setGalleryIdFromMain }: any = useGalleryModalStore(
-    (state) => state
-  );
-
-  const handleNavigateToDetailPage = (galleryId: number) => {
-    setForceModalOpen(true);
-    setGalleryIdFromMain(galleryId);
-    navigate("/gallery");
-  };
+  const handleNavigateToDetailPage = (galleryId: number) => {};
   //상세페이지 이동
 
-  const handleNavigateToEditPage = (galleryId: number) => {
-    navigate(`/admin/galleryedit/${galleryId}`);
-  };
+  const handleNavigateToEditPage = (galleryId: number) => {};
   //수정페이지 이동
 
-  const handleDeleteClick = async (galleryId: number) => {
-    const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
-    if (confirm) {
-      deleteGallery(galleryId);
-    }
-  };
+  const handleDeleteClick = async (galleryId: number) => {};
   //삭제
 
   return (
@@ -49,7 +26,7 @@ export const AdminGalleryListData = ({
         ))}
       </div>
       <div className={styles.contentWrapper}>
-        {lists?.map((list: GalleryListsType) => (
+        {lists?.map((list: any) => (
           <div key={list.galleryId} className={styles.listWrapper}>
             <span>{list.galleryId}</span>
             <span>{list.email}</span>
@@ -61,7 +38,6 @@ export const AdminGalleryListData = ({
                 삭제
               </Button>
             </span>
-            <span>{isOfficial(list.isOfficial)}</span>
             <span>
               <img
                 src={list.thumbnail}

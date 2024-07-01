@@ -29,9 +29,4 @@ export const postCategories = [
     { id: 2, list: "자료실" },
     { id: 3, list: "NEWS" },
   ],
-  [
-    { id: 1, list: "오늘" },
-    { id: 2, list: "어제" },
-    { id: 3, list: "엊그제" },
-  ],
 ];

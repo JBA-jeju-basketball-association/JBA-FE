@@ -8,6 +8,7 @@ import {
   useAdminPostDelete,
   useAdminchangeAnnouncement,
 } from "pages/admin/api/useAdminPostDatas";
+import { useFileDownload } from "shared/hook/useFileDownload";
 
 export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   const { mutate: changeAnnouncement } = useAdminchangeAnnouncement();
@@ -56,6 +57,9 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
     if (confirm) changeAnnouncement(postId);
   };
   //공지로 변경-해제
+
+  const { fileDownload } = useFileDownload();
+  //파일 다운로드 함수
 
   return (
     <div className={styles.container}>
@@ -107,9 +111,10 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
-                      href={file.fileUrl}
-                      download={file.fileName}
-                      target="_blank"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        fileDownload(file.fileUrl, file.fileName);
+                      }}
                       rel="noreferrer"
                     >
                       {file.fileName}
