@@ -15,7 +15,7 @@ export const PostDetailPage = () => {
   const { AccessToken } = useUserStore();
   const [filesState, setFilesState] = useState<FilesType[]>([]);
   const [postImgsState, setPostImgsState] = useState<PostImgsType[]>([]);
-  const [fileList, setFileList] = useState<string[]>([]);
+  const [fileList, setFileList] = useState<any[]>([]);
   const [downloadUrl, setDownloadUrl] = useState<string[]>([]);
 
   const typeItems = ["등록자", "등록일", "조회수"];
@@ -106,18 +106,18 @@ export const PostDetailPage = () => {
   useEffect(() => {
     if (postImgsState) {
       postImgsState.map((img: PostImgsType) => {
-        fileList.push(img.imgUrl);
+        fileList.push(img);
       });
     }
     if (filesState) {
       filesState.map((file: FilesType) => {
-        fileList.push(file.fileUrl);
+        fileList.push(file);
       });
     }
     if (fileList) {
       for (let i = 0; i < fileList.length; i++) {
         if (!!fileList[i]) {
-          fetch(fileList[i])
+          fetch(fileList[i].fileUrl)
             .then((res) => res.blob())
             .then((blob) => {
               const url = window.URL.createObjectURL(blob);
@@ -145,12 +145,6 @@ export const PostDetailPage = () => {
     content,
     isAnnouncement,
   } = postDetail;
-
-  // console.log(postImgsState, '---postImgsState---');
-  // console.log(filesState, '---filesState---');
-  // console.log(postDetail, '---postDetail---');
-  // console.log(fileList, "---fileList---");
-  // console.log(downloadUrl, '---downloadUrl---');
 
   return (
     <div className={styles.container}>
@@ -180,20 +174,30 @@ export const PostDetailPage = () => {
         {/* ------ 에디터 콘텐츠 화면 ------ */}
         <div
           id="editor-content"
-          className="ck-content"
+          className={"ck-content "+ styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
-          {downloadUrl.map((item, i) => (
-            <a href={item} download className={styles.fileDownload}>
-              {/* {postImgsState[0].fileName || "첨부파일 다운로드 1"} */}
-              {`첨부파일 다운로드 ${i}`}
-            </a>
-          ))}
-          {!!downloadUrl.length || (
-            <span className={styles.fileNull}>첨부파일 없음</span>
-          )}
+          <div className={styles.filesContainer}>
+            <div className={styles.filesContainerTitle}>
+              <span>첨부파일</span>
+            </div>
+            <div className={styles.downloadUrlWrapper}>
+              {downloadUrl.map((item, i) => (
+                <a
+                  href={item}
+                  download={fileList[i].fileName || `다운로드${i + 1}`}
+                  className={styles.fileDownloadItem}
+                >
+                  {fileList[i].fileName || `첨부파일 ${i + 1}`}
+                </a>
+              ))}
+              {!!downloadUrl.length || (
+                <span className={styles.fileNull}>첨부파일 없음</span>
+              )}
+            </div>
+          </div>
           <div className={styles.subLine}></div>
         </div>
       </div>

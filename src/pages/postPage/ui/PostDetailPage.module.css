@@ -48,7 +48,7 @@
   justify-content: center;
 }
 .titleContent {
-  max-width: 600px;
+  max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -57,13 +57,15 @@
   margin: 0 auto;
 }
 .content {
-  height: 700px;
+  height: 400px;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 10%;
   padding-left: 10%;
   scrollbar-width: 0;
   overflow: scroll;
+  text-wrap: balance;
+  word-wrap: break-word;
 
   img {
     border-radius: 5px;
@@ -74,11 +76,25 @@
 .filesWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
 }
-.fileDownload {
+.filesContainer{
+  display: flex;
+  padding-left: 30px;
+}
+.filesContainerTitle {
+  margin: 10px
+}
+.fileDownloadItem {
+  margin-bottom: 5px;
   text-decoration: underline;
   cursor: pointer;
+  display: inline-block;
+}
+.downloadUrlWrapper{
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
 }
 .fileNull {
   padding-left: 16px;
