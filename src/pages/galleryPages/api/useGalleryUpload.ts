@@ -16,7 +16,7 @@ export const useGalleryUpload = () => {
       }),
     onSuccess: () => {
       confirmAlert("success", "등록이 완료되었습니다.");
-      navigate("/gallery");
+      navigate('/admin/gallery');
     },
     onError: (e) => {
       console.log(e, "error");

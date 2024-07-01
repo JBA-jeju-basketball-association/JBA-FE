@@ -3,7 +3,7 @@ import { NormalApi } from "shared/api";
 
 type useGalleryDetailDataProps = {
   galleryId: number;
-  modalOpen: boolean;
+  modalOpen?: boolean;
 };
 
 export const useGalleryDetailData = ({

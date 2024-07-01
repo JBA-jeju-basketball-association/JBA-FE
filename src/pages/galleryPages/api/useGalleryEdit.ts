@@ -4,7 +4,7 @@ import confirmAlert from "shared/lib/ConfirmAlert";
 import { UploadType } from "shared/type/GalleryType";
 import { useNavigate } from "react-router-dom";
 
-export const useGalleryEdit = (galleryId: string) => {
+export const useGalleryEdit = (galleryId: number) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   return useMutation({
@@ -13,7 +13,7 @@ export const useGalleryEdit = (galleryId: string) => {
       Api.put(`/v1/api/gallery/${galleryId}`, data),
     onSuccess: () => {
       confirmAlert("success", "수정이 완료되었습니다.");
-      navigate("/gallery");
+      navigate('/admin/gallery');
       queryClient.invalidateQueries({
         queryKey: ["galleryDetail"],
       });
