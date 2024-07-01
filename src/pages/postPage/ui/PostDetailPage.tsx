@@ -115,17 +115,19 @@ export const PostDetailPage = () => {
       });
     }
     if (fileList) {
-      for (let i = 0; i < fileList.length - 1; i++) {
-        fetch(fileList[i])
-          .then((res) => res.blob())
-          .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            setDownloadUrl((prev) => [...prev, url]);
-          })
-          .catch((err) => console.error("Failed to fetch image:", err));
+      for (let i = 0; i < fileList.length; i++) {
+        if (!!fileList[i]) {
+          fetch(fileList[i])
+            .then((res) => res.blob())
+            .then((blob) => {
+              const url = window.URL.createObjectURL(blob);
+              setDownloadUrl((prev) => [...prev, url]);
+            })
+            .catch((err) => console.error("Failed to fetch image:", err));
+        }
       }
     }
-  }, [postImgsState, filesState]);
+  }, [postImgsState, filesState, fileList]);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -143,6 +145,13 @@ export const PostDetailPage = () => {
     content,
     isAnnouncement,
   } = postDetail;
+
+  // console.log(postImgsState, '---postImgsState---');
+  // console.log(filesState, '---filesState---');
+  // console.log(postDetail, '---postDetail---');
+  // console.log(fileList, "---fileList---");
+  // console.log(downloadUrl, '---downloadUrl---');
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -170,24 +179,18 @@ export const PostDetailPage = () => {
         <div className={styles.subLine}></div>
         {/* ------ 에디터 콘텐츠 화면 ------ */}
         <div
-          id='editor-content'
+          id="editor-content"
           className="ck-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
-          {downloadUrl[0] && (
-            <a href={downloadUrl[0]} download className={styles.fileDownload}>
+          {downloadUrl.map((item, i) => (
+            <a href={item} download className={styles.fileDownload}>
               {/* {postImgsState[0].fileName || "첨부파일 다운로드 1"} */}
-              "첨부파일 다운로드 1"
+              {`첨부파일 다운로드 ${i}`}
             </a>
-          )}
-          {downloadUrl[1] && (
-            <a href={downloadUrl[1]} download className={styles.fileDownload}>
-              {/* {filesState[0].fileName || "첨부파일 다운로드 2"} */}
-              "첨부파일 다운로드 2"
-            </a>
-          )}
+          ))}
           {!!downloadUrl.length || (
             <span className={styles.fileNull}>첨부파일 없음</span>
           )}
