@@ -7,7 +7,6 @@ type Props = {
     data: getCompetitionResult;
 }
 export const ResultDivisionBox = ({data}:Props) => {
-    console.log('Data: ', data)
     return (
         <div className={style.ResultDivisionBox}>
             <p className={style.division}>{data.division}</p>

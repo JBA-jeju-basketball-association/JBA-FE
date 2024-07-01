@@ -81,7 +81,6 @@ export const PostCompetitionPage = () => {
         })
     }, [divisionData]);
 
-
     return (
         <div className={style.AddCompetitionPage}>
             <PageTitle pageName="대회등록"/>

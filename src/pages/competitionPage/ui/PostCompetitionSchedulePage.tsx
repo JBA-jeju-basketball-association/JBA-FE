@@ -33,6 +33,7 @@ export const PostCompetitionSchedulePage = () => {
 
     useEffect(() => {
         if (detailData) {
+            setPostCompetitionScheduleList([])
             detailData.divisions.map((d:string, index:number):void => {
                 const initialRow:postCompetitionScheduleRow = {
                     gameNumber: index + 1,

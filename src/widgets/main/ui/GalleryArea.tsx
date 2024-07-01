@@ -13,7 +13,6 @@ export const GalleryArea = () => {
         queryFn: () => FetchMainGalleryList(),
         select: (result) => result?.data.data
     })
-    console.log(data)
 
     const {forceModalOpen, setForceModalOpen, galleryIdFromMain, setGalleryIdFromMain}:any = useGalleryModalStore(state => state)
     const navigateDetail = (id:number) => {
@@ -21,8 +20,6 @@ export const GalleryArea = () => {
         setGalleryIdFromMain(id)
         navigate("/gallery")
     }
-
-    console.log(forceModalOpen, galleryIdFromMain)
 
     return (
         <div className={style.GalleryArea}>

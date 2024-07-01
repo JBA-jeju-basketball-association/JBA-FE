@@ -35,7 +35,7 @@ export const UpdateCompetitionPage = () => {
     const [startDate, setStartDate] = useState<Date | null>(null)
     const [endDate, setEndDate] = useState<Date | null>(null)
     const [places, setPlaces] = useState<place[]>([]);
-    const [relatedURL, setRelatedUrl] = useState<string | null>(null);
+    const [relatedURL, setRelatedUrl] = useState<string | null>("");
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
     const [attachedFileList, setAttachedFileList] = useState<competitionDetailAttachedFile[]>([])
@@ -62,7 +62,6 @@ export const UpdateCompetitionPage = () => {
         refetchOnReconnect: false,
         refetchIntervalInBackground: false
     })
-    console.log(divisionData)
     const divisionHandler = (values:MultiValue<any>):void => {
         setSelectedDivisions([])
         values.map(

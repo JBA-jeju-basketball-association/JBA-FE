@@ -50,6 +50,7 @@ export const PostCompetitionResultPage = () => {
 
     useEffect(() => {
         if (scheduleData) {
+            setPostCompetitionResult([])
             scheduleData?.map((s:getScheduleResponse, index:number):void => {
                 const list:postResultRequestRows[] = s?.getScheduleRows?.map((row) => {
                     return {
@@ -76,8 +77,7 @@ export const PostCompetitionResultPage = () => {
             })
         }
     }, [scheduleData]);
-    console.log(postCompetitionResult)
-    
+
     return (
         <div className={style.PostCompetitionResultPage}>
             <PageTitle pageName={"대회결과등록"}/>

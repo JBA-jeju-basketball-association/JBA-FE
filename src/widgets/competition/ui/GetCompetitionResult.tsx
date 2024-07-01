@@ -19,7 +19,6 @@ export const GetCompetitionResult = ({id}:Props) => {
         queryFn: () => FetchGetCompetitionResult(id),
         select: (result) => result?.data.data
     })
-    console.log(data)
 
     if (isLoading) {
         return <LoadingSpinner />
@@ -33,11 +32,11 @@ export const GetCompetitionResult = ({id}:Props) => {
     }
 
     const deleteHandler = () => {
-        confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까? 대회일정까지 삭제되고 대회정보는 보존됩니다.", async () =>{
+        confirmAndCancelAlertWithLoading("warning", "삭제", "대회결과을 삭제하시겠습니까? 대회일정까지 삭제되고 대회정보는 보존됩니다.", async () =>{
             id && await FetchDeleteSchedule(id)
         }).then(res => {
             if (res.isConfirmed) {
-                confirmAlert("success", "완료", "대회일정이 삭제되었습니다.")
+                confirmAlert("success", "완료", "대회결과가 삭제되었습니다.")
                     .then(res => {
                         if (res.isConfirmed) window.location.href = `/competition/${id}`
                     })
