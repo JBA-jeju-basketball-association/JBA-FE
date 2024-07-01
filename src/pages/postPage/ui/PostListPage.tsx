@@ -3,14 +3,13 @@ import { useParams } from "react-router-dom";
 import { PostListTable } from "../../../entities/postListTable";
 import { Pagination } from "widgets/pagination";
 import { useQuery } from "@tanstack/react-query";
-import { NormalApi } from "../../../shared/api/NormalApi";
+import { NormalApi } from "../../../shared/api";
 import { Post, PostListData } from "../../../shared/type/PostType";
 import { SearchBar } from "widgets/searchBar";
 import styles from "./PostListPage.module.css";
 
 export const PostListPage = () => {
   const [page, setPage] = useState<number>(1);
-  const [searchCategory, setSearchCategory] = useState("제목");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   let { category } = useParams();
@@ -91,8 +90,6 @@ export const PostListPage = () => {
           />
         )}
         <SearchBar
-          searchCategory={searchCategory}
-          setSearchCategory={setSearchCategory}
           setSearchKeyword={setSearchKeyword}
           handleSearch={() => findTargetPage()}
         />
