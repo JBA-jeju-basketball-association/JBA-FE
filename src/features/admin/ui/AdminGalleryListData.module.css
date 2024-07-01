@@ -54,18 +54,17 @@
   background: #5fcb9b;
   color: white;
   font-weight: bold;
-  padding: 7PX 12PX;
-  border-radius: 5PX;
+  padding: 7px 12px;
+  border-radius: 5px;
 }
 
 .deleteBtn {
   background: var(--primary-color);
   color: var(--subcolor-black5);
   font-weight: bold;
-  padding: 7PX 12PX;
-  border-radius: 5PX;
+  padding: 7px 12px;
+  border-radius: 5px;
 }
-
 
 .listImg {
   width: 40px;
@@ -76,8 +75,6 @@
   text-decoration: underline;
   cursor: pointer;
 }
-
-
 
 .contentWrapper::-webkit-scrollbar {
   width: 5px;

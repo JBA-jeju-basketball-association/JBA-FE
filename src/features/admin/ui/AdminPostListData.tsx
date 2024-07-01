@@ -75,7 +75,7 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
             <span>{list.email}</span>
             <span className={styles.btn}>
               <Button
-              className = {styles.updateBtn}
+                className={styles.updateBtn}
                 onClick={() =>
                   handleNavigateToEditPage(list.postId, list.category)
                 }

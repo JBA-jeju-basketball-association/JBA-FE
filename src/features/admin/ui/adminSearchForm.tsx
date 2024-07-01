@@ -8,12 +8,11 @@ import { AdminSearchFormProps } from "shared/type/AdminType";
 export const AdminSearchForm = ({
   gallerySearchCriteria,
   label,
-  showCategory
+  showCategory,
 }: AdminSearchFormProps) => {
   const [selectedCategory, setSelectedCategory] = useState(
     gallerySearchCriteria[0]
   );
-
 
   return (
     <div className={styles.container}>
@@ -32,8 +31,8 @@ export const AdminSearchForm = ({
         /> */}
       </div>
       <div className={styles.button}>
-        <Button >검색</Button>
-        <Button >초기화</Button>
+        <Button>검색</Button>
+        <Button>초기화</Button>
       </div>
     </div>
   );
