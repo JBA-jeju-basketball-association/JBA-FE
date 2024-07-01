@@ -3,7 +3,6 @@ import style from "./CompetitionRow.module.css"
 import {competitionListItem} from "../../../shared/type/CompetitionType";
 import moment from "moment";
 import {useNavigate} from "react-router-dom";
-import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import {competitionStatusCalculator} from "../index";
 
 type Props = {
@@ -16,7 +15,6 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
     const navigate = useNavigate();
     const startDate: string = moment(item.startDate).format('YYYY-MM-DD');
     const endDate: string = moment(item.endDate).format('YYYY-MM-DD');
-    const division:string | undefined = DivisionOptions.find(divisionOption => divisionOption.value === item.division)?.label
 
     const navigateDetailPage = () => {
         if (item.competitionId) {
@@ -34,7 +32,7 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
                 <p>{status}</p>
             </div>
             <div className={style.listLabel100}>
-                <p>{division===undefined ? "혼합" :division}</p>
+                <p>{item.division}</p>
             </div>
             <div className={style.listLabel740}>
                 <p>{item?.title}</p>

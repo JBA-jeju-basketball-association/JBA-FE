@@ -10,10 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { JwtDecoder } from "shared/lib";
 import { useUserStore } from "shared/model";
 import { useGalleryDatas } from "../api/useGalleryDatas";
+import {ListErrorRow} from "../../../shared/ui/listErrorRow/ListErrorRow";
 
 export const GalleryPage = () => {
   const [page, setPage] = useState(1);
-  const [searchCategory, setSearchCategory] = useState("제목");
   const [searchKeyword, setSearchKeyword] = useState("");
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
@@ -33,33 +33,32 @@ export const GalleryPage = () => {
 
   useEffect(() => {
     refetch();
-  }, [searchKeyword, searchCategory]);
+  }, [searchKeyword]);
+
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.titleWrapper}>
-          <PageTitle pageName="갤러리" />
-        </div>
-        <div className={styles.buttonWrapper}>
-          {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
-            <RegitUpdateDeleteButton
-              content="등록하기"
-              onClickHandler={() => navigate("galleryupload")}
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.titleWrapper}>
+            <PageTitle pageName="갤러리"/>
+          </div>
+          <div className={styles.buttonWrapper}>
+            {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+                <RegitUpdateDeleteButton
+                    content="등록하기"
+                    onClickHandler={() => navigate("galleryupload")}
+                />
+            ) : (
+                <div></div>
+            )}
+            <SearchBar
+                setSearchKeyword={setSearchKeyword}
+                handleSearch={() => findTargetPage()}
             />
-          ) : (
-            <div></div>
-          )}
-          <SearchBar
-            searchCategory={searchCategory}
-            setSearchCategory={setSearchCategory}
-            setSearchKeyword={setSearchKeyword}
-            handleSearch={() => findTargetPage()}
-          />
+          </div>
+          <GalleryCardList galleries={galleries}/>
+          <Pagination totalPages={totalPage} page={page} setPage={setPage}/>
         </div>
-        <GalleryCardList galleries={galleries} />
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
       </div>
-    </div>
   );
 };

@@ -4,7 +4,7 @@ import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 
 
-export default function FetchAddCompetition(requestData:requestData, files:IFileTypes[]) {
+export default function FetchPostCompetition(requestData:requestData, files:IFileTypes[]) {
     const blob:Blob = new Blob([JSON.stringify(requestData)], {type: "application/json"})
     const formData: FormData = new FormData();
     formData.append("requestData", blob)
@@ -12,7 +12,7 @@ export default function FetchAddCompetition(requestData:requestData, files:IFile
         formData.append("requestFiles", files[i].object)
     }
 
-    return Api.post("/v1/api/competition/add-competition-info", formData, {
+    return Api.post("/v1/api/competition/post/competition-info", formData, {
         headers: {
             "Content-Type": "multipart/form-data"
         }

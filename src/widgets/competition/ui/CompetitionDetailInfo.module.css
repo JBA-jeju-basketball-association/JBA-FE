@@ -28,6 +28,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    max-width: 428px;
 }
 
 .info p {
@@ -42,11 +43,12 @@
 }
 
 .contentArea {
+    max-width: 930px;
     padding: 10px 20px 10px 20px;
 }
 
 .contentArea img{
-    max-width: 800px;
+    max-width: 930px;
     height: auto;
 }
 
