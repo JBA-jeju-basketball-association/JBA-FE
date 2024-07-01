@@ -54,10 +54,16 @@ export const AdminGalleryListData = ({
             <span>{list.galleryId}</span>
             <span>{list.email}</span>
             <span className={styles.btn}>
-              <Button onClick={() => handleNavigateToEditPage(list.galleryId)}>
+              <Button
+                className={styles.updateBtn}
+                onClick={() => handleNavigateToEditPage(list.galleryId)}
+              >
                 수정
               </Button>
-              <Button onClick={() => handleDeleteClick(list.galleryId)}>
+              <Button
+                className={styles.deleteBtn}
+                onClick={() => handleDeleteClick(list.galleryId)}
+              >
                 삭제
               </Button>
             </span>

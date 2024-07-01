@@ -75,13 +75,17 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
             <span>{list.email}</span>
             <span className={styles.btn}>
               <Button
+              className = {styles.updateBtn}
                 onClick={() =>
                   handleNavigateToEditPage(list.postId, list.category)
                 }
               >
                 수정
               </Button>
-              <Button onClick={() => handleDeleteClick(list.postId)}>
+              <Button
+                className={styles.deleteBtn}
+                onClick={() => handleDeleteClick(list.postId)}
+              >
                 삭제
               </Button>
             </span>

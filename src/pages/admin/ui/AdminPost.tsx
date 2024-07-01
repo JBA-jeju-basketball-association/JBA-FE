@@ -30,7 +30,6 @@ export const AdminPost = () => {
   const handleNavigateToUploadPage = () => {
     navigate("/post/notice/add");
   };
-  console.log(adminPostData)
 
   useEffect(() => {
     refetch();
@@ -55,7 +54,12 @@ export const AdminPost = () => {
             개씩 보기
           </div>
           <div>
-            <Button onClick={handleNavigateToUploadPage}>게시물 등록</Button>
+            <Button
+              className={styles.uploadBtn}
+              onClick={handleNavigateToUploadPage}
+            >
+              게시물 등록
+            </Button>
           </div>
         </div>
         <AdminPostListData
