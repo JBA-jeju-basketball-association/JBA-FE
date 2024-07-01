@@ -77,10 +77,7 @@ function App() {
             <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
             <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
             <Route path="/competition/post/result/:id" element={<PostCompetitionResultPage/>}/>
-            <Route
-              path="/competition/update-result/:id"
-              element={<UpdateCompetitionResultPage />}
-            />
+            <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route path={"/post/:category/:postId/update"} element={<UpdatePostPage />} />
             <Route path={"/gallery/galleryupload"} element={<GalleryUploadPage />} />

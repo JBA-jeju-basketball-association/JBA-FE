@@ -5,6 +5,7 @@ import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {getCompetitionResult} from "../../../shared/type/CompetitionType";
 import FetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultDivisionBox} from "./ResultDivisionBox";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 
 type Props = {
     id: string | undefined;
@@ -23,10 +24,10 @@ export const GetCompetitionResult = ({id}:Props) => {
     }
 
     const updateHandler = () => {
-        // confirmAndCancelAlertWithLoading("question", "수정", "대회일정 수정페이지로 이동하시겠습니까?")
-        //     .then(res => {
-        //         if(res.isConfirmed && id) window.location.href = `/competition/update/result/${id}`
-        //     })
+        confirmAndCancelAlertWithLoading("question", "수정", "대회결과 수정페이지로 이동하시겠습니까?")
+            .then(res => {
+                if(res.isConfirmed && id) window.location.href = `/competition/update/result/${id}`
+            })
     }
 
     const deleteHandler = () => {

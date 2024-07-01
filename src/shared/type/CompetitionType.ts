@@ -130,7 +130,7 @@ export interface postResultRequestRows extends postCompetitionScheduleRow{
     competitionResultId: number | null;
     homeScore: number | null;
     awayScore: number | null;
-    filePath: string;
+    filePath: string | null;
     fileName: string;
 }
 
@@ -140,7 +140,7 @@ export type getCompetitionResult = {
 }
 
 export type getCompetitionResultRow = {
-    competitionResultId: string;
+    competitionResultId: number;
     gameNumber: number;
     startDate: Date | null;
     floor: string;

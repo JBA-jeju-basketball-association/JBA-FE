@@ -62,7 +62,7 @@ export const PostCompetitionResultPage = () => {
                         homeScore: null,
                         awayName: row.awayName,
                         awayScore: null,
-                        filePath: "",
+                        filePath: null,
                         fileName: "",
                         state5x5: row.state5x5
                     }

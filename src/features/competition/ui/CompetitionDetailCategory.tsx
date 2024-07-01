@@ -23,12 +23,12 @@ export const CompetitionDetailCategory = ({infoFocused,setInfoFocused, phase}:Pr
 
         if (phase === "INFO") {
             if (AccessToken && (role === "ROLE_MASTER" || role === "ROLE_ADMIN")) {
-                confirmAndCancelAlertWithLoading("warning", "대회결과가 없습니다.", "대회결과 등록 페이지로 이동합니다.")
+                confirmAndCancelAlertWithLoading("warning", "대회일정이 없습니다.", "대회일정 등록 페이지로 이동합니다.")
                     .then(res => {
                         if (res.isConfirmed) id && navigate(`/competition/post/schedule/${id}`)
                     });
-            } else if (AccessToken && (role !== "ROLE_MASTER" && role !== "ROLE_ADMIN")) {
-                confirmAlert("warning", "대회결과가 없습니다.");
+            } else if (!AccessToken || (role !== "ROLE_MASTER" && role !== "ROLE_ADMIN")) {
+                confirmAlert("warning", "대회일정이 없습니다.");
             }
         }else {
             setInfoFocused(false)
