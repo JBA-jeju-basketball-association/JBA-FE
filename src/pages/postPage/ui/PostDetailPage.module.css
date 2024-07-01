@@ -62,7 +62,15 @@
   padding-bottom: 40px;
   padding-right: 10%;
   padding-left: 10%;
+  scrollbar-width: 0;
+  overflow: scroll;
+
+  img {
+    border-radius: 5px;
+    width: 50%;
+  }
 }
+
 .filesWrapper {
   display: flex;
   flex-direction: column;
@@ -111,3 +119,11 @@
 .buttonDelete:hover {
   background-color: var(--subcolor-black4);
 }
+
+/* .iframe {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+  padding-top: 30px;
+  padding-bottom: 30px
+}; */
