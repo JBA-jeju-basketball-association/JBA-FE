@@ -2,12 +2,19 @@ import React from "react";
 import styles from "./GalleryEditPage.module.css";
 import { GalleryEdit } from "features/gallery";
 import { PageTitle } from "shared/ui";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useGalleryDetailData } from "../api/useGalleryDetailData";
 
 export const GalleryEditPage = () => {
-  const location = useLocation();
-  // url에 담긴 정보 확인
-  const { galleryId, galleryDetail } = location.state;
+  const params = useParams();
+
+  const galleryId = parseInt(params.galleryId!);
+
+  const { data: galleryDetailData } = useGalleryDetailData({
+    galleryId,
+  });
+
+  const galleryDetail = galleryDetailData?.data.data ?? [];
 
   return (
     <div className={styles.container}>
@@ -16,3 +23,4 @@ export const GalleryEditPage = () => {
     </div>
   );
 };
+//디테일 함수 넣기
