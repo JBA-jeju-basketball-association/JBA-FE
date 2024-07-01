@@ -1,6 +1,6 @@
 
 
-export function competitionDetailMakeDivisionText(divisionList:string[]):string {
+export function CompetitionDetailMakeDivisionText(divisionList:string[]):string {
     let division:string | undefined = "";
     if (divisionList?.length === 1) {
         division = divisionList[0]

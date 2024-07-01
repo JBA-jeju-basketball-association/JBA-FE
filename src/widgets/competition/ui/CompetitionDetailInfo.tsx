@@ -4,12 +4,10 @@ import moment from "moment/moment";
 import {CompetitionDetailLabel, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionDetailInfoRow} from "../../../entities/competition";
 import {competitionDetailAttachedFile, competitionDetailData} from "../../../shared/type/CompetitionType";
-import {competitionDetailMakeDivisionText, competitionStatusCalculator} from "../index"
-import {KakaoMap} from "./KakaoMap";
+import {CompetitionDetailMakeDivisionText, competitionStatusCalculator} from "../index"
 import {useNavigate, useParams} from "react-router-dom";
 import {useUserStore} from "../../../shared/model";
-import {JwtDecoder} from "../../../shared/lib";
-import fetchDeleteCompetition from "../api/FetchDeleteCompetition";
+import FetchDeleteCompetition from "../api/FetchDeleteCompetition";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 
 type Props = {
@@ -51,7 +49,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
 
     function deleteHandler() {
         confirmAndCancelAlertWithLoading("warning", "대회를 삭제하겠습니까?", "삭제된 대회는 복구할 수 없습니다.",  async () =>{
-            id && await fetchDeleteCompetition(id)
+            id && await FetchDeleteCompetition(id)
         })
     }
 
@@ -59,7 +57,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
         <div className={style.CompetitionDetailInfo}>
             <div className={style.fullInfoArea}>
                 <CompetitionDetailInfoRow data={competitionStatusCalculator(data?.startDate, data?.endDate)} label={"현황"} type={"half"}/>
-                <CompetitionDetailInfoRow data={competitionDetailMakeDivisionText(data?.divisions)} label={"종별"} type={"half"}/>
+                <CompetitionDetailInfoRow data={CompetitionDetailMakeDivisionText(data?.divisions)} label={"종별"} type={"half"}/>
             </div>
 
             <div className={style.fullInfoArea}>

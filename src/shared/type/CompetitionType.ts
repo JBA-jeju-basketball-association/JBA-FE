@@ -1,8 +1,3 @@
-export type value = {
-    label: string;
-    value: string;
-}
-
 export type requestData = {
     title: string;
     divisions: string[];
@@ -69,27 +64,6 @@ export type place = {
     longitude:number;
 };
 
-
-export type competitionResultList = {
-    floor:string;
-    competitionResult: competitionResult[];
-}
-
-export type competitionResult = {
-    competitionResultId?: number;
-    division:string;
-    startTime: Date;
-    homeName: string;
-    homeScore: number;
-    awayName: string;
-    awayScore: number;
-    fileUrl: string;
-    fileName: string;
-}
-
-
-
-
 export type postCompetitionSchedule = {
     division:string;
     postCompetitionScheduleRow: postCompetitionScheduleRow[];
@@ -152,4 +126,9 @@ export type getCompetitionResultRow = {
     filePath: string;
     fileName: string;
     state5x5: boolean;
+}
+
+export type divisionType = {
+    value:string;
+    label:string
 }

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import style from "./PostScheduleBox.module.css"
 import {
+    divisionType,
     place,
     postCompetitionSchedule,
     postCompetitionScheduleRow
@@ -8,7 +9,6 @@ import {
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import {divisionType} from "../../../shared/model/DivisionOptions";
 import {CheckBox} from "../../../shared/ui";
 
 

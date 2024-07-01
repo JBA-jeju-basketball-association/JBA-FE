@@ -1,7 +1,6 @@
 import React from 'react';
 import style from "./Schedule.module.css"
 import {useQuery} from "@tanstack/react-query";
-import {useParams} from "react-router-dom";
 import FetchGetSchedule from "../api/FetchGetSchedule";
 import {ScheduleDivisionBox} from "./ScheduleDivisionBox";
 import {getScheduleResponse, place} from "../../../shared/type/CompetitionType";

@@ -1,7 +1,6 @@
 import {Api} from "../../../shared/api";
 import {IFileTypes, updateRequestData} from "../../../shared/type/CompetitionType";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
-import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 
 
 
@@ -37,6 +36,6 @@ export default function FetchUpdateCompetition(id:string, requestData:updateRequ
             else if (err.response.data.detailMessage === "장소를 등록해주세요.")
                 confirmAlert("warning", "장소를 등록해주세요.");
             else if (err.response.data.detailMessage === "해당 종별은 결과가 이미 입력되어 있어 삭제가 불가능합니다.")
-                confirmAlert("warning", DivisionOptions.filter(item => item.value === err.response.data.request)[0].label +  " 종별은 이미 결과가 있어 삭제가 불가능합니다.", "대회 결과를 먼저 수정해주세요.");
+                confirmAlert("warning", err.response.data.request +  "은(는) 이미 결과가 있어 삭제가 불가능합니다.", "대회 결과를 먼저 수정해주세요.");
         })
 }

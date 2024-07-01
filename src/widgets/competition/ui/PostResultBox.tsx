@@ -1,12 +1,12 @@
 import React from 'react';
 import style from "./PostResultBox.module.css"
 import {
+    divisionType,
     place, postCompetitionResult, postResultRequestRows
 } from "../../../shared/type/CompetitionType";
 import {CustomDatePickerWithTime} from "../../../features/datepicker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import {divisionType} from "../../../shared/model/DivisionOptions";
 import {CheckBox} from "../../../shared/ui";
 import fetchResultAttachedFile from "../api/FetchResultAttachedFile";
 

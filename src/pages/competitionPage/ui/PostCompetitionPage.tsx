@@ -1,18 +1,19 @@
 import * as React from 'react';
 import style from "./PostCompetitionPage.module.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
 import {CustomDatePicker} from "../../../features/datepicker";
 import {PlaceArea,AddFiles} from "../../../features/competition";
 import {AddCompetitionLabel, ListLinkBtn, PageTitle, RegitTitleInput} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
-import {DivisionOptions} from "../../../shared/model/DivisionOptions";
-import {IFileTypes, requestData, value} from "../../../shared/type/CompetitionType";
+import {divisionType, IFileTypes, requestData} from "../../../shared/type/CompetitionType";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 import {place} from "../../../shared/type/CompetitionType";
-import FetchAddCompetition from "../api/FetchAddCompetition";
+import FetchPostCompetition from "../api/FetchPostCompetition";
 import {useNavigate} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import FetchGetDivisionList from "../api/FetchGetDivisionList";
 
 
 
@@ -26,14 +27,26 @@ export const PostCompetitionPage = () => {
     const [relatedURL, setRelatedUrl] = useState<string | null>(null);
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
-    const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]); //TODO: 나중에 s3 파일 삭제요청때 쓸 예정.
-    const [success, setSuccess] = useState<boolean>(false);
+    const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
     const navigate = useNavigate();
+    const [divisionList, setDivisionList] = useState<divisionType[]>([])
+
+    const {data:divisionData} = useQuery({
+        queryKey:["getDivisionList"],
+        queryFn: () => FetchGetDivisionList(),
+        select: (result) => result?.data.data,
+        gcTime: 1000*60*60,
+        refetchInterval: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        refetchIntervalInBackground: false
+    })
 
     const divisionHandler = (values:MultiValue<any>):void => {
         setDivisions([])
         values.map(
-            (item: value): void => {
+            (item: divisionType): void => {
                 setDivisions(prevState => [...prevState, item.value])
             }
         )
@@ -58,9 +71,15 @@ export const PostCompetitionPage = () => {
             }
         }
         confirmAndCancelAlertWithLoading("question", "대회를 등록하시겠습니까?", "", async () => {
-            await FetchAddCompetition(requestData, files)
+            await FetchPostCompetition(requestData, files)
         })
     }
+
+    useEffect(() => {
+        divisionData?.forEach((division:string) => {
+            divisionList.push({value: division, label: division})
+        })
+    }, [divisionData]);
 
 
     return (
@@ -76,7 +95,7 @@ export const PostCompetitionPage = () => {
                     <AddCompetitionLabel label={"종별"}/>
                     <Select
                         components={makeAnimated()}
-                        options={DivisionOptions}
+                        options={divisionList}
                         isMulti={true}
                         closeMenuOnSelect={false}
                         placeholder={"선택"}

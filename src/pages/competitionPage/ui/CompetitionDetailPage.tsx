@@ -10,10 +10,10 @@ import {
 import {CompetitionDetailCategory} from "../../../features/competition";
 import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
+import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {JwtDecoder} from "../../../shared/lib";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
-import fetchDeleteCompetition from "../../../widgets/competition/api/FetchDeleteCompetition";
+import FetchDeleteCompetition from "../../../widgets/competition/api/FetchDeleteCompetition";
 import {useUserStore} from "../../../shared/model";
 
 export const CompetitionDetailPage = () => {
@@ -23,7 +23,7 @@ export const CompetitionDetailPage = () => {
     const {id} = useParams();
     const {data, isLoading, isError, error} = useQuery({
         queryKey:["getCompetitionDetail", id],
-        queryFn:() => fetchCompetitionInfo(id),
+        queryFn:() => FetchCompetitionInfo(id),
         select:(result) => result?.data.data,
         gcTime:1000*60*10,
     })
@@ -32,14 +32,14 @@ export const CompetitionDetailPage = () => {
         confirmAndCancelAlertWithLoading("warning", "대회정보를 수정하겠습니까?", "대회수정 페이지로 이동합니다.")
             .then((res) => {
                 if (res.isConfirmed) {
-                    navigate(`/competition/update-competition/${id}`)
+                    navigate(`/competition/update/${id}`)
                 }
             });
     }
 
     function deleteHandler() {
         confirmAndCancelAlertWithLoading("warning", "대회를 삭제하겠습니까?", "삭제된 대회는 복구할 수 없습니다.",  async () =>{
-            id && await fetchDeleteCompetition(id)
+            id && await FetchDeleteCompetition(id)
         })
     }
 

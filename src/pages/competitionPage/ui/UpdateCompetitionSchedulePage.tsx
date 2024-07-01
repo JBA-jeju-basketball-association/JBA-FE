@@ -3,14 +3,13 @@ import style from "./UpdateCompetitionSchedulePage.module.css"
 import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
+import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {CompetitionDetailTitle, competitionStatusCalculator, PostScheduleBox} from "../../../widgets/competition";
 import {
-    getScheduleResponse, getScheduleResponseRow,
+    getScheduleResponse,
     postCompetitionSchedule,
     postCompetitionScheduleRow
 } from "../../../shared/type/CompetitionType";
-import FetchPostSchedule from "../api/FetchPostSchedule";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 import FetchGetSchedule from "../../../widgets/competition/api/FetchGetSchedule";
 import FetchUpdateSchedule from "../api/FetchUpdateSchedule";
@@ -21,7 +20,7 @@ export const UpdateCompetitionSchedulePage = () => {
     const {id} = useParams();
     const {data:detailData} = useQuery({
         queryKey:["getCompetitionDetail", id],
-        queryFn:() => fetchCompetitionInfo(id),
+        queryFn:() => FetchCompetitionInfo(id),
         select:(result) => result?.data.data,
         gcTime:1000*60*10,
         refetchOnMount: false,

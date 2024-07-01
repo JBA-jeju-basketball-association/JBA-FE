@@ -3,7 +3,6 @@ import style from "./CompetitionRow.module.css"
 import {competitionListItem} from "../../../shared/type/CompetitionType";
 import moment from "moment";
 import {useNavigate} from "react-router-dom";
-import {DivisionOptions} from "../../../shared/model/DivisionOptions";
 import {competitionStatusCalculator} from "../index";
 
 type Props = {

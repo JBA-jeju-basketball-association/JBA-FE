@@ -1,10 +1,7 @@
 import {NormalApi} from "../../../shared/api";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
-import {postCompetitionSchedule} from "../../../shared/type/CompetitionType";
-import React from "react";
 
-
-export default function fetchCompetitionInfo(id:string|undefined) {
+export default function FetchCompetitionInfo(id:string|undefined) {
     if (id) {
         return NormalApi.get(`/v1/api/competition/detail/${id}`)
             .catch(err => {

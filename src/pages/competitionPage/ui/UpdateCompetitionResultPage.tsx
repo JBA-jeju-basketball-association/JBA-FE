@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {
-    competitionResultList,
-    getCompetitionResult, getCompetitionResultRow,
-    getScheduleResponse, postCompetitionResult,
+    getCompetitionResult,
+    postCompetitionResult,
     postResultRequestRows
 } from "../../../shared/type/CompetitionType";
 import style from "./UpdateCompetitionResultPage.module.css";
@@ -12,13 +11,9 @@ import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {
     CompetitionDetailTitle,
     competitionStatusCalculator,
-    UpdateFloorBox
 } from "../../../widgets/competition";
-import fetchGetCompetitionResultWithTitle from "../api/FetchGetCompetitionResultWithTitle";
-import FetchUpdateResult from "../api/FetchUpdateResult";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
-import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
-import FetchGetSchedule from "../../../widgets/competition/api/FetchGetSchedule";
+import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import FetchPostResult from "../api/FetchPostResult";
 import FetchGetCompetitionResult from "../../../widgets/competition/api/FetchGetCompetitionResult";
 import {PostResultBox} from "../../../widgets/competition/ui/PostResultBox";
@@ -29,7 +24,7 @@ export const UpdateCompetitionResultPage = () => {
     const {id} = useParams();
     const {data:detailData} = useQuery({
         queryKey:["getCompetitionDetail", id],
-        queryFn:() => fetchCompetitionInfo(id),
+        queryFn:() => FetchCompetitionInfo(id),
         select:(result) => result?.data.data,
         gcTime:1000*60*10,
         refetchOnMount: false,
