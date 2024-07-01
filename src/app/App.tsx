@@ -2,7 +2,7 @@ import React from "react";
 import style from "./App.css";
 import {Routes, Route, useLocation} from "react-router-dom";
 import {
-  AddCompetitionPage,
+  PostCompetitionPage,
   AddResultPage,
   CompetitionDetailPage,
   CompetitionPage, PostCompetitionResultPage, PostCompetitionSchedulePage,
@@ -65,7 +65,7 @@ function App() {
             }
           />
           <Route element={<PrivateRoute />}>
-            <Route path="/add-competition" element={<AddCompetitionPage />} />
+            <Route path="/add-competition" element={<PostCompetitionPage />} />
             <Route
               path="/competition/update-competition/:id"
               element={<UpdateCompetitionPage />}

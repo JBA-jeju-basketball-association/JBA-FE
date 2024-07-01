@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from "./AddCompetitionPage.module.css"
+import style from "./PostCompetitionPage.module.css"
 import {useState} from "react";
 import Select, {MultiValue} from "react-select";
 import makeAnimated from "react-select/animated";
@@ -17,7 +17,7 @@ import {useNavigate} from "react-router-dom";
 
 
 
-export const AddCompetitionPage = () => {
+export const PostCompetitionPage = () => {
     const [title, setTitle] = useState<string>("")
     const [divisions, setDivisions] = useState<string[]>([]);
     const [startDate, setStartDate] = useState<Date | null>(null)

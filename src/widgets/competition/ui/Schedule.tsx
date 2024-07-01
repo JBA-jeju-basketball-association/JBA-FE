@@ -42,7 +42,7 @@ export const Schedule = ({id, places}:Props) => {
     }
 
     const deleteHandler = () => {
-        confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까?", async () =>{
+        confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까? 대회정보는 보존됩니다.", async () =>{
             id && await FetchDeleteSchedule(id)
         }).then(res => {
                 if (res.isConfirmed) {
@@ -63,8 +63,8 @@ export const Schedule = ({id, places}:Props) => {
             })}
             <div className={style.updateDeleteBtnArea}>
                 <RegitUpdateDeleteButton content={"결과등록"} onClickHandler={postResultHandler}/>
-                <RegitUpdateDeleteButton content={"수정"} onClickHandler={updateHandler}/>
-                <RegitUpdateDeleteButton content={"삭제"} onClickHandler={deleteHandler}/>
+                <RegitUpdateDeleteButton content={"일정수정"} onClickHandler={updateHandler}/>
+                <RegitUpdateDeleteButton content={"일정삭제"} onClickHandler={deleteHandler}/>
             </div>
         </div>
     );

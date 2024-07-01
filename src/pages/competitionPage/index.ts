@@ -1,4 +1,4 @@
-export {AddCompetitionPage} from "./ui/AddCompetitionPage"
+export {PostCompetitionPage} from "./ui/PostCompetitionPage"
 export {CompetitionPage} from "./ui/CompetitionPage"
 export {CompetitionDetailPage} from "./ui/CompetitionDetailPage"
 export {PrivateRoute} from "../../app/PrivateRoute"

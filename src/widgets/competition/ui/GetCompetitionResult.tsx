@@ -6,6 +6,8 @@ import {getCompetitionResult} from "../../../shared/type/CompetitionType";
 import FetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultDivisionBox} from "./ResultDivisionBox";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import FetchDeleteSchedule from "../api/FetchDeleteSchedule";
+import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 type Props = {
     id: string | undefined;
@@ -31,16 +33,16 @@ export const GetCompetitionResult = ({id}:Props) => {
     }
 
     const deleteHandler = () => {
-        // confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까?", async () =>{
-        //     id && await FetchDeleteSchedule(id)
-        // }).then(res => {
-        //     if (res.isConfirmed) {
-        //         confirmAlert("success", "완료", "대회일정이 삭제되었습니다.")
-        //             .then(res => {
-        //                 if (res.isConfirmed) window.location.href = `/competition/${id}`
-        //             })
-        //     }
-        // });
+        confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까? 대회일정까지 삭제되고 대회정보는 보존됩니다.", async () =>{
+            id && await FetchDeleteSchedule(id)
+        }).then(res => {
+            if (res.isConfirmed) {
+                confirmAlert("success", "완료", "대회일정이 삭제되었습니다.")
+                    .then(res => {
+                        if (res.isConfirmed) window.location.href = `/competition/${id}`
+                    })
+            }
+        });
     }
 
 
@@ -50,8 +52,8 @@ export const GetCompetitionResult = ({id}:Props) => {
                 return <ResultDivisionBox key={index} data={data}/>
             })}
             <div className={style.updateDeleteBtnArea}>
-                <RegitUpdateDeleteButton content={"수정"} onClickHandler={updateHandler}/>
-                <RegitUpdateDeleteButton content={"삭제"} onClickHandler={deleteHandler}/>
+                <RegitUpdateDeleteButton content={"결과수정"} onClickHandler={updateHandler}/>
+                <RegitUpdateDeleteButton content={"결과삭제"} onClickHandler={deleteHandler}/>
             </div>
         </div>
     );

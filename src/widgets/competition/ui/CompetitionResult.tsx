@@ -11,6 +11,8 @@ import {JwtDecoder} from "../../../shared/lib";
 import {useUserStore} from "../../../shared/model";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
+import FetchDeleteSchedule from "../api/FetchDeleteSchedule";
+import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
 export const CompetitionResult = () => {
     const {id} = useParams();
@@ -39,6 +41,19 @@ export const CompetitionResult = () => {
             });
     }
 
+    const deleteHandler = () => {
+        confirmAndCancelAlertWithLoading("warning", "삭제", "대회일정을 삭제하시겠습니까? 대회정보는 보존됩니다.", async () =>{
+            id && await FetchDeleteSchedule(id)
+        }).then(res => {
+            if (res.isConfirmed) {
+                confirmAlert("success", "완료", "대회일정이 삭제되었습니다.")
+                    .then(res => {
+                        if (res.isConfirmed) window.location.href = `/competition/${id}`
+                    })
+            }
+        });
+    }
+
     if (isLoading) {
         return <LoadingSpinner />
     }
@@ -53,10 +68,11 @@ export const CompetitionResult = () => {
                     required={true}
                     onChange={(newValue: SingleValue<any>) => setDivisionSelect(newValue.value)}
                 />
-                {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ?
-                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"수정"} />
-                    :
-                    null
+                {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" &&
+                    <RegitUpdateDeleteButton onClickHandler={() => updateHandler()} content={"결과수정"} />
+                }
+                {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" &&
+                    <RegitUpdateDeleteButton onClickHandler={() => deleteHandler()} content={"결과삭제"} />
                 }
             </div>
             <div>
