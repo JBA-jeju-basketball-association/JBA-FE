@@ -11,20 +11,34 @@ export type CategoryProps = {
 
 //검색 폼 타입
 
-export type AdminBasicFormProps = CategoryProps & {
-  categories: Category;
+export type AdminBasicFormProps = {
+  categories: Category[];
   label: string;
-  selectedCategory: any;
+  selectedCategory: Category;
   setSelectedCategory: any;
-  showCategory: boolean;
-  value: string;
-  onChange: any;
+  showInput?: boolean;
+  searchKeyword?: string;
+  setSearchKeyword?: any;
+  // startDate: Date | null;
+  // endDate: Date | null;
+  // setStartDate?: any;
+  // setEndDate?: any;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type AdminSearchFormProps = {
-  gallerySearchCriteria: Category[];
+  selectedfirstCategory: Category;
+  setSelectedfirstCategory: any;
+  selectedSecondCategory: Category;
+  setSelectedSecondCategory?: any;
+  searchKeyword: string;
+  setSearchKeyword: any;
+  startDate: Date | null;
+  endDate: Date | null;
+  setStartDate?: any;
+  setEndDate?: any;
+  refetch: () => void;
   label: string[];
-  showCategory: boolean;
 };
 
 type titlesType = {

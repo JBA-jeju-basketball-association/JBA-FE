@@ -11,10 +11,11 @@ import {
 import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Category } from "shared/type/AdminType";
 
 export const AdminGallery = () => {
   const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState(
+  const [selectedCategory, setSelectedCategory] = useState<Category>(
     galleryListLength[0]
   );
   //몇개씩 조회할건지 내려주는 state

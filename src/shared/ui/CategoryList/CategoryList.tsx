@@ -49,4 +49,3 @@ export const CategoryList = ({
   );
 };
 
-//카테고리 변경하는 드랍다운
