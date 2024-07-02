@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AdminSearchForm, AdminGalleryListData } from "features/admin/";
 import styles from "./AdminUser.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";

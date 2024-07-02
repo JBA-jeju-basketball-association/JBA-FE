@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AdminGallery.module.css";
-import { AdminSearchForm } from "features/admin/";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminGalleryListData } from "features/admin/";

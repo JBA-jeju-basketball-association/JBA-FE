@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AdminPost.module.css";
-import { AdminSearchForm } from "features/admin/";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminCompetitionListData } from "features/admin/ui/AdminCompetitionListData";

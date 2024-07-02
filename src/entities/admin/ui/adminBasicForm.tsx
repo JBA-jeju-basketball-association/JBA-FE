@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CategoryList } from "shared/ui";
 import { AdminBasicFormProps } from "shared/type/AdminType";
 import styles from "./adminBasicForm.module.css";
@@ -38,3 +38,5 @@ export const AdminBasicForm = ({
     </div>
   );
 };
+
+//이건 공통으로 사용할 곳

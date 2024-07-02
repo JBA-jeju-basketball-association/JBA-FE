@@ -19,26 +19,11 @@ export type AdminBasicFormProps = {
   showInput?: boolean;
   searchKeyword?: string;
   setSearchKeyword?: any;
-  // startDate: Date | null;
-  // endDate: Date | null;
-  // setStartDate?: any;
-  // setEndDate?: any;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type AdminSearchFormProps = {
-  selectedfirstCategory: Category;
-  setSelectedfirstCategory: any;
-  selectedSecondCategory: Category;
-  setSelectedSecondCategory?: any;
-  searchKeyword: string;
-  setSearchKeyword: any;
-  startDate: Date | null;
-  endDate: Date | null;
-  setStartDate?: any;
-  setEndDate?: any;
   refetch: () => void;
-  label: string[];
 };
 
 type titlesType = {

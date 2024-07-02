@@ -1,29 +1,31 @@
 // AdminSearchForm.tsx
-import React, { useState } from "react";
+import React from "react";
 import { AdminBasicForm } from "entities/admin";
 import Button from "shared/ui/button//index";
-import styles from "./AdminSearchForm.module.css";
-import { AdminSearchFormProps} from "shared/type/AdminType";
+import styles from "./AdminPostSearchForm.module.css";
+import { AdminSearchFormProps } from "shared/type/AdminType";
 import { CustomDatePicker } from "features/datepicker";
 import {
   firPostcategory,
   secPostcategory,
+  postLabel,
 } from "pages/admin/adminUtils/adminPostTitle";
+import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 
-export const AdminSearchForm = ({
-  label,
-  selectedfirstCategory,
-  setSelectedfirstCategory,
-  selectedSecondCategory,
-  setSelectedSecondCategory,
-  searchKeyword,
-  setSearchKeyword,
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate,
-  refetch,
-}: AdminSearchFormProps) => {
+export const AdminPostSearchForm = ({ refetch }: AdminSearchFormProps) => {
+  const {
+    selectedfirstCategory,
+    searchKeyword,
+    selectedSecondCategory,
+    startDate,
+    endDate,
+    setSelectedfirstCategory,
+    setSearchKeyword,
+    setSelectedSecondCategory,
+    setStartDate,
+    setEndDate,
+  } = useAdminPostStore();
+
   const handleSearch = () => {
     setSelectedfirstCategory(selectedfirstCategory);
     setSelectedSecondCategory(selectedSecondCategory);
@@ -34,6 +36,8 @@ export const AdminSearchForm = ({
     setSelectedSecondCategory(secPostcategory[0]);
     setSelectedfirstCategory(firPostcategory[0]);
     setSearchKeyword("");
+    setStartDate(null);
+    setEndDate(null);
     refetch();
   };
 
@@ -41,7 +45,7 @@ export const AdminSearchForm = ({
     <div className={styles.container}>
       <div className={styles.basicForm}>
         <AdminBasicForm
-          label={label[0]}
+          label={postLabel[0]}
           categories={firPostcategory}
           selectedCategory={selectedfirstCategory}
           setSelectedCategory={setSelectedfirstCategory}
@@ -49,14 +53,14 @@ export const AdminSearchForm = ({
           setSearchKeyword={setSearchKeyword}
         />
         <AdminBasicForm
-          label={label[1]}
+          label={postLabel[1]}
           categories={secPostcategory}
           selectedCategory={selectedSecondCategory}
           setSelectedCategory={setSelectedSecondCategory}
           showInput={false}
         />
         <div className={styles.DatePicker}>
-          {label[2]}
+          {postLabel[2]}
           <CustomDatePicker
             startDate={startDate}
             setStartDate={setStartDate}
