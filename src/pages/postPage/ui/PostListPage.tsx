@@ -32,7 +32,7 @@ export const PostListPage = () => {
     data: postList,
     refetch
   } = useQuery<PostListData>({
-    queryKey: ["postList", `${page}`, `${category}`],
+    queryKey: ["postList",`${category}`],
     queryFn: () =>
         NormalApi.get(`/v1/api/post/${category}?page=${page - 1}&size=10&keyword=${searchKeyword}`),
     select: (result: any) => result.data.data,

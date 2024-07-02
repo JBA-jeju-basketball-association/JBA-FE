@@ -15,7 +15,7 @@ export const PostDetailPage = () => {
   const { AccessToken } = useUserStore();
   const [filesState, setFilesState] = useState<FilesType[]>([]);
   const [postImgsState, setPostImgsState] = useState<PostImgsType[]>([]);
-  const [fileList, setFileList] = useState<string[]>([]);
+  const [fileList, setFileList] = useState<any[]>([]);
   const [downloadUrl, setDownloadUrl] = useState<string[]>([]);
 
   const typeItems = ["등록자", "등록일", "조회수"];
@@ -106,26 +106,28 @@ export const PostDetailPage = () => {
   useEffect(() => {
     if (postImgsState) {
       postImgsState.map((img: PostImgsType) => {
-        fileList.push(img.imgUrl);
+        fileList.push(img);
       });
     }
     if (filesState) {
       filesState.map((file: FilesType) => {
-        fileList.push(file.fileUrl);
+        fileList.push(file);
       });
     }
     if (fileList) {
-      for (let i = 0; i < fileList.length - 1; i++) {
-        fetch(fileList[i])
-          .then((res) => res.blob())
-          .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            setDownloadUrl((prev) => [...prev, url]);
-          })
-          .catch((err) => console.error("Failed to fetch image:", err));
+      for (let i = 0; i < fileList.length; i++) {
+        if (!!fileList[i]) {
+          fetch(fileList[i].fileUrl)
+            .then((res) => res.blob())
+            .then((blob) => {
+              const url = window.URL.createObjectURL(blob);
+              setDownloadUrl((prev) => [...prev, url]);
+            })
+            .catch((err) => console.error("Failed to fetch image:", err));
+        }
       }
     }
-  }, [postImgsState, filesState]);
+  }, [postImgsState, filesState, fileList]);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -143,6 +145,7 @@ export const PostDetailPage = () => {
     content,
     isAnnouncement,
   } = postDetail;
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -170,27 +173,32 @@ export const PostDetailPage = () => {
         <div className={styles.subLine}></div>
         {/* ------ 에디터 콘텐츠 화면 ------ */}
         <div
-          id='editor-content'
-          className="ck-content"
+          id="editor-content"
+          className={"ck-content "+ styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.filesWrapper}>
           <div className={styles.subLine}></div>
-          {downloadUrl[0] && (
-            <a href={downloadUrl[0]} download className={styles.fileDownload}>
-              {/* {postImgsState[0].fileName || "첨부파일 다운로드 1"} */}
-              "첨부파일 다운로드 1"
-            </a>
-          )}
-          {downloadUrl[1] && (
-            <a href={downloadUrl[1]} download className={styles.fileDownload}>
-              {/* {filesState[0].fileName || "첨부파일 다운로드 2"} */}
-              "첨부파일 다운로드 2"
-            </a>
-          )}
-          {!!downloadUrl.length || (
-            <span className={styles.fileNull}>첨부파일 없음</span>
-          )}
+          <div className={styles.filesContainer}>
+            <div className={styles.filesContainerTitle}>
+              <span>첨부파일</span>
+            </div>
+            <div className={styles.downloadUrlWrapper}>
+              {downloadUrl.map((item, i) => (
+                <a
+                  key={i}
+                  href={item}
+                  download={fileList[i]?.fileName || `다운로드${i + 1}`}
+                  className={styles.fileDownloadItem}
+                >
+                  {fileList[i]?.fileName || `첨부파일 ${i + 1}`}
+                </a>
+              ))}
+              {!!downloadUrl.length || (
+                <span className={styles.fileNull}>첨부파일 없음</span>
+              )}
+            </div>
+          </div>
           <div className={styles.subLine}></div>
         </div>
       </div>

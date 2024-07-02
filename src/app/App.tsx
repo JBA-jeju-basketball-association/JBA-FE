@@ -4,9 +4,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import {
   PostCompetitionPage,
   CompetitionDetailPage,
-  CompetitionPage, PostCompetitionResultPage, PostCompetitionSchedulePage,
+  CompetitionPage,
+  PostCompetitionResultPage,
+  PostCompetitionSchedulePage,
   PrivateRoute,
-  UpdateCompetitionResultPage, UpdateCompetitionPage, UpdateCompetitionSchedulePage
+  UpdateCompetitionResultPage,
+  UpdateCompetitionPage,
+  UpdateCompetitionSchedulePage,
 } from "../pages/competitionPage";
 import {
   AddPostPage,
@@ -30,6 +34,7 @@ import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
 import { Header } from "../widgets/header";
 import { Admin } from "../pages/admin";
+import QueryProvider from "utils/query/queryProvider";
 
 function App() {
   useAxiosInterceptor();
@@ -37,7 +42,7 @@ function App() {
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
-    <div>
+    <QueryProvider>
       {!isAdminRoute && <Header />}
       <div className={style.wrapper}>
         <Routes>
@@ -62,11 +67,26 @@ function App() {
           />
           <Route element={<PrivateRoute />}>
             <Route path="/competition/post" element={<PostCompetitionPage />} />
-            <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
-            <Route path="/competition/post/result/:id" element={<PostCompetitionResultPage/>}/>
-            <Route path="/competition/update/:id" element={<UpdateCompetitionPage/>}/>
-            <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
-            <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
+            <Route
+              path="/competition/post/schedule/:id"
+              element={<PostCompetitionSchedulePage />}
+            />
+            <Route
+              path="/competition/post/result/:id"
+              element={<PostCompetitionResultPage />}
+            />
+            <Route
+              path="/competition/update/:id"
+              element={<UpdateCompetitionPage />}
+            />
+            <Route
+              path="/competition/update/schedule/:id"
+              element={<UpdateCompetitionSchedulePage />}
+            />
+            <Route
+              path="/competition/update/result/:id"
+              element={<UpdateCompetitionResultPage />}
+            />
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route
               path={"/post/:category/:postId/update"}
@@ -85,7 +105,10 @@ function App() {
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path={"/competition/:id"} element={<CompetitionDetailPage />}/>
+          <Route
+            path={"/competition/:id"}
+            element={<CompetitionDetailPage />}
+          />
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
           <Route
@@ -95,7 +118,7 @@ function App() {
         </Routes>
       </div>
       {!isAdminRoute && <Footer />}
-    </div>
+    </QueryProvider>
   );
 }
 

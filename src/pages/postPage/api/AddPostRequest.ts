@@ -1,6 +1,5 @@
 import { NormalApi } from "../../../shared/api/NormalApi";
 import { PostImgsType } from "shared/type/PostType";
-import { PostFilesType } from "./GetFilesUrlRequest";
 
 export interface requestPostData {
   title: string;
@@ -23,7 +22,6 @@ const AddPostRequest = (params: {
   if (!!postFiles) {
     for (let i = 0; i < postFiles.length; i++) {
       formData.append("uploadFiles", postFiles[i]);
-      console.log(postFiles[i], '----postFiles---')
     }
   }
   const request = NormalApi.post(
