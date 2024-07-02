@@ -146,9 +146,6 @@ export const PostDetailPage = () => {
     isAnnouncement,
   } = postDetail;
 
-  console.log(downloadUrl,'---downloadUrl---');
-  console.log(filesState,'---filesState---');
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
