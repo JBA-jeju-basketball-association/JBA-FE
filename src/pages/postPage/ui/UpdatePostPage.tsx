@@ -10,11 +10,17 @@ import OfficialOptions, {
 } from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { MultiValue, SingleValue } from "react-select";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
 import EditPostRequest, { EditRequestPostData } from "../api/EditPostRequest";
 import styles from "./UpdatePostPage.module.css";
-import { FilesType, PostDetailType, PostImgsType } from "shared/type/PostType";
+import {
+  FilesType,
+  PostDetailType,
+  PostImgsType,
+  RemainingFilesType,
+  RemainingImgsType,
+} from "shared/type/PostType";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -44,16 +50,16 @@ export const UpdatePostPage = () => {
     isOfficialQuery === "true" ? "official" : "normal"
   );
   // 기존 내용
-  const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
-  const [postFiles, setPostFiles] = useState<FilesType[]>([]);
+  const [postImgsState, setPostImgsState] = useState<PostImgsType[]>([]);
+  const [remainingFilesState, setRemainingFilesState] = useState<FilesType[]>(
+    []
+  );
   const [filePreview, setFilePreview] = useState<(FilesType | PostImgsType)[]>(
     []
   );
-
   // 수정 후 보낼 내용
-  const [remainingFiles, setRemainingFiles] = useState<FileList | null>(null);
+  const [uploadFiles, setUploadFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
-  const [postData, setPostData] = useState(null);
 
   const navigate = useNavigate();
 
@@ -76,9 +82,12 @@ export const UpdatePostPage = () => {
     select: (result: any) => result.data.data,
   });
 
+  const queryClient = useQueryClient()
+
   const mutation = useMutation({
     mutationFn: EditPostRequest,
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["postList"] })
       alert("수정이 완료되었습니다.");
       navigate(`/post/${category}`);
     },
@@ -90,7 +99,7 @@ export const UpdatePostPage = () => {
     requestData: EditRequestPostData;
     postId?: string;
     officialState: "official" | "normal";
-    remainingFiles: FileList | null;
+    uploadFiles: FileList | null;
   }) => {
     mutation.mutate(params);
   };
@@ -101,10 +110,21 @@ export const UpdatePostPage = () => {
       (option) => option.value === foreword
     );
     const forewordLabel = forewordOption ? forewordOption.label : "";
+    const remainingFiles: RemainingFilesType[] = [];
+    const postImgs: RemainingImgsType[] = [];
+    remainingFilesState.map((item) => {
+      if (item.fileUrl) {
+        remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl });
+      }
+    });
+    postImgsState.map((item) =>
+      postImgs.push({ fileName: item.fileName, imgUrl: item.imgUrl })
+    );
     const requestData: EditRequestPostData = {
       title,
       content,
       foreword: forewordLabel,
+      remainingFiles,
       postImgs,
     };
     editPost({
@@ -112,7 +132,7 @@ export const UpdatePostPage = () => {
       requestData,
       postId,
       officialState,
-      remainingFiles,
+      uploadFiles,
     });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
@@ -150,15 +170,49 @@ export const UpdatePostPage = () => {
   // file preview "x"버튼 핸들 함수
   const handleDeleteButtonClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    fileName: string
+    fileNameToDelete: string
   ) => {
-    // form event 
+    // form event
     e.preventDefault();
-    // 데이터 상태관리 해주기 -> 유즈 이펙트로 인한 프리뷰 업데이트 
-    const filteredImgs = postImgs.filter((item) => item.fileName !== fileName)
-    const filteredFiles = postFiles.filter((item) => item.fileName !== fileName)
-    setPostImgs([...filteredImgs]);
-    setPostFiles(filteredFiles);
+    // 프리뷰 데이터 관리 -> 유즈 이펙트로 인한 프리뷰 업데이트
+    const filteredImgs = postImgsState.filter(
+      (item) => item.fileName !== fileNameToDelete
+    );
+    const filteredFiles = remainingFilesState.filter(
+      (item) => item.fileName !== fileNameToDelete
+    );
+    setPostImgsState([...filteredImgs]);
+    setRemainingFilesState([...filteredFiles]);
+
+    // 추가 업로드 첨부파일 인풋 관리
+    if (uploadFiles) {
+      // FileList 데이터 타입을 유지하기 위해서
+      const newDataTransfer = new DataTransfer();
+      for (let i = 0; i < uploadFiles.length; i++) {
+        if (uploadFiles[i].name !== fileNameToDelete) {
+          newDataTransfer.items.add(uploadFiles[i]);
+        }
+      }
+      setUploadFiles(newDataTransfer.files);
+    }
+  };
+
+  // 첨부파일 인풋 onChange 핸들링 함수
+  const handleChangeUploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 데이터 변경
+    setUploadFiles(e.target.files);
+    // 프리뷰 변경
+    if (e.target.files) {
+      const Random: number = Math.floor(Math.random() * 10 + 1.6);
+      for (let i = 0; i < e.target.files.length; i++) {
+        const previewItem: FilesType | PostImgsType = {
+          fileId: i + Random,
+          fileName: e.target.files[i].name,
+          fileUrl: "",
+        };
+        setRemainingFilesState((prev) => [...prev, previewItem]);
+      }
+    }
   };
 
   // 게시글 상세 내용 가져오기
@@ -166,8 +220,8 @@ export const UpdatePostPage = () => {
     if (postDetail) {
       setTitle(postDetail.title);
       setContent(postDetail.content);
-      setPostImgs(postDetail.postImgs);
-      setPostFiles(postDetail.files);
+      setPostImgsState(postDetail.postImgs);
+      setRemainingFilesState(postDetail.files);
       if (isOfficialQuery === "true") {
         ForewordOptions.map((option) => {
           if (option.label === postDetail.foreword) {
@@ -183,14 +237,14 @@ export const UpdatePostPage = () => {
   // 게시글 상세 내용 가져온 후, file + postImgs 합쳐서 화면에 미리 보기 위해서 상태로 관리
   useEffect(() => {
     let fileBucket: (FilesType | PostImgsType)[] = [];
-    if (!!postImgs) {
-      fileBucket.push(...postImgs);
+    if (!!postImgsState) {
+      fileBucket.push(...postImgsState);
     }
-    if (!!postFiles) {
-      fileBucket.push(...postFiles);
+    if (!!remainingFilesState) {
+      fileBucket.push(...remainingFilesState);
     }
     setFilePreview(fileBucket);
-  }, [postImgs, postFiles]);
+  }, [postImgsState, remainingFilesState]);
 
   useEffect(() => {
     if (officialState === "normal") {
@@ -204,8 +258,6 @@ export const UpdatePostPage = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
-
-  console.log(postDetail, "---postDetail---");
 
   return (
     <div className={styles.container}>
@@ -255,10 +307,6 @@ export const UpdatePostPage = () => {
                   placeholder="제목을 입력해주세요"
                 />
               </div>
-              {/* <div className={styles.inputArea2}>
-            <AddCompetitionLabel label={"첨부파일"} height={"double"} />
-            <AddFiles files={postFiles} setFiles={setPostFiles} />
-          </div> */}
               <CkEditor
                 ckData={content}
                 setCkData={setContent}
@@ -272,7 +320,7 @@ export const UpdatePostPage = () => {
                 name="uploadFile"
                 id="uploadFile"
                 multiple
-                onChange={(e) => setRemainingFiles(e.target.files)}
+                onChange={(e) => handleChangeUploadFile(e)}
               />
               {filePreview.map((file) => (
                 <div key={file.fileId} className={styles.fileItemWrapper}>

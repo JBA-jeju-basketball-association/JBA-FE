@@ -32,6 +32,15 @@ export interface FilesType {
   fileName: string;
   fileUrl: string;
 }
+export interface RemainingFilesType {
+  fileName: string;
+  fileUrl: string;
+}
+export interface RemainingImgsType {
+  fileName: string;
+  imgUrl: string;
+}
+
 
 // 게시글 타입 정의
 export interface PostDetailType {

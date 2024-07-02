@@ -146,7 +146,8 @@ export const PostDetailPage = () => {
     isAnnouncement,
   } = postDetail;
 
-  console.log(postDetail, '---postDetail---');
+  console.log(downloadUrl,'---downloadUrl---');
+  console.log(filesState,'---filesState---');
 
   return (
     <div className={styles.container}>
@@ -188,11 +189,12 @@ export const PostDetailPage = () => {
             <div className={styles.downloadUrlWrapper}>
               {downloadUrl.map((item, i) => (
                 <a
+                  key={i}
                   href={item}
-                  download={fileList[i].fileName || `다운로드${i + 1}`}
+                  download={fileList[i]?.fileName || `다운로드${i + 1}`}
                   className={styles.fileDownloadItem}
                 >
-                  {fileList[i].fileName || `첨부파일 ${i + 1}`}
+                  {fileList[i]?.fileName || `첨부파일 ${i + 1}`}
                 </a>
               ))}
               {!!downloadUrl.length || (
