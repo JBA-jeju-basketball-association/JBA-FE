@@ -5,6 +5,7 @@ import Editor from "ckeditor5-custom-build/build/ckeditor";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import React from "react";
 import { Api } from "../../../shared/api";
+import {ClassicEditor} from "@ckeditor/ckeditor5-editor-classic";
 
 type Props = {
   setCkData: React.Dispatch<any>;

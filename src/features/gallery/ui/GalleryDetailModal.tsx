@@ -65,9 +65,9 @@ const SlideContainer = styled.div`
 
   .dots_custom li {
     cursor: pointer;
-    width: 190px;
-    height: 140px;
-    flex: 0 0 190px;
+    width: 200px;
+    height: 130px;
+    flex: 0 0 200px;
   }
 
   .dots_custom li img {
@@ -136,24 +136,6 @@ export const GalleryDetailModal = ({
     },
   };
 
-  const { mutate: deleteData } = useGalleryDelete({ galleryId, setModalOpen });
-
-  const handleDeleteClick = async () => {
-    if (galleryId) {
-      const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
-      if (confirm) {
-        deleteData();
-      }
-    }
-  };
-
-  const handleNavigateToEditPage = () => {
-    navigate(`/gallery/galleryedit?galleryId=${galleryId}`, {
-      state: { galleryDetail, galleryId },
-      //edit페이지로 state 정보를 넘김
-    });
-  };
-
   return (
     <CommonModal
       isopen={modalOpen}
@@ -162,22 +144,6 @@ export const GalleryDetailModal = ({
     >
       <div className={styles.container}>
         <h1>{title}</h1>
-        {/* //예비용 */}
-        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
-          <div className={styles.handleBtn}>
-            <RegitUpdateDeleteButton
-              content="삭제하기"
-              onClickHandler={handleDeleteClick}
-            />
-            <RegitUpdateDeleteButton
-              content="수정하기"
-              onClickHandler={handleNavigateToEditPage}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-        {/* //예비용 */}
         <CloseIcon
           width="30"
           height="30"

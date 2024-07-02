@@ -1,7 +1,7 @@
 import {Api} from "../../../shared/api";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
 
-export default function fetchDeleteCompetition(id:string) {
+export default function FetchDeleteCompetition(id:string) {
     return Api.delete(`/v1/api/competition/delete/${id}`)
         .then(res=> {
             if (res.data.code === 200) {

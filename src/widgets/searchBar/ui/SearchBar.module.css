@@ -1,59 +1,27 @@
-.selectButton {
-    width: 90px;
-    height: 40px;
-    background-color: var(--subcolor-gold3);
-    font-size: 16px;
-}
-
 .SearchBox {
     display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.liBox {
-    width: 90px;
-    height: 70px;
-    background-color: var(--subcolor-black3);
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-
-}
-
-.liBox li {
-    width: 62px;
-    text-align: end;
-    color: white;
-    padding: 4px 28px 3px 0;
-    border-radius: 10px;
-}
-
-.liBox li:hover {
-    background-color: var(--primary-color);
-}
-
-.inputArea {
-    height: 40px;
-
-    background-color: var(--subcolor-gold3);
-    border-left: 1px solid var(--private-black);
-    display: flex;
-    align-items: center;
-    padding-right: 10px;
+    width: 400px;
+    height: 50px;
+    background-color: #EFEFEF;
+    border-radius: 5px;
 }
 
 .searchInput {
-    width: 300px;
-    height: 40px;
+    width: 320px;
+    height: 50px;
     border: none;
     padding: 0 15px 0 15px;
-    background-color: var(--subcolor-gold3);
+    background-color: #EFEFEF;
     font-size: 16px;
+}
+
+.searchInput::placeholder {
+    color: #B5B5B5;
 }
 
 .searchButton {
     cursor: pointer;
+    margin-right: 15px;
 }

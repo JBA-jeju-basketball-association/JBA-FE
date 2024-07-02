@@ -146,7 +146,7 @@ export const UpdatePostPage = () => {
     //   "대회를 등록하시겠습니까?",
     //   "",
     //   async () => {
-    //     await FetchAddCompetition(requestData, files);
+    //     await FetchPostCompetition(requestData, files);
     //   }
     // );
   };

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import style from "./CompetitionPage.module.css"
-import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
 import {useQuery} from "@tanstack/react-query";
-import {competitionListItem, value} from "../../../shared/type/CompetitionType";
+import {competitionListItem} from "../../../shared/type/CompetitionType";
 import {Pagination} from "../../../widgets/pagination";
 import fetchGetCompetitionList from "../api/FetchGetCompetitionList";
 import fetchCompetitionYearList from "../api/FetchCompetitionYearList";
@@ -53,6 +53,10 @@ export const CompetitionPage = () => {
             }
         }
     }
+
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
     return (
         <div className={style.CompetitionPage}>
             <PageTitle pageName="대회정보"/>
@@ -66,7 +70,7 @@ export const CompetitionPage = () => {
                         onChange={(newValue: SingleValue<any>) => setYear(newValue.value)}
                     />
                     {AccessToken && (JwtDecoder(AccessToken).role === "ROLE_MASTER") ?
-                        <RegitUpdateDeleteButton onClickHandler={() => navigate("/add-competition")}
+                        <RegitUpdateDeleteButton onClickHandler={() => navigate("/competition/post")}
                                                  content={"대회등록"}/> : ""}
                 </div>
                 <div className={style.statusArea}>

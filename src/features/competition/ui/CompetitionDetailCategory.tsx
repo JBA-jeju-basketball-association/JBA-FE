@@ -11,23 +11,27 @@ import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCanc
 type Props = {
     infoFocused:boolean;
     setInfoFocused: React.Dispatch<React.SetStateAction<boolean>>;
-    existResult: boolean;
+    phase: string;
 }
-export const CompetitionDetailCategory = ({infoFocused,setInfoFocused, existResult}:Props) => {
+export const CompetitionDetailCategory = ({infoFocused,setInfoFocused, phase}:Props) => {
     const {AccessToken} = useUserStore();
     const navigate = useNavigate();
     const {id} = useParams();
 
     function resultClickHandler() {
-        if (!existResult && AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER") {
-            confirmAndCancelAlertWithLoading("warning", "대회결과가 없습니다.", "대회결과 등록 페이지로 이동합니다.")
-                .then(res => {
-                    if (res.isConfirmed) id && navigate(`/competition/add-result/${id}`)
-                });
-        }else if((!existResult && AccessToken && JwtDecoder(AccessToken).role !== "ROLE_MASTER")) {
-            confirmAlert("warning", "대회결과가 없습니다.");
+        const role:string | null = AccessToken ? JwtDecoder(AccessToken).role : null;
+
+        if (phase === "INFO") {
+            if (AccessToken && (role === "ROLE_MASTER" || role === "ROLE_ADMIN")) {
+                confirmAndCancelAlertWithLoading("warning", "대회일정이 없습니다.", "대회일정 등록 페이지로 이동합니다.")
+                    .then(res => {
+                        if (res.isConfirmed) id && navigate(`/competition/post/schedule/${id}`)
+                    });
+            } else if (!AccessToken || (role !== "ROLE_MASTER" && role !== "ROLE_ADMIN")) {
+                confirmAlert("warning", "대회일정이 없습니다.");
+            }
         }else {
-            setInfoFocused(false);
+            setInfoFocused(false)
         }
     }
 
@@ -41,7 +45,7 @@ export const CompetitionDetailCategory = ({infoFocused,setInfoFocused, existResu
             <button className={infoFocused?style.isNotFocused:style.isFocused}
                     onClick={()=> resultClickHandler()}
             >
-                <p>대회결과</p>
+                <p>{phase === "INFO" || phase === "SCHEDULE" ? "대회일정" : "대회결과"}</p>
             </button>
         </div>
     );

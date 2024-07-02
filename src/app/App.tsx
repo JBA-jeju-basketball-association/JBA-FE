@@ -2,12 +2,15 @@ import React from "react";
 import style from "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
-  AddCompetitionPage,
-  AddResultPage,
+  PostCompetitionPage,
   CompetitionDetailPage,
   CompetitionPage,
+  PostCompetitionResultPage,
+  PostCompetitionSchedulePage,
   PrivateRoute,
   UpdateCompetitionResultPage,
+  UpdateCompetitionPage,
+  UpdateCompetitionSchedulePage,
 } from "../pages/competitionPage";
 import {
   AddPostPage,
@@ -22,7 +25,6 @@ import {
   GalleryPage,
   GalleryEditPage,
 } from "pages/galleryPages";
-import { UpdateCompetitionPage } from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import "../shared/base.css";
 import { SignupForm } from "../features/signup/ui/SignupForm";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
@@ -44,7 +46,6 @@ function App() {
       {!isAdminRoute && <Header />}
       <div className={style.wrapper}>
         <Routes>
-          <Route path={"/admin"} element={<Admin />} />
           <Route
             path="signup"
             element={
@@ -65,17 +66,25 @@ function App() {
             }
           />
           <Route element={<PrivateRoute />}>
-            <Route path="/add-competition" element={<AddCompetitionPage />} />
+            <Route path="/competition/post" element={<PostCompetitionPage />} />
             <Route
-              path="/competition/update-competition/:id"
+              path="/competition/post/schedule/:id"
+              element={<PostCompetitionSchedulePage />}
+            />
+            <Route
+              path="/competition/post/result/:id"
+              element={<PostCompetitionResultPage />}
+            />
+            <Route
+              path="/competition/update/:id"
               element={<UpdateCompetitionPage />}
             />
             <Route
-              path="/competition/add-result/:id"
-              element={<AddResultPage />}
+              path="/competition/update/schedule/:id"
+              element={<UpdateCompetitionSchedulePage />}
             />
             <Route
-              path="/competition/update-result/:id"
+              path="/competition/update/result/:id"
               element={<UpdateCompetitionResultPage />}
             />
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
@@ -84,13 +93,15 @@ function App() {
               element={<UpdatePostPage />}
             />
             <Route
-              path={"/gallery/galleryupload"}
+              path={"/admin/galleryupload"}
               element={<GalleryUploadPage />}
             />
             <Route
-              path={"/gallery/galleryedit"}
+              path={"/admin/galleryedit/:galleryId"}
               element={<GalleryEditPage />}
             />
+            <Route path={"/admin/"} element={<Admin />} />
+            <Route path={"/admin/:menu"} element={<Admin />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />

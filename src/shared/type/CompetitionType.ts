@@ -1,8 +1,3 @@
-export type value = {
-    label: string;
-    value: string;
-}
-
 export type requestData = {
     title: string;
     divisions: string[];
@@ -69,20 +64,71 @@ export type place = {
     longitude:number;
 };
 
-
-export type competitionResultList = {
-    floor:string;
-    competitionResult: competitionResult[];
+export type postCompetitionSchedule = {
+    division:string;
+    postCompetitionScheduleRow: postCompetitionScheduleRow[];
 }
 
-export type competitionResult = {
-    competitionResultId?: number;
-    division:string;
-    startTime: Date;
+export type postCompetitionScheduleRow = {
+    gameNumber: number;
+    startDate: Date | null;
+    floor: string;
+    place: string;
+    homeName: string;
+    awayName: string;
+    state5x5: boolean;
+}
+
+export type getScheduleResponse = {
+    division: string;
+    getScheduleRows: getScheduleResponseRow[]
+}
+
+export type getScheduleResponseRow = {
+    competitionResultId: number;
+    gameNumber: number;
+    startDate: Date | null;
+    floor: string;
+    place: string;
+    homeName: string;
+    awayName: string;
+    state5x5: boolean;
+}
+
+export interface postCompetitionResult {
+    division: string;
+    postResultRequestRows: postResultRequestRows[];
+}
+
+export interface postResultRequestRows extends postCompetitionScheduleRow{
+    competitionResultId: number | null;
+    homeScore: number | null;
+    awayScore: number | null;
+    filePath: string | null;
+    fileName: string;
+}
+
+export type getCompetitionResult = {
+    division: string;
+    getResultResponseRows: getCompetitionResultRow[];
+}
+
+export type getCompetitionResultRow = {
+    competitionResultId: number;
+    gameNumber: number;
+    startDate: Date | null;
+    floor: string;
+    place: string;
     homeName: string;
     homeScore: number;
     awayName: string;
     awayScore: number;
-    fileUrl: string;
+    filePath: string;
     fileName: string;
+    state5x5: boolean;
+}
+
+export type divisionType = {
+    value:string;
+    label:string
 }

@@ -20,6 +20,7 @@ const useAxiosInterceptor = ():void => {
             if (currentTime + 1 > expireTime) {
                 try {
                     const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/v1/api/sign/refresh-token", null, {
+                    // const res = await axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
                         headers: {
                             AccessToken: AccessToken,
                             RefreshToken: RefreshToken,

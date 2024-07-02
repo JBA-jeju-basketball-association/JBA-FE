@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useState } from "react";
+import { AdminSearchForm, AdminGalleryListData } from "features/admin/";
+import styles from "./AdminUser.module.css";
+import { Pagination } from "widgets/pagination";
+import { CategoryList } from "shared/ui";
+import {
+  userLabel,
+  userCategories,
+  userListLength,
+  userListTitles,
+} from "../adminUtils/adminUserTitle";
 
 export const AdminUser = () => {
-    return (
-        <div style={{width:"100%", height:"1000px", display:"flex", flexDirection:"column", alignItems:"center"}}>
-            <div style={{backgroundColor: "black", width: "90%", height:"200px", color:"white", fontSize: "40px"}}> 필터영역</div>
-            <div style={{backgroundColor: "black", width: "90%", height:"700px", color:"white", marginTop:"50px", fontSize: "40px"}}>목록 영역</div>
+  const [page, setPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(
+    userListLength[0]
+  );
+  const totalPage = 10;
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.searchFormWapper}>
+        {/* <AdminSearchForm categories={userCategories} label={userLabel} /> */}
+      </div>
+      <div className={styles.listWrapper}>
+        <div className={styles.listLength}>
+          총 n건
+          <CategoryList
+            categories={userListLength}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+          개씩 보기
         </div>
-    );
+        {/* <AdminListData titles={userListTitles} /> */}
+        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+      </div>
+    </div>
+  );
 };
+
+//기한 검색 필터는 데이트피커 사용하기
+//n건->여기에 총 데이터 갯수 넣기

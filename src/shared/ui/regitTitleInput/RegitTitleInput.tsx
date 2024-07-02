@@ -13,7 +13,9 @@ export const RegitTitleInput = ({placeholder, title, setTitle}:Props) => {
                 type={"text"}
                 placeholder={placeholder}
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}/>
+                onChange={(e) => setTitle(e.target.value)}
+                defaultValue={""}
+            />
         </div>
     );
 };
