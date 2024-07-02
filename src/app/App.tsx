@@ -2,12 +2,11 @@ import React from "react";
 import style from "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
-  AddCompetitionPage,
-  AddResultPage,
+  PostCompetitionPage,
   CompetitionDetailPage,
-  CompetitionPage,
+  CompetitionPage, PostCompetitionResultPage, PostCompetitionSchedulePage,
   PrivateRoute,
-  UpdateCompetitionResultPage,
+  UpdateCompetitionResultPage, UpdateCompetitionPage, UpdateCompetitionSchedulePage
 } from "../pages/competitionPage";
 import {
   AddPostPage,
@@ -22,7 +21,6 @@ import {
   GalleryPage,
   GalleryEditPage,
 } from "pages/galleryPages";
-import { UpdateCompetitionPage } from "../pages/competitionPage/ui/UpdateCompetitionPage";
 import "../shared/base.css";
 import { SignupForm } from "../features/signup/ui/SignupForm";
 import MenuBar from "entities/MenuBar/ui/MenuBar";
@@ -63,19 +61,12 @@ function App() {
             }
           />
           <Route element={<PrivateRoute />}>
-            <Route path="/add-competition" element={<AddCompetitionPage />} />
-            <Route
-              path="/competition/update-competition/:id"
-              element={<UpdateCompetitionPage />}
-            />
-            <Route
-              path="/competition/add-result/:id"
-              element={<AddResultPage />}
-            />
-            <Route
-              path="/competition/update-result/:id"
-              element={<UpdateCompetitionResultPage />}
-            />
+            <Route path="/competition/post" element={<PostCompetitionPage />} />
+            <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
+            <Route path="/competition/post/result/:id" element={<PostCompetitionResultPage/>}/>
+            <Route path="/competition/update/:id" element={<UpdateCompetitionPage/>}/>
+            <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
+            <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route
               path={"/post/:category/:postId/update"}
@@ -94,10 +85,7 @@ function App() {
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route
-            path={"/competition/:id"}
-            element={<CompetitionDetailPage />}
-          />
+          <Route path={"/competition/:id"} element={<CompetitionDetailPage />}/>
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
           <Route

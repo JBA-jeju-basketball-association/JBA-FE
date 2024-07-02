@@ -12,39 +12,56 @@ import {
     RegitTitleInput,
 } from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
-import {DivisionOptions, divisionType} from "../../../shared/model/DivisionOptions";
 import FetchUpdateCompetition from "../api/FetchUpdateCompetition";
-import {IFileTypes, updateRequestData, competitionDetailAttachedFile, place} from "../../../shared/type/CompetitionType";
+import {
+    IFileTypes,
+    updateRequestData,
+    competitionDetailAttachedFile,
+    place,
+    divisionType
+} from "../../../shared/type/CompetitionType";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
 import {useQuery} from "@tanstack/react-query";
-import fetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
+import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {useNavigate, useParams} from "react-router-dom";
+import FetchGetDivisionList from "../api/FetchGetDivisionList";
 
 
 
 
 export const UpdateCompetitionPage = () => {
-    const {id} = useParams();
-    const {data, isLoading, isError, error} = useQuery({
-        queryKey:["getCompetitionDetail", id],
-        queryFn:() => fetchCompetitionInfo(id),
-        select:(result) => result?.data.data,
-        gcTime:1000*60*10,
-    })
-
     const [title, setTitle] = useState<string>("")
     const [selectedDivisions, setSelectedDivisions] = useState<{ value: string, label: string; }[]>([]);
     const [startDate, setStartDate] = useState<Date | null>(null)
     const [endDate, setEndDate] = useState<Date | null>(null)
     const [places, setPlaces] = useState<place[]>([]);
-    const [relatedURL, setRelatedUrl] = useState<string | null>(null);
+    const [relatedURL, setRelatedUrl] = useState<string | null>("");
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
     const [attachedFileList, setAttachedFileList] = useState<competitionDetailAttachedFile[]>([])
     const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
     const navigate = useNavigate();
+    const [divisionList, setDivisionList] = useState<divisionType[]>([]);
 
+    const {id} = useParams();
+    const {data, isLoading, isError, error} = useQuery({
+        queryKey:["getCompetitionDetail", id],
+        queryFn:() => FetchCompetitionInfo(id),
+        select:(result) => result?.data.data,
+        gcTime:1000*60*10,
+    })
 
+    const {data:divisionData} = useQuery({
+        queryKey:["getDivisionList"],
+        queryFn: () => FetchGetDivisionList(),
+        select: (result) => result?.data.data,
+        gcTime: 1000*60*60,
+        refetchInterval: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        refetchIntervalInBackground: false
+    })
     const divisionHandler = (values:MultiValue<any>):void => {
         setSelectedDivisions([])
         values.map(
@@ -92,8 +109,7 @@ export const UpdateCompetitionPage = () => {
     useEffect(() => {
         setTitle(data?.title)
         setSelectedDivisions(data?.divisions.map((value:string):divisionType => {
-            const label: string = DivisionOptions.filter((i) => i.value === value)[0].label;
-            return {value, label}
+            return {value:value, label:value}
         }))
         setStartDate(data?.startDate)
         setEndDate(data?.endDate)
@@ -101,6 +117,12 @@ export const UpdateCompetitionPage = () => {
         setRelatedUrl(data?.relatedUrl)
         setCkData(data?.content)
     }, [data]);
+
+    useEffect(() => {
+        divisionData?.forEach((division:string) => {
+            divisionList.push({value: division, label: division})
+        })
+    }, [divisionData]);
 
 
     if (isLoading) {
@@ -122,7 +144,7 @@ export const UpdateCompetitionPage = () => {
                     {selectedDivisions &&
                         <Select
                             components={makeAnimated()}
-                            options={DivisionOptions}
+                            options={divisionList}
                             isSearchable={false}
                             isMulti={true}
                             closeMenuOnSelect={false}

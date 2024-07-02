@@ -26,3 +26,10 @@
     font-size: 26px;
     font-weight: 600;
 }
+
+.searchBarArea {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
