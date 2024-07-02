@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AdminPost.module.css";
-import { AdminPostSearchForm } from "features/admin/";
+import { AdminSearchForm } from "features/admin/";
 import {
   postListLength,
   postListTitles,
   postLabel,
+  firPostcategory,
+  secPostcategory,
 } from "../adminUtils/adminPostTitle";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -25,6 +27,11 @@ export const AdminPost = () => {
     startDate,
     endDate,
     setSelectedCategory,
+    setSelectedfirstCategory,
+    setSearchKeyword,
+    setSelectedSecondCategory,
+    setStartDate,
+    setEndDate,
   } = useAdminPostStore();
 
   const navigate = useNavigate();
@@ -46,6 +53,21 @@ export const AdminPost = () => {
     navigate("/post/notice/add");
   };
 
+  const handleSearch = () => {
+    setSelectedfirstCategory(selectedfirstCategory);
+    setSelectedSecondCategory(selectedSecondCategory);
+    setSearchKeyword(searchKeyword);
+  };
+
+  const handleReset = () => {
+    setSelectedfirstCategory(firPostcategory[0]);
+    setSelectedSecondCategory(secPostcategory[0]);
+    setSearchKeyword("");
+    setStartDate(null);
+    setEndDate(null);
+    refetch();
+  };
+
   useEffect(() => {
     refetch();
   }, [
@@ -59,7 +81,23 @@ export const AdminPost = () => {
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        <AdminPostSearchForm refetch={refetch} />
+        <AdminSearchForm
+          label={postLabel}
+          firstCategoryOptions={firPostcategory}
+          secondCategoryOptions={secPostcategory}
+          selectedfirstCategory={selectedfirstCategory}
+          setSelectedfirstCategory={setSelectedfirstCategory}
+          selectedSecondCategory={selectedSecondCategory}
+          setSelectedSecondCategory={setSelectedSecondCategory}
+          searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          handleSearch={handleSearch}
+          handleReset={handleReset}
+        />
       </div>
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>

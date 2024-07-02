@@ -4,7 +4,7 @@ export type Category = {
 };
 
 export type CategoryProps = {
-  categories: Category[];
+  categories?: Category[];
   selectedCategory: Category;
   setSelectedCategory: any;
 };
@@ -12,7 +12,7 @@ export type CategoryProps = {
 //검색 폼 타입
 
 export type AdminBasicFormProps = {
-  categories: Category[];
+  categories?: Category[];
   label: string;
   selectedCategory: Category;
   setSelectedCategory: any;
@@ -23,7 +23,21 @@ export type AdminBasicFormProps = {
 };
 
 export type AdminSearchFormProps = {
-  refetch: () => void;
+  firstCategoryOptions: Category[];
+  secondCategoryOptions: Category[];
+  label: string[];
+  selectedfirstCategory: Category;
+  selectedSecondCategory: Category;
+  searchKeyword: string;
+  startDate: Date | null;
+  endDate: Date | null;
+  setSelectedfirstCategory: (category: string) => void;
+  setSelectedSecondCategory: (category: string) => void;
+  setSearchKeyword: (keyword: string) => void;
+  setStartDate: any;
+  setEndDate: any;
+  handleSearch: () => void;
+  handleReset: () => void;
 };
 
 type titlesType = {

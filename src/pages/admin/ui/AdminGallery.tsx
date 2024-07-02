@@ -3,26 +3,48 @@ import styles from "./AdminGallery.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminGalleryListData } from "features/admin/";
+import { AdminSearchForm } from "features/admin";
 import {
   galleryListLength,
   galleryListTitles,
+  galleryLabel,
+  firGallerycategory,
+  secGallerycategory,
 } from "../adminUtils/adminGalleryTitle";
 import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Category } from "shared/type/AdminType";
+import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
 
 export const AdminGallery = () => {
-  const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
-    galleryListLength[0]
-  );
   //몇개씩 조회할건지 내려주는 state
   const navigate = useNavigate();
+
+  const {
+    page,
+    setPage,
+    selectedCategory,
+    selectedfirstCategory,
+    searchKeyword,
+    selectedSecondCategory,
+    startDate,
+    endDate,
+    setSelectedCategory,
+    setSelectedfirstCategory,
+    setSearchKeyword,
+    setSelectedSecondCategory,
+    setStartDate,
+    setEndDate,
+  } = useAdminGalleryStore();
 
   const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({
     page,
     galleryListLength: selectedCategory.list,
+    firstCategory: selectedfirstCategory.list,
+    searchKeyword,
+    secondCategory: selectedSecondCategory.list,
+    startDate,
+    endDate,
   });
 
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
@@ -36,10 +58,41 @@ export const AdminGallery = () => {
     refetch();
   }, [page, selectedCategory]);
 
+  const handleSearch = () => {
+    setSelectedfirstCategory(selectedfirstCategory);
+    setSelectedSecondCategory(selectedSecondCategory);
+    setSearchKeyword(searchKeyword);
+  };
+
+  const handleReset = () => {
+    setSelectedfirstCategory(firGallerycategory[0]);
+    setSelectedSecondCategory(secGallerycategory[0]);
+    setSearchKeyword("");
+    setStartDate(null);
+    setEndDate(null);
+    refetch();
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        {/* <AdminSearchForm categories={gallerySearchCriteria} label={galleryLabel} /> */}
+        <AdminSearchForm
+          label={galleryLabel}
+          firstCategoryOptions={firGallerycategory}
+          secondCategoryOptions={secGallerycategory}
+          selectedfirstCategory={selectedfirstCategory}
+          setSelectedfirstCategory={setSelectedfirstCategory}
+          selectedSecondCategory={selectedSecondCategory}
+          setSelectedSecondCategory={setSelectedSecondCategory}
+          searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          handleSearch={handleSearch}
+          handleReset={handleReset}
+        />
       </div>
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>

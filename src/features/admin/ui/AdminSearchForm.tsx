@@ -2,65 +2,52 @@
 import React from "react";
 import { AdminBasicForm } from "entities/admin";
 import Button from "shared/ui/button//index";
-import styles from "./AdminPostSearchForm.module.css";
+import styles from "./AdminSearchForm.module.css";
 import { AdminSearchFormProps } from "shared/type/AdminType";
 import { CustomDatePicker } from "features/datepicker";
-import {
-  firPostcategory,
-  secPostcategory,
-  postLabel,
-} from "pages/admin/adminUtils/adminPostTitle";
-import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 
-export const AdminPostSearchForm = ({ refetch }: AdminSearchFormProps) => {
-  const {
-    selectedfirstCategory,
-    searchKeyword,
-    selectedSecondCategory,
-    startDate,
-    endDate,
-    setSelectedfirstCategory,
-    setSearchKeyword,
-    setSelectedSecondCategory,
-    setStartDate,
-    setEndDate,
-  } = useAdminPostStore();
-
-  const handleSearch = () => {
-    setSelectedfirstCategory(selectedfirstCategory);
-    setSelectedSecondCategory(selectedSecondCategory);
-    setSearchKeyword(searchKeyword);
-  };
-
-  const handleReset = () => {
-    setSelectedSecondCategory(secPostcategory[0]);
-    setSelectedfirstCategory(firPostcategory[0]);
-    setSearchKeyword("");
-    setStartDate(null);
-    setEndDate(null);
-    refetch();
-  };
-
+export const AdminSearchForm = ({
+  firstCategoryOptions,
+  //첫번재 검색 폼의 카테고리 옵션
+  secondCategoryOptions,
+  //두번째 검색 폼의 카테고리 옵션
+  label,
+  //라벨
+  selectedfirstCategory,
+  //첫번재 카테고리 옵션 중에서 선택한 카테고리
+  selectedSecondCategory,
+  //두번째 카테고리 옵션 중에서 선택한 카테고리
+  searchKeyword,
+  startDate,
+  endDate,
+  setSelectedfirstCategory,
+  setSearchKeyword,
+  setSelectedSecondCategory,
+  setStartDate,
+  setEndDate,
+  handleSearch,
+  handleReset,
+}: AdminSearchFormProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.basicForm}>
         <AdminBasicForm
-          label={postLabel[0]}
-          categories={firPostcategory}
+          label={label[0]}
+          categories={firstCategoryOptions}
           selectedCategory={selectedfirstCategory}
           setSelectedCategory={setSelectedfirstCategory}
           searchKeyword={searchKeyword}
           setSearchKeyword={setSearchKeyword}
         />
         <AdminBasicForm
-          label={postLabel[1]}
-          categories={secPostcategory}
+          label={label[1]}
+          categories={secondCategoryOptions}
           selectedCategory={selectedSecondCategory}
           setSelectedCategory={setSelectedSecondCategory}
           showInput={false}
         />
         <div className={styles.DatePicker}>
-          {postLabel[2]}
+          {label[2]}
           <CustomDatePicker
             startDate={startDate}
             setStartDate={setStartDate}
