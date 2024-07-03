@@ -4,17 +4,19 @@ import style from "./SignUpForm.module.css"
 import FetchSendCertificationEmail from "../api/FetchSendCertificationEmail";
 import FetchCheckCertificationNum from "../api/FetchCheckCertificationNum";
 import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import {VscEye, VscEyeClosed} from "react-icons/vsc";
+import PhoneNumHandler from "../model/PhoneNumHandler";
+import BirthHandler from "../model/BirthHandler";
+import FetchSignUp from "../api/FetchSignUp";
 
-type FormData = {
+export type FormData = {
     email: string;
     password: string;
     passwordConfirm: string;
     name: string;
     phoneNum: string;
     team: string;
-    birth: number;
-    gender: string;
-    isCertificate: boolean;
+    birth: string;
 }
 
 
@@ -22,36 +24,30 @@ type FormData = {
 export const SignUpForm = () => {
     const [certificating, setCertificating] = useState<boolean>(false);
     const [timeLeft, setTimeLeft] = useState<number>(300);
+    const [isCertificate, setIsCertificate] = useState<boolean>(false)
     const [certificationNum, setCertificationNum] = useState<string>("");
-    const {register, setValue, handleSubmit, formState:{ errors}, getValues} = useForm<FormData>({defaultValues:{isCertificate: false}});
+    const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
+    const [isHidePasswordConfirm, setIsHidePasswordConfirm] = useState<boolean>(true);
+    const {register, setValue, handleSubmit, formState:{ errors}, getValues} = useForm<FormData>();
+
+
     const onSubmit = handleSubmit(data => {
-        console.log("submit")
-        console.log(data)
+        if (!isCertificate) confirmAlert("warning", "인증 미완료", "이메일 인증을 진행해주세요")
+        else {
+            FetchSignUp(data)
+        }
     })
 
     const sendEmailHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        setTimeLeft(299)
-        FetchSendCertificationEmail(getValues("email"), setCertificating)
+        setTimeLeft(300)
+            FetchSendCertificationEmail(getValues("email"), setCertificating);
     }
 
     const confirmCertificationNumHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        FetchCheckCertificationNum(getValues("email"), certificationNum)
-            .then(res => {
-                confirmAlert("success", "인증 완료", "인증번호 확인이 완료되었습니다.")
-                    .then(res => {
-                        if (res.isConfirmed) {
-                            setCertificating(false);
-                            setValue("isCertificate", true)
-                        }
-                    })
-            }).catch(err => {
-                const message = err.response.data.detailMessage;
-                if (message === "이메일을 입력해주세요.") confirmAlert("warning", "이메일을 입력해주세요.")
-                else if (message === "이메일 형식을 확인해주세요.") confirmAlert("warning", "이메일 형식이 잘못되었습니다.")
-                else if (message === "잘못된 인증 번호 입니다.") confirmAlert("warning", "인증 실패", "이메일과 인증번호를 확인해주세요")
-            })
+        FetchCheckCertificationNum(getValues("email"), certificationNum, setCertificating, setIsCertificate)
+
     }
 
     useEffect(() => {
@@ -68,54 +64,79 @@ export const SignUpForm = () => {
 
 
 
+
     return (
         <form onSubmit={onSubmit} className={style.SignUpForm}>
             <label>이메일</label>
             <div>
-                <input {...register("email")} type={"email"} disabled={getValues("isCertificate")} className={getValues("isCertificate") ? style.checkedEmail : ""}/>
-                {!getValues("isCertificate") &&
-                    <button className={style.confirmBtn} onClick={(e) => sendEmailHandler(e)}>{certificating ? "인증번호 재발송" : "인증번호 발송"}</button>
+                <input {...register("email")}
+                       type={"email"} disabled={isCertificate}
+                       className={isCertificate ? style.checkedEmail : ""}
+                />
+                {!isCertificate &&
+                    <button className={style.confirmBtn}
+                            onClick={(e) => sendEmailHandler(e)}>{certificating ? "인증번호 재발송" : "인증번호 발송"}</button>
                 }
             </div>
             {certificating &&
                 <div className={style.authNumArea}>
-                    <input type={"text"} maxLength={6} onChange={(e) => {setCertificationNum(e.target.value)}} placeholder={"인증번호 6자리"}/>
+                    <input type={"text"}
+                           maxLength={6}
+                           onChange={(e) => {
+                        setCertificationNum(e.target.value)
+                    }} placeholder={"인증번호 6자리"}/>
                     <div>
                         <p>{Math.floor(timeLeft / 60)}:{('0' + (timeLeft % 60)).slice(-2)}</p>
-                        <button onClick={(e) => confirmCertificationNumHandler(e)} className={style.confirmBtn}>인증번호 확인</button>
+                        <button onClick={(e) => confirmCertificationNumHandler(e)} className={style.confirmBtn}>인증번호
+                            확인
+                        </button>
                     </div>
                 </div>
             }
 
             <label>비밀번호</label>
             <div>
-                <input {...register("password")}/>
+                <input type={isHidePassword ? "password" : "text"} {...register("password")} />
+                {isHidePassword ?
+                    <VscEye className={style.openEye} onClick={() => setIsHidePassword(false)}/>
+                    :
+                    <VscEyeClosed className={style.openEye} onClick={() => setIsHidePassword(true)}/>
+                }
             </div>
 
             <label>비밀번호 확인</label>
             <div>
-                <input {...register("passwordConfirm")}/>
+                <input type={isHidePasswordConfirm ? "password" : "text"} {...register("passwordConfirm")} />
+                {isHidePasswordConfirm ?
+                    <VscEye className={style.openEye} onClick={() => setIsHidePasswordConfirm(false)}/>
+                    :
+                    <VscEyeClosed className={style.openEye} onClick={() => setIsHidePasswordConfirm(true)}/>
+                }
             </div>
+
 
             <label>이름</label>
             <div>
-                <input {...register("name")}/>
+                <input {...register("name")} type={"text"}/>
             </div>
 
             <label>휴대폰 번호</label>
             <div>
-                <input {...register("phoneNum")}/>
+                <input {...register("phoneNum")} type={"text"}
+                       onChange={(e) => PhoneNumHandler(e, setValue)}/>
             </div>
 
             <label>소속팀</label>
             <div>
-                <input {...register("team")}/>
+                <input {...register("team")} placeholder={"소속팀이 없을 경우 '무소속' 입력해주세요"} type={"text"}/>
             </div>
 
             <label>주민번호 앞 7자리</label>
             <div>
-                <input {...register("birth")}/>
+                <input {...register("birth")} type={"text"}
+                       onChange={(e) => BirthHandler(e, setValue)}/>
             </div>
+
             <button onSubmit={() => onSubmit} className={style.submitBtn}>회원가입</button>
         </form>
     );
