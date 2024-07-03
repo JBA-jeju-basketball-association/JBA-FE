@@ -150,7 +150,6 @@ export const PostDetailPage = () => {
         <div className={styles.categoryArea}>
           <span className={styles.category}>{detailTitle}</span>
         </div>
-        <div className={styles.divideLine}></div>
         <ul className={styles.titleArea}>
           <li className={styles.title}>
             <span className={styles.titleContent}>
@@ -168,7 +167,6 @@ export const PostDetailPage = () => {
           <li className={styles.list}>{createAt}</li>
           <li className={styles.list}>{viewCount}</li>
         </ul>
-        <div className={styles.subLine}></div>
         {/* ------ 에디터 콘텐츠 화면 ------ */}
         <div
           id="editor-content"
@@ -176,7 +174,6 @@ export const PostDetailPage = () => {
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.filesWrapper}>
-          <div className={styles.subLine}></div>
           <div className={styles.filesContainer}>
             <div className={styles.filesContainerTitle}>
               <span>첨부파일</span>
@@ -197,7 +194,6 @@ export const PostDetailPage = () => {
               )}
             </div>
           </div>
-          <div className={styles.subLine}></div>
         </div>
       </div>
       <div className={styles.buttonWrapper}>

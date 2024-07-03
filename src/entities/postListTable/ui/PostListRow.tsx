@@ -24,7 +24,7 @@ const PostListRow = ({ postItem }: { postItem: Post }) => {
     >
       <div className={styles.postList}>
         <NoticeCard isAnnouncement={isAnnouncement} postId={postId} />
-        <div className={styles.postItem}>
+        <div className={styles.postTitle}>
           {!!foreword ? `[${foreword}]` : ""} {title}
         </div>
         <div className={styles.postWriter}>{writer}</div>

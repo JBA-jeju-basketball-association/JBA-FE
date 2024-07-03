@@ -13,11 +13,6 @@
     margin-top: 50px;
     margin-bottom: 72px;
 }
-.divideLine {
-    background-color: var(--primary-color);
-    width: 100%;
-    height: 0.2px;
-}
 .titleArea {
     margin: 0 auto;
     margin-bottom: 30px;

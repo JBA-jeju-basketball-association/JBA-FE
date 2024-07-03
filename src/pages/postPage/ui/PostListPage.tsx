@@ -74,10 +74,8 @@ export const PostListPage = () => {
             handleSearch={() => findTargetPage()}
           />
         </div>
-        <div className={styles.divideLine}></div>
         {isLoading && <LoadingSpinner />}
         <PostListTable postListData={postList?.posts} />
-        <div className={styles.divideLine}></div>
         {postList && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
