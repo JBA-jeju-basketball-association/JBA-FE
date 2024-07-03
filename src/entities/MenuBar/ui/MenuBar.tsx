@@ -20,7 +20,7 @@ export default function MenuBar(){
                     onMouseEnter={() => { setFocuse(true)}}
                     onMouseLeave={() => setFocuse(false)}>
                 {Object.entries(menuName).map(([category, items],i,array) => (
-                <Menu MainMenu={category} subMene={items} iscenter={iscenter(array.length,i)} focuse={focuse} key={i}></Menu>
+                <Menu MainMenu={category} subMene={items} iscenter={isCenter(array.length,i)} focuse={focuse} key={i}></Menu>
                 ))}
                 </ul>
             </div>
@@ -43,7 +43,7 @@ function Menu({MainMenu,subMene,iscenter,focuse}:{MainMenu:string,subMene:string
         //menuName의 키값을 MainMenu로 담아 li에 담고 데이터 array를subMene에 넣어 map하여 생성해줍니다.
            <li className={liClass} >
 
-            <Link to={menuLink[MainMenu]}>{MainMenu}</Link> 
+            <span>{MainMenu}</span>
             <ul className={`${Style.SubMenu} ${focuse ? Style.OnSubMenu : Style.OffSubMene}`}
             >
                 {subMene.map((mene:string, index:number)=>{
@@ -56,11 +56,11 @@ function Menu({MainMenu,subMene,iscenter,focuse}:{MainMenu:string,subMene:string
     )
 }
 
-function iscenter(arrayLength:number,num:number){
+function isCenter(arrayLength:number,num:number){
     if(arrayLength%2===0){
-        return Math.trunc(arrayLength/2)===num?true:false
+        return Math.trunc(arrayLength / 2) === num
     }else if(arrayLength%2===1){
-        return Math.trunc(arrayLength/2)+1 ===num?true:false
+        return Math.trunc(arrayLength / 2) + 1 === num
     }else{return false}
 }
 

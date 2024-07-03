@@ -103,6 +103,15 @@
     width: 460px;
 }
 
+.labelArea {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.labelArea label {
+    margin-left: 10px;
+}
+
 .boxArea {
     display: flex;
     justify-content: space-between;
