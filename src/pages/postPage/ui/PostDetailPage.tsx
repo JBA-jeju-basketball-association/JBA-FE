@@ -8,6 +8,7 @@ import { JwtDecoder } from "../../../shared/lib";
 import { PostImgsType, FilesType } from "shared/type/PostType";
 import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
+import { LoadingSpinner } from "shared/ui";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
@@ -126,8 +127,9 @@ export const PostDetailPage = () => {
   }, [postImgsState, filesState, fileList]);
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <LoadingSpinner />;
   }
+
   if (isError) {
     return <span>Error</span>;
   }

@@ -21,6 +21,7 @@ import {
   RemainingFilesType,
   RemainingImgsType,
 } from "shared/type/PostType";
+import { LoadingSpinner } from "shared/ui";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -255,7 +256,9 @@ export const UpdatePostPage = () => {
     }
   }, [officialState]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
