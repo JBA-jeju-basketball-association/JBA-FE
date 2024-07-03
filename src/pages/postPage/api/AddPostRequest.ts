@@ -1,4 +1,4 @@
-import { NormalApi } from "../../../shared/api/NormalApi";
+import { Api } from "../../../shared/api";
 import { PostImgsType } from "shared/type/PostType";
 
 export interface requestPostData {
@@ -24,7 +24,7 @@ const AddPostRequest = (params: {
       formData.append("uploadFiles", postFiles[i]);
     }
   }
-  const request = NormalApi.post(
+  const request = Api.post(
     `v1/api/post/${category}${officialBoolean ? `?isOfficial=${officialBoolean}` : ""}`,
     formData,
     {
