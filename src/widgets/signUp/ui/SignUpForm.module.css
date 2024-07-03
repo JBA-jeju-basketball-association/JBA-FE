@@ -1,0 +1,62 @@
+.SignUpForm {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+}
+
+.SignUpForm label {
+    color: #4B4B4B;
+    margin: 0 0 5px 10px;
+}
+
+.SignUpForm div {
+    width: 460px;
+    border-radius: 5px;
+    background-color: #EFEFEF;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.SignUpForm input {
+    border: none;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    width: 330px;
+    height: 50px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.SignUpForm input::placeholder {
+    color: #B5B5B5;
+}
+
+.submitBtn {
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.authNumArea div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.authNumArea p {
+    margin-right: 10px;
+}
+
+.confirmBtn {
+    margin-right: 10px;
+}
+
+.checkedEmail {
+    color: #B5B5B5;
+}
+
