@@ -151,6 +151,26 @@ export const PostDetailPage = () => {
           <span className={styles.category}>{detailTitle}</span>
         </div>
         <ul className={styles.titleArea}>
+          {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
+            <div className={styles.adminWrapper}>
+              <span
+                className={styles.adminEdit}
+                onClick={() =>
+                  navigate(
+                    `/post/${category}/${postId}/update?isAnnouncement=${isAnnouncement}`
+                  )
+                }
+              >
+                수정하기
+              </span>
+              <span
+                className={styles.adminDelete}
+                onClick={() => deletePost()}
+              >
+                삭제하기
+              </span>
+            </div>
+          ) : null}
           <li className={styles.title}>
             <span className={styles.titleContent}>
               {!!foreword ? `[${foreword}] ` + title : title}
@@ -198,27 +218,6 @@ export const PostDetailPage = () => {
       </div>
       <div className={styles.buttonWrapper}>
         <Button onClick={() => navigate(`/post/${category}`)}>목록</Button>
-
-        {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
-          <div className={styles.buttonWrapper}>
-            <Button
-              className={styles.buttonEdit}
-              onClick={() =>
-                navigate(
-                  `/post/${category}/${postId}/update?isAnnouncement=${isAnnouncement}`
-                )
-              }
-            >
-              수정하기
-            </Button>
-            <Button
-              className={styles.buttonDelete}
-              onClick={() => deletePost()}
-            >
-              삭제하기
-            </Button>
-          </div>
-        ) : null}
       </div>
     </div>
   );

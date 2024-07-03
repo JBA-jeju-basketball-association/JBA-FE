@@ -24,6 +24,7 @@
   font-weight: 600;
 }
 .titleArea {
+  position: relative;
   display: grid;
   grid-template-columns: 7fr 0.5fr 0.5fr 0.5fr;
   text-wrap: nowrap;
@@ -54,7 +55,7 @@
   padding-bottom: 19px;
 }
 .content {
-  min-height: 500px;
+  min-height: 600px;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 10%;
@@ -100,41 +101,33 @@
 .fileNull {
   padding-left: 16px;
 }
+.adminWrapper {
+  position: absolute;
+  left: 0px;
+  top: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 .buttonWrapper {
+  left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.buttonEdit {
-  background-color: var(--subcolor-black3);
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 48px;
-  border-radius: 8px;
+.adminEdit {
   font-size: 18px;
-  color: #fff;
   cursor: pointer;
+  text-decoration: underline;
 }
 
-.buttonEdit:hover {
-  background-color: var(--primary-red);
-}
-
-.buttonDelete {
-  background-color: var(--primary-red);
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 48px;
-  border-radius: 8px;
+.adminDelete {
   font-size: 18px;
-  color: #fff;
   cursor: pointer;
-}
-
-.buttonDelete:hover {
-  background-color: var(--subcolor-black4);
+  text-decoration: underline;
 }
 
 /* .iframe {
