@@ -49,7 +49,7 @@ export const GalleryForm = ({
   };
 
   const returnToGallery = () => {
-    navigate("/gallery");
+    navigate("/admin/gallery");
   };
 
   useEffect(() => {
