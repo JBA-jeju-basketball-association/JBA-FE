@@ -1,5 +1,5 @@
-import { NormalApi } from "../../../shared/api/NormalApi";
-import { PostImgsType, RemainingFilesType, RemainingImgsType } from "shared/type/PostType";
+import { Api } from "shared/api";
+import { RemainingFilesType, RemainingImgsType } from "shared/type/PostType";
 
 export interface EditRequestPostData {
   title: string;
@@ -26,7 +26,7 @@ const EditPostRequest = (params: {
       formData.append("uploadFiles", uploadFiles[i]);
     }
   }
-  const request = NormalApi.put(
+  const request = Api.put(
     `v1/api/post/${category}/${postId}${`?isOfficial=${officialBoolean}`}`,
     formData,
     {
