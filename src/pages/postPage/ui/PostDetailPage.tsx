@@ -105,14 +105,10 @@ export const PostDetailPage = () => {
 
   useEffect(() => {
     if (postImgsState) {
-      postImgsState.map((img: PostImgsType) => {
-        fileList.push(img);
-      });
+      postImgsState.map((img: PostImgsType) => fileList.push(img));
     }
     if (filesState) {
-      filesState.map((file: FilesType) => {
-        fileList.push(file);
-      });
+      filesState.map((file: FilesType) => fileList.push(file));
     }
     if (fileList) {
       for (let i = 0; i < fileList.length; i++) {
@@ -174,7 +170,7 @@ export const PostDetailPage = () => {
         {/* ------ 에디터 콘텐츠 화면 ------ */}
         <div
           id="editor-content"
-          className={"ck-content "+ styles.content}
+          className={"ck-content " + styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className={styles.filesWrapper}>

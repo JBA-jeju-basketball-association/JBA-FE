@@ -14,7 +14,7 @@ import {useUserStore} from "../../../shared/model";
 export const PostListPage = () => {
   const [page, setPage] = useState<number>(1);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+  // const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   let { category } = useParams();
   const navigate = useNavigate();
   const {AccessToken} = useUserStore()

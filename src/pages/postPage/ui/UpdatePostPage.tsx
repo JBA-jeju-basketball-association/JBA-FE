@@ -9,7 +9,7 @@ import OfficialOptions, {
   OfficialOptionType,
 } from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
-import Select, { MultiValue, SingleValue } from "react-select";
+import Select, { SingleValue } from "react-select";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api/NormalApi";
 import EditPostRequest, { EditRequestPostData } from "../api/EditPostRequest";
@@ -82,12 +82,12 @@ export const UpdatePostPage = () => {
     select: (result: any) => result.data.data,
   });
 
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: EditPostRequest,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["postList"] })
+      queryClient.invalidateQueries({ queryKey: ["postList"] });
       alert("수정이 완료되었습니다.");
       navigate(`/post/${category}`);
     },
@@ -112,11 +112,11 @@ export const UpdatePostPage = () => {
     const forewordLabel = forewordOption ? forewordOption.label : "";
     const remainingFiles: RemainingFilesType[] = [];
     const postImgs: RemainingImgsType[] = [];
-    remainingFilesState.map((item) => {
-      if (item.fileUrl) {
-        remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl });
-      }
-    });
+    remainingFilesState.map(
+      (item) =>
+        item.fileUrl &&
+        remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
+    );
     postImgsState.map((item) =>
       postImgs.push({ fileName: item.fileName, imgUrl: item.imgUrl })
     );
@@ -223,16 +223,15 @@ export const UpdatePostPage = () => {
       setPostImgsState(postDetail.postImgs);
       setRemainingFilesState(postDetail.files);
       if (isOfficialQuery === "true") {
-        ForewordOptions.map((option) => {
-          if (option.label === postDetail.foreword) {
-            setForeword(option.value);
-          }
-        });
+        ForewordOptions.map(
+          (option) =>
+            option.label === postDetail.foreword && setForeword(option.value)
+        );
       } else {
         setForeword("");
       }
     }
-  }, [postDetail]);
+  }, [isOfficialQuery, postDetail]);
 
   // 게시글 상세 내용 가져온 후, file + postImgs 합쳐서 화면에 미리 보기 위해서 상태로 관리
   useEffect(() => {
