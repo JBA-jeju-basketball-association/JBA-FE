@@ -45,8 +45,11 @@ export const LoginPage = () => {
                     <div className={style.loginArea}>
                         <div className={style.title}>로그인</div>
                         <form noValidate className={style.formBox} onSubmit={(e) => submitHandler(e)}>
+                            <div className={style.labelArea}>
+                                <label>이메일</label>
+                            </div>
                             <div className={style.boxArea}>
-                                <LoginInput type={"email"} setFn={setEmail} placeholder={"이메일"} value={email}/>
+                                <LoginInput type={"email"} setFn={setEmail} placeholder={""} value={email}/>
                             </div>
                             <div className={style.messageBox}>
                                 <p className={style.message}>
@@ -54,9 +57,12 @@ export const LoginPage = () => {
                                 </p>
                             </div>
 
+                            <div className={style.labelArea}>
+                                <label>비밀번호</label>
+                            </div>
                             <div className={style.boxArea}>
-                                <LoginInput type={isHidePassword ? "password" : "text"} setFn={setPassword}
-                                            placeholder={"비밀번호"} value={password}/>
+                            <LoginInput type={isHidePassword ? "password" : "text"} setFn={setPassword}
+                                            placeholder={""} value={password}/>
                                 {isHidePassword ?
                                     <VscEye className={style.openEye} onClick={() => setIsHidePassword(false)}/>
                                     :
