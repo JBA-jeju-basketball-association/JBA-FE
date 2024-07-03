@@ -1,4 +1,4 @@
-import { Api } from "../../../shared/api";
+import { Api } from "shared/api";
 import { PostImgsType } from "shared/type/PostType";
 
 export interface requestPostData {
