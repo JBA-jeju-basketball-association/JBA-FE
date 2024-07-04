@@ -1,0 +1,26 @@
+.noticeWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noticeItem {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 32px;
+    width: 45px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+.postItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+    font-weight: 500;
+}

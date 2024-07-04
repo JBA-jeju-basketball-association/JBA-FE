@@ -5,7 +5,6 @@
     background-color: var(--primary-color);
     color: white;
     font-size: 16px;
-    margin-bottom: 10px;
 }
 
 .Button:hover {

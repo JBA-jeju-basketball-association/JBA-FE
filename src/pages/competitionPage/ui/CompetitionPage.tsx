@@ -4,7 +4,7 @@ import {LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../share
 import {CompetitionStatusFilter} from "../../../features/competition";
 import Select, {SingleValue} from "react-select";
 import {CompetitionRow, CompetitionTitleArea} from "../../../widgets/competition";
-import {useQuery} from "@tanstack/react-query";
+import {useQuery, keepPreviousData} from "@tanstack/react-query";
 import {competitionListItem} from "../../../shared/type/CompetitionType";
 import {Pagination} from "../../../widgets/pagination";
 import fetchGetCompetitionList from "../api/FetchGetCompetitionList";
@@ -40,6 +40,7 @@ export const CompetitionPage = () => {
         retry:0,
         gcTime:60 * 1000,
         refetchOnMount:true,
+        placeholderData: keepPreviousData,
     });
 
     const options: { value: string, label: string; }[] = [];

@@ -1,24 +1,32 @@
-.container:hover {
-    background-color: var(--subcolor-lightgray)
+.container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 0.1px solid #D9D9D9;
 }
 
 .postList {
     display: grid;
     grid-template-columns: 1fr 6fr 1fr 1fr 1fr;
     text-wrap: nowrap;
-    font-size: 14px;
     gap: 20px;
 }
-
+.postTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+}
+.postTitle:hover{
+    text-decoration: underline;
+}
 .postItem {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     height: 40px;
 }
 
 .postWriter {
     margin: auto;
-    cursor: pointer;
 }

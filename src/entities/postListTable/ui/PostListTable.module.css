@@ -5,6 +5,8 @@
     display: grid;
     grid-template-columns: 1fr 6fr 1fr 1fr 1fr;
     gap: 20px;
+    border-top: 4px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .itemType {
