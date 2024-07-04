@@ -1,4 +1,3 @@
-// AdminSearchForm.tsx
 import React from "react";
 import { AdminBasicForm } from "entities/admin";
 import Button from "shared/ui/button//index";

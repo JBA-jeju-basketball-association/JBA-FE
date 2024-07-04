@@ -38,5 +38,3 @@ export const AdminBasicForm = ({
     </div>
   );
 };
-
-//이건 공통으로 사용할 곳

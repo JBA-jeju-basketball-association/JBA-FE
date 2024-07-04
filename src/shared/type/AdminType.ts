@@ -84,6 +84,7 @@ export type PostListsType = {
   title: string;
   updateAt: string | null;
 };
+
 export type AdminPostListProps = titlesType & {
   lists: PostListsType[];
 };

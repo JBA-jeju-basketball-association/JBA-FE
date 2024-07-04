@@ -52,6 +52,8 @@ export const useAdminPostDatas = (params: useAdminPostDataProps) => {
       }),
   });
 };
+
+
 //포스트 삭제
 export const useAdminPostDelete = () => {
   const queryClient = useQueryClient();

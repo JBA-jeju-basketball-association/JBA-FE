@@ -1,3 +1,4 @@
+
 import { create } from "zustand";
 import { Category } from "shared/type/AdminType";
 import {
@@ -19,7 +20,7 @@ interface AdminPostState {
   setSelectedfirstCategory: (category: any) => void;
   setSearchKeyword: (keyword: string) => void;
   setSelectedSecondCategory: (category: any) => void;
-  setStartDate: any;  
+  setStartDate: any;
   setEndDate: any;
 }
 //여기는 타입을 지정해주고
