@@ -34,17 +34,20 @@ export const AdminPost = () => {
     setEndDate,
   } = useAdminPostStore();
 
+  const [isEnabled, setIsEnabled] = useState(false);
   const navigate = useNavigate();
-
-  const { data: adminPostDatas, refetch } = useAdminPostDatas({
-    page,
-    postListLength: selectedCategory.list,
-    firstCategory: selectedfirstCategory.list,
-    searchKeyword,
-    secondCategory: selectedSecondCategory.list,
-    startDate,
-    endDate,
-  });
+  const { data: adminPostDatas, refetch } = useAdminPostDatas(
+    {
+      page,
+      postListLength: selectedCategory.list,
+      firstCategory: selectedfirstCategory.list,
+      searchKeyword,
+      secondCategory: selectedSecondCategory.list,
+      startDate,
+      endDate,
+    },
+    isEnabled
+  );
 
   const adminPostData = adminPostDatas?.data.data ?? [];
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
@@ -54,9 +57,8 @@ export const AdminPost = () => {
   };
 
   const handleSearch = () => {
-    setSelectedfirstCategory(selectedfirstCategory);
-    setSelectedSecondCategory(selectedSecondCategory);
-    setSearchKeyword(searchKeyword);
+    setIsEnabled(true);
+    refetch();
   };
 
   const handleReset = () => {
@@ -65,18 +67,8 @@ export const AdminPost = () => {
     setSearchKeyword("");
     setStartDate(null);
     setEndDate(null);
-    refetch();
+    setIsEnabled(false);
   };
-
-  useEffect(() => {
-    refetch();
-  }, [
-    page,
-    selectedCategory,
-    selectedfirstCategory,
-    searchKeyword,
-    selectedSecondCategory,
-  ]);
 
   return (
     <div className={styles.container}>
@@ -102,7 +94,7 @@ export const AdminPost = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminPostData.totalPosts}건
+            총 {adminPostData.totalPosts || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={postListLength}

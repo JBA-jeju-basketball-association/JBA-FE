@@ -12,7 +12,10 @@ type useAdminGalleryDataProps = {
   endDate: Date | null;
 };
 
-export const useAdminGalleryDatas = (params: useAdminGalleryDataProps) => {
+export const useAdminGalleryDatas = (
+  params: useAdminGalleryDataProps,
+  enabled: boolean
+) => {
   const firCategoryKeyMap: { [key: string]: string | null } = {
     전체: null,
     제목: "title",
@@ -45,5 +48,6 @@ export const useAdminGalleryDatas = (params: useAdminGalleryDataProps) => {
           endDate: formattedEndDate,
         },
       }),
+    enabled,
   });
 };

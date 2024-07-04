@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CategoryList } from "shared/ui";
 import { AdminBasicFormProps } from "shared/type/AdminType";
 import styles from "./adminBasicForm.module.css";
@@ -12,9 +12,19 @@ export const AdminBasicForm = ({
   searchKeyword,
   setSearchKeyword,
 }: AdminBasicFormProps) => {
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchKeyword(value); // 인풋 값 즉시 반영
+  const [typeingTimeOut, setTypeingTimeOut] = useState<NodeJS.Timeout | null>(
+    null
+  );
+
+  const handleInputChange = (value: string) => {
+    if (typeingTimeOut) {
+      clearTimeout(typeingTimeOut);
+    }
+    setTypeingTimeOut(
+      setTimeout(() => {
+        setSearchKeyword(value);
+      }, 500)
+    );
   };
 
   return (
@@ -31,8 +41,7 @@ export const AdminBasicForm = ({
         <input
           type="text"
           className={styles.basicFormInput}
-          value={searchKeyword}
-          onChange={handleInputChange}
+          onChange={(e) => handleInputChange(e.target.value)}
         />
       )}
     </div>

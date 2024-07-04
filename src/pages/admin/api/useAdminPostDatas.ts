@@ -14,7 +14,10 @@ type useAdminPostDataProps = {
 };
 //포스트 조회
 
-export const useAdminPostDatas = (params: useAdminPostDataProps) => {
+export const useAdminPostDatas = (
+  params: useAdminPostDataProps,
+  enabled: boolean
+) => {
   const firCategoryKeyMap: { [key: string]: string | null } = {
     전체: null,
     제목: "title",
@@ -50,9 +53,9 @@ export const useAdminPostDatas = (params: useAdminPostDataProps) => {
           endDate: formattedEndDate,
         },
       }),
+    enabled,
   });
 };
-
 
 //포스트 삭제
 export const useAdminPostDelete = () => {

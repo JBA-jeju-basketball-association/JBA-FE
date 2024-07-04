@@ -36,6 +36,7 @@ export const AdminGallery = () => {
     setStartDate,
     setEndDate,
   } = useAdminGalleryStore();
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({
     page,
@@ -45,7 +46,7 @@ export const AdminGallery = () => {
     secondCategory: selectedSecondCategory.list,
     startDate,
     endDate,
-  });
+  },isEnabled);
 
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
@@ -54,14 +55,9 @@ export const AdminGallery = () => {
     navigate("/admin/galleryupload");
   };
 
-  useEffect(() => {
-    refetch();
-  }, [page, selectedCategory]);
-
   const handleSearch = () => {
-    setSelectedfirstCategory(selectedfirstCategory);
-    setSelectedSecondCategory(selectedSecondCategory);
-    setSearchKeyword(searchKeyword);
+    setIsEnabled(true);
+    refetch();
   };
 
   const handleReset = () => {
@@ -70,6 +66,7 @@ export const AdminGallery = () => {
     setSearchKeyword("");
     setStartDate(null);
     setEndDate(null);
+    setIsEnabled(false);
     refetch();
   };
 
@@ -97,7 +94,7 @@ export const AdminGallery = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminGalleryData.totalGalleries}건
+            총 {adminGalleryData.totalGalleries || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={galleryListLength}
