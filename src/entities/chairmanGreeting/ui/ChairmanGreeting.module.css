@@ -1,3 +1,101 @@
+.chairman_container {
+  margin-bottom: 134px;
+}
+
 .title_sub {
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.tit {
+  display: inline;
+  font-size: 38px;
+  font-weight: 600;
+}
+.txt_desc {
+  padding-top: 9px;
+  font-size: 14px;
+  color: #999;
+}
+.inner_cont {
+  position: relative;
+  width: 1320px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.border_line {
+  position: absolute;
+  background-color: #b54607;
+  width: 536px;
+  height: 15px;
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
+}
+.wrap_greeting {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 315px;
+  background-color: #f4f0e7;
+  border-top: 15px solid#EEDFD1;
+}
+.continaer_greeting {
+  padding-top: 55px;
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top_greeting {
+  color: var(--primary-red);
+  font-size: 22px;
+  line-height: 160%;
+}
+
+.divide_line {
+  color: var(--primary-red);
+  font-size: 22px;
+}
+
+.bottom_greeting {
+  font-size: 18px;
+  color: #4b4b4b;
+  line-height: 160%;
+}
+.frame {
+  width: 540px;
+  height: 315px;
+  background-repeat: no-repeat;
+  background-image: url("/public/chairman/chairman.png");
+  align-self: end;
+}
+.desc {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 540px);
+  column-gap: 20px;
+}
+.desc_one {
+  font-size: 16px;
+  color: #4b4b4b;
+  line-height: 160%;
+}
+.desc_two {
+  font-size: 16px;
+  color: #4b4b4b;
+  line-height: 160%;
+}
+.desc_name {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline;
+  font-size: 18px;
+  color: #4b4b4b;
+  font-weight: 800;
 }
