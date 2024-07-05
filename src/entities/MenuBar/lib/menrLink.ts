@@ -18,7 +18,7 @@ export const menuLink:menuLinkType={
     "커뮤니티":"main",
     "NEWS":"post/news",
     "자료실":"post/library",
-    "FAQ":"idontknow",
+    "FAQ":"post/faq",
     "심판:경기부":"main",
     "스탭공지":"idontknow",
     "심판부배정":"idontknow",

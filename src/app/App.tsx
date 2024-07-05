@@ -33,6 +33,7 @@ import { Header } from "../widgets/header";
 import { Admin } from "../pages/admin";
 import QueryProvider from "utils/query/queryProvider";
 import {SignUpPage} from "../pages/signUp";
+import { FaqPage } from "pages/faqPage";
 
 function App() {
   useAxiosInterceptor();
@@ -77,6 +78,10 @@ function App() {
           <Route
             path={"/post/:category/:postId"}
             element={<PostDetailPage />}
+          />
+          <Route
+            path={"/post/faq"}
+            element={<FaqPage/>}
           />
         </Routes>
       </div>
