@@ -18,15 +18,16 @@ export const postListTitles = [
   "삭제 일시",
 ];
 
-export const postCategories = [
-  [
-    { id: 1, list: "제목" },
-    { id: 2, list: "유저 이메일" },
-    { id: 3, list: "게시물 아이디" },
-  ],
-  [
-    { id: 1, list: "공지사항" },
-    { id: 2, list: "자료실" },
-    { id: 3, list: "NEWS" },
-  ],
+export const firPostcategory = [
+  { list: "전체" },
+  { list: "제목" },
+  { list: "유저 이메일" },
+  { list: "게시물 아이디" },
+];
+
+export const secPostcategory = [
+  { list: "전체" },
+  { list: "공지사항" },
+  { list: "자료실" },
+  { list: "News" },
 ];

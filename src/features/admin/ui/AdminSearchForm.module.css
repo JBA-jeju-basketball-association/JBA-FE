@@ -3,14 +3,22 @@
   display: flex;
   justify-content: space-between;
 }
+
 .basicForm{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .button{
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.DatePicker{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-weight: bold;
 }
