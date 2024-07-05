@@ -1,1 +1,1 @@
-export { FaqPage } from "./ui/FapPage";
+export { FaqPage } from "./ui/FaqPage";

@@ -80,7 +80,7 @@ function App() {
             element={<PostDetailPage />}
           />
           <Route
-            path={"/post/faq"}
+            path={"/community/faq"}
             element={<FaqPage/>}
           />
         </Routes>
