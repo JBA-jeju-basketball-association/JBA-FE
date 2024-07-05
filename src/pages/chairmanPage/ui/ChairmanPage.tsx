@@ -4,7 +4,7 @@ import styles from './ChairmanPage.module.css'
 
 export const ChairmanPage = () => {
     return (
-        <div>
+        <div className={styles.ChairmanPage}>
             <ChairmanGreeting/>
         </div>
     )
