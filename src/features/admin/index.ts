@@ -1,3 +1,3 @@
-export { AdminSearchForm } from "./ui/adminSearchForm";
+export { AdminSearchForm  } from "./ui/AdminSearchForm";
 export { AdminGalleryListData } from "./ui/AdminGalleryListData";
 export { AdminPostListData } from "./ui/AdminPostListData";

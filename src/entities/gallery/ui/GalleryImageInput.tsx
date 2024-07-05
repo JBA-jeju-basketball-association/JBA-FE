@@ -49,7 +49,6 @@ export const GalleryImageInput = ({
         },
       }),
     onSuccess: (_, fileUrl) => {
-      console.log("파일 삭제 성공");
       setUploadFiles(uploadFiles.filter((file) => file.fileUrl !== fileUrl));
     },
     onError: () => {
@@ -72,7 +71,6 @@ export const GalleryImageInput = ({
   };
 
   const handleFileDelete = (fileUrl: string) => {
-    console.log("삭제");
     deleteFile(fileUrl);
   };
 

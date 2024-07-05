@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AdminSearchForm, AdminGalleryListData } from "features/admin/";
 import styles from "./AdminUser.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -9,10 +8,11 @@ import {
   userListLength,
   userListTitles,
 } from "../adminUtils/adminUserTitle";
+import { Category } from "shared/type/AdminType";
 
 export const AdminUser = () => {
   const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState(
+  const [selectedCategory, setSelectedCategory] = useState<Category>(
     userListLength[0]
   );
   const totalPage = 10;
