@@ -34,6 +34,7 @@ import { Admin } from "../pages/admin";
 import QueryProvider from "utils/query/queryProvider";
 import {SignUpPage} from "../pages/signUp";
 import { FaqPage } from "pages/faqPage";
+import { ChairmanPage } from "pages/chairmanPage";
 
 function App() {
   useAxiosInterceptor();
@@ -82,6 +83,10 @@ function App() {
           <Route
             path={"/community/faq"}
             element={<FaqPage/>}
+          />
+          <Route
+            path={"/about/chairman"}
+            element={<ChairmanPage/>}
           />
         </Routes>
       </div>
