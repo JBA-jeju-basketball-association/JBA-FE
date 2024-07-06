@@ -124,3 +124,4 @@ export const AdminPost = () => {
 };
 
 //현재 카테고리 선택으로 렌더링됨 -> 고치기
+//formprovider 바꾸기
