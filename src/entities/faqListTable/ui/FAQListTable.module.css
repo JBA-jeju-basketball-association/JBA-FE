@@ -1,0 +1,4 @@
+.container {
+    width: 1320px;
+    border-top: 4px solid var(--primary-color);
+}

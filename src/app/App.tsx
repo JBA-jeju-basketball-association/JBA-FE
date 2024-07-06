@@ -33,6 +33,7 @@ import { Header } from "../widgets/header";
 import { Admin } from "../pages/admin";
 import QueryProvider from "utils/query/queryProvider";
 import {SignUpPage} from "../pages/signUp";
+import { FaqPage } from "pages/faqPage";
 import { ChairmanPage } from "pages/chairmanPage";
 
 function App() {
@@ -78,6 +79,10 @@ function App() {
           <Route
             path={"/post/:category/:postId"}
             element={<PostDetailPage />}
+          />
+          <Route
+            path={"/community/faq"}
+            element={<FaqPage/>}
           />
           <Route
             path={"/about/chairman"}
