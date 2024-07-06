@@ -16,7 +16,7 @@ export const FAQListRow = ({ postItem }: { postItem: MockPost }) => {
     >
       <div className={styles.post_row_wrapper}>
         <span className={styles.postQ}>Q</span>
-        <div className={styles.postTitle}>{title}</div>
+        <div className={styles.postTitle} onClick={() => {setToggle(!toggle)}}>{title}</div>
         <img
           onClick={() => {
             setToggle(!toggle);

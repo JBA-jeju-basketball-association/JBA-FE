@@ -7,7 +7,7 @@
 .post_row_wrapper {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
-  text-wrap: nowrap;
+  text-wrap: none;
   gap: 20px;
 }
 .postQ {
@@ -51,15 +51,16 @@
   color: var(--primary-color);
 }
 .post_answer {
+  border-top: 1px solid #d9d9d9;
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
-  text-wrap: nowrap;
+  text-wrap: none;
   gap: 20px;
   margin-top: 20px;
 }
 .postContent {
   display: flex;
   height: 40px;
-  padding-top: 10px;
+  padding-top: 20px;
   font-size: 18px;
 }
