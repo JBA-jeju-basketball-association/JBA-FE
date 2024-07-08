@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { NormalApi } from "shared/api";
 
 type useGalleryDataProps = {
@@ -21,5 +21,6 @@ export const useGalleryDatas = ({
           keyword: searchKeyword,
         },
       }),
+    placeholderData: keepPreviousData,
   });
 };

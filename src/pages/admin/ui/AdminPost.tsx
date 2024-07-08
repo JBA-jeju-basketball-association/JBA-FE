@@ -3,9 +3,10 @@ import styles from "./AdminPost.module.css";
 import { AdminSearchForm } from "features/admin/";
 import {
   postListLength,
-  postCategories,
-  postLabel,
   postListTitles,
+  postLabel,
+  firPostcategory,
+  secPostcategory,
 } from "../adminUtils/adminPostTitle";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -13,16 +14,40 @@ import { AdminPostListData } from "features/admin/";
 import { useAdminPostDatas } from "../api/useAdminPostDatas";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 
 export const AdminPost = () => {
-  const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState(postListLength[0]);
-  const navigate = useNavigate();
-
-  const { data: adminPostDatas, refetch } = useAdminPostDatas({
+  const {
     page,
-    postListLength: selectedCategory.list,
-  });
+    setPage,
+    selectedCategory,
+    selectedfirstCategory,
+    searchKeyword,
+    selectedSecondCategory,
+    startDate,
+    endDate,
+    setSelectedCategory,
+    setSelectedfirstCategory,
+    setSearchKeyword,
+    setSelectedSecondCategory,
+    setStartDate,
+    setEndDate,
+  } = useAdminPostStore();
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const navigate = useNavigate();
+  const { data: adminPostDatas, refetch } = useAdminPostDatas(
+    {
+      page,
+      postListLength: selectedCategory.list,
+      firstCategory: selectedfirstCategory.list,
+      searchKeyword,
+      secondCategory: selectedSecondCategory.list,
+      startDate,
+      endDate,
+    },
+    isEnabled
+  );
 
   const adminPostData = adminPostDatas?.data.data ?? [];
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
@@ -31,19 +56,45 @@ export const AdminPost = () => {
     navigate("/post/notice/add");
   };
 
-  useEffect(() => {
+  const handleSearch = () => {
+    setIsEnabled(true);
     refetch();
-  }, [page, selectedCategory]);
+  };
+
+  const handleReset = () => {
+    setSelectedfirstCategory(firPostcategory[0]);
+    setSelectedSecondCategory(secPostcategory[0]);
+    setSearchKeyword("");
+    setStartDate(null);
+    setEndDate(null);
+    setIsEnabled(false);
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
-        {/* <AdminSearchForm categories={gallerySearchCriteria} label={galleryLabel} /> */}
+        <AdminSearchForm
+          label={postLabel}
+          firstCategoryOptions={firPostcategory}
+          secondCategoryOptions={secPostcategory}
+          selectedfirstCategory={selectedfirstCategory}
+          setSelectedfirstCategory={setSelectedfirstCategory}
+          selectedSecondCategory={selectedSecondCategory}
+          setSelectedSecondCategory={setSelectedSecondCategory}
+          searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          handleSearch={handleSearch}
+          handleReset={handleReset}
+        />
       </div>
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminPostData.totalPosts}건
+            총 {adminPostData.totalPosts || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={postListLength}
@@ -71,3 +122,5 @@ export const AdminPost = () => {
     </div>
   );
 };
+
+//현재 카테고리 선택으로 렌더링됨 -> 고치기

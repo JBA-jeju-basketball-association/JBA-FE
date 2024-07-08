@@ -23,47 +23,47 @@
   font-size: 26px;
   font-weight: 600;
 }
-.divideLine {
-  background-color: var(--primary-color);
-  width: 100%;
-  height: 0.2px;
-}
-.subLine {
-  background-color: var(--subcolor-black4);
-  width: 100%;
-  height: 0.2px;
-}
 .titleArea {
+  position: relative;
   display: grid;
   grid-template-columns: 7fr 0.5fr 0.5fr 0.5fr;
   text-wrap: nowrap;
-  gap: 30px;
+  column-gap: 43px;
   margin-top: 15px;
   margin-bottom: 15px;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 0.1px solid #B5B5B5;
 }
 .title {
   position: absolute;
   width: 100%;
   display: flex;
   justify-content: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-top: 19px;
+  padding-bottom: 19px;
 }
 .titleContent {
-  max-width: 600px;
+  max-width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .list {
   margin: 0 auto;
+  padding-top: 19px;
+  padding-bottom: 19px;
 }
 .content {
-  height: 700px;
+  min-height: 600px;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-right: 10%;
   padding-left: 10%;
-  scrollbar-width: 0;
   overflow: scroll;
+  scrollbar-width: none;
+  text-wrap: balance;
+  word-wrap: break-word;
 
   img {
     border-radius: 5px;
@@ -74,50 +74,60 @@
 .filesWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
+  border-top: 0.1px solid #8E8E8E;
+  border-bottom: 0.1px solid #8E8E8E;
 }
-.fileDownload {
+.filesContainer{
+  display: flex;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.filesContainerTitle {
+  margin: 10px
+}
+.fileDownloadItem {
+  margin-bottom: 5px;
   text-decoration: underline;
   cursor: pointer;
+  display: inline-block;
+}
+.downloadUrlWrapper{
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
 }
 .fileNull {
   padding-left: 16px;
 }
+.adminWrapper {
+  position: absolute;
+  left: 0px;
+  top: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 .buttonWrapper {
+  left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.buttonEdit {
-  background-color: var(--subcolor-black3);
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 48px;
-  border-radius: 8px;
+.adminEdit {
   font-size: 18px;
-  color: #fff;
   cursor: pointer;
+  text-decoration: underline;
 }
 
-.buttonEdit:hover {
-  background-color: var(--subcolor-black4);
-}
-
-.buttonDelete {
-  background-color: var(--primary-red);
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 48px;
-  border-radius: 8px;
+.adminDelete {
   font-size: 18px;
-  color: #fff;
   cursor: pointer;
-}
-
-.buttonDelete:hover {
-  background-color: var(--subcolor-black4);
+  text-decoration: underline;
 }
 
 /* .iframe {

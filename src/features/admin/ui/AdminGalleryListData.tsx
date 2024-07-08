@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AdminGalleryListData.module.css";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 import { AdminGalleryListProps, GalleryListsType } from "shared/type/AdminType";
 import { useGalleryModalStore } from "shared/model";
@@ -33,12 +33,17 @@ export const AdminGalleryListData = ({
   };
   //수정페이지 이동
 
-  const handleDeleteClick = async (galleryId: number) => {
-    const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
-    if (confirm) {
-      deleteGallery(galleryId);
-    }
+  const handleDeleteClick = (galleryId: number) => {
+    confirmAndCancelAlertWithLoading(
+      "warning",
+      "정말 삭제하시겠습니까?",
+      "",
+      async () => {
+        deleteGallery(galleryId);
+      }
+    );
   };
+
   //삭제
 
   return (

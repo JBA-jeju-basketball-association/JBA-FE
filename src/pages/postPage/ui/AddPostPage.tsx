@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
-import getFilesUrl, { PostFilesType } from "../api/GetFilesUrlRequest";
 import { CkEditor } from "features/ckEditor";
 import ForewordOptions from "../../../shared/model/forewordOptions";
 import OfficialOptions from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
-import Select, { MultiValue, SingleValue } from "react-select";
+import Select, { SingleValue } from "react-select";
 import { useMutation } from "@tanstack/react-query";
 import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
 import { PostImgsType } from "shared/type/PostType";

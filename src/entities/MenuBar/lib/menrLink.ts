@@ -8,7 +8,7 @@ type menuLinkType = {
 export const menuLink:menuLinkType={
     "농구협회":"history",
     "공지사항":"post/notice",
-    "회장인사말":"idontknow",
+    "회장인사말":"about/chairman",
     "협회역사":"history",
     "제주대회":"main",
     "대회정보":"competition",
@@ -18,7 +18,7 @@ export const menuLink:menuLinkType={
     "커뮤니티":"main",
     "NEWS":"post/news",
     "자료실":"post/library",
-    "FAQ":"idontknow",
+    "FAQ":"community/faq",
     "심판:경기부":"main",
     "스탭공지":"idontknow",
     "심판부배정":"idontknow",

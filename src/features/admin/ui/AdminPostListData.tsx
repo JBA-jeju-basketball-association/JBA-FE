@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./AdminPostListData.module.css";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
-import confirmAlert from "shared/lib/ConfirmAlert";
 import { AdminPostListProps, PostListsType } from "shared/type/AdminType";
 import {
   useAdminPostDelete,
   useAdminchangeAnnouncement,
 } from "pages/admin/api/useAdminPostDatas";
 import { useFileDownload } from "shared/hook/useFileDownload";
+import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 
 export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   const { mutate: changeAnnouncement } = useAdminchangeAnnouncement();
@@ -36,25 +36,32 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   };
   //수정페이지 이동
 
-  const handleDeleteClick = async (postId: number) => {
-    const confirm = await confirmAlert("warning", "정말 삭제하시겠습니까?");
-    if (confirm) {
-      deletePost(postId);
-    }
+  const handleDeleteClick = (postId: number) => {
+    confirmAndCancelAlertWithLoading(
+      "warning",
+      "정말 삭제하시겠습니까?",
+      "",
+      async () => {
+        if (postId) await deletePost(postId);
+      }
+    );
   };
   //삭제
 
-  const changeAnnouncementClick = async (postId: number) => {
+  const changeAnnouncementClick = (postId: number) => {
     const post = lists.find((list) => list.postId === postId);
     if (!post) return;
 
-    const confirm = await confirmAlert(
+    confirmAndCancelAlertWithLoading(
       "warning",
+      "",
       post.isAnnouncement
         ? "공지를 해제하시겠습니까?"
-        : "공지로 변경하시겠습니까?"
+        : "공지로 변경하시겠습니까?",
+      async () => {
+        changeAnnouncement(postId);
+      }
     );
-    if (confirm) changeAnnouncement(postId);
   };
   //공지로 변경-해제
 

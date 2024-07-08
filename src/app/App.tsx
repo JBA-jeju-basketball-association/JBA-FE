@@ -4,9 +4,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import {
   PostCompetitionPage,
   CompetitionDetailPage,
-  CompetitionPage, PostCompetitionResultPage, PostCompetitionSchedulePage,
+  CompetitionPage,
+  PostCompetitionResultPage,
+  PostCompetitionSchedulePage,
   PrivateRoute,
-  UpdateCompetitionResultPage, UpdateCompetitionPage, UpdateCompetitionSchedulePage
+  UpdateCompetitionResultPage,
+  UpdateCompetitionPage,
+  UpdateCompetitionSchedulePage,
 } from "../pages/competitionPage";
 import {
   AddPostPage,
@@ -27,7 +31,10 @@ import Main from "../pages/mainPage/ui/Main";
 import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
 import { Header } from "../widgets/header";
 import { Admin } from "../pages/admin";
+import QueryProvider from "utils/query/queryProvider";
 import {SignUpPage} from "../pages/signUp";
+import { FaqPage } from "pages/faqPage";
+import { ChairmanPage } from "pages/chairmanPage";
 
 function App() {
   useAxiosInterceptor();
@@ -35,14 +42,13 @@ function App() {
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
-    <div>
+    <QueryProvider>
       {!isAdminRoute && <Header />}
       <div className={style.wrapper}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="signup" element={<SignUpPage />}/>
           <Route path="/login" element={<LoginPage />} />
-
           <Route element={<PrivateRoute />}>
             <Route path="/competition/post" element={<PostCompetitionPage />} />
             <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
@@ -50,7 +56,6 @@ function App() {
             <Route path="/competition/update/:id" element={<UpdateCompetitionPage/>}/>
             <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
             <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
-
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route
               path={"/post/:category/:postId/update"}
@@ -75,10 +80,18 @@ function App() {
             path={"/post/:category/:postId"}
             element={<PostDetailPage />}
           />
+          <Route
+            path={"/community/faq"}
+            element={<FaqPage/>}
+          />
+          <Route
+            path={"/about/chairman"}
+            element={<ChairmanPage/>}
+          />
         </Routes>
       </div>
       {!isAdminRoute && <Footer />}
-    </div>
+    </QueryProvider>
   );
 }
 
