@@ -88,3 +88,27 @@ export type PostListsType = {
 export type AdminPostListProps = titlesType & {
   lists: PostListsType[];
 };
+
+//관리자페이지 유저리스트 타입들
+
+export type UserListsType = {
+  createAt: string;
+  dateOfBirth: string;
+  deleteAt: string | null;
+  email: string;
+  failureCount: number;
+  gender: string;
+  lockAt: string | null;
+  loginAt: string | null;
+  name: string;
+  permission: string;
+  phoneNum: string;
+  team: string;
+  updateAt: string | null;
+  userId: number;
+  userStatus: string;
+};
+
+export type AdminUserListProps = titlesType & {
+  lists: UserListsType[];
+};

@@ -48,6 +48,7 @@ export const AdminPost = () => {
     },
     isEnabled
   );
+  console.log(adminPostDatas)
 
   const adminPostData = adminPostDatas?.data.data ?? [];
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;

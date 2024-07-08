@@ -1,0 +1,81 @@
+.container {
+  width: 100%;
+  border-top: 1px solid var(--subcolor-black5);
+  border-bottom: 1px solid var(--subcolor-black5);
+  margin-top: 20px;
+}
+/* 리스트 타이틀 */
+.titleWrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid var(--subcolor-black5);
+  padding-right: 5px;
+}
+.titleWrapper > h1 {
+  width: 100%;
+  padding-left: 5px;
+}
+
+/* 리스트 목록 */
+
+.contentWrapper {
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.listWrapper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.listWrapper > span {
+  width: 100%;
+  font-size: 14px;
+  padding-left: 5px;
+  overflow: hidden;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.updateBtn {
+  background: #5fcb9b;
+  color: white;
+  font-weight: bold;
+  padding: 7px 12px;
+  border-radius: 5px;
+}
+
+
+.titleSpan {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.contentWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+.contentWrapper::-webkit-scrollbar-track {
+  background-color: beige;
+}
+.contentWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+.contentWrapper::-webkit-scrollbar-button {
+  display: none;
+}
