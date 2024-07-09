@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AdminUserListData.module.css";
 import { AdminUserListProps } from "shared/type/AdminType";
 import { UserListsType } from "shared/type/AdminType";
 import Button from "shared/ui/button";
+import { PermissionDetailModal } from "entities/admin/index";
+import { userPermissionMap } from "pages/admin/adminUtils/adminUserTitle";
 
 export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectUser, setSelectUser] = useState<UserListsType | null>(null);
   const gender = (gender: string) => (gender === "mail" ? "남자" : "여자");
+  const permissions = (permission: string) => {
+    const findPermission = userPermissionMap.find(
+      (user) => user.value === permission
+    );
+    return findPermission?.label || "없음";
+  };
 
   const userStatus = (status: string) => {
     switch (status) {
@@ -20,7 +30,11 @@ export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
     }
   };
 
-  const changePermissionClick = (userId: number) => {};
+  const changePermissionClick = (user: UserListsType) => {
+    setSelectUser(user);
+    setModalOpen(true);
+  };
+
   //유저 권한 변경
 
   return (
@@ -39,9 +53,9 @@ export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
             <span className={styles.btn}>
               <Button
                 className={styles.updateBtn}
-                onClick={() => changePermissionClick}
+                onClick={() => changePermissionClick(list)}
               >
-                {list.permission}
+                {permissions(list.permission)}
               </Button>
             </span>
             <span>{list.email}</span>
@@ -58,6 +72,11 @@ export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
           </div>
         ))}
       </div>
+      <PermissionDetailModal
+        modalOpen={modalOpen}
+        setModalOpen={() => setModalOpen(false)}
+        selectUser={selectUser}
+      />
     </div>
   );
 };

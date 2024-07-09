@@ -48,7 +48,6 @@ export const AdminUser = () => {
   );
 
   const adminUserData = adminUserDatas?.data.data ?? [];
-  console.log(adminUserData);
   const totalPage = adminUserDatas?.data.data.totalPages ?? 0;
 
   const handleSearch = () => {
@@ -89,7 +88,7 @@ export const AdminUser = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminUserData.totalPosts || "0"}건
+            총 {adminUserData.totalElements || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={userListLength}

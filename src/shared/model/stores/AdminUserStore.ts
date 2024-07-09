@@ -14,13 +14,11 @@ interface AdminUserState {
   selectedSecondCategory: Category;
   startDate: Date | null;
   endDate: Date | null;
-
   setPage: any;
   setSelectedCategory: (category: any) => void;
   setSelectedfirstCategory: (category: any) => void;
   setSearchKeyword: (keyword: string) => void;
   setSelectedSecondCategory: (category: any) => void;
-
   setStartDate: any;
   setEndDate: any;
 }
@@ -32,10 +30,8 @@ export const useAdminUserStore = create<AdminUserState>((set) => ({
   selectedfirstCategory: firUsercategory[0],
   searchKeyword: "",
   selectedSecondCategory: secUsercategory[0],
-
   startDate: null,
   endDate: null,
-
   setPage: (page: any) => set({ page }),
   setSelectedCategory: (category) => set({ selectedCategory: category }),
   setSelectedfirstCategory: (category) =>

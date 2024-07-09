@@ -55,7 +55,8 @@
   background: #5fcb9b;
   color: white;
   font-weight: bold;
-  padding: 7px 12px;
+  width: 68px;
+  height: 30px;
   border-radius: 5px;
 }
 
