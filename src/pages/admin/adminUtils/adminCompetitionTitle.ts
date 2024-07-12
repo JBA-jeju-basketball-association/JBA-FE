@@ -5,6 +5,19 @@ export const competitionListLength = [
 ];
 export const competitionLabel = ["검색어", "종별", "등록일시"];
 
+export const fircompetitioncategory = [
+  { list: "대회명" },
+  { list: "유저 이메일" },
+  { list: "게시물 아이디" },
+];
+
+export const seccompetitioncategory = [
+  { list: "전체" },
+  { list: "종별 A" },
+  { list: "종별 B" },
+  { list: "종별 C" },
+];
+
 export const competitionListTitles = [
   "대회 아이디",
   "유저 이메일",
@@ -20,18 +33,4 @@ export const competitionListTitles = [
   "등록 일시",
   "최종 수정 일시",
   "삭제 일시",
-];
-
-export const competitionCategories = [
-  [
-    { id: 1, list: "대회명" },
-    { id: 2, list: "유저 이메일" },
-    { id: 3, list: "게시물 아이디" },
-  ],
-  [
-    { id: 1, list: "전체" },
-    { id: 2, list: "종별 A" },
-    { id: 3, list: "종별 B" },
-    { id: 4, list: "종별 C" },
-  ],
 ];

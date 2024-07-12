@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { Category } from "shared/type/AdminType";
 import {
-  galleryListLength,
-  firGallerycategory,
-  secGallerycategory,
-} from "pages/admin/adminUtils/adminGalleryTitle";
+  competitionListLength,
+  fircompetitioncategory,
+  seccompetitioncategory,
+} from "pages/admin/adminUtils/adminCompetitionTitle";
 
-interface AdminGalleryState {
+interface AdminCompetitionState {
   page: number;
   selectedCategory: any;
   selectedfirstCategory: Category;
@@ -23,12 +23,12 @@ interface AdminGalleryState {
   setEndDate: any;
 }
 
-export const useAdminGalleryStore = create<AdminGalleryState>((set) => ({
+export const useAdminCompetitionStore = create<AdminCompetitionState>((set) => ({
   page: 1,
-  selectedCategory: galleryListLength[0],
-  selectedfirstCategory: firGallerycategory[0],
+  selectedCategory: competitionListLength[0],
+  selectedfirstCategory: fircompetitioncategory[0],
   searchKeyword: "",
-  selectedSecondCategory: secGallerycategory[0],
+  selectedSecondCategory: seccompetitioncategory[0],
   startDate: null,
   endDate: null,
   setPage: (page: any) => set({ page }),

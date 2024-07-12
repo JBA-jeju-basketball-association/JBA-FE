@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CommonModal } from "shared/ui";
 import styles from "./PermissionDetailModal.module.css";
 import Button from "shared/ui/button";
-import {
-  userPermissionList,
-  userPermissionMap,
-} from "pages/admin/adminUtils/adminUserTitle";
+import { userPermissionMap } from "pages/admin/adminUtils/adminUserTitle";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 
 type PermissionModalProps = {
@@ -64,9 +61,9 @@ export const PermissionDetailModal = ({
   const confirmPermissionChange = (userId: number) => {
     confirmAndCancelAlertWithLoading("warning", "권한을 변경하시겠습니까?", "");
     setModalOpen(false);
-    console.log(userId, selectedPermission);
-    // Perform the actual permission change logic here
+    console.log(userId);
   };
+
   return (
     <CommonModal
       isopen={modalOpen}
@@ -119,7 +116,7 @@ export const PermissionDetailModal = ({
         </div>
         <Button
           className={styles.checkBtn}
-          onClick={() => handlePermissionChange(selectUser.userId)}
+          onClick={() => confirmPermissionChange(selectUser.userId)}
         >
           확인
         </Button>

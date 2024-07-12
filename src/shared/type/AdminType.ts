@@ -112,3 +112,26 @@ export type UserListsType = {
 export type AdminUserListProps = titlesType & {
   lists: UserListsType[];
 };
+
+//관리자페이지 대회 타입들
+export type CompetitionListsType = {
+  createAt: string;
+  dateOfBirth: string;
+  deleteAt: string | null;
+  email: string;
+  failureCount: number;
+  gender: string;
+  lockAt: string | null;
+  loginAt: string | null;
+  name: string;
+  permission: string;
+  phoneNum: string;
+  team: string;
+  updateAt: string | null;
+  userId: number;
+  userStatus: string;
+};
+
+export type AdminCompetitionListProps = titlesType & {
+  lists: UserListsType[];
+};

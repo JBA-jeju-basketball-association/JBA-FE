@@ -48,7 +48,6 @@ export const AdminPost = () => {
     },
     isEnabled
   );
-  console.log(adminPostDatas)
 
   const adminPostData = adminPostDatas?.data.data ?? [];
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
@@ -70,6 +69,10 @@ export const AdminPost = () => {
     setEndDate(null);
     setIsEnabled(false);
   };
+
+  const downloadExcel = () => {
+    console.log('excel download')
+  }
 
   return (
     <div className={styles.container}>
@@ -111,6 +114,12 @@ export const AdminPost = () => {
               onClick={handleNavigateToUploadPage}
             >
               게시물 등록
+            </Button>
+            <Button
+              className={styles.uploadBtn}
+              onClick={downloadExcel}
+            >
+              엑셀 다운로드
             </Button>
           </div>
         </div>
