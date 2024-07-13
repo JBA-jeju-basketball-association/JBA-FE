@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useFormattedDate } from "shared/hook/useFormattedDate";
@@ -60,3 +60,5 @@ export const useAdminUserDatas = (
     enabled,
   });
 };
+
+export const useAdminUserPermissionChange = () => {};
