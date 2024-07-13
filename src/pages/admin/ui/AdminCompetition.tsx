@@ -15,8 +15,6 @@ import {
   useAdminCompetitionDatas,
   useAdminCompetitionTotal,
 } from "pages/admin/api/useAdminCompetitionDatas";
-import { useQuery } from "@tanstack/react-query";
-import { Api } from "shared/api";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -40,54 +38,28 @@ export const AdminCompetition = () => {
 
   const { data: adminCompetitionTotal } = useAdminCompetitionTotal();
 
-  const totalCompetitionData = adminCompetitionTotal?.data.data.totalSize ?? 0;
-
   const divisionData = adminCompetitionTotal?.data.data.divisionList ?? [];
-  console.log(divisionData);
+  //대회 종별 종류
 
   //여기까지 토탈갯수 및 divisionData
-
-  // const { data: adminCompetitionDatas, refetch } = useQuery({
-  //   queryKey: ["adminCompetition"],
-  //   queryFn: () =>
-  //     Api.get("/v1/api/competition/admin/list", {
-  //       params: {
-  //         page: page - 1,
-  //         size: competitionListLength,
-  //         searchType: "email",
-  //         searchKey: null,
-  //         division: "전체",
-  //         situation: "전체",
-  //         //이게 선택하는 카테고리
-  //         filterStartDate: startDate,
-  //         filterEndDate: endDate,
-  //       },
-  //     }),
-  // });
-  // console.log(startDate, endDate);
-
-  // "searchType": "email",
-  // "searchKey": "",
-  // "filterStartDate": "2024-04-12T05:46:00.738Z",
-  // "filterEndDate": "2024-07-12T05:46:00.738Z",
-  // "division": "전체",
-  // "situation": "전체"
-  // console.log(adminCompetitionDatas);
 
   const { data: adminCompetitionDatas, refetch } = useAdminCompetitionDatas({
     page,
     competitionListLength: selectedCategory.list,
   });
-  console.log(adminCompetitionDatas);
 
   const handleNavigateToUploadPage = () => {
-    navigate("/post/notice/add");
+    window.open("/competition/post", "_blank");
   };
 
   const handleSearch = () => {};
 
   const handleReset = () => {};
-  const totalPage = 10;
+
+  const adminCompetitionData = adminCompetitionDatas?.data.data ?? [];
+  //대회 상세 데이터
+  const totalPage = adminCompetitionDatas?.data.data ?? 0;
+  //대회 데이터 총 페이지
 
   return (
     <div className={styles.container}>
@@ -95,7 +67,7 @@ export const AdminCompetition = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {totalCompetitionData || "0"}건
+            총 {totalPage.totalElements || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={competitionListLength}
@@ -110,15 +82,19 @@ export const AdminCompetition = () => {
               className={styles.uploadBtn}
               onClick={handleNavigateToUploadPage}
             >
-              게시물 등록
+              대회 등록
             </Button>
           </div>
         </div>
-        {/* <AdminCompetitionListData
+        <AdminCompetitionListData
           titles={competitionListTitles}
-          lists={adminPostData.posts}
-        /> */}
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+          lists={adminCompetitionData.content}
+        />
+        <Pagination
+          totalPages={totalPage.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

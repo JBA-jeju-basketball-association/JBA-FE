@@ -17,6 +17,10 @@ export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
     return findPermission?.label || "없음";
   };
 
+  const formatDate = (isoDate: any) => {
+    return isoDate.split("T")[0];
+  };
+
   const userStatus = (status: string) => {
     switch (status) {
       case "normal":

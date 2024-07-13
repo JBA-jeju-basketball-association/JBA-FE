@@ -53,7 +53,7 @@ export const AdminPost = () => {
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
 
   const handleNavigateToUploadPage = () => {
-    navigate("/post/notice/add");
+    window.open("/post/notice/add", "_blank");
   };
 
   const handleSearch = () => {
@@ -71,8 +71,8 @@ export const AdminPost = () => {
   };
 
   const downloadExcel = () => {
-    console.log('excel download')
-  }
+    console.log("excel download");
+  };
 
   return (
     <div className={styles.container}>
@@ -115,10 +115,7 @@ export const AdminPost = () => {
             >
               게시물 등록
             </Button>
-            <Button
-              className={styles.uploadBtn}
-              onClick={downloadExcel}
-            >
+            <Button className={styles.uploadBtn} onClick={downloadExcel}>
               엑셀 다운로드
             </Button>
           </div>

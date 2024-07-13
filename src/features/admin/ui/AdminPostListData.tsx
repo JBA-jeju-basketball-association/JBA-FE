@@ -9,6 +9,7 @@ import {
 } from "pages/admin/api/useAdminPostDatas";
 import { useFileDownload } from "shared/hook/useFileDownload";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import { useTruncateString } from "shared/hook/useTruncateString";
 
 export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   const { mutate: changeAnnouncement } = useAdminchangeAnnouncement();
@@ -21,10 +22,7 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
 
   //isAnnouncement = true면 공지, false면 공지안함
 
-  const content = (content: string) =>
-    content.length > 10 ? `${content.slice(0, 10)}...` : content;
-
-  //content가 10자 이상이면 10자까지만 보여주고 나머지는 ...으로 표시
+  const truncateString = useTruncateString();
 
   const handleNavigateToDetailPage = (postId: number, category: string) => {
     navigate(`/post/${category}/${postId}`);
@@ -42,7 +40,7 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
       "정말 삭제하시겠습니까?",
       "",
       async () => {
-        if (postId) await deletePost(postId);
+        if (postId) deletePost(postId);
       }
     );
   };
@@ -116,7 +114,7 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
             >
               {list.title}
             </span>
-            <span>{content(list.content)}</span>
+            <span>{truncateString(list.content, 10)}</span>
             <span className={styles.file}>
               {list.files?.length > 0
                 ? list.files.map((file, index) => (
@@ -128,7 +126,7 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
                       }}
                       rel="noreferrer"
                     >
-                      {file.fileName}
+                      {truncateString(file.fileName, 10)}
                     </a>
                   ))
                 : "첨부파일 없음"}

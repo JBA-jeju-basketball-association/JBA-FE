@@ -19,8 +19,8 @@ export const seccompetitioncategory = [
 ];
 
 export const competitionListTitles = [
-  "대회 아이디",
-  "유저 이메일",
+  "아이디",
+  "이메일",
   "편집",
   "현황",
   "종별",
