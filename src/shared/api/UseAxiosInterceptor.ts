@@ -10,7 +10,7 @@ import * as process from "process";
 
 const useAxiosInterceptor = ():void => {
 
-    const {AccessToken, RefreshToken, setAccessToken, setRefreshToken} = useUserStore();
+    const {AccessToken, setAccessToken} = useUserStore();
     const requestHandler = async (config:InternalAxiosRequestConfig) => {
         // 토큰이 있으면 요청 헤더에 추가한다.
         if (AccessToken) {
@@ -19,18 +19,15 @@ const useAxiosInterceptor = ():void => {
             const currentTime:number = Math.floor(new Date().getTime()/1000)
             if (currentTime + 1 > expireTime) {
                 try {
-                    const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/v1/api/sign/refresh-token", null, {
-                    // const res = await axios.post("http://localhost:8080/v1/api/sign/refresh-token", null, {
+                    const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/v1/api/sign/refresh-token-cookie", null, {
+                    // const res = await axios.post("http://localhost:8080/v1/api/sign/refresh-token-cookie", null, {
                         headers: {
                             AccessToken: AccessToken,
-                            RefreshToken: RefreshToken,
                         },
+                        withCredentials:true,
                     });
                     const accessToken: string = res.headers["access-token"];
-                    const refreshToken: string = res.headers["refresh-token"];
-
                     setAccessToken(accessToken);
-                    setRefreshToken(refreshToken);
                     config.headers["AccessToken"] = accessToken;
                 } catch (err) {
                     if (axios.isAxiosError(err) && err.response?.status === 401) {
@@ -38,7 +35,6 @@ const useAxiosInterceptor = ():void => {
                             const res = await confirmAlert("warning", "로그인이 만료되었습니다람쥐.");
                             if (res.isConfirmed) {
                                 setAccessToken(null);
-                                setRefreshToken(null);
                                 window.location.href = "/login"
                             }
                         } catch (confirmErr) {
@@ -79,7 +75,6 @@ const useAxiosInterceptor = ():void => {
                 const res = await confirmAlert("warning", "로그인 해주세요.");
                 if (res.isConfirmed) {
                     setAccessToken(null);
-                    setRefreshToken(null);
                     window.location.href = "/login"
                 }
             } catch (confirmErr) {

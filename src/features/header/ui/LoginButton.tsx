@@ -4,14 +4,14 @@ import {useNavigate} from "react-router-dom";
 import fetchLogout from "../api/FetchLogout";
 import {useUserStore} from "../../../shared/model";
 export const LoginButton = () => {
-    const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
+    const {AccessToken, setAccessToken} = useUserStore();
     const navigate = useNavigate();
 
     const loginButtonHandler = ():void => {
         if (AccessToken === null) {
             navigate("/login")
         }else {
-            fetchLogout(AccessToken, setAccessToken,setRefreshToken, navigate)
+            fetchLogout(AccessToken, setAccessToken, navigate)
         }
     }
     return (

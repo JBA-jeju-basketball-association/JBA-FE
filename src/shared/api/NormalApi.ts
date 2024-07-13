@@ -6,4 +6,5 @@ export const NormalApi: AxiosInstance = axios.create({
   headers: {
     Accept: "application/json",
   },
+  withCredentials:true
 });

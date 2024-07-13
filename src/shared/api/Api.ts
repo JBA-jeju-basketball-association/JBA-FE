@@ -5,5 +5,6 @@ export const Api:AxiosInstance = axios.create({
     // baseURL: "http://localhost:8080", // 로컬 서버 사용시
     headers: {
         Accept:"application/json",
-    }
+    },
+    withCredentials:true
 })
