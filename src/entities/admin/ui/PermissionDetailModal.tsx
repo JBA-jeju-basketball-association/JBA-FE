@@ -4,6 +4,7 @@ import styles from "./PermissionDetailModal.module.css";
 import Button from "shared/ui/button";
 import { userPermissionMap } from "pages/admin/adminUtils/adminUserTitle";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import { useAdminUserPermissionChange } from "pages/admin/api/useAdminUserDatas";
 
 type PermissionModalProps = {
   modalOpen: boolean;
@@ -44,6 +45,11 @@ export const PermissionDetailModal = ({
     userPermissionMap[0].value
   );
 
+  const { mutate: changePermission } = useAdminUserPermissionChange({
+    userId: selectUser?.userId,
+    selectedPermission: selectedPermission,
+  });
+
   useEffect(() => {
     if (selectUser) {
       setSelectedPermission(selectUser.permission);
@@ -58,10 +64,16 @@ export const PermissionDetailModal = ({
     setSelectedPermission(e.target.value);
   };
 
-  const confirmPermissionChange = (userId: number) => {
-    confirmAndCancelAlertWithLoading("warning", "권한을 변경하시겠습니까?", "");
-    setModalOpen(false);
-    console.log(userId);
+  const confirmPermissionChange = () => {
+    confirmAndCancelAlertWithLoading(
+      "warning",
+      "권한을 변경하시겠습니까?",
+      "",
+      async () => {
+        changePermission();
+        setModalOpen(false);
+      }
+    );
   };
 
   return (
@@ -114,10 +126,7 @@ export const PermissionDetailModal = ({
             <span>{phoneNum}</span>
           </div>
         </div>
-        <Button
-          className={styles.checkBtn}
-          onClick={() => confirmPermissionChange(selectUser.userId)}
-        >
+        <Button className={styles.checkBtn} onClick={confirmPermissionChange}>
           확인
         </Button>
       </div>

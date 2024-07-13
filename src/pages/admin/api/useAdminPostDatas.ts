@@ -87,6 +87,9 @@ export const useAdminchangeAnnouncement = () => {
       queryClient.invalidateQueries({ queryKey: ["postList"] });
       queryClient.invalidateQueries({ queryKey: ["adminPost"] });
     },
+    onError: () => {
+      confirmAlert("error", "공지 변경에 실패하였습니다.");
+    },
   });
 
   return changeAnnouncement;

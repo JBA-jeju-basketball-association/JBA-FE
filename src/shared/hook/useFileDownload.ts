@@ -19,8 +19,11 @@ export const useFileDownload = () => {
     const res = await fetch(url);
     const arrayBuffer = await res.arrayBuffer();
     //fetch로 데이터를 가져온 후 arrayBuffer로 변환
+    console.log('arrayBuffer',arrayBuffer);
     const blob = new Blob([arrayBuffer], { type: "application/octet-stream" });
+    console.log('blob',blob);
     const blobURL = URL.createObjectURL(blob);
+    console.log('blobUrl',blobURL);
     //객체 URL을 생성하여 반환
     const a = document.createElement("a");
     //a태그 생성

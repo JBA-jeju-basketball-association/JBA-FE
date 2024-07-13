@@ -22,7 +22,7 @@ export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
       case "normal":
         return "정상";
       case "hide":
-        return "잠금";
+        return "비활성화";
       case "delete":
         return "탈퇴";
       default:

@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useFormattedDate } from "shared/hook/useFormattedDate";
@@ -61,4 +61,28 @@ export const useAdminUserDatas = (
   });
 };
 
-export const useAdminUserPermissionChange = () => {};
+type useAdminUserPermissionChangeProps = {
+  userId: number;
+  selectedPermission: string;
+};
+
+export const useAdminUserPermissionChange = ({
+  userId,
+  selectedPermission,
+}: useAdminUserPermissionChangeProps) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationKey: ["adminUserPermissionChange"],
+    mutationFn: () =>
+      Api.put(
+        `/v1/api/admin/user/permission?userId=${userId}&permissionsStr=${selectedPermission}`
+      ),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["adminUser"] });
+      confirmAlert("success", "권한 변경이 완료되었습니다.");
+    },
+    onError: () => {
+      confirmAlert("error", "권한 변경에 실패하였습니다.");
+    },
+  });
+};
