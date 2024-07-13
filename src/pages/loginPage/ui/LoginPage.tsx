@@ -12,14 +12,14 @@ export const LoginPage = () => {
     const [email, setEmail] = useState<string>(getCookie("savedEmail" || ""));
     const [password, setPassword] = useState<string>("");
     const [emailMessage, setEmailMessage] = useState<string>("");
-    const {AccessToken, setAccessToken, setRefreshToken} = useUserStore();
+    const {AccessToken, setAccessToken} = useUserStore();
     const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
     const [isChecked, setIsChecked] = useState<boolean>(!!getCookie('savedEmail'));
 
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         setEmailMessage("");
-        fetchLogin(email, password, setEmailMessage, setAccessToken,setRefreshToken, isChecked, setCookie);
+        fetchLogin(email, password, setEmailMessage, setAccessToken, isChecked, setCookie);
     }
 
     useEffect(() => {
