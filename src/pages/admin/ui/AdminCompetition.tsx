@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AdminPost.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminCompetitionListData } from "features/admin/ui/AdminCompetitionListData";
 import Button from "shared/ui/button";
-import { useNavigate } from "react-router-dom";
 import {
   competitionListLength,
   competitionLabel,
   competitionListTitles,
+  fircompetitioncategory,
+  seccompetitioncategory,
 } from "pages/admin/adminUtils/adminCompetitionTitle";
 import { useAdminCompetitionStore } from "shared/model/stores/AdminCompetitionStore";
-import {
-  useAdminCompetitionDatas,
-  useAdminCompetitionTotal,
-} from "pages/admin/api/useAdminCompetitionDatas";
+import { useAdminCompetitionDatas } from "pages/admin/api/useAdminCompetitionDatas";
+import { AdminSearchForm } from "features/admin";
+import { SituationBtn } from "features/admin";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const navigate = useNavigate();
+
   const {
     page,
     setPage,
@@ -34,25 +34,32 @@ export const AdminCompetition = () => {
     setSelectedSecondCategory,
     setStartDate,
     setEndDate,
+    selectSituation,
+    setSelectSituation,
   } = useAdminCompetitionStore();
 
-  const { data: adminCompetitionTotal } = useAdminCompetitionTotal();
-
-  const divisionData = adminCompetitionTotal?.data.data.divisionList ?? [];
-  //대회 종별 종류
-
-  //여기까지 토탈갯수 및 divisionData
-
-  const { data: adminCompetitionDatas, refetch } = useAdminCompetitionDatas({
-    page,
-    competitionListLength: selectedCategory.list,
-  });
+  const { data: adminCompetitionDatas, refetch } = useAdminCompetitionDatas(
+    {
+      page,
+      competitionListLength: selectedCategory.list,
+      firstCategory: selectedfirstCategory.list,
+      searchKeyword,
+      selectedSecondCategory: selectedSecondCategory.list,
+      startDate,
+      endDate,
+      situationList: selectSituation.list,
+    },
+    isEnabled
+  );
 
   const handleNavigateToUploadPage = () => {
     window.open("/competition/post", "_blank");
   };
 
-  const handleSearch = () => {};
+  const handleSearch = () => {
+    setIsEnabled(true);
+    refetch();
+  };
 
   const handleReset = () => {};
 
@@ -63,8 +70,27 @@ export const AdminCompetition = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.searchFormWapper}></div>
+      <div className={styles.searchFormWapper}>
+        <AdminSearchForm
+          label={competitionLabel}
+          firstCategoryOptions={fircompetitioncategory}
+          secondCategoryOptions={seccompetitioncategory}
+          selectedfirstCategory={selectedfirstCategory}
+          setSelectedfirstCategory={setSelectedfirstCategory}
+          selectedSecondCategory={selectedSecondCategory}
+          setSelectedSecondCategory={setSelectedSecondCategory}
+          searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          handleSearch={handleSearch}
+          handleReset={handleReset}
+        />
+      </div>
       <div className={styles.listWrapper}>
+        <SituationBtn setSelectSituation={setSelectSituation} />
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
             총 {totalPage.totalElements || "0"}건

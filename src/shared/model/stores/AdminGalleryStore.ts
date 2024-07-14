@@ -14,8 +14,8 @@ interface AdminGalleryState {
   selectedSecondCategory: Category;
   startDate: Date | null;
   endDate: Date | null;
-  setPage: any;
-  setSelectedCategory: (category: any) => void;
+  setPage: (page: any) => void;
+  setSelectedCategory: (category: Category) => void;
   setSelectedfirstCategory: (category: any) => void;
   setSearchKeyword: (keyword: string) => void;
   setSelectedSecondCategory: (category: any) => void;

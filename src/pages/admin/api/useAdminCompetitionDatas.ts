@@ -1,39 +1,54 @@
-import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
+import { useFormattedDate } from "shared/hook/useFormattedDate";
 
 type useAdminCompetitionDatas = {
   page: number;
   competitionListLength: any;
-  // secondCategory?: any;
-  // firstCategory?: any;
-  // searchKeyword: string;
-  // startDate: Date | null;
-  // endDate: Date | null;
+  firstCategory?: any;
+  searchKeyword: string;
+  secondCategory?: any;
+  startDate: Date | null;
+  endDate: Date | null;
+  selectedSecondCategory: any;
+  situationList: string[];
 };
 
 export const useAdminCompetitionDatas = (
-  params: useAdminCompetitionDatas
-  // enabled: boolean
+  params: useAdminCompetitionDatas,
+  enabled: boolean
 ) => {
+  const firCategoryKeyMap: { [key: string]: string | null } = {
+    대회명: "title",
+    "유저 이메일": "email",
+    "게시물 아이디": "id",
+  };
+
+  const firCategory = firCategoryKeyMap[params.firstCategory || null];
+
+  // startDate와 endDate가 존재하면 ISO 문자열로 변환 후 시간 부분을 제거하여 사용
+  const formattedStartDate = useFormattedDate(params.startDate);
+  const formattedEndDate = useFormattedDate(params.endDate);
+
   return useQuery({
-    queryKey: ["adminCompetition"],
+    queryKey: ["adminCompetition", params],
     queryFn: () =>
       Api.get("/v1/api/competition/admin/list", {
         params: {
           page: params.page - 1,
           size: params.competitionListLength,
+          searchType: firCategory,
+          searchKey: params.searchKeyword || null,
+          division: params.selectedSecondCategory,
+          filterStartDate: formattedStartDate,
+          filterEndDate: formattedEndDate,
+          situation: params.situationList,
         },
       }),
-    // enabled,
+    enabled,
   });
 };
-// searchKey 미입력 시 title
-// division 미입력 시 전체
-// situation 미입력 시 전체
-// page 미입력 시 0
-// size 미입력 시 20
 
 export const useAdminCompetitionTotal = () => {
   return useQuery({

@@ -13,9 +13,22 @@ export const fircompetitioncategory = [
 
 export const seccompetitioncategory = [
   { list: "전체" },
-  { list: "종별 A" },
-  { list: "종별 B" },
-  { list: "종별 C" },
+  { list: "루키" },
+  { list: "중등부" },
+  { list: "고등부" },
+  { list: "초등부" },
+  { list: "대학부" },
+  { list: "디비전3" },
+  { list: "디비전4" },
+  { list: "40대부" },
+  { list: "마인부" },
+];
+
+export const situationList = [
+  { list: "전체" },
+  { list: "예정" },
+  { list: "진행중" },
+  { list: "완료" },
 ];
 
 export const competitionListTitles = [

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./AdminCompetitionListData.module.css";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
-
 import {
   AdminCompetitionListProps,
   CompetitionListsType,
@@ -59,6 +58,7 @@ export const AdminCompetitionListData = ({
       }
     );
   };
+  
   //삭제
 
   // FINISH 결과
