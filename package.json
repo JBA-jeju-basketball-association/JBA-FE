@@ -53,7 +53,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:https": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start",
-    "start:https-cross-env": "cross-env HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start",
+    "start:https-set": "set HTTPS=true&& set SSL_CRT_FILE=localhost.pem&& set SSL_KEY_FILE=localhost-key.pem&& yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
