@@ -28,7 +28,7 @@ export const situationList = [
   { list: "전체" },
   { list: "예정" },
   { list: "진행중" },
-  { list: "완료" },
+  { list: "종료" },
 ];
 
 export const competitionListTitles = [

@@ -74,3 +74,20 @@ export const useAdminCompetitionDelete = () => {
   });
   return deleteCompetition;
 };
+
+export const useAdminScheduleDelete = () => {
+  const queryClient = useQueryClient();
+  const deleteSchedule = useMutation({
+    mutationKey: ["adminScheduleDelete"],
+    mutationFn: (competitionId: string) =>
+      Api.delete(`/v1/api/competition/delete/schedule/${competitionId}`),
+    onSuccess: () => {
+      confirmAlert("success", "삭제되었습니다.");
+      queryClient.invalidateQueries({ queryKey: ["adminCompetition"] });
+    },
+    onError: () => {
+      confirmAlert("error", "삭제에 실패했습니다.");
+    },
+  });
+  return deleteSchedule;
+};

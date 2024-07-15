@@ -53,7 +53,7 @@ export const AdminCompetition = () => {
   );
 
   const handleNavigateToUploadPage = () => {
-    window.open("/competition/post", "_blank");
+    window.open("/competition/post");
   };
 
   const handleSearch = () => {
