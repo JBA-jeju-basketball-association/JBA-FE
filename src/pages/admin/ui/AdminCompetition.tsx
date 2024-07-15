@@ -61,7 +61,15 @@ export const AdminCompetition = () => {
     refetch();
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    setSelectedfirstCategory(fircompetitioncategory[0]);
+    setSelectedSecondCategory(seccompetitioncategory[0]);
+    setSearchKeyword("");
+    setStartDate(null);
+    setEndDate(null);
+    setIsEnabled(false);
+    refetch();
+  };
 
   const adminCompetitionData = adminCompetitionDatas?.data.data ?? [];
   //대회 상세 데이터

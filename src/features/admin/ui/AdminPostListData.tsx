@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./AdminPostListData.module.css";
 import Button from "shared/ui/button";
-import { useNavigate } from "react-router-dom";
 import { AdminPostListProps, PostListsType } from "shared/type/AdminType";
 import {
   useAdminPostDelete,
@@ -15,8 +14,6 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   const { mutate: changeAnnouncement } = useAdminchangeAnnouncement();
   const { mutate: deletePost } = useAdminPostDelete();
 
-  const navigate = useNavigate();
-
   const isAnnouncement = (isAnnouncement: boolean) =>
     isAnnouncement ? "공지" : "공지 안함";
 
@@ -25,12 +22,12 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
   const truncateString = useTruncateString();
 
   const handleNavigateToDetailPage = (postId: number, category: string) => {
-    navigate(`/post/${category}/${postId}`);
+    window.open(`/post/${category}/${postId}`);
   };
   //상세페이지 이동
 
   const handleNavigateToEditPage = (postId: number, category: string) => {
-    navigate(`/post/${category}/${postId}/update`);
+    window.open(`/post/${category}/${postId}/update`);
   };
   //수정페이지 이동
 

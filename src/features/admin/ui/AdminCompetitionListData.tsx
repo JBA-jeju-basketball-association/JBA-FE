@@ -48,8 +48,20 @@ export const AdminCompetitionListData = ({
   };
   //상세페이지 이동
 
-  const handleNavigateToResultUpload = (competitionId: string) => {
-    window.open(`/competition/post/result/${competitionId}`);
+  const handleNavigateToResultUpload = (
+    competitionId: string,
+    phase: string
+  ) => {
+    switch (phase) {
+      case "INFO":
+        return window.open(`/competition/post/schedule/${competitionId}`);
+
+      case "SCHEDULE":
+        return window.open(`/competition/post/schedule/${competitionId}`);
+
+      default:
+        return "";
+    }
   };
   //대회결과등록 페이지
 
@@ -114,12 +126,26 @@ export const AdminCompetitionListData = ({
               >
                 삭제
               </Button>
-              <Button
-                className={styles.resultBtn}
-                onClick={() => handleNavigateToResultUpload(list.competitionId)}
-              >
-                대회결과 등록
-              </Button>
+              {list.phase === "INFO" && (
+                <Button
+                  className={styles.resultBtn}
+                  onClick={() =>
+                    handleNavigateToResultUpload(list.competitionId, list.phase)
+                  }
+                >
+                  대회일정 수정
+                </Button>
+              )}
+              {list.phase === "SCHEDULE" && (
+                <Button
+                  className={styles.resultBtn}
+                  onClick={() =>
+                    handleNavigateToResultUpload(list.competitionId, list.phase)
+                  }
+                >
+                  대회결과 수정
+                </Button>
+              )}
             </span>
             <span>{list.situation}</span>
             <span>{list.divisions}</span>

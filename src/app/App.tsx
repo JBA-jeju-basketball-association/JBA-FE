@@ -32,7 +32,7 @@ import { JbaHistoryPage } from "../pages/jbaHistoryPage/JbaHistoryPage";
 import { Header } from "../widgets/header";
 import { Admin } from "../pages/admin";
 import QueryProvider from "utils/query/queryProvider";
-import {SignUpPage} from "../pages/signUp";
+import { SignUpPage } from "../pages/signUp";
 import { FaqPage } from "pages/faqPage";
 import { ChairmanPage } from "pages/chairmanPage";
 
@@ -47,15 +47,30 @@ function App() {
       <div className={style.wrapper}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="signup" element={<SignUpPage />}/>
+          <Route path="signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route element={<PrivateRoute />}>
             <Route path="/competition/post" element={<PostCompetitionPage />} />
-            <Route path="/competition/post/schedule/:id" element={<PostCompetitionSchedulePage/>}/>
-            <Route path="/competition/post/result/:id" element={<PostCompetitionResultPage/>}/>
-            <Route path="/competition/update/:id" element={<UpdateCompetitionPage/>}/>
-            <Route path="/competition/update/schedule/:id" element={<UpdateCompetitionSchedulePage/>}/>
-            <Route path="/competition/update/result/:id" element={<UpdateCompetitionResultPage />}/>
+            <Route
+              path="/competition/post/schedule/:id"
+              element={<PostCompetitionSchedulePage />}
+            />
+            <Route
+              path="/competition/post/result/:id"
+              element={<PostCompetitionResultPage />}
+            />
+            <Route
+              path="/competition/update/:id"
+              element={<UpdateCompetitionPage />}
+            />
+            <Route
+              path="/competition/update/schedule/:id"
+              element={<UpdateCompetitionSchedulePage />}
+            />
+            <Route
+              path="/competition/update/result/:id"
+              element={<UpdateCompetitionResultPage />}
+            />
             <Route path={"/post/:category/add"} element={<AddPostPage />} />
             <Route
               path={"/post/:category/:postId/update"}
@@ -73,21 +88,18 @@ function App() {
             <Route path={"/admin/:menu"} element={<Admin />} />
           </Route>
           <Route path="/competition" element={<CompetitionPage />} />
-          <Route path={"/competition/:id"} element={<CompetitionDetailPage />}/>
+          <Route
+            path={"/competition/:id"}
+            element={<CompetitionDetailPage />}
+          />
           <Route path={"/gallery"} element={<GalleryPage />} />
           <Route path={"/post/:category"} element={<PostListPage />} />
           <Route
             path={"/post/:category/:postId"}
             element={<PostDetailPage />}
           />
-          <Route
-            path={"/community/faq"}
-            element={<FaqPage/>}
-          />
-          <Route
-            path={"/about/chairman"}
-            element={<ChairmanPage/>}
-          />
+          <Route path={"/community/faq"} element={<FaqPage />} />
+          <Route path={"/about/chairman"} element={<ChairmanPage />} />
         </Routes>
       </div>
       {!isAdminRoute && <Footer />}

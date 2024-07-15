@@ -32,7 +32,7 @@ export const AdminGalleryListData = ({
   //상세페이지 이동
 
   const handleNavigateToEditPage = (galleryId: number) => {
-    navigate(`/admin/galleryedit/${galleryId}`);
+    window.open(`/admin/galleryedit/${galleryId}`);
   };
   //수정페이지 이동
 
