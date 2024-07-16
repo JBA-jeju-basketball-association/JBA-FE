@@ -88,3 +88,61 @@ export type PostListsType = {
 export type AdminPostListProps = titlesType & {
   lists: PostListsType[];
 };
+
+//관리자페이지 유저리스트 타입들
+
+export type UserListsType = {
+  createAt: string;
+  dateOfBirth: string;
+  deleteAt: string | null;
+  email: string;
+  failureCount: number;
+  gender: string;
+  lockAt: string | null;
+  loginAt: string | null;
+  name: string;
+  permission: string;
+  phoneNum: string;
+  team: string;
+  updateAt: string | null;
+  userId: number;
+  userStatus: string;
+};
+
+export type AdminUserListProps = titlesType & {
+  lists: UserListsType[];
+};
+
+//관리자페이지 대회 타입들
+
+export type competitionFile = {
+  competitionAttachedFileId: number;
+  fileName: string;
+  filePath: string;
+};
+
+export type divisionType = {};
+
+export type CompetitionListsType = {
+  competitionId: string;
+  userEmail: string;
+  situation: string;
+  divisions: any;
+  //divisions 수정하기
+  competitionName: string;
+  startDate: string | null;
+  endDate: string | null;
+  content: string;
+  link: string | undefined;
+  files: competitionFile[];
+  status: string;
+  createAt: string;
+  updateAt: string | null;
+  deleteAt: string | null;
+
+  phase: string;
+};
+
+export type AdminCompetitionListProps = titlesType & {
+  lists: CompetitionListsType[];
+};

@@ -105,8 +105,6 @@ export const GalleryDetailModal = ({
 }: GalleryDetailModalProps) => {
   const { title, files } = galleryDetail ?? { title: "", files: [] };
   const dotsRef = useRef<HTMLUListElement>(null);
-  const navigate = useNavigate();
-  const { AccessToken } = useUserStore();
 
   const settings = {
     dots: true,

@@ -6,6 +6,7 @@ import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWi
 import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 import { AdminGalleryListProps, GalleryListsType } from "shared/type/AdminType";
 import { useGalleryModalStore } from "shared/model";
+import { useTruncateString } from "shared/hook/useTruncateString";
 
 export const AdminGalleryListData = ({
   titles,
@@ -20,6 +21,8 @@ export const AdminGalleryListData = ({
   const { setForceModalOpen, setGalleryIdFromMain }: any = useGalleryModalStore(
     (state) => state
   );
+  const truncateString = useTruncateString();
+
 
   const handleNavigateToDetailPage = (galleryId: number) => {
     setForceModalOpen(true);
@@ -29,7 +32,7 @@ export const AdminGalleryListData = ({
   //상세페이지 이동
 
   const handleNavigateToEditPage = (galleryId: number) => {
-    navigate(`/admin/galleryedit/${galleryId}`);
+    window.open(`/admin/galleryedit/${galleryId}`);
   };
   //수정페이지 이동
 
@@ -84,7 +87,7 @@ export const AdminGalleryListData = ({
               className={styles.titleSpan}
               onClick={() => handleNavigateToDetailPage(list.galleryId)}
             >
-              {list.title}
+              {truncateString(list.title, 10)}
             </span>
             <span>{list.galleryStatus}</span>
             <span>{list.createAt}</span>

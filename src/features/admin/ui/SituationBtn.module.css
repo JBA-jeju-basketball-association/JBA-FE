@@ -1,0 +1,22 @@
+.btn {
+  width: 60px;
+  height: 35px;
+  background: white;
+  color: var(--subcolor-black1);
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+/* 기본 */
+
+.selectBtn {
+  width: 60px;
+  height: 35px;
+  background: var(--subcolor-black1);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}

@@ -6,7 +6,7 @@ import {
   secGallerycategory,
 } from "pages/admin/adminUtils/adminGalleryTitle";
 
-interface AdminPostState {
+interface AdminGalleryState {
   page: number;
   selectedCategory: any;
   selectedfirstCategory: Category;
@@ -14,8 +14,8 @@ interface AdminPostState {
   selectedSecondCategory: Category;
   startDate: Date | null;
   endDate: Date | null;
-  setPage: any;
-  setSelectedCategory: (category: any) => void;
+  setPage: (page: any) => void;
+  setSelectedCategory: (category: Category) => void;
   setSelectedfirstCategory: (category: any) => void;
   setSearchKeyword: (keyword: string) => void;
   setSelectedSecondCategory: (category: any) => void;
@@ -23,7 +23,7 @@ interface AdminPostState {
   setEndDate: any;
 }
 
-export const useAdminGalleryStore = create<AdminPostState>((set) => ({
+export const useAdminGalleryStore = create<AdminGalleryState>((set) => ({
   page: 1,
   selectedCategory: galleryListLength[0],
   selectedfirstCategory: firGallerycategory[0],

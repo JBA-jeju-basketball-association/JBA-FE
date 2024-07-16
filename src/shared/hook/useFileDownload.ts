@@ -1,11 +1,12 @@
+import confirmAlert from "shared/lib/ConfirmAlert";
 /**
  * 지정된 URL에서 파일을 다운로드하고 브라우저에서 다운로드를 트리거.
  * 'application/octet-stream' MIME 타입을 사용하여 다양한 파일 형식을 처리가능.
  * @example
- * 
+ *
  * const { fileDownload } = useFileDownload();
  * 구조분해할당으로 fileDownload 함수를 가져옵니다.
- * 파일의 url과 name을 인자로 넘겨준다. 
+ * 파일의 url과 name을 인자로 넘겨준다.
  * fileDownload("fileurl", "filename");
  *
  * @async
@@ -16,23 +17,33 @@
 
 export const useFileDownload = () => {
   const fileDownload = async (url: string, name: string) => {
-    const res = await fetch(url);
-    const arrayBuffer = await res.arrayBuffer();
-    //fetch로 데이터를 가져온 후 arrayBuffer로 변환
-    const blob = new Blob([arrayBuffer], { type: "application/octet-stream" });
-    const blobURL = URL.createObjectURL(blob);
-    //객체 URL을 생성하여 반환
-    const a = document.createElement("a");
-    //a태그 생성
-    a.href = blobURL;
-    a.style.display = "none";
-    if (name && name.length) {
-      a.download = name;
-    }
+    try {
+      const res = await fetch(url);
+      const arrayBuffer = await res.arrayBuffer();
+      //fetch로 데이터를 가져온 후 arrayBuffer로 변환
+      console.log("arrayBuffer", arrayBuffer);
+      const blob = new Blob([arrayBuffer], {
+        type: "application/octet-stream",
+      });
+      console.log("blob", blob);
+      const blobURL = URL.createObjectURL(blob);
+      console.log("blobUrl", blobURL);
+      //객체 URL을 생성하여 반환
+      const a = document.createElement("a");
+      //a태그 생성
+      a.href = blobURL;
+      a.style.display = "none";
+      if (name && name.length) {
+        a.download = name;
+      }
 
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (e) {
+      console.error(e);
+      confirmAlert("error", "첨부파일 다운로드 에러 발생");
+    }
   };
   return { fileDownload };
 };
