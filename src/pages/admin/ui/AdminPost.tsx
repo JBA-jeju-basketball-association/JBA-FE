@@ -53,7 +53,7 @@ export const AdminPost = () => {
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
 
   const handleNavigateToUploadPage = () => {
-    navigate("/post/notice/add");
+    window.open("/post/notice/add", "_blank");
   };
 
   const handleSearch = () => {
@@ -68,6 +68,10 @@ export const AdminPost = () => {
     setStartDate(null);
     setEndDate(null);
     setIsEnabled(false);
+  };
+
+  const downloadExcel = () => {
+    console.log("excel download");
   };
 
   return (
@@ -111,6 +115,9 @@ export const AdminPost = () => {
             >
               게시물 등록
             </Button>
+            <Button className={styles.uploadBtn} onClick={downloadExcel}>
+              엑셀 다운로드
+            </Button>
           </div>
         </div>
         <AdminPostListData
@@ -124,3 +131,4 @@ export const AdminPost = () => {
 };
 
 //현재 카테고리 선택으로 렌더링됨 -> 고치기
+//formprovider 바꾸기

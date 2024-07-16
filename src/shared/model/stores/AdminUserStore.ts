@@ -1,13 +1,12 @@
-
 import { create } from "zustand";
 import { Category } from "shared/type/AdminType";
 import {
-  postListLength,
-  firPostcategory,
-  secPostcategory,
-} from "pages/admin/adminUtils/adminPostTitle";
+  userListLength,
+  firUsercategory,
+  secUsercategory,
+} from "pages/admin/adminUtils/adminUserTitle";
 
-interface AdminPostState {
+interface AdminUserState {
   page: number;
   selectedCategory: any;
   selectedfirstCategory: Category;
@@ -25,12 +24,12 @@ interface AdminPostState {
 }
 //여기는 타입을 지정해주고
 
-export const useAdminPostStore = create<AdminPostState>((set) => ({
+export const useAdminUserStore = create<AdminUserState>((set) => ({
   page: 1,
-  selectedCategory: postListLength[0],
-  selectedfirstCategory: firPostcategory[0],
+  selectedCategory: userListLength[0],
+  selectedfirstCategory: firUsercategory[0],
   searchKeyword: "",
-  selectedSecondCategory: secPostcategory[0],
+  selectedSecondCategory: secUsercategory[0],
   startDate: null,
   endDate: null,
   setPage: (page: any) => set({ page }),
@@ -40,7 +39,7 @@ export const useAdminPostStore = create<AdminPostState>((set) => ({
   setSearchKeyword: (keyword) => set({ searchKeyword: keyword }),
   setSelectedSecondCategory: (category) =>
     set({ selectedSecondCategory: category }),
-  setStartDate: (date:any) => set({ startDate: date }),
-  setEndDate: (date:any) => set({ endDate: date }),
+  setStartDate: (date: any) => set({ startDate: date }),
+  setEndDate: (date: any) => set({ endDate: date }),
 }));
 //여기는 상태를 지정해주는 부분이다.(초깃값)

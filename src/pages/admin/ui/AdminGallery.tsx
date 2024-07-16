@@ -38,21 +38,24 @@ export const AdminGallery = () => {
   } = useAdminGalleryStore();
   const [isEnabled, setIsEnabled] = useState(false);
 
-  const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas({
-    page,
-    galleryListLength: selectedCategory.list,
-    firstCategory: selectedfirstCategory.list,
-    searchKeyword,
-    secondCategory: selectedSecondCategory.list,
-    startDate,
-    endDate,
-  },isEnabled);
+  const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas(
+    {
+      page,
+      galleryListLength: selectedCategory.list,
+      firstCategory: selectedfirstCategory.list,
+      searchKeyword,
+      secondCategory: selectedSecondCategory.list,
+      startDate,
+      endDate,
+    },
+    isEnabled
+  );
 
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
 
   const handleNavigateToUploadPage = () => {
-    navigate("/admin/galleryupload");
+    window.open("/admin/galleryupload", "_blank");
   };
 
   const handleSearch = () => {
