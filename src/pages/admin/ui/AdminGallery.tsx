@@ -122,7 +122,7 @@ export const AdminGallery = () => {
               <CSVLink
                 headers={galleryCsv}
                 data={galleryCsvData}
-                filename="galleryn.xlsx"
+                filename="gallery.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드

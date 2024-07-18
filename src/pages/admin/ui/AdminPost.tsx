@@ -121,7 +121,7 @@ export const AdminPost = () => {
               <CSVLink
                 headers={postCsv}
                 data={PostCsvData}
-                filename="posts.xlsx"
+                filename="posts.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드

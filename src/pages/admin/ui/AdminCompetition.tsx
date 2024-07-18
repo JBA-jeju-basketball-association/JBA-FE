@@ -133,7 +133,7 @@ export const AdminCompetition = () => {
               <CSVLink
                 headers={competitionCsv}
                 data={CompetitionCsvData}
-                filename="Competition.xlsx"
+                filename="Competition.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드

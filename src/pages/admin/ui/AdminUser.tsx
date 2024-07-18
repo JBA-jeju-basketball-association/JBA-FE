@@ -108,7 +108,7 @@ export const AdminUser = () => {
               <CSVLink
                 headers={userCsv}
                 data={adminUserData.content}
-                filename="user.xlsx"
+                filename="user.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드
