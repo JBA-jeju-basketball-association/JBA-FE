@@ -100,6 +100,13 @@ export const AdminCompetitionListData = ({
   };
 
   //일정 또는 결과 삭제 시 phase는 정보등록으로 바뀜
+  //첨부파일이 다운로드 되려면 url이 이어져야함
+
+  const sliceUrl = (filePath: string) => filePath.split("/").pop();
+
+  const handleDownload = (filePath: string) => {
+    window.open(filePath, "_blank");
+  };
 
   return (
     <div className={styles.container}>
@@ -169,6 +176,8 @@ export const AdminCompetitionListData = ({
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
+                      // href={file.filePath}
+                      // download={file.fileName}
                       onClick={(e) => {
                         e.preventDefault();
                         fileDownload(file.filePath, file.fileName);
