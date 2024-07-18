@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./AdminGallery.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -13,12 +13,10 @@ import {
 } from "../adminUtils/adminGalleryTitle";
 import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
 import Button from "shared/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
 
 export const AdminGallery = () => {
   //몇개씩 조회할건지 내려주는 state
-  const navigate = useNavigate();
 
   const {
     page,

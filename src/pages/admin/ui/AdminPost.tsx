@@ -7,14 +7,15 @@ import {
   postLabel,
   firPostcategory,
   secPostcategory,
+  postCsv,
 } from "../adminUtils/adminPostTitle";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminPostListData } from "features/admin/";
 import { useAdminPostDatas } from "../api/useAdminPostDatas";
 import Button from "shared/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
+import { CSVLink } from "react-csv";
 
 export const AdminPost = () => {
   const {
@@ -35,7 +36,6 @@ export const AdminPost = () => {
   } = useAdminPostStore();
 
   const [isEnabled, setIsEnabled] = useState(false);
-  const navigate = useNavigate();
   const { data: adminPostDatas, refetch } = useAdminPostDatas(
     {
       page,
@@ -70,9 +70,16 @@ export const AdminPost = () => {
     setIsEnabled(false);
   };
 
-  const downloadExcel = () => {
-    console.log("excel download");
+  const flattenPostsData = (posts: any) => {
+    return posts?.map((post: any) => ({
+      ...post,
+      files: post.files.map((file: any) => file.fileName).join(", "),
+    }));
   };
+
+  // 평탄화된 데이터
+  const flatAdminPostData = flattenPostsData(adminPostData.posts);
+  console.log(flatAdminPostData);
 
   return (
     <div className={styles.container}>
@@ -108,16 +115,23 @@ export const AdminPost = () => {
             </div>
             개씩 보기
           </div>
-          <div>
+          <div className={styles.BtnWrapper}>
             <Button
               className={styles.uploadBtn}
               onClick={handleNavigateToUploadPage}
             >
               게시물 등록
             </Button>
-            <Button className={styles.uploadBtn} onClick={downloadExcel}>
-              엑셀 다운로드
-            </Button>
+            {flatAdminPostData && (
+              <CSVLink
+                headers={postCsv}
+                data={flatAdminPostData}
+                filename="posts.csv"
+                className={styles.csvBtn}
+              >
+                엑셀 다운로드
+              </CSVLink>
+            )}
           </div>
         </div>
         <AdminPostListData
@@ -132,3 +146,5 @@ export const AdminPost = () => {
 
 //현재 카테고리 선택으로 렌더링됨 -> 고치기
 //formprovider 바꾸기
+//headers에는 title가 들어가고
+//data에는 lists가들어감
