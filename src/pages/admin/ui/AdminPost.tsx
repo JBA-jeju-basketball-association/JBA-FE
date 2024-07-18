@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AdminPost.module.css";
 import { AdminSearchForm } from "features/admin/";
 import {
@@ -16,8 +16,12 @@ import { useAdminPostDatas } from "../api/useAdminPostDatas";
 import Button from "shared/ui/button";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 import { CSVLink } from "react-csv";
+import { useFlattenData } from "shared/hook/useFlattenData";
 
 export const AdminPost = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const flattenDatas = useFlattenData();
+
   const {
     page,
     setPage,
@@ -35,7 +39,6 @@ export const AdminPost = () => {
     setEndDate,
   } = useAdminPostStore();
 
-  const [isEnabled, setIsEnabled] = useState(false);
   const { data: adminPostDatas, refetch } = useAdminPostDatas(
     {
       page,
@@ -70,16 +73,8 @@ export const AdminPost = () => {
     setIsEnabled(false);
   };
 
-  const flattenPostsData = (posts: any) => {
-    return posts?.map((post: any) => ({
-      ...post,
-      files: post.files.map((file: any) => file.fileName).join(", "),
-    }));
-  };
-
   // 평탄화된 데이터
-  const flatAdminPostData = flattenPostsData(adminPostData.posts);
-  console.log(flatAdminPostData);
+  const PostCsvData = flattenDatas(adminPostData.posts);
 
   return (
     <div className={styles.container}>
@@ -115,18 +110,18 @@ export const AdminPost = () => {
             </div>
             개씩 보기
           </div>
-          <div className={styles.BtnWrapper}>
+          <div>
             <Button
               className={styles.uploadBtn}
               onClick={handleNavigateToUploadPage}
             >
               게시물 등록
             </Button>
-            {flatAdminPostData && (
+            {PostCsvData && (
               <CSVLink
                 headers={postCsv}
-                data={flatAdminPostData}
-                filename="posts.csv"
+                data={PostCsvData}
+                filename="posts.xlsx"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드

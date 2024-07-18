@@ -10,11 +10,13 @@ import {
   competitionListTitles,
   fircompetitioncategory,
   seccompetitioncategory,
+  competitionCsv,
 } from "pages/admin/adminUtils/adminCompetitionTitle";
 import { useAdminCompetitionStore } from "shared/model/stores/AdminCompetitionStore";
 import { useAdminCompetitionDatas } from "pages/admin/api/useAdminCompetitionDatas";
 import { AdminSearchForm } from "features/admin";
 import { SituationBtn } from "features/admin";
+import { CSVLink } from "react-csv";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -76,6 +78,15 @@ export const AdminCompetition = () => {
   const totalPage = adminCompetitionDatas?.data.data ?? 0;
   //대회 데이터 총 페이지
 
+  const flattenCompetition = (content: any) => {
+    return content?.map((data: any) => ({
+      ...data,
+      files: data.files.map((file: any) => file.filePath),
+    }));
+  };
+
+  const CompetitionCsvData = flattenCompetition(adminCompetitionData.content);
+
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>
@@ -118,6 +129,16 @@ export const AdminCompetition = () => {
             >
               대회 등록
             </Button>
+            {CompetitionCsvData && (
+              <CSVLink
+                headers={competitionCsv}
+                data={CompetitionCsvData}
+                filename="Competition.xlsx"
+                className={styles.csvBtn}
+              >
+                엑셀 다운로드
+              </CSVLink>
+            )}
           </div>
         </div>
         <AdminCompetitionListData
