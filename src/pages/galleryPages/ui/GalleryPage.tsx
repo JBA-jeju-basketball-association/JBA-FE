@@ -3,14 +3,12 @@ import { GalleryCardList } from "entities/gallery";
 import styles from "./GalleryPage.module.css";
 import { Pagination } from "widgets/pagination";
 import { SearchBar } from "widgets/searchBar";
-import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/RegitUpdateDeleteButton";
 import { GalleryCardType } from "shared/type/GalleryType";
 import { PageTitle } from "shared/ui";
 import { useNavigate } from "react-router-dom";
-import { JwtDecoder } from "shared/lib";
 import { useUserStore } from "shared/model";
 import { useGalleryDatas } from "../api/useGalleryDatas";
-import { ListErrorRow } from "../../../shared/ui/listErrorRow/ListErrorRow";
+import { LoadingSpinner } from "shared/ui";
 
 export const GalleryPage = () => {
   const [page, setPage] = useState(1);
@@ -18,7 +16,11 @@ export const GalleryPage = () => {
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
 
-  const { data: galleryData, refetch } = useGalleryDatas({
+  const {
+    data: galleryData,
+    refetch,
+    isLoading,
+  } = useGalleryDatas({
     page,
     searchKeyword,
   });
@@ -34,6 +36,10 @@ export const GalleryPage = () => {
   useEffect(() => {
     refetch();
   }, [searchKeyword]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className={styles.container}>
