@@ -2,7 +2,7 @@ export const useFlattenData = () => {
   const flattenDatas = (datas: any) => {
     return datas?.map((data: any) => ({
       ...data,
-      files: data.files.map((file: any) => file.fileUrl),
+      files: data.files.map((file: any) => file.fileUrl).join(","),
     }));
   };
   return flattenDatas;

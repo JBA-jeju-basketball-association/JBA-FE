@@ -81,11 +81,12 @@ export const AdminCompetition = () => {
   const flattenCompetition = (content: any) => {
     return content?.map((data: any) => ({
       ...data,
-      files: data.files.map((file: any) => file.filePath),
+      files: data.files.map((file: any) => file.filePath).join(","),
     }));
   };
 
   const CompetitionCsvData = flattenCompetition(adminCompetitionData.content);
+  console.log(CompetitionCsvData)
 
   return (
     <div className={styles.container}>
