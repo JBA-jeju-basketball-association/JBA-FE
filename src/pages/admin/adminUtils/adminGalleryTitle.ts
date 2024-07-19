@@ -27,3 +27,14 @@ export const galleryListTitles = [
   "최종 수정 일시",
   "삭제 일시",
 ];
+
+export const galleryCsv = [
+  { label: "갤러리 아이디", key: "galleryId" },
+  { label: "유저 이메일", key: "email" },
+  { label: "조회 권한", key: "isOfficial" },
+  { label: "제목", key: "title" },
+  { label: "상태", key: "galleryStatus" },
+  { label: "등록 일시", key: "createAt" },
+  { label: "최종 수정 일시", key: "updateAt" },
+  { label: "삭제 일시", key: "deleteAt" },
+];

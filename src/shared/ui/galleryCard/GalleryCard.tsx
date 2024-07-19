@@ -6,7 +6,6 @@ import { GalleryDetailModal } from "features/gallery";
 import { NormalApi } from "shared/api";
 import { useGalleryModalStore } from "shared/model/stores/GalleryModalStore";
 import { useGalleryDetailData } from "pages/galleryPages/api/useGalleryDetailData";
-import { useNavigate } from "react-router-dom";
 
 export const GalleryCard = ({
   title,
@@ -15,7 +14,6 @@ export const GalleryCard = ({
   createAt,
 }: GalleryCardType) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
 
   const { data: galleryDetailData } = useGalleryDetailData({
     galleryId,

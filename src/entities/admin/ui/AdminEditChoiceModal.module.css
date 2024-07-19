@@ -1,0 +1,42 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.container > h1 {
+  font-size: 30px;
+}
+
+.container > p {
+  font-size: 20px;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btnStyles {
+  width: 150px;
+  height: 48px;
+}
+
+.detailBtn {
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.detailBtn:hover {
+  background-color: #E3BE58;
+}
