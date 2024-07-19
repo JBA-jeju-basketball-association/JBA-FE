@@ -58,3 +58,21 @@ export const userPermissionMap = [
   { label: "경기부", value: "table-official" },
   { label: "경기부 이사", value: "table-official-leader" },
 ];
+
+export const userCsv = [
+  { label: "아이디", key: "userId" },
+  { label: "이름", key: "name" },
+  { label: "소속팀", key: "team" },
+  { label: "권한", key: "permission" },
+  { label: "이메일", key: "email" },
+  { label: "휴대폰 번호", key: "phoneNum" },
+  { label: "생년월일", key: "dateOfBirth" },
+  { label: "성별", key: "gender" },
+  { label: "유저 상태", key: "userStatus" },
+  { label: "로그인 일시", key: "loginAt" },
+  { label: "가입 일시", key: "createAt" },
+  { label: "최종 수정 일시", key: "updateAt" },
+  { label: "잠금 일시", key: "lockAt" },
+  { label: "탈퇴 일시", key: "deleteAt" },
+  { label: "로그인 실패 횟수", key: "failureCount" },
+];

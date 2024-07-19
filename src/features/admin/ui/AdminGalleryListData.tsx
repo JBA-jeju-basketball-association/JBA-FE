@@ -23,7 +23,6 @@ export const AdminGalleryListData = ({
   );
   const truncateString = useTruncateString();
 
-
   const handleNavigateToDetailPage = (galleryId: number) => {
     setForceModalOpen(true);
     setGalleryIdFromMain(galleryId);

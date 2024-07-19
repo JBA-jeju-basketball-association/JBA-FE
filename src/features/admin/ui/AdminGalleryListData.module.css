@@ -41,7 +41,7 @@
   font-size: 14px;
   padding-left: 5px;
   overflow: hidden;
-  
+  word-break: break-all;
 }
 
 .btn {

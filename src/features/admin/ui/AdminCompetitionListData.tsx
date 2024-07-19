@@ -22,9 +22,10 @@ export const AdminCompetitionListData = ({
   const [selectCompetition, setSelectCompetition] =
     useState<CompetitionListsType | null>(null);
 
-  const formatDate = (isoDate: any) => {
-    return isoDate.split("T")[0];
-  };
+  const formatDate = (date: string | null) => date?.split("T")[0];
+
+  const deleteT = (date: string | null) => date?.replace("T", " ");
+
   const { fileDownload } = useFileDownload();
   const { mutate: competitionDelete } = useAdminCompetitionDelete();
 
@@ -99,8 +100,6 @@ export const AdminCompetitionListData = ({
     setSelectCompetition(competition);
   };
 
-  //일정 또는 결과 삭제 시 phase는 정보등록으로 바뀜
-
   return (
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
@@ -169,6 +168,8 @@ export const AdminCompetitionListData = ({
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
+                      // href={file.filePath}
+                      // download={file.fileName}
                       onClick={(e) => {
                         e.preventDefault();
                         fileDownload(file.filePath, file.fileName);
@@ -181,9 +182,9 @@ export const AdminCompetitionListData = ({
                 : "없음"}
             </span>
             <span>{competitionStatus(list.status)}</span>
-            <span>{formatDate(list.createAt || "없음")}</span>
-            <span>{formatDate(list.updateAt || "없음")}</span>
-            <span>{formatDate(list.deleteAt || "없음")}</span>
+            <span>{deleteT(list.createAt || "없음")}</span>
+            <span>{deleteT(list.updateAt || "없음")}</span>
+            <span>{deleteT(list.deleteAt || "없음")}</span>
           </div>
         ))}
         <AdminEditChoiceModal
