@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./App.css";
+import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
   PostCompetitionPage,
@@ -44,7 +44,7 @@ function App() {
   return (
     <QueryProvider>
       {!isAdminRoute && <Header />}
-      <div className={style.wrapper}>
+      <div id="wrapper">
         <Routes>
           {/*메인페이지*/}
           <Route path="/" element={<Main />} />

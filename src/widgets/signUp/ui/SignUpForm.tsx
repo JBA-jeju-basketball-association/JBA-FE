@@ -73,9 +73,11 @@ export const SignUpForm = () => {
                        type={"email"} disabled={isCertificate}
                        className={isCertificate ? style.checkedEmail : ""}
                 />
-                {!isCertificate &&
+                {!isCertificate ?
                     <button className={style.confirmBtn}
                             onClick={(e) => sendEmailHandler(e)}>{certificating ? "인증번호 재발송" : "인증번호 발송"}</button>
+                    :
+                    <p className={style.confirmBtn}>인증완료</p>
                 }
             </div>
             {certificating &&

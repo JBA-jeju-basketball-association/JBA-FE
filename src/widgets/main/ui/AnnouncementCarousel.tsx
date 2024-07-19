@@ -9,20 +9,27 @@ import {useQuery} from "@tanstack/react-query";
 import FetchMainAnnouncementList from "../api/FetchMainAnnouncementList";
 import {getMainAnnouncement} from "../../../shared/type/MainType";
 
-export const AnnouncementCarousel = () => {
+type Props = {
+    usingAnnouncementArea: boolean;
+    setUsingAnnouncementArea:  React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const AnnouncementCarousel = ({usingAnnouncementArea,setUsingAnnouncementArea}:Props) => {
     const {data} = useQuery({
         queryKey: ["getMainPostList"],
         queryFn: () => FetchMainAnnouncementList(),
         select: (result) => result?.data.data.posts,
     })
     let postData:getMainAnnouncement[] = data?.slice(0,27);
+    if(postData?.length == 0) {
+        setUsingAnnouncementArea(false)
+    }
 
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: postData?.length > 9,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: Math.min(3, postData?.length || 3),
+        slidesToScroll: Math.min(3, postData?.length || 3),
         rows: 3,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,

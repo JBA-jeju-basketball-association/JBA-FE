@@ -74,9 +74,9 @@ export const LoginPage = () => {
                             </div>
                             <button type="submit" className={style.submitButton}>로그인</button>
                             <Link to="/signup" className={style.signUpLink}>회원가입</Link>
-                            <div className={style.searchBox}>
-                                <Link to="/" className={style.search}>계정 찾기 | 비밀번호 찾기</Link>
-                            </div>
+                            {/*<div className={style.searchBox}>*/}
+                            {/*    <Link to="/" className={style.search}>계정 찾기 | 비밀번호 찾기</Link>*/}
+                            {/*</div>*/}
                         </form>
                     </div>
                 </div>
