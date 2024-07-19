@@ -13,7 +13,10 @@ import {
   competitionCsv,
 } from "pages/admin/adminUtils/adminCompetitionTitle";
 import { useAdminCompetitionStore } from "shared/model/stores/AdminCompetitionStore";
-import { useAdminCompetitionDatas } from "pages/admin/api/useAdminCompetitionDatas";
+import {
+  useAdminCompetitionDatas,
+  useAdminCompetitionCsv,
+} from "pages/admin/api/useAdminCompetitionDatas";
 import { AdminSearchForm } from "features/admin";
 import { SituationBtn } from "features/admin";
 import { CSVLink } from "react-csv";
@@ -54,6 +57,16 @@ export const AdminCompetition = () => {
     isEnabled
   );
 
+  const { data: competitionCsvDatas } = useAdminCompetitionCsv(isEnabled);
+
+  const adminCompetitionData = adminCompetitionDatas?.data.data ?? [];
+  //대회 상세 데이터
+  const totalPage = adminCompetitionDatas?.data.data ?? 0;
+  //대회 데이터 총 페이지
+
+  const csvData = competitionCsvDatas?.data.data.content ?? [];
+  //csv데이터 Size100000
+
   const handleNavigateToUploadPage = () => {
     window.open("/competition/post");
   };
@@ -73,11 +86,6 @@ export const AdminCompetition = () => {
     refetch();
   };
 
-  const adminCompetitionData = adminCompetitionDatas?.data.data ?? [];
-  //대회 상세 데이터
-  const totalPage = adminCompetitionDatas?.data.data ?? 0;
-  //대회 데이터 총 페이지
-
   const flattenCompetition = (content: any) => {
     return content?.map((data: any) => ({
       ...data,
@@ -85,8 +93,7 @@ export const AdminCompetition = () => {
     }));
   };
 
-  const CompetitionCsvData = flattenCompetition(adminCompetitionData.content);
-  console.log(CompetitionCsvData)
+  const competitionCsvData = flattenCompetition(csvData);
 
   return (
     <div className={styles.container}>
@@ -130,10 +137,10 @@ export const AdminCompetition = () => {
             >
               대회 등록
             </Button>
-            {CompetitionCsvData && (
+            {competitionCsvData && (
               <CSVLink
                 headers={competitionCsv}
-                data={CompetitionCsvData}
+                data={competitionCsvData}
                 filename="Competition.csv"
                 className={styles.csvBtn}
               >
