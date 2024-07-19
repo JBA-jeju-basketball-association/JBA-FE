@@ -143,7 +143,4 @@ export const AdminPost = () => {
   );
 };
 
-//현재 카테고리 선택으로 렌더링됨 -> 고치기
-//formprovider 바꾸기
-//headers에는 title가 들어가고
-//data에는 lists가들어감
+
