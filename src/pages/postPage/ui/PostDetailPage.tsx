@@ -8,7 +8,7 @@ import { JwtDecoder } from "../../../shared/lib";
 import { PostImgsType, FilesType } from "shared/type/PostType";
 import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
-import { LoadingSpinner } from "shared/ui";
+import {LoadingSpinner, PageTitle} from "shared/ui";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
@@ -148,7 +148,7 @@ export const PostDetailPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.categoryArea}>
-          <span className={styles.category}>{detailTitle}</span>
+          <PageTitle pageName={detailTitle} />
         </div>
         <ul className={styles.titleArea}>
           {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (

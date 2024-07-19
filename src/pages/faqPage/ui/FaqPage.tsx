@@ -4,6 +4,7 @@ import { SearchBar } from "widgets/searchBar";
 import styles from "./FaqPage.module.css";
 import { mockData } from "../model/mockData";
 import { FAQListTable } from "entities/faqListTable";
+import {PageTitle} from "../../../shared/ui";
 
 export const FaqPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -16,7 +17,7 @@ export const FaqPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.titleArea}>
-          <span className={styles.title}>FAQ</span>
+          <PageTitle pageName={"FAQ"} />
         </div>
         <div className={styles.searchBarArea}>
           <SearchBar
