@@ -75,8 +75,8 @@ export const PostListPage = () => {
           />
         </div>
         {isLoading && <LoadingSpinner />}
-        <PostListTable postListData={postList?.posts} />
-        {postList && (
+        <PostListTable postListData={postList?.posts} totalPosts={postList?.totalPosts}/>
+        {postList && postList.totalPosts != 0 && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
             page={page}

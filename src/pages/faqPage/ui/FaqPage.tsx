@@ -19,12 +19,6 @@ export const FaqPage = () => {
         <div className={styles.titleArea}>
           <PageTitle pageName={"FAQ"} />
         </div>
-        <div className={styles.searchBarArea}>
-          <SearchBar
-            setSearchKeyword={setSearchKeyword}
-            handleSearch={() => findTargetPage()}
-          />
-        </div>
         <FAQListTable mockData={mockData} />
         {mockData && (
           <Pagination
