@@ -94,3 +94,16 @@ export const useAdminchangeAnnouncement = () => {
 
   return changeAnnouncement;
 };
+
+export const useAdminPostCsv = (enabled: boolean) => {
+  return useQuery({
+    queryKey: ["postCsvData"],
+    queryFn: () =>
+      Api.get("v1/api/post/manage", {
+        params: {
+          size: 100000,
+        },
+      }),
+    enabled,
+  });
+};

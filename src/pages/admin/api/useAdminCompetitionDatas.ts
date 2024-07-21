@@ -91,3 +91,16 @@ export const useAdminScheduleDelete = () => {
   });
   return deleteSchedule;
 };
+
+export const useAdminCompetitionCsv = (enabled: boolean) => {
+  return useQuery({
+    queryKey: ["competitionCsvData"],
+    queryFn: () =>
+      Api.get("/v1/api/competition/admin/list", {
+        params: {
+          size: 100000,
+        },
+      }),
+    enabled,
+  });
+};

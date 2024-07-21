@@ -51,3 +51,16 @@ export const useAdminGalleryDatas = (
     enabled,
   });
 };
+
+export const useAdminGalleryCsv = (enabled: boolean) => {
+  return useQuery({
+    queryKey: ["galleryCsvData"],
+    queryFn: () =>
+      Api.get("v1/api/gallery/manage", {
+        params: {
+          size: 100000,
+        },
+      }),
+    enabled,
+  });
+};
