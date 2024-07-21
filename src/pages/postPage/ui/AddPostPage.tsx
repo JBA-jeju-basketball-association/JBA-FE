@@ -10,7 +10,9 @@ import { useMutation } from "@tanstack/react-query";
 import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
 import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
-import {PageTitle} from "../../../shared/ui";
+import { PageTitle } from "../../../shared/ui";
+import axios from "axios";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -53,7 +55,22 @@ export const AddPostPage = () => {
       alert("작성이 완료되었습니다.");
       navigate(`/post/${category}`);
     },
-    onError: (e) => console.log(e),
+    onError: (e) => {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 409) {
+          confirmAlert('warning', '중복된 게시글 제목입니다.')
+        }
+        if (e.response?.status === 403) {
+          confirmAlert('warning', '게시글 작성 권한이 없습니다.')
+        }
+        if (e.response?.status === 400) {
+          confirmAlert('warning', '게시글 제목 또는 내용을 입력해주세요.')
+        }
+        if (e.response?.status === 404) {
+          confirmAlert('warning', '존재하지 않는 작성자입니다.')
+        }
+      }
+    },
   });
 
   const addPost = (params: {
@@ -70,19 +87,19 @@ export const AddPostPage = () => {
     const forewordOption = ForewordOptions.find(
       (option) => option.value === foreword
     );
-      const forewordLabel = forewordOption ? forewordOption.label : '';
-      const requestData: requestPostData = {
-        title,
-        content,
-        foreword: forewordLabel,
-        postImgs,
-      };
-      addPost({
-        category,
-        data: requestData,
-        OfficialState,
-        postFiles,
-      });
+    const forewordLabel = forewordOption ? forewordOption.label : "";
+    const requestData: requestPostData = {
+      title,
+      content,
+      foreword: forewordLabel,
+      postImgs,
+    };
+    addPost({
+      category,
+      data: requestData,
+      OfficialState,
+      postFiles,
+    });
 
     // for (let i: number = 0; i < newCkImgUrls.length; i++) {
     //   if (content.includes(newCkImgUrls[i])) {

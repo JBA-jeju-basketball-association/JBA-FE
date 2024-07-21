@@ -21,7 +21,9 @@ import {
   RemainingFilesType,
   RemainingImgsType,
 } from "shared/type/PostType";
-import {LoadingSpinner, PageTitle} from "shared/ui";
+import { LoadingSpinner, PageTitle } from "shared/ui";
+import axios from "axios";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -92,7 +94,22 @@ export const UpdatePostPage = () => {
       alert("수정이 완료되었습니다.");
       navigate(`/post/${category}`);
     },
-    onError: (e) => console.log(e),
+    onError: (e) => {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 409) {
+          confirmAlert("warning", "중복된 게시글 제목입니다.");
+        }
+        if (e.response?.status === 403) {
+          confirmAlert("warning", "게시글 작성 권한이 없습니다.");
+        }
+        if (e.response?.status === 400) {
+          confirmAlert("warning", "게시글 제목 또는 내용을 입력해주세요.");
+        }
+        if (e.response?.status === 404) {
+          confirmAlert("warning", "존재하지 않는 작성자입니다.");
+        }
+      }
+    },
   });
 
   const editPost = (params: {
