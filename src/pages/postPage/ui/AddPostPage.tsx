@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
@@ -39,9 +39,11 @@ export const AddPostPage = () => {
   const [postImgs, setPostImgs] = useState<PostImgsType[]>([]);
   const [postFiles, setPostFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+  const [fileName, setFileName] = useState<string[]>([]);
 
   const navigate = useNavigate();
   let { category } = useParams();
+  const inputRef = useRef<HTMLInputElement>(null);
   const detailTitle =
     category === "notice"
       ? "공지사항"
@@ -58,16 +60,16 @@ export const AddPostPage = () => {
     onError: (e) => {
       if (axios.isAxiosError(e)) {
         if (e.response?.status === 409) {
-          confirmAlert('warning', '중복된 게시글 제목입니다.')
+          confirmAlert("warning", "중복된 게시글 제목입니다.");
         }
         if (e.response?.status === 403) {
-          confirmAlert('warning', '게시글 작성 권한이 없습니다.')
+          confirmAlert("warning", "게시글 작성 권한이 없습니다.");
         }
         if (e.response?.status === 400) {
-          confirmAlert('warning', '게시글 제목 또는 내용을 입력해주세요.')
+          confirmAlert("warning", "게시글 제목 또는 내용을 입력해주세요.");
         }
         if (e.response?.status === 404) {
-          confirmAlert('warning', '존재하지 않는 작성자입니다.')
+          confirmAlert("warning", "존재하지 않는 작성자입니다.");
         }
       }
     },
@@ -139,6 +141,16 @@ export const AddPostPage = () => {
   //   // 2. 담기 성공하면 setPostFile로 상태 변경
   //   setPostFiles();
   // };
+  // console.log(inputRef.current?.files, "---inputRef---");
+
+  useEffect(() => {
+    if (inputRef.current?.files) {
+      const files = inputRef.current?.files;
+      for (let i = 0; i < files.length; i++) {
+        setFileName((prev) => [...prev, files[i].name]);
+      }
+    }
+  }, [postFiles]);
 
   return (
     <div className={styles.container}>
@@ -193,13 +205,24 @@ export const AddPostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <input
-                type="file"
-                name="uploadFile"
-                id="uploadFile"
-                multiple
-                onChange={(e) => setPostFiles(e.target.files)}
-              />
+              <div className={styles.uploadFileWrapper}>
+                <span className={styles.uploadFileTitle}>첨부파일</span>
+                <div>
+                  {!!fileName.length ? (
+                    fileName.map((item, i) => <div className={styles.uploadFileItem} key={i}>{item}</div>)
+                  ) : (
+                    <input
+                      ref={inputRef}
+                      className={styles.uploadFile}
+                      type="file"
+                      name="uploadFile"
+                      id="uploadFile"
+                      multiple
+                      onChange={(e) => setPostFiles(e.target.files)}
+                    />
+                  )}
+                </div>
+              </div>
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>
@@ -209,7 +232,6 @@ export const AddPostPage = () => {
                   className={styles.buttonCancel}
                   type="button"
                   onClick={() => navigate(`/post/${category}`)}
-                  // onClick={() => alert("작성이 취소되었습니다.")}
                 >
                   취소
                 </Button>

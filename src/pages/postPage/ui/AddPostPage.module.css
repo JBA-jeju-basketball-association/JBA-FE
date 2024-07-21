@@ -128,3 +128,19 @@
 .buttonCancel:hover {
   background-color: var(--subcolor-black4);
 }
+.uploadFile {
+  width: 250px;
+  border: none;
+}
+
+.uploadFileWrapper {
+  display: flex;
+}
+
+.uploadFileTitle {
+  margin-right: 20px;
+}
+
+.uploadFileItem{
+  text-decoration: underline;
+}

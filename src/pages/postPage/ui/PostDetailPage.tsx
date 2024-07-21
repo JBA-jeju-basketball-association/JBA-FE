@@ -130,6 +130,7 @@ export const PostDetailPage = () => {
               setDownloadUrl((prev) => [...prev, url]);
             })
             .catch((err) => console.error("Failed to fetch image:", err));
+
         }
       }
     }
@@ -179,7 +180,7 @@ export const PostDetailPage = () => {
                     "question",
                     "정말 삭제하시겠습니까?",
                     "게시글을 삭제하면 복원할 수 없습니다.",
-                    deletePost,
+                    deletePost
                   );
                 }}
               >
