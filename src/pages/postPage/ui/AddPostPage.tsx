@@ -54,8 +54,12 @@ export const AddPostPage = () => {
   const mutation = useMutation({
     mutationFn: AddPostRequest,
     onSuccess: () => {
-      alert("작성이 완료되었습니다.");
       navigate(`/post/${category}`);
+      confirmAlert(
+        "success",
+        "작성 완료",
+        "게시글 작성을 성공적으로 완료하였습니다."
+      );
     },
     onError: (e) => {
       if (axios.isAxiosError(e)) {
@@ -209,7 +213,11 @@ export const AddPostPage = () => {
                 <span className={styles.uploadFileTitle}>첨부파일</span>
                 <div>
                   {!!fileName.length ? (
-                    fileName.map((item, i) => <div className={styles.uploadFileItem} key={i}>{item}</div>)
+                    fileName.map((item, i) => (
+                      <div className={styles.uploadFileItem} key={i}>
+                        {item}
+                      </div>
+                    ))
                   ) : (
                     <input
                       ref={inputRef}

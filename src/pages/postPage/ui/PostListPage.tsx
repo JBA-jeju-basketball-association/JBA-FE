@@ -96,7 +96,7 @@ export const PostListPage = () => {
           postListData={postList?.posts}
           totalPosts={postList?.totalPosts}
         />
-        {postList && postList.totalPosts != 0 && (
+        {postList && postList.totalPosts !== 0 && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
             page={page}
