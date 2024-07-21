@@ -8,7 +8,10 @@ import { JwtDecoder } from "../../../shared/lib";
 import { PostImgsType, FilesType } from "shared/type/PostType";
 import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
-import {LoadingSpinner, PageTitle} from "shared/ui";
+import { LoadingSpinner, PageTitle } from "shared/ui";
+import axios from "axios";
+import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmDelete from "shared/lib/ConfirmDelete";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
@@ -41,11 +44,17 @@ export const PostDetailPage = () => {
   const mutation = useMutation({
     mutationFn: DeletePost,
     onSuccess: () => {
-      alert("게시글이 삭제되었습니다.");
       navigate(`/post/${category}`);
     },
     onError: (e) => {
-      console.log(e);
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 403) {
+          confirmAlert("warning", "권한이 없습니다.");
+        }
+        if (e.response?.status === 404) {
+          confirmAlert("warning", "존재하지 않는 게시글입니다.");
+        }
+      }
     },
   });
 
@@ -165,7 +174,14 @@ export const PostDetailPage = () => {
               </span>
               <span
                 className={styles.adminDelete}
-                onClick={() => deletePost()}
+                onClick={() => {
+                  confirmDelete(
+                    "question",
+                    "정말 삭제하시겠습니까?",
+                    "게시글을 삭제하면 복원할 수 없습니다.",
+                    deletePost,
+                  );
+                }}
               >
                 삭제하기
               </span>
