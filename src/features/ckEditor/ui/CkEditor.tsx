@@ -76,7 +76,7 @@ export const CkEditor = ({ ckData, setCkData, setNewCkImgUrls }: Props) => {
           const data: FormData = new FormData();
           loader.file.then((file: any): void => {
             data.append("uploadFile", file);
-            Api.post("/v1/api/storage/ck-editor-upload", data, {
+            Api.post("/v1/api/upload/ck-editor-upload", data, {
               headers: {
                 "Content-Type": "multipart/form-data",
               },
