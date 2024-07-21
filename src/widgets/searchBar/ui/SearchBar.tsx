@@ -3,11 +3,13 @@ import style from "./SearchBar.module.css";
 import { FaSearch } from "react-icons/fa";
 
 type Props = {
+  searchKeyword?: string;
   setSearchKeyword: React.Dispatch<React.SetStateAction<string>>;
   handleSearch: any;
 };
 
 export const SearchBar = ({
+  searchKeyword,
   setSearchKeyword,
   handleSearch,
 }: Props) => {
@@ -35,19 +37,20 @@ export const SearchBar = ({
 
   return (
     <div className={style.SearchBox}>
-        <input
-          type={"text"}
-          className={style.searchInput}
-          onKeyDown={(e) => handleKeyDown(e)}
-          onChange={(e) => handleSearchDebounce(e.target.value)}
-          placeholder={"검색"}
-        />
-        <FaSearch
-          size={"20"}
-          className={style.searchButton}
-          onClick={() => handleSearch()}
-          color={"#8E8E8E"}
-        />
+      <input
+        type={"text"}
+        className={style.searchInput}
+        onKeyDown={(e) => handleKeyDown(e)}
+        // onChange={(e) => handleSearchDebounce(e.target.value)}
+        onChange={(e) => setSearchKeyword(e.target.value)}
+        placeholder={"검색"}
+      />
+      <FaSearch
+        size={"20"}
+        className={style.searchButton}
+        onClick={() => handleSearch()}
+        color={"#8E8E8E"}
+      />
     </div>
   );
 };

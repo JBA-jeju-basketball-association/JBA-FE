@@ -2,12 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PostListTable } from "../../../entities/postListTable";
 import { Pagination } from "widgets/pagination";
-import { useQuery, useQueryClient, keepPreviousData } from "@tanstack/react-query";
+import {
+  useQuery,
+  useQueryClient,
+  keepPreviousData,
+} from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api";
 import { PostListData } from "../../../shared/type/PostType";
 import { SearchBar } from "widgets/searchBar";
 import styles from "./PostListPage.module.css";
-import {LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
+import {
+  LoadingSpinner,
+  PageTitle,
+  RegitUpdateDeleteButton,
+} from "../../../shared/ui";
 import { JwtDecoder } from "../../../shared/lib";
 import { useUserStore } from "../../../shared/model";
 
@@ -41,14 +49,22 @@ export const PostListPage = () => {
   });
 
   const findTargetPage = () => {
-    setPage(1);
-    refetch();
+    if (searchKeyword.length >= 2) {
+      setPage(1);
+      refetch();
+    } else if (searchKeyword.length === 0) {
+      setPage(1);
+      refetch();
+    } 
+    else {
+      alert("🔎 검색어는 두 글자 이상 입력해주세요!");
+    }
   };
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
-  useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ["postList"] });
-  }, [searchKeyword]);
+  // useEffect(() => {
+  //   queryClient.invalidateQueries({ queryKey: ["postList"] });
+  // }, [searchKeyword]);
 
   if (isError) {
     return <span>Error</span>;
@@ -70,12 +86,16 @@ export const PostListPage = () => {
             <div></div>
           )}
           <SearchBar
+            searchKeyword={searchKeyword}
             setSearchKeyword={setSearchKeyword}
             handleSearch={() => findTargetPage()}
           />
         </div>
         {isLoading && <LoadingSpinner />}
-        <PostListTable postListData={postList?.posts} totalPosts={postList?.totalPosts}/>
+        <PostListTable
+          postListData={postList?.posts}
+          totalPosts={postList?.totalPosts}
+        />
         {postList && postList.totalPosts != 0 && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
