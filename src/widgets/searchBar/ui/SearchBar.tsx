@@ -44,6 +44,8 @@ export const SearchBar = ({
         // onChange={(e) => handleSearchDebounce(e.target.value)}
         onChange={(e) => setSearchKeyword(e.target.value)}
         placeholder={"검색"}
+        maxLength={20}
+        minLength={2}
       />
       <FaSearch
         size={"20"}
