@@ -11,7 +11,7 @@ export const FAQListTable = ({ mockData }: { mockData: MockDataType }) => {
           <FAQListRow key={item.postId} postItem={item} />
         ))
       ) : (
-        <div>게시글이 존재 하지 않습니다.</div>
+        <div>게시글이 없습니다.</div>
       )}
     </div>
   );

@@ -15,9 +15,9 @@ return(
             <div  className={Style.Box}>
               <div>Address : 제주특별자치도 제주시 서광로2길 24 제주특별자치도 체육회관 내</div>
               <div  className={Style.Info}>
-                  <div>Email : jejubasketball@naver.com </div>
-                  <div>/ TEL : 064-000-0000</div>
-                  <div>/ FAX : 064-000-0000</div>
+                  <div>Email : baskodh1@korea.kr </div>
+                  <div>/ TEL : 064-724-2727</div>
+                  <div>/ FAX : 064-724-2723</div>
               </div>
             </div>
         </div>

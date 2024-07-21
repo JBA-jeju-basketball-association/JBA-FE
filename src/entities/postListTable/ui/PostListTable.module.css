@@ -14,3 +14,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.emptyPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.emptyPost p {
+    font-size: 20px;
+    color: var(--primary-color);
+}

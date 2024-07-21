@@ -14,7 +14,7 @@ export const menuLink:menuLinkType={
     "대회정보":"competition",
     "미디어센터":"main",
     "갤러리":"gallery",
-    "대회영상":"idontknow",
+    "대회영상":"post/competitionVideo",
     "커뮤니티":"main",
     "NEWS":"post/news",
     "자료실":"post/library",

@@ -11,12 +11,10 @@
     justify-content: center;
     width: 70%;
     gap: 16px;
-    margin-top: 50px;
     margin-bottom: 72px;
 }
 .titleArea {
     margin: 0 auto;
-    margin-bottom: 30px;
 }
 .title {
     font-size: 26px;

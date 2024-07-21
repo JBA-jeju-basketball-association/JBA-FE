@@ -1,7 +1,9 @@
 @import url("/src/shared/colors.css");
 
-.wrapper {
-    min-height: 100vh;
+#wrapper {
+    height : auto;
+    min-height: calc(100vh - 290px);
+    /*padding-bottom: 110px;*/
 }
 
 .ck-editor__editable {

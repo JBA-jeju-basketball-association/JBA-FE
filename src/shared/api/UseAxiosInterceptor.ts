@@ -19,8 +19,8 @@ const useAxiosInterceptor = ():void => {
             const currentTime:number = Math.floor(new Date().getTime()/1000)
             if (currentTime + 1 > expireTime) {
                 try {
-                    const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/v1/api/sign/refresh-token-cookie", null, {
-                    // const res = await axios.post("http://localhost:8080/v1/api/sign/refresh-token-cookie", null, {
+                    // const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/v1/api/sign/refresh-token-cookie", null, {
+                    const res = await axios.post("http://localhost:8080/v1/api/sign/refresh-token-cookie", null, {
                         headers: {
                             AccessToken: AccessToken,
                         },

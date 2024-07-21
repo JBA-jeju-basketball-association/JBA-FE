@@ -9,22 +9,29 @@ import {useQuery} from "@tanstack/react-query";
 import FetchMainCompetitionList from "../api/FetchMainCompetitionList";
 import {getMainCompetition} from "../../../shared/type/MainType";
 
-
-
-export const CompetitionCarousel = () => {
+type Props = {
+    usingCompetitionArea: boolean;
+    setUsingCompetitionArea:  React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const CompetitionCarousel = ({usingCompetitionArea, setUsingCompetitionArea}:Props) => {
     const {data} = useQuery({
         queryKey:["mainCompetitionList"],
         queryFn: () => FetchMainCompetitionList(),
         select: (result) => result?.data.data
-
     })
+    if (data?.length < 1) {
+        setUsingCompetitionArea(false)
+    }
 
     const settings = {
         dots: true,
-        infinite: true,
+        className: "center",
+        centerMode: true,
+        infinite: data?.length > 3,
+        centerPadding: "60px",
+        slidesToShow: Math.min(3, data?.length || 3),
+        row: 1,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
         appendDots: (dots: any) => (

@@ -21,7 +21,7 @@ import {
   RemainingFilesType,
   RemainingImgsType,
 } from "shared/type/PostType";
-import { LoadingSpinner } from "shared/ui";
+import {LoadingSpinner, PageTitle} from "shared/ui";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -265,7 +265,7 @@ export const UpdatePostPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.categoryArea}>
-          <span className={styles.category}>{detailTitle}</span>
+          <PageTitle pageName={detailTitle} />
         </div>
         <div className={styles.divideLine}></div>
         <div className={styles.subLine}></div>

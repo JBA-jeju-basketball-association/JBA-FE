@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {Dispatch} from 'react';
 import style from "./Announcement.module.css"
 import {MainTitle, NavigateAllItemBtn} from "../../../shared/ui";
 import {AnnouncementCarousel} from "./AnnouncementCarousel";
 
-export const AnnouncementArea = () => {
+type Props = {
+    usingAnnouncementArea: boolean;
+    setUsingAnnouncementArea:  React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const AnnouncementArea = ({usingAnnouncementArea, setUsingAnnouncementArea}:Props) => {
     return (
         <div className={style.AnnouncementArea}>
             <div className={style.overlay}>
@@ -12,7 +16,7 @@ export const AnnouncementArea = () => {
                 <div className={style.navigateBtnArea}>
                     <NavigateAllItemBtn path={"/post/notice"} color={"#BA5422"}/>
                 </div>
-                <AnnouncementCarousel />
+                <AnnouncementCarousel usingAnnouncementArea={usingAnnouncementArea} setUsingAnnouncementArea={setUsingAnnouncementArea}/>
             </div>
         </div>
     );
