@@ -24,6 +24,7 @@ import {
 import { LoadingSpinner, PageTitle } from "shared/ui";
 import axios from "axios";
 import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmDelete from "shared/lib/ConfirmDelete";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -91,8 +92,8 @@ export const UpdatePostPage = () => {
     mutationFn: EditPostRequest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["postList"] });
-      alert("수정이 완료되었습니다.");
       navigate(`/post/${category}`);
+      confirmAlert('success','수정 성공', '게시글 수정을 완료하였습니다.')
     },
     onError: (e) => {
       if (axios.isAxiosError(e)) {
@@ -288,9 +289,9 @@ export const UpdatePostPage = () => {
         <div className={styles.subLine}></div>
         <form
           className={styles.formContainer}
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-            formSubmitHandler(e)
-          }
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+            formSubmitHandler(e);
+          }}
         >
           <div className={styles.formWrapper}>
             <div className={styles.formContent}>
@@ -361,8 +362,13 @@ export const UpdatePostPage = () => {
                   className={styles.buttonCancel}
                   type="button"
                   onClick={() => {
-                    alert("작성이 취소되었습니다.");
-                    navigate(`/post/${category}`);
+                    confirmDelete(
+                      "수정",
+                      () => navigate(`/post/${category}`),
+                      "question",
+                      "수정을 취소하시겠습니까?",
+                      "취소하기 버튼을 누르면 작업을 종료합니다."
+                    );
                   }}
                 >
                   취소
