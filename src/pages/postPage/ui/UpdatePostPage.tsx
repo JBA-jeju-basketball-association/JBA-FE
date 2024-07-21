@@ -21,7 +21,10 @@ import {
   RemainingFilesType,
   RemainingImgsType,
 } from "shared/type/PostType";
-import {LoadingSpinner, PageTitle} from "shared/ui";
+import { LoadingSpinner, PageTitle } from "shared/ui";
+import axios from "axios";
+import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmDelete from "shared/lib/ConfirmDelete";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -89,10 +92,25 @@ export const UpdatePostPage = () => {
     mutationFn: EditPostRequest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["postList"] });
-      alert("수정이 완료되었습니다.");
       navigate(`/post/${category}`);
+      confirmAlert('success','수정 성공', '게시글 수정을 완료하였습니다.')
     },
-    onError: (e) => console.log(e),
+    onError: (e) => {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 409) {
+          confirmAlert("warning", "중복된 게시글 제목입니다.");
+        }
+        if (e.response?.status === 403) {
+          confirmAlert("warning", "게시글 작성 권한이 없습니다.");
+        }
+        if (e.response?.status === 400) {
+          confirmAlert("warning", "게시글 제목 또는 내용을 입력해주세요.");
+        }
+        if (e.response?.status === 404) {
+          confirmAlert("warning", "존재하지 않는 작성자입니다.");
+        }
+      }
+    },
   });
 
   const editPost = (params: {
@@ -271,9 +289,9 @@ export const UpdatePostPage = () => {
         <div className={styles.subLine}></div>
         <form
           className={styles.formContainer}
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-            formSubmitHandler(e)
-          }
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+            formSubmitHandler(e);
+          }}
         >
           <div className={styles.formWrapper}>
             <div className={styles.formContent}>
@@ -344,8 +362,13 @@ export const UpdatePostPage = () => {
                   className={styles.buttonCancel}
                   type="button"
                   onClick={() => {
-                    alert("작성이 취소되었습니다.");
-                    navigate(`/post/${category}`);
+                    confirmDelete(
+                      "수정",
+                      () => navigate(`/post/${category}`),
+                      "question",
+                      "수정을 취소하시겠습니까?",
+                      "취소하기 버튼을 누르면 작업을 종료합니다."
+                    );
                   }}
                 >
                   취소
