@@ -8,8 +8,12 @@ type Props = {
 }
 export const NavigateAllItemBtn = ({path, color}:Props) => {
     const navigate = useNavigate();
+    const navigateHandler = () => {
+        navigate(path);
+        window.scrollTo(0,0)
+    }
     return (
-        <button onClick={() => navigate(path)} className={style.button} style={{backgroundColor: color}}>
+        <button onClick={() => navigateHandler()} className={style.button} style={{backgroundColor: color}}>
             전체보기
         </button>
     );

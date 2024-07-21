@@ -3,8 +3,15 @@ import React from 'react';
 import style from "./CompetitionArea.module.css"
 import {MainTitle, NavigateAllItemBtn} from "../../../shared/ui";
 import {CompetitionCarousel} from "./CompetitionCarousel";
+import {useQuery} from "@tanstack/react-query";
+import FetchMainCompetitionList from "../api/FetchMainCompetitionList";
 
-export const CompetitionArea = () => {
+type Props = {
+    usingCompetitionArea: boolean;
+    setUsingCompetitionArea:  React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const CompetitionArea = ({usingCompetitionArea, setUsingCompetitionArea}:Props) => {
+
 
     return (
         <div className={style.CompetitionArea}>
@@ -13,7 +20,7 @@ export const CompetitionArea = () => {
             <div className={style.navigateBtnArea}>
                 <NavigateAllItemBtn path={"/competition"} color={"#D4C39C"} />
             </div>
-            <CompetitionCarousel />
+            <CompetitionCarousel usingCompetitionArea={usingCompetitionArea} setUsingCompetitionArea={setUsingCompetitionArea}/>
         </div>
 
     );

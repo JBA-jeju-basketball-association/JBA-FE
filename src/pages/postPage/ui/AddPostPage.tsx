@@ -10,6 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 import AddPostRequest, { requestPostData } from "../api/AddPostRequest";
 import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
+import {PageTitle} from "../../../shared/ui";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -126,7 +127,7 @@ export const AddPostPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.categoryArea}>
-          <span className={styles.category}>{detailTitle}</span>
+          <PageTitle pageName={detailTitle} />
         </div>
         <div className={styles.divideLine}></div>
         <div className={styles.subLine}></div>

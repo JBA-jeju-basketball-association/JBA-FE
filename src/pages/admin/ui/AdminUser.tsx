@@ -8,13 +8,17 @@ import {
   firUsercategory,
   secUsercategory,
   userListTitles,
+  userCsv,
 } from "../adminUtils/adminUserTitle";
 import { AdminUserListData } from "features/admin";
-import { useAdminUserDatas } from "../api/useAdminUserDatas";
+import { useAdminUserDatas, useAdminUserCsv } from "../api/useAdminUserDatas";
 import { useAdminUserStore } from "shared/model/stores/AdminUserStore";
 import { AdminSearchForm } from "features/admin";
+import { CSVLink } from "react-csv";
 
 export const AdminUser = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+
   const {
     page,
     selectedCategory,
@@ -32,7 +36,6 @@ export const AdminUser = () => {
     setStartDate,
     setEndDate,
   } = useAdminUserStore();
-  const [isEnabled, setIsEnabled] = useState(false);
 
   const { data: adminUserDatas, refetch } = useAdminUserDatas(
     {
@@ -47,8 +50,11 @@ export const AdminUser = () => {
     isEnabled
   );
 
+  const { data: userCsvDatas } = useAdminUserCsv(isEnabled);
+
   const adminUserData = adminUserDatas?.data.data ?? [];
   const totalPage = adminUserDatas?.data.data.totalPages ?? 0;
+  const csvData = userCsvDatas?.data.data.content ?? [];
 
   const handleSearch = () => {
     setIsEnabled(true);
@@ -98,6 +104,18 @@ export const AdminUser = () => {
             </div>
             개씩 보기
           </div>
+          <div>
+            {adminUserData.content && (
+              <CSVLink
+                headers={userCsv}
+                data={csvData}
+                filename="user.csv"
+                className={styles.csvBtn}
+              >
+                엑셀 다운로드
+              </CSVLink>
+            )}
+          </div>
         </div>
         <AdminUserListData
           titles={userListTitles}
@@ -108,6 +126,3 @@ export const AdminUser = () => {
     </div>
   );
 };
-
-//기한 검색 필터는 데이트피커 사용하기
-//n건->여기에 총 데이터 갯수 넣기

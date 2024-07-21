@@ -3,6 +3,7 @@ import { FileType, UploadType } from "shared/type/GalleryType";
 import { GalleryForm } from "shared/ui";
 import { useGalleryEdit } from "pages/galleryPages/api/useGalleryEdit";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import { LoadingSpinner } from "shared/ui";
 
 type EditType = {
   galleryDetail: {
@@ -14,7 +15,7 @@ type EditType = {
 //쿼리파라미터에서 가져온 id는 문자열
 
 export const GalleryEdit = ({ galleryDetail, galleryId }: EditType) => {
-  const { mutate: editData } = useGalleryEdit(galleryId);
+  const { mutate: editData, isPending } = useGalleryEdit(galleryId);
 
   const handleEdit = (data: UploadType) => {
     confirmAndCancelAlertWithLoading(
@@ -27,6 +28,10 @@ export const GalleryEdit = ({ galleryDetail, galleryId }: EditType) => {
     );
   };
 
+  if (isPending) {
+    return <LoadingSpinner />;
+  }
+  
   return (
     <GalleryForm
       buttonText="수정하기"

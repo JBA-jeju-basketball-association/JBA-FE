@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./AdminGallery.module.css";
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
@@ -10,15 +10,21 @@ import {
   galleryLabel,
   firGallerycategory,
   secGallerycategory,
+  galleryCsv,
 } from "../adminUtils/adminGalleryTitle";
-import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
+import {
+  useAdminGalleryDatas,
+  useAdminGalleryCsv,
+} from "../api/useAdminGalleryDatas";
 import Button from "shared/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
+import { CSVLink } from "react-csv";
+import { useFlattenData } from "shared/hook/useFlattenData";
 
 export const AdminGallery = () => {
   //몇개씩 조회할건지 내려주는 state
-  const navigate = useNavigate();
+  const [isEnabled, setIsEnabled] = useState(false);
+  const flattenDatas = useFlattenData();
 
   const {
     page,
@@ -36,7 +42,6 @@ export const AdminGallery = () => {
     setStartDate,
     setEndDate,
   } = useAdminGalleryStore();
-  const [isEnabled, setIsEnabled] = useState(false);
 
   const { data: adminGalleryDatas, refetch } = useAdminGalleryDatas(
     {
@@ -51,11 +56,14 @@ export const AdminGallery = () => {
     isEnabled
   );
 
+  const { data: galleryCsvDatas } = useAdminGalleryCsv(isEnabled);
+
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
+  const csvData = galleryCsvDatas?.data.data.galleries ?? [];
 
   const handleNavigateToUploadPage = () => {
-    window.open("/admin/galleryupload", "_blank");
+    window.open("/admin/galleryupload");
   };
 
   const handleSearch = () => {
@@ -72,6 +80,8 @@ export const AdminGallery = () => {
     setIsEnabled(false);
     refetch();
   };
+
+  const galleryCsvData = flattenDatas(csvData);
 
   return (
     <div className={styles.container}>
@@ -114,6 +124,16 @@ export const AdminGallery = () => {
             >
               미디어 등록
             </Button>
+            {galleryCsvData && (
+              <CSVLink
+                headers={galleryCsv}
+                data={galleryCsvData}
+                filename="gallery.csv"
+                className={styles.csvBtn}
+              >
+                엑셀 다운로드
+              </CSVLink>
+            )}
           </div>
         </div>
         <AdminGalleryListData

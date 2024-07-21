@@ -1,0 +1,11 @@
+.CompetitionVideo {
+    height: 40vh;
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CompetitionVideo p {
+    font-size: 30px;
+}

@@ -74,10 +74,13 @@ export const GalleryForm = ({
         />
       </div>
       <div className={styles.handleBtnWrapper}>
-        <RegitUpdateDeleteButton
-          content="작성취소"
-          onClickHandler={returnToGallery}
-        />
+        <button
+          className={styles.handleBtn}
+          onClick={returnToGallery}
+          type="button"
+        >
+          취소하기
+        </button>
         <button
           className={styles.handleBtn}
           type="button"

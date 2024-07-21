@@ -7,7 +7,7 @@ import { NormalApi } from "../../../shared/api";
 import { PostListData } from "../../../shared/type/PostType";
 import { SearchBar } from "widgets/searchBar";
 import styles from "./PostListPage.module.css";
-import { LoadingSpinner, RegitUpdateDeleteButton } from "../../../shared/ui";
+import {LoadingSpinner, PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import { JwtDecoder } from "../../../shared/lib";
 import { useUserStore } from "../../../shared/model";
 
@@ -58,7 +58,7 @@ export const PostListPage = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.titleArea}>
-          <span className={styles.title}>{title}</span>
+          <PageTitle pageName={title} />
         </div>
         <div className={styles.searchBarArea}>
           {AccessToken && JwtDecoder(AccessToken).role === "ROLE_MASTER" ? (
@@ -75,8 +75,8 @@ export const PostListPage = () => {
           />
         </div>
         {isLoading && <LoadingSpinner />}
-        <PostListTable postListData={postList?.posts} />
-        {postList && (
+        <PostListTable postListData={postList?.posts} totalPosts={postList?.totalPosts}/>
+        {postList && postList.totalPosts != 0 && (
           <Pagination
             totalPages={Math.max(1, postList?.totalPages)}
             page={page}

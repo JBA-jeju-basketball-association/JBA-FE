@@ -47,3 +47,22 @@ export const competitionListTitles = [
   "최종 수정 일시",
   "삭제 일시",
 ];
+
+export const competitionCsv = [
+  { label: "아이디", key: "competitionId" },
+  { label: "이메일", key: "userEmail" },
+  { label: "현황", key: "situation" },
+  { label: "종별", key: "divisions" },
+  { label: "대회명", key: "competitionName" },
+  { label: "대회 시작 기간", key: "startDate" },
+  { label: "대회 종료 기간", key: "endDate" },
+  { label: "내용", key: "content" },
+  { label: "링크", key: "link" },
+  { label: "첨부 파일", key: "files" },
+  { label: "상태", key: "status" },
+  { label: "등록 일시", key: "createAt" },
+  { label: "최종 수정 일시", key: "updateAt" },
+  { label: "삭제 일시", key: "deleteAt" },
+];
+
+//종별 평탄화 해야함

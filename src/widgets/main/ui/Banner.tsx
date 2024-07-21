@@ -12,7 +12,7 @@ export const Banner = () => {
                     건강한 활동을 촉진하고 선수와 단체를 통해 농구의 가치를 홍보하며 우수한 농구 인재를 발굴함으로써 제주 체육 발전에 기여하고자 합니다.</p>
                 <p className={style.content2}>우리는 제주의 모든 연령층에게 농구를 보급하고 지속적인 훈련과 경기의 기회를 제공하여 농구의 매력을 널리 알리는 것을 목표로 활동하고
                     있으며 제주 지역 사회에 활력을 불어 넣고 체육 문화의 발전에 기여 합니다.</p>
-                <button className={style.detailBtn} onClick={()=> navigate("/history")}>자세히보기</button>
+                {/*<button className={style.detailBtn} onClick={()=> navigate("/history")}>자세히보기</button>*/}
             </div>
         </div>
 

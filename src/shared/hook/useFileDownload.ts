@@ -1,3 +1,4 @@
+import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 /**
  * 지정된 URL에서 파일을 다운로드하고 브라우저에서 다운로드를 트리거.
@@ -18,16 +19,13 @@ import confirmAlert from "shared/lib/ConfirmAlert";
 export const useFileDownload = () => {
   const fileDownload = async (url: string, name: string) => {
     try {
-      const res = await fetch(url);
-      const arrayBuffer = await res.arrayBuffer();
-      //fetch로 데이터를 가져온 후 arrayBuffer로 변환
-      console.log("arrayBuffer", arrayBuffer);
-      const blob = new Blob([arrayBuffer], {
+      const res = await Api(url, {
+        responseType: "arraybuffer",
+      });
+      const blob = new Blob([res.data], {
         type: "application/octet-stream",
       });
-      console.log("blob", blob);
       const blobURL = URL.createObjectURL(blob);
-      console.log("blobUrl", blobURL);
       //객체 URL을 생성하여 반환
       const a = document.createElement("a");
       //a태그 생성
