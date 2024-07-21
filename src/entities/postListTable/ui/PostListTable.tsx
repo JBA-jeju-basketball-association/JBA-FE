@@ -16,7 +16,7 @@ const PostListTable = ({ postListData, totalPosts }:Props ) => {
           <li key={index} className={styles.itemType}>{item}</li>
         ))}
       </ul>
-      {totalPosts != 0 ?
+      {totalPosts !== 0 ?
           postListData?.map((postItem) => (
               <PostListRow key={postItem.postId} postItem={postItem} />
           ))

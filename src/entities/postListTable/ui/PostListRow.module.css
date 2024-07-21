@@ -3,6 +3,10 @@
     padding-bottom: 20px;
     border-bottom: 0.1px solid #D9D9D9;
 }
+.container:hover {
+    background-color: var(--primary-color);
+    transition: ease-in-out 0.3s;
+}
 
 .postList {
     display: grid;
@@ -18,7 +22,7 @@
     cursor: pointer;
 }
 .postTitle:hover{
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 .postItem {
     display: flex;
