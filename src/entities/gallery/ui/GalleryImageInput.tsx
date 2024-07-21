@@ -20,7 +20,7 @@ export const GalleryImageInput = ({
   const { mutate: uploadFile } = useMutation({
     mutationKey: ["galleryUploadFiles"],
     mutationFn: (files: FormData) =>
-      Api.post("/v1/api/storage/multipart-files", files, {
+      Api.post("/v1/api/upload/uploadFiles", files, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -43,7 +43,7 @@ export const GalleryImageInput = ({
   const { mutate: deleteFile } = useMutation({
     mutationKey: ["galleryDeleteFiles"],
     mutationFn: (fileUrl: string) =>
-      Api.delete("/v1/api/storage/multipart-files", {
+      Api.delete("/v1/api/upload/uploadFiles", {
         params: {
           "file-url": fileUrl,
         },
