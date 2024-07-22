@@ -56,23 +56,20 @@ export const AdminPost = () => {
   const { data: postCsvDatas } = useAdminPostCsv(isEnabled);
   //csv데이터 size100000
 
-  const adminPostData = adminPostDatas?.data.data ?? [];
-  const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
-  const csvData = postCsvDatas?.data.data.posts ?? [];
-
+  
   const uploadPage = (categroy: string) => {
     window.open(`/post/${categroy}/add`);
   };
-
+  
   const handleSearch = () => {
-    if (adminPostData.totalPosts === 0) {
+    if (adminPostDatas?.totalPosts === 0) {
       confirmAlert("info", "조회 가능한 데이터가 없습니다.");
       return;
     }
     setIsEnabled(true);
     refetch();
   };
-
+  
   const handleReset = () => {
     setSelectedfirstCategory(firPostcategory[0]);
     setSelectedSecondCategory(secPostcategory[0]);
@@ -81,7 +78,8 @@ export const AdminPost = () => {
     setEndDate(null);
     setIsEnabled(false);
   };
-
+  
+  const csvData = postCsvDatas?.data.data.posts ?? [];
   // 평탄화된 데이터
   const postCsvData = flattenDatas(csvData);
 
@@ -109,7 +107,7 @@ export const AdminPost = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminPostData.totalPosts || "0"}건
+            총 {adminPostDatas?.totalPosts || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={postListLength}
@@ -138,7 +136,7 @@ export const AdminPost = () => {
             >
               자료실 등록
             </Button>
-            {adminPostData.posts && (
+            {adminPostDatas?.posts && (
               <CSVLink
                 headers={postCsv}
                 data={postCsvData}
@@ -152,9 +150,13 @@ export const AdminPost = () => {
         </div>
         <AdminPostListData
           titles={postListTitles}
-          lists={adminPostData.posts}
+          lists={adminPostDatas?.posts}
         />
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+        <Pagination
+          totalPages={adminPostDatas?.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

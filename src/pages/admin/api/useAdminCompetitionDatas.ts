@@ -3,7 +3,7 @@ import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
 import { useFormattedDate } from "shared/hook/useFormattedDate";
 
-type useAdminCompetitionDatas = {
+type useAdminCompetitionDataProps = {
   page: number;
   competitionListLength: any;
   firstCategory?: any;
@@ -16,7 +16,7 @@ type useAdminCompetitionDatas = {
 };
 
 export const useAdminCompetitionDatas = (
-  params: useAdminCompetitionDatas,
+  params: useAdminCompetitionDataProps,
   enabled: boolean
 ) => {
   const firCategoryKeyMap: { [key: string]: string | null } = {
@@ -47,6 +47,7 @@ export const useAdminCompetitionDatas = (
         },
       }),
     enabled,
+    select: (res: any) => res.data.data,
   });
 };
 

@@ -59,16 +59,12 @@ export const AdminGallery = () => {
 
   const { data: galleryCsvDatas } = useAdminGalleryCsv(isEnabled);
 
-  const adminGalleryData = adminGalleryDatas?.data.data ?? [];
-  const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
-  const csvData = galleryCsvDatas?.data.data.galleries ?? [];
-
   const handleNavigateToUploadPage = () => {
     window.open("/admin/galleryupload");
   };
 
   const handleSearch = () => {
-    if (adminGalleryData.totalGalleries === 0) {
+    if (adminGalleryDatas?.totalGalleries === 0) {
       confirmAlert("info", "조회 가능한 데이터가 없습니다.");
       return;
     }
@@ -85,6 +81,7 @@ export const AdminGallery = () => {
     setIsEnabled(false);
     refetch();
   };
+  const csvData = galleryCsvDatas?.data.data.galleries ?? [];
 
   const galleryCsvData = flattenDatas(csvData);
 
@@ -112,7 +109,7 @@ export const AdminGallery = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminGalleryData.totalGalleries || "0"}건
+            총 {adminGalleryDatas?.totalGalleries || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={galleryListLength}
@@ -129,7 +126,7 @@ export const AdminGallery = () => {
             >
               미디어 등록
             </Button>
-            {adminGalleryData.galleries && (
+            {adminGalleryDatas?.galleries && (
               <CSVLink
                 headers={galleryCsv}
                 data={galleryCsvData}
@@ -143,9 +140,13 @@ export const AdminGallery = () => {
         </div>
         <AdminGalleryListData
           titles={galleryListTitles}
-          lists={adminGalleryData.galleries}
+          lists={adminGalleryDatas?.galleries}
         />
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+        <Pagination
+          totalPages={adminGalleryDatas?.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

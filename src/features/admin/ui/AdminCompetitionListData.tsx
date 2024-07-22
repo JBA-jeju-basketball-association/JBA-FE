@@ -56,7 +56,7 @@ export const AdminCompetitionListData = ({
         return window.open(`/competition/post/schedule/${competitionId}`);
 
       case "SCHEDULE":
-        return window.open(`/competition/post/schedule/${competitionId}`);
+        return window.open(`/competition/post/result/${competitionId}`);
 
       default:
         return "";
@@ -130,7 +130,7 @@ export const AdminCompetitionListData = ({
                     handleNavigateToResultUpload(list.competitionId, list.phase)
                   }
                 >
-                  대회일정 수정
+                  대회일정 등록
                 </Button>
               )}
               {list.phase === "SCHEDULE" && (
@@ -140,7 +140,7 @@ export const AdminCompetitionListData = ({
                     handleNavigateToResultUpload(list.competitionId, list.phase)
                   }
                 >
-                  대회결과 수정
+                  대회결과 등록
                 </Button>
               )}
             </span>
