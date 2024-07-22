@@ -13,5 +13,4 @@ export type getMainAnnouncement = {
     viewCount: number;
     writer: string;
     createAt: string;
-    foreword: string | null;
 }
