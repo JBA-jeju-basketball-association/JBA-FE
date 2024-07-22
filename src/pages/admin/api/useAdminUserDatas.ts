@@ -86,3 +86,16 @@ export const useAdminUserPermissionChange = ({
     },
   });
 };
+
+export const useAdminUserCsv = (enabled: boolean) => {
+  return useQuery({
+    queryKey: ["userCsvData"],
+    queryFn: () =>
+      Api.get("/v1/api/admin/user", {
+        params: {
+          size: 100000,
+        },
+      }),
+    enabled,
+  });
+};

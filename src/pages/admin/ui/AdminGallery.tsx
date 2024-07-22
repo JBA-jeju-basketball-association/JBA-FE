@@ -12,7 +12,10 @@ import {
   secGallerycategory,
   galleryCsv,
 } from "../adminUtils/adminGalleryTitle";
-import { useAdminGalleryDatas } from "../api/useAdminGalleryDatas";
+import {
+  useAdminGalleryDatas,
+  useAdminGalleryCsv,
+} from "../api/useAdminGalleryDatas";
 import Button from "shared/ui/button";
 import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
 import { CSVLink } from "react-csv";
@@ -53,11 +56,14 @@ export const AdminGallery = () => {
     isEnabled
   );
 
+  const { data: galleryCsvDatas } = useAdminGalleryCsv(isEnabled);
+
   const adminGalleryData = adminGalleryDatas?.data.data ?? [];
   const totalPage: number = adminGalleryDatas?.data.data.totalPages ?? 0;
-  console.log(adminGalleryData);
+  const csvData = galleryCsvDatas?.data.data.galleries ?? [];
+
   const handleNavigateToUploadPage = () => {
-    window.open("/admin/galleryupload", "_blank");
+    window.open("/admin/galleryupload");
   };
 
   const handleSearch = () => {
@@ -75,8 +81,8 @@ export const AdminGallery = () => {
     refetch();
   };
 
-  const galleryCsvData = flattenDatas(adminGalleryData.galleries);
-  console.log(galleryCsvData);
+  const galleryCsvData = flattenDatas(csvData);
+
   return (
     <div className={styles.container}>
       <div className={styles.searchFormWapper}>

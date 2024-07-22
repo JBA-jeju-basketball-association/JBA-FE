@@ -12,7 +12,7 @@ import {
 import { Pagination } from "widgets/pagination";
 import { CategoryList } from "shared/ui";
 import { AdminPostListData } from "features/admin/";
-import { useAdminPostDatas } from "../api/useAdminPostDatas";
+import { useAdminPostDatas, useAdminPostCsv } from "../api/useAdminPostDatas";
 import Button from "shared/ui/button";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 import { CSVLink } from "react-csv";
@@ -52,11 +52,15 @@ export const AdminPost = () => {
     isEnabled
   );
 
+  const { data: postCsvDatas } = useAdminPostCsv(isEnabled);
+  //csv데이터 size100000
+
   const adminPostData = adminPostDatas?.data.data ?? [];
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
+  const csvData = postCsvDatas?.data.data.posts ?? [];
 
   const handleNavigateToUploadPage = () => {
-    window.open("/post/notice/add", "_blank");
+    window.open("/post/notice/add");
   };
 
   const handleSearch = () => {
@@ -74,7 +78,7 @@ export const AdminPost = () => {
   };
 
   // 평탄화된 데이터
-  const PostCsvData = flattenDatas(adminPostData.posts);
+  const postCsvData = flattenDatas(csvData);
 
   return (
     <div className={styles.container}>
@@ -117,10 +121,10 @@ export const AdminPost = () => {
             >
               게시물 등록
             </Button>
-            {PostCsvData && (
+            {postCsvData && (
               <CSVLink
                 headers={postCsv}
-                data={PostCsvData}
+                data={postCsvData}
                 filename="posts.csv"
                 className={styles.csvBtn}
               >
@@ -139,7 +143,4 @@ export const AdminPost = () => {
   );
 };
 
-//현재 카테고리 선택으로 렌더링됨 -> 고치기
-//formprovider 바꾸기
-//headers에는 title가 들어가고
-//data에는 lists가들어감
+
