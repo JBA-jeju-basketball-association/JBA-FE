@@ -20,6 +20,7 @@ import Button from "shared/ui/button";
 import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
 import { CSVLink } from "react-csv";
 import { useFlattenData } from "shared/hook/useFlattenData";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminGallery = () => {
   //몇개씩 조회할건지 내려주는 state
@@ -67,6 +68,10 @@ export const AdminGallery = () => {
   };
 
   const handleSearch = () => {
+    if (adminGalleryData.totalGalleries === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
@@ -124,7 +129,7 @@ export const AdminGallery = () => {
             >
               미디어 등록
             </Button>
-            {galleryCsvData && (
+            {adminGalleryData.galleries && (
               <CSVLink
                 headers={galleryCsv}
                 data={galleryCsvData}

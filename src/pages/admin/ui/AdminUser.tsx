@@ -15,6 +15,7 @@ import { useAdminUserDatas, useAdminUserCsv } from "../api/useAdminUserDatas";
 import { useAdminUserStore } from "shared/model/stores/AdminUserStore";
 import { AdminSearchForm } from "features/admin";
 import { CSVLink } from "react-csv";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminUser = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -57,6 +58,10 @@ export const AdminUser = () => {
   const csvData = userCsvDatas?.data.data.content ?? [];
 
   const handleSearch = () => {
+    if (adminUserData.totalElements === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };

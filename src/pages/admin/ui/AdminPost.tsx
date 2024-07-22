@@ -17,6 +17,7 @@ import Button from "shared/ui/button";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 import { CSVLink } from "react-csv";
 import { useFlattenData } from "shared/hook/useFlattenData";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminPost = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -59,11 +60,15 @@ export const AdminPost = () => {
   const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
   const csvData = postCsvDatas?.data.data.posts ?? [];
 
-  const handleNavigateToUploadPage = () => {
-    window.open("/post/notice/add");
+  const uploadPage = (categroy: string) => {
+    window.open(`/post/${categroy}/add`);
   };
 
   const handleSearch = () => {
+    if (adminPostData.totalPosts === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
@@ -117,15 +122,27 @@ export const AdminPost = () => {
           <div>
             <Button
               className={styles.uploadBtn}
-              onClick={handleNavigateToUploadPage}
+              onClick={() => uploadPage("notice")}
             >
-              게시물 등록
+              공지 등록
             </Button>
-            {postCsvData && (
+            <Button
+              className={styles.uploadBtn}
+              onClick={() => uploadPage("news")}
+            >
+              news 등록
+            </Button>
+            <Button
+              className={styles.uploadBtn}
+              onClick={() => uploadPage("library")}
+            >
+              자료실 등록
+            </Button>
+            {adminPostData.posts && (
               <CSVLink
                 headers={postCsv}
                 data={postCsvData}
-                filename="posts.csv"
+                filename="post.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드
@@ -142,5 +159,3 @@ export const AdminPost = () => {
     </div>
   );
 };
-
-

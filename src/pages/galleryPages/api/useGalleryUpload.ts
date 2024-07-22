@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { useNavigate } from "react-router-dom";
 import confirmAlert from "shared/lib/ConfirmAlert";
@@ -6,6 +6,7 @@ import { UploadType } from "shared/type/GalleryType";
 
 export const useGalleryUpload = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ["galleryUpload"],
     mutationFn: (data: UploadType) =>
@@ -16,7 +17,8 @@ export const useGalleryUpload = () => {
       }),
     onSuccess: () => {
       confirmAlert("success", "등록이 완료되었습니다.");
-      navigate('/admin/gallery');
+      navigate("/gallery");
+      queryClient.invalidateQueries({ queryKey: ["adminGallery"] });
     },
     onError: (e) => {
       console.log(e, "error");

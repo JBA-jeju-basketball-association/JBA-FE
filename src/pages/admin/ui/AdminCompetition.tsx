@@ -20,6 +20,7 @@ import {
 import { AdminSearchForm } from "features/admin";
 import { SituationBtn } from "features/admin";
 import { CSVLink } from "react-csv";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -72,6 +73,10 @@ export const AdminCompetition = () => {
   };
 
   const handleSearch = () => {
+    if (totalPage.totalElements === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
@@ -137,7 +142,7 @@ export const AdminCompetition = () => {
             >
               대회 등록
             </Button>
-            {competitionCsvData && (
+            {adminCompetitionData.content && (
               <CSVLink
                 headers={competitionCsv}
                 data={competitionCsvData}

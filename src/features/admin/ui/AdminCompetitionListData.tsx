@@ -5,7 +5,6 @@ import {
   AdminCompetitionListProps,
   CompetitionListsType,
 } from "shared/type/AdminType";
-import { useFileDownload } from "shared/hook/useFileDownload";
 import { useTruncateString } from "shared/hook/useTruncateString";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 import { useAdminCompetitionDelete } from "pages/admin/api/useAdminCompetitionDatas";
@@ -26,7 +25,6 @@ export const AdminCompetitionListData = ({
 
   const deleteT = (date: string | null) => date?.replace("T", " ");
 
-  const { fileDownload } = useFileDownload();
   const { mutate: competitionDelete } = useAdminCompetitionDelete();
 
   const truncateString = useTruncateString();
@@ -168,12 +166,8 @@ export const AdminCompetitionListData = ({
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
-                      // href={file.filePath}
-                      // download={file.fileName}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        fileDownload(file.filePath, file.fileName);
-                      }}
+                      href={file.filePath}
+                      download={file.fileName}
                       rel="noreferrer"
                     >
                       {truncateString(file.fileName, 10)}
