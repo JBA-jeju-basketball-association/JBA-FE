@@ -37,7 +37,7 @@ export const PostCompetitionSchedulePage = () => {
             detailData.divisions.map((d:string, index:number):void => {
                 const initialRow:postCompetitionScheduleRow = {
                     gameNumber: index + 1,
-                    startDate: new Date(new Date().getTime() + (3600000 * index)) ,
+                    startDate: new Date(new Date(detailData?.startDate).getTime() + 32400000 + (3600000 * index)) ,
                     floor: "",
                     place: detailData.places[0].placeName,
                     homeName: "",
