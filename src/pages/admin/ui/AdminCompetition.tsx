@@ -20,6 +20,7 @@ import {
 import { AdminSearchForm } from "features/admin";
 import { SituationBtn } from "features/admin";
 import { CSVLink } from "react-csv";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -59,19 +60,15 @@ export const AdminCompetition = () => {
 
   const { data: competitionCsvDatas } = useAdminCompetitionCsv(isEnabled);
 
-  const adminCompetitionData = adminCompetitionDatas?.data.data ?? [];
-  //대회 상세 데이터
-  const totalPage = adminCompetitionDatas?.data.data ?? 0;
-  //대회 데이터 총 페이지
-
-  const csvData = competitionCsvDatas?.data.data.content ?? [];
-  //csv데이터 Size100000
-
   const handleNavigateToUploadPage = () => {
     window.open("/competition/post");
   };
 
   const handleSearch = () => {
+    if (adminCompetitionDatas?.totalElements === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
@@ -86,6 +83,8 @@ export const AdminCompetition = () => {
     refetch();
   };
 
+  const csvData = competitionCsvDatas?.data.data.content ?? [];
+  
   const flattenCompetition = (content: any) => {
     return content?.map((data: any) => ({
       ...data,
@@ -120,7 +119,7 @@ export const AdminCompetition = () => {
         <SituationBtn setSelectSituation={setSelectSituation} />
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {totalPage.totalElements || "0"}건
+            총 {adminCompetitionDatas?.totalElements || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={competitionListLength}
@@ -137,7 +136,7 @@ export const AdminCompetition = () => {
             >
               대회 등록
             </Button>
-            {competitionCsvData && (
+            {adminCompetitionDatas?.content && (
               <CSVLink
                 headers={competitionCsv}
                 data={competitionCsvData}
@@ -151,10 +150,10 @@ export const AdminCompetition = () => {
         </div>
         <AdminCompetitionListData
           titles={competitionListTitles}
-          lists={adminCompetitionData.content}
+          lists={adminCompetitionDatas?.content}
         />
         <Pagination
-          totalPages={totalPage.totalPages}
+          totalPages={adminCompetitionDatas?.totalPages}
           page={page}
           setPage={setPage}
         />

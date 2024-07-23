@@ -13,10 +13,11 @@ export const useGalleryEdit = (galleryId: number) => {
       Api.put(`/v1/api/gallery/${galleryId}`, data),
     onSuccess: () => {
       confirmAlert("success", "수정이 완료되었습니다.");
-      navigate('/admin/gallery');
+      navigate("/gallery");
       queryClient.invalidateQueries({
         queryKey: ["galleryDetail"],
       });
+      queryClient.invalidateQueries({ queryKey: ["adminGallery"] });
     },
     onError: (e) => {
       console.log(e, "error");

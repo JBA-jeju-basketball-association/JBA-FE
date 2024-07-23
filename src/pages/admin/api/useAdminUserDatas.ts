@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import confirmAlert from "shared/lib/ConfirmAlert";
@@ -58,6 +57,7 @@ export const useAdminUserDatas = (
         },
       }),
     enabled,
+    select: (res: any) => res.data.data,
   });
 };
 

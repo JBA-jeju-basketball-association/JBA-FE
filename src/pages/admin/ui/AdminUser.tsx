@@ -15,6 +15,7 @@ import { useAdminUserDatas, useAdminUserCsv } from "../api/useAdminUserDatas";
 import { useAdminUserStore } from "shared/model/stores/AdminUserStore";
 import { AdminSearchForm } from "features/admin";
 import { CSVLink } from "react-csv";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminUser = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -52,11 +53,11 @@ export const AdminUser = () => {
 
   const { data: userCsvDatas } = useAdminUserCsv(isEnabled);
 
-  const adminUserData = adminUserDatas?.data.data ?? [];
-  const totalPage = adminUserDatas?.data.data.totalPages ?? 0;
-  const csvData = userCsvDatas?.data.data.content ?? [];
-
   const handleSearch = () => {
+    if (adminUserDatas?.totalElements === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
@@ -69,6 +70,7 @@ export const AdminUser = () => {
     setEndDate(null);
     setIsEnabled(false);
   };
+  const csvData = userCsvDatas?.data.data.content ?? [];
 
   return (
     <div className={styles.container}>
@@ -94,7 +96,7 @@ export const AdminUser = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminUserData.totalElements || "0"}건
+            총 {adminUserDatas?.totalElements || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={userListLength}
@@ -105,7 +107,7 @@ export const AdminUser = () => {
             개씩 보기
           </div>
           <div>
-            {adminUserData.content && (
+            {adminUserDatas?.content && (
               <CSVLink
                 headers={userCsv}
                 data={csvData}
@@ -119,9 +121,13 @@ export const AdminUser = () => {
         </div>
         <AdminUserListData
           titles={userListTitles}
-          lists={adminUserData.content}
+          lists={adminUserDatas?.content}
         />
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+        <Pagination
+          totalPages={adminUserDatas?.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );
