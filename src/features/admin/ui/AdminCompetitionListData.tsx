@@ -5,7 +5,6 @@ import {
   AdminCompetitionListProps,
   CompetitionListsType,
 } from "shared/type/AdminType";
-import { useFileDownload } from "shared/hook/useFileDownload";
 import { useTruncateString } from "shared/hook/useTruncateString";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 import { useAdminCompetitionDelete } from "pages/admin/api/useAdminCompetitionDatas";
@@ -26,7 +25,6 @@ export const AdminCompetitionListData = ({
 
   const deleteT = (date: string | null) => date?.replace("T", " ");
 
-  const { fileDownload } = useFileDownload();
   const { mutate: competitionDelete } = useAdminCompetitionDelete();
 
   const truncateString = useTruncateString();
@@ -58,7 +56,7 @@ export const AdminCompetitionListData = ({
         return window.open(`/competition/post/schedule/${competitionId}`);
 
       case "SCHEDULE":
-        return window.open(`/competition/post/schedule/${competitionId}`);
+        return window.open(`/competition/post/result/${competitionId}`);
 
       default:
         return "";
@@ -132,7 +130,7 @@ export const AdminCompetitionListData = ({
                     handleNavigateToResultUpload(list.competitionId, list.phase)
                   }
                 >
-                  대회일정 수정
+                  대회일정 등록
                 </Button>
               )}
               {list.phase === "SCHEDULE" && (
@@ -142,7 +140,7 @@ export const AdminCompetitionListData = ({
                     handleNavigateToResultUpload(list.competitionId, list.phase)
                   }
                 >
-                  대회결과 수정
+                  대회결과 등록
                 </Button>
               )}
             </span>
@@ -168,12 +166,8 @@ export const AdminCompetitionListData = ({
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
-                      // href={file.filePath}
-                      // download={file.fileName}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        fileDownload(file.filePath, file.fileName);
-                      }}
+                      href={file.filePath}
+                      download={file.fileName}
                       rel="noreferrer"
                     >
                       {truncateString(file.fileName, 10)}

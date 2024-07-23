@@ -17,6 +17,7 @@ import Button from "shared/ui/button";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 import { CSVLink } from "react-csv";
 import { useFlattenData } from "shared/hook/useFlattenData";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const AdminPost = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -55,19 +56,20 @@ export const AdminPost = () => {
   const { data: postCsvDatas } = useAdminPostCsv(isEnabled);
   //csv데이터 size100000
 
-  const adminPostData = adminPostDatas?.data.data ?? [];
-  const totalPage: number = adminPostDatas?.data.data.totalPages ?? 0;
-  const csvData = postCsvDatas?.data.data.posts ?? [];
-
-  const handleNavigateToUploadPage = () => {
-    window.open("/post/notice/add");
+  
+  const uploadPage = (categroy: string) => {
+    window.open(`/post/${categroy}/add`);
   };
-
+  
   const handleSearch = () => {
+    if (adminPostDatas?.totalPosts === 0) {
+      confirmAlert("info", "조회 가능한 데이터가 없습니다.");
+      return;
+    }
     setIsEnabled(true);
     refetch();
   };
-
+  
   const handleReset = () => {
     setSelectedfirstCategory(firPostcategory[0]);
     setSelectedSecondCategory(secPostcategory[0]);
@@ -76,7 +78,8 @@ export const AdminPost = () => {
     setEndDate(null);
     setIsEnabled(false);
   };
-
+  
+  const csvData = postCsvDatas?.data.data.posts ?? [];
   // 평탄화된 데이터
   const postCsvData = flattenDatas(csvData);
 
@@ -104,7 +107,7 @@ export const AdminPost = () => {
       <div className={styles.listWrapper}>
         <div className={styles.listLengthBox}>
           <div className={styles.listLength}>
-            총 {adminPostData.totalPosts || "0"}건
+            총 {adminPostDatas?.totalPosts || "0"}건
             <div className={styles.CategoryListWrapper}>
               <CategoryList
                 categories={postListLength}
@@ -117,15 +120,27 @@ export const AdminPost = () => {
           <div>
             <Button
               className={styles.uploadBtn}
-              onClick={handleNavigateToUploadPage}
+              onClick={() => uploadPage("notice")}
             >
-              게시물 등록
+              공지 등록
             </Button>
-            {postCsvData && (
+            <Button
+              className={styles.uploadBtn}
+              onClick={() => uploadPage("news")}
+            >
+              news 등록
+            </Button>
+            <Button
+              className={styles.uploadBtn}
+              onClick={() => uploadPage("library")}
+            >
+              자료실 등록
+            </Button>
+            {adminPostDatas?.posts && (
               <CSVLink
                 headers={postCsv}
                 data={postCsvData}
-                filename="posts.csv"
+                filename="post.csv"
                 className={styles.csvBtn}
               >
                 엑셀 다운로드
@@ -135,12 +150,14 @@ export const AdminPost = () => {
         </div>
         <AdminPostListData
           titles={postListTitles}
-          lists={adminPostData.posts}
+          lists={adminPostDatas?.posts}
         />
-        <Pagination totalPages={totalPage} page={page} setPage={setPage} />
+        <Pagination
+          totalPages={adminPostDatas?.totalPages}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );
 };
-
-
