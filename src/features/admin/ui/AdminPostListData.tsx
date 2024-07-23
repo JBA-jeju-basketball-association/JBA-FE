@@ -6,7 +6,6 @@ import {
   useAdminPostDelete,
   useAdminchangeAnnouncement,
 } from "pages/admin/api/useAdminPostDatas";
-import { useFileDownload } from "shared/hook/useFileDownload";
 import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
 import { useTruncateString } from "shared/hook/useTruncateString";
 
@@ -59,9 +58,6 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
     );
   };
   //공지로 변경-해제
-
-  const { fileDownload } = useFileDownload();
-  //파일 다운로드 함수
 
   return (
     <div className={styles.container}>
@@ -117,10 +113,8 @@ export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
                 ? list.files.map((file, index) => (
                     <a
                       key={index}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        fileDownload(file.fileUrl, file.fileName);
-                      }}
+                      href={file.fileUrl}
+                      download={file.fileName}
                       rel="noreferrer"
                     >
                       {truncateString(file.fileName, 10)}

@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 type Props = {
   searchKeyword?: string;
   setSearchKeyword: React.Dispatch<React.SetStateAction<string>>;
-  handleSearch: any;
+  handleSearch: () => void;
 };
 
 export const SearchBar = ({
@@ -30,7 +30,7 @@ export const SearchBar = ({
     setTypeingTimeOut(
       setTimeout(() => {
         setSearchKeyword(value);
-        handleSearch();
+        // handleSearch();
       }, 500)
     );
   };
@@ -46,6 +46,7 @@ export const SearchBar = ({
         placeholder={"검색"}
         maxLength={20}
         minLength={2}
+        value={searchKeyword}
       />
       <FaSearch
         size={"20"}

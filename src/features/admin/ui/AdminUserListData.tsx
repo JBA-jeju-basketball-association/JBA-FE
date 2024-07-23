@@ -9,16 +9,14 @@ import { userPermissionMap } from "pages/admin/adminUtils/adminUserTitle";
 export const AdminUserListData = ({ titles, lists }: AdminUserListProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectUser, setSelectUser] = useState<UserListsType | null>(null);
-  const gender = (gender: string) => (gender === "mail" ? "남자" : "여자");
+
+  const gender = (gender: string) => (gender === "male" ? "남자" : "여자");
+
   const permissions = (permission: string) => {
     const findPermission = userPermissionMap.find(
       (user) => user.value === permission
     );
     return findPermission?.label || "없음";
-  };
-
-  const formatDate = (isoDate: any) => {
-    return isoDate.split("T")[0];
   };
 
   const userStatus = (status: string) => {

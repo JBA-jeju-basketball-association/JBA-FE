@@ -54,6 +54,7 @@ export const useAdminPostDatas = (
         },
       }),
     enabled,
+    select: (res: any) => res.data.data,
   });
 };
 

@@ -49,6 +49,7 @@ export const useAdminGalleryDatas = (
         },
       }),
     enabled,
+    select: (res: any) => res.data.data,
   });
 };
 
