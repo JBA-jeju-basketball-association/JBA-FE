@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PostListTable } from "../../../entities/postListTable";
 import { Pagination } from "widgets/pagination";
 import {
   useQuery,
-  useQueryClient,
   keepPreviousData,
+  useQueryClient,
 } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api";
 import { PostListData } from "../../../shared/type/PostType";
@@ -18,10 +18,12 @@ import {
 } from "../../../shared/ui";
 import { JwtDecoder } from "../../../shared/lib";
 import { useUserStore } from "../../../shared/model";
+import confirmAlert from "shared/lib/ConfirmAlert";
 
 export const PostListPage = () => {
   const [page, setPage] = useState<number>(1);
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
+  const [searchInput, setSearchInput] = useState<string>("");
   let { category } = useParams();
   const navigate = useNavigate();
   const { AccessToken } = useUserStore();
@@ -37,34 +39,36 @@ export const PostListPage = () => {
     isLoading,
     isError,
     data: postList,
-    refetch,
   } = useQuery<PostListData>({
-    queryKey: ["postList", `${category}`, `${page}`],
+    queryKey: ["postList", category, page, searchInput],
     queryFn: () =>
       NormalApi.get(
-        `/v1/api/post/${category}?page=${page - 1}&size=10&keyword=${searchKeyword}`
+        `/v1/api/post/${category}?page=${page - 1}&size=10&keyword=${searchInput}`
       ),
     select: (result: any) => result.data.data,
     placeholderData: keepPreviousData,
   });
 
   const findTargetPage = () => {
-    if (searchKeyword.length >= 2) {
+    if (searchKeyword.length >= 2 || searchKeyword.length === 0) {
       setPage(1);
-      refetch();
-    } else if (searchKeyword.length === 0) {
-      setPage(1);
-      refetch();
-    } 
-    else {
-      alert("🔎 검색어는 두 글자 이상 입력해주세요!");
+      setSearchInput(searchKeyword);
+    } else {
+      alert("🔎 검색은 두 글자 이상 해주세요");
+      setSearchInput('');
+      setSearchKeyword('');
     }
   };
-  // const queryClient = useQueryClient();
 
   // useEffect(() => {
-  //   queryClient.invalidateQueries({ queryKey: ["postList"] });
+  //   queryClient.invalidateQueries({ queryKey: ['postList'] });
   // }, [searchKeyword]);
+
+  // 검색 -> 키워드 업데이트 -> 엔터 이벤트 -> 서치인풋상태 업데이트 -> 메뉴바 클릭 -> 검색 키워드 초기화 -> 페이지 목록 리패치
+  useEffect(() => {
+    setSearchInput("");
+    setSearchKeyword("");
+  }, [category]);
 
   if (isError) {
     return <span>Error</span>;
@@ -88,7 +92,7 @@ export const PostListPage = () => {
           <SearchBar
             searchKeyword={searchKeyword}
             setSearchKeyword={setSearchKeyword}
-            handleSearch={() => findTargetPage()}
+            handleSearch={findTargetPage}
           />
         </div>
         {isLoading && <LoadingSpinner />}
