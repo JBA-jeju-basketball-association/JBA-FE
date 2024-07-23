@@ -5,7 +5,7 @@ import { useEffect } from "react";
 type ModalProps = {
   children?: React.ReactNode;
   isopen: boolean;
-  onRequestClose: () => void;
+  onRequestClose: any;
   style: ReactModal.Styles;
 };
 

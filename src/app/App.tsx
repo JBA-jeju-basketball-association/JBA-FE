@@ -35,6 +35,7 @@ import {SignUpPage} from "../pages/signUp";
 import { FaqPage } from "pages/faqPage";
 import { ChairmanPage } from "pages/chairmanPage";
 import {CompetitionVideo} from "../pages/competitionVideo";
+import {ProfilePage} from "../pages/user";
 
 function App() {
   useAxiosInterceptor();
@@ -52,6 +53,7 @@ function App() {
           {/*회원가입, 로그인*/}
           <Route path="signup" element={<SignUpPage />}/>
           <Route path="/login" element={<LoginPage />} />
+          <Route path={"/profile"} element={<ProfilePage />}/>
 
           {/*대회관련*/}
           <Route path="/competition" element={<CompetitionPage />} />
