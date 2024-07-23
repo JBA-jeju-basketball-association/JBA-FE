@@ -26,7 +26,7 @@ export const CompetitionRow = ({item, index, totalElements, pageNumber}:Props) =
     return (
         <div className={style.listArea} onClick={()=> navigateDetailPage()}>
             <div className={style.listLabel100}>
-                <p>{totalElements-index-(pageNumber*10)}</p>
+                <p>{item.competitionId}</p>
             </div>
             <div className={style.listLabel100} style={status==="진행중"?{color:"blue"}:status==="예정"?{color:"red"}:{color:"black"}}>
                 <p>{status}</p>

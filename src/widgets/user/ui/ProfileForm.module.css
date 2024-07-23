@@ -1,0 +1,33 @@
+.ProfileForm {
+    width: 600px;
+}
+
+.profileTitleArea {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profileTitleArea p {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profileTitleBtnArea button {
+    margin-left: 10px;
+    height: 25px;
+    width: 80px;
+    background-color: var(--private-black);
+    color: white;
+    border-radius: 10px;
+}
+
+.profileArea {
+    padding: 40px 0 0 40px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 560px;
+    height: 260px;
+    border-radius: 10px;
+}

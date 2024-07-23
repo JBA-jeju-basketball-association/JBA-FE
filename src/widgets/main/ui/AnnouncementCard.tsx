@@ -11,7 +11,6 @@ export const AnnouncementCard = ({data}:Props) => {
     return (
         <div className={style.AnnouncementCard} onClick={() => navigate(`/post/notice/${data?.postId}`)}>
             <div className={style.titleArea}>
-                {data?.foreword ? <p className={style.shortHead}>[{data?.foreword}]</p> : <p className={style.shortHead}></p>}
                 <h2 className={style.title}>{data?.title}</h2>
             </div>
             <div className={style.dateArea}>

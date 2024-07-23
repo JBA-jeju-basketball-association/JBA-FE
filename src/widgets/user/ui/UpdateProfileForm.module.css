@@ -1,0 +1,72 @@
+.UpdateProfileForm {
+    width: 600px;
+}
+
+.updateProfileTitleArea {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.updateProfileTitleArea p {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.updateProfileTitleArea button {
+    width: 80px;
+    height: 25px;
+    background-color: var(--private-black);
+    color: white;
+    border-radius: 10px;
+}
+
+.updateProfileArea {
+    padding: 40px 0 0 40px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 560px;
+    height: 260px;
+    border-radius: 10px;
+}
+
+.ProfileRow {
+    display: flex;
+    align-items: center;
+}
+
+.ProfileRow input {
+    padding-left: 5px;
+    border: none;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 16px;
+}
+
+.nameArea {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.nameArea p {
+    color: #4B4B4B;
+}
+
+.submitBtnArea {
+    width: 315px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitBtnArea button {
+    width: 80px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-size: 16px;
+    height: 25px;
+}
