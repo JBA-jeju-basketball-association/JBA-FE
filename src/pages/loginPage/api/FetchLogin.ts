@@ -28,7 +28,9 @@ export default function fetchLogin (email:string, password:string,
         else if (data.detailMessage === "Not Found User") setEmailMessage("이메일을 확인해주세요.");
 
         //틀린 비밀번호 입력 시 alert
-        else if (data.detailMessage === "자격 증명에 실패하였습니다.") confirmAlert("warning", `비밀번호를 ${data.request.failureCount}회 틀렸습니다.<br>(5회 실패시 계정 잠금)`)
+            //시후형 로직 고칠때 까지 비번 틀리면 비번 틀렸다고만 alert
+        // else if (data.detailMessage === "자격 증명에 실패하였습니다.") confirmAlert("warning", `비밀번호를 ${data.request.failureCount}회 틀렸습니다.<br>(5회 실패시 계정 잠금)`)
+        else if (data.detailMessage === "자격 증명에 실패하였습니다.") confirmAlert("warning", "비밀번호가 틀렸습니다.")
         else if (data.detailMessage === "자격 증명에 실패하였습니다. 계정이 잠깁니다.") confirmAlert("warning", "비밀번호를 5회 잘못 입력하셨습니다.<br>계정이 잠깁니다.")
         else if (data.detailMessage === "Login Locked User") confirmAlert("warning", "잠긴 계정입니다.")
         else if (data.code === 406) confirmAlert("warning", "로그인 할 수 없습니다.<br>관리자에게 문의하세요.")

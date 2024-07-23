@@ -61,10 +61,24 @@ export const PostResultBox = ({places, index, postCompetitionResult, setPostComp
         }
     }
     const plusHandler = () => {
+        let prevStartDate: number | undefined;
+        let row = postCompetitionResult[index].postResultRequestRows;
+        let firstLastDate;
+        let secondLastDate;
+        if (row.length > 1) {
+            firstLastDate = row[row.length - 1].startDate?.getTime() ?? new Date().getTime();
+            secondLastDate = row[row.length - 2].startDate?.getTime() ?? new Date().getTime();
+            prevStartDate = (2 * firstLastDate) - secondLastDate
+        }else if (row.length == 1){
+            firstLastDate = (row[row.length - 1].startDate?.getTime() ?? new Date().getTime()) + 3600000;
+            prevStartDate = firstLastDate;
+        }else {
+            prevStartDate = new Date().getTime();
+        }
         const initial:postResultRequestRows = {
             competitionResultId: null,
             gameNumber: 1,
-            startDate: new Date(),
+            startDate: new Date(prevStartDate ?? new Date().getTime()),
             floor: "",
             place: places[0].placeName,
             homeName: "",

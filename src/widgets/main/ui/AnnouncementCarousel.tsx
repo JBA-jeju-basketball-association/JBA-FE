@@ -28,9 +28,10 @@ export const AnnouncementCarousel = ({usingAnnouncementArea,setUsingAnnouncement
         dots: true,
         infinite: postData?.length > 9,
         speed: 500,
-        slidesToShow: Math.min(3, postData?.length || 3),
-        slidesToScroll: Math.min(3, postData?.length || 3),
+        slidesToShow: 1,
+        slidesToScroll: 1,
         rows: 3,
+        slidesPerRow: 3,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
         appendDots: (dots: any) => (
@@ -81,7 +82,7 @@ const CustomNextArrow = ({onClick, style}:any) => {
 };
 
 const SliderContainer = styled.div`
-    width: 1340px;
+    width: 1350px;
     height: 900px; /* 높이를 높여 카드 간의 간격을 반영 */
     position: relative;
 
@@ -118,7 +119,19 @@ const SliderContainer = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
+    .slick-list {
+        //padding: 0 20px; /* 슬라이더 양쪽에 여백 추가 */
+    }
+
+    .slick-slide > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
     .slide {
-        padding: 8px 0 8px 0; /* 각 슬라이드에 패딩 추가 */
+        padding: 8px; /* 각 슬라이드에 패딩 추가 */
+        box-sizing: border-box; /* 박스 크기를 포함하도록 설정 */
+        flex: 1 0 30%; /* 슬라이드 항목을 3개씩 한 줄에 표시 */
     }
 `;
