@@ -2,7 +2,7 @@ import React from 'react';
 import {useUserStore} from "../shared/model";
 import {JwtDecoder} from "../shared/lib";
 import {Navigate, Outlet} from "react-router-dom";
-import confirmAlert from "../shared/lib/ConfirmAlert";
+import confirmAlert from "../shared/lib/alert/ConfirmAlert";
 
 
 export const PrivateRoute  = () => {

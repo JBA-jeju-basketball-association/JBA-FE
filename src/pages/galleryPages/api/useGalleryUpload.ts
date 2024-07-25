@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Api } from "shared/api";
 import { useNavigate } from "react-router-dom";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 import { UploadType } from "shared/type/GalleryType";
 
 export const useGalleryUpload = () => {

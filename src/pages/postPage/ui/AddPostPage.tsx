@@ -12,7 +12,7 @@ import { PostImgsType } from "shared/type/PostType";
 import styles from "./AddPostPage.module.css";
 import { PageTitle } from "../../../shared/ui";
 import axios from "axios";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 const customStyles = {
   control: (provided: any) => ({

@@ -10,7 +10,7 @@ import {
     postCompetitionSchedule,
     postCompetitionScheduleRow
 } from "../../../shared/type/CompetitionType";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchGetSchedule from "../../../widgets/competition/api/FetchGetSchedule";
 import FetchUpdateSchedule from "../api/FetchUpdateSchedule";
 

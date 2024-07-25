@@ -7,7 +7,7 @@ import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetit
 import {CompetitionDetailTitle, competitionStatusCalculator, PostScheduleBox} from "../../../widgets/competition";
 import {postCompetitionSchedule, postCompetitionScheduleRow} from "../../../shared/type/CompetitionType";
 import FetchPostSchedule from "../api/FetchPostSchedule";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 
 export const PostCompetitionSchedulePage = () => {
     const [postCompetitionScheduleList, setPostCompetitionScheduleList] = useState<postCompetitionSchedule[]>([]);

@@ -4,8 +4,8 @@ import {useUserStore} from "../../../shared/model";
 import {JwtDecoder} from "../../../shared/lib";
 import {useNavigate, useParams} from "react-router-dom";
 import Swal from "sweetalert2"
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 
 
 type Props = {

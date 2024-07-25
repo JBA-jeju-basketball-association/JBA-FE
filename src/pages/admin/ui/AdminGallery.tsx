@@ -20,7 +20,7 @@ import Button from "shared/ui/button";
 import { useAdminGalleryStore } from "shared/model/stores/AdminGalleryStore";
 import { CSVLink } from "react-csv";
 import { useFlattenData } from "shared/hook/useFlattenData";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export const AdminGallery = () => {
   //몇개씩 조회할건지 내려주는 state

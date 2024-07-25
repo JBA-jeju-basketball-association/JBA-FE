@@ -1,6 +1,6 @@
 import {Api} from "../../../shared/api";
 import {postCompetitionResult} from "../../../shared/type/CompetitionType";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 export default function FetchPostResult(id:string, requests:postCompetitionResult[]) {

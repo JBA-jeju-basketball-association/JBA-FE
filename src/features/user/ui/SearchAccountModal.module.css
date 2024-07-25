@@ -1,0 +1,19 @@
+.SearchAccountModal {
+    margin: 20px 0;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.categoryArea {
+    width: 500px;
+}
+
+.selectedCategory {
+    width: 250px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: var(--primary-color);
+}

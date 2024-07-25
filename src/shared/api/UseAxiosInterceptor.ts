@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useUserStore} from "../model";
 import {Api} from "shared/api"
 import {JwtDecoder} from "../lib";
-import confirmAlert from "../lib/ConfirmAlert";
+import confirmAlert from "../lib/alert/ConfirmAlert";
 import * as process from "process";
 
 
