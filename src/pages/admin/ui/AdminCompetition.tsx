@@ -20,7 +20,7 @@ import {
 import { AdminSearchForm } from "features/admin";
 import { SituationBtn } from "features/admin";
 import { CSVLink } from "react-csv";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export const AdminCompetition = () => {
   const [isEnabled, setIsEnabled] = useState(false);

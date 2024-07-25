@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { RegitUpdateDeleteButton } from "shared/ui";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 import { useNavigate } from "react-router-dom";
 import { JwtDecoder } from "shared/lib";
 import { useUserStore } from "shared/model";

@@ -17,7 +17,7 @@ import Button from "shared/ui/button";
 import { useAdminPostStore } from "shared/model/stores/AdminPostStore";
 import { CSVLink } from "react-csv";
 import { useFlattenData } from "shared/hook/useFlattenData";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export const AdminPost = () => {
   const [isEnabled, setIsEnabled] = useState(false);

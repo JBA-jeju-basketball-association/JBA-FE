@@ -3,7 +3,7 @@ import { CommonModal } from "shared/ui";
 import styles from "./PermissionDetailModal.module.css";
 import Button from "shared/ui/button";
 import { userPermissionMap } from "pages/admin/adminUtils/adminUserTitle";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import { useAdminUserPermissionChange } from "pages/admin/api/useAdminUserDatas";
 
 type PermissionModalProps = {

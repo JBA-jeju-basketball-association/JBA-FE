@@ -7,6 +7,7 @@ import fetchLogin from "../api/FetchLogin";
 import {useUserStore, WhiteLogo} from "../../../shared/model";
 import {Link} from "react-router-dom";
 import {getCookie, setCookie} from "../../../utils/cookie/cookie";
+import {SearchAccountModal} from "../../../features/user";
 
 export const LoginPage = () => {
     const [email, setEmail] = useState<string>(getCookie("savedEmail" || ""));
@@ -15,6 +16,7 @@ export const LoginPage = () => {
     const {AccessToken, setAccessToken} = useUserStore();
     const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
     const [isChecked, setIsChecked] = useState<boolean>(!!getCookie('savedEmail'));
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const submitHandler = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
@@ -61,7 +63,7 @@ export const LoginPage = () => {
                                 <label>비밀번호</label>
                             </div>
                             <div className={style.boxArea}>
-                            <LoginInput type={isHidePassword ? "password" : "text"} setFn={setPassword}
+                                <LoginInput type={isHidePassword ? "password" : "text"} setFn={setPassword}
                                             placeholder={""} value={password}/>
                                 {isHidePassword ?
                                     <VscEye className={style.openEye} onClick={() => setIsHidePassword(false)}/>
@@ -74,10 +76,12 @@ export const LoginPage = () => {
                             </div>
                             <button type="submit" className={style.submitButton}>로그인</button>
                             <Link to="/signup" className={style.signUpLink}>회원가입</Link>
-                            {/*<div className={style.searchBox}>*/}
-                            {/*    <Link to="/" className={style.search}>계정 찾기 | 비밀번호 찾기</Link>*/}
-                            {/*</div>*/}
                         </form>
+                        <div className={style.searchBox}>
+                            <button className={style.search} onClick={() => setIsModalOpen(true)}>계정 찾기 | 비밀번호 찾기
+                            </button>
+                        </div>
+                        <SearchAccountModal isModalOpen={isModalOpen} setModalOpen={setIsModalOpen}/>
                     </div>
                 </div>
             </div>

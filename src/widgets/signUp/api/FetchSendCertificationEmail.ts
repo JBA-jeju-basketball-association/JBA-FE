@@ -1,5 +1,5 @@
 import {NormalApi} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 export default function FetchSendCertificationEmail(email:string, setCertificating:React.Dispatch<React.SetStateAction<boolean>>) {

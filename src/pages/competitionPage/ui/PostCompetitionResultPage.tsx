@@ -11,7 +11,7 @@ import {
 import {PageTitle, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {CompetitionDetailTitle, competitionStatusCalculator, PostScheduleBox} from "../../../widgets/competition";
 import {PostResultBox} from "../../../widgets/competition/ui/PostResultBox";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchPostResult from "../api/FetchPostResult";
 
 export const PostCompetitionResultPage = () => {

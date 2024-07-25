@@ -1,6 +1,6 @@
 import {postCompetitionSchedule} from "../../../shared/type/CompetitionType";
 import {Api} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 export default function FetchPostSchedule(id:string, postCompetitionScheduleList:postCompetitionSchedule[]) {

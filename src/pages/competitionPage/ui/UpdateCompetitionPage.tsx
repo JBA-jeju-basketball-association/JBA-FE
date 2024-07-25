@@ -20,7 +20,7 @@ import {
     place,
     divisionType
 } from "../../../shared/type/CompetitionType";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import {useQuery} from "@tanstack/react-query";
 import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {useNavigate, useParams} from "react-router-dom";

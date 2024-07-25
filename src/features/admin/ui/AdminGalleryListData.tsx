@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AdminGalleryListData.module.css";
 import Button from "shared/ui/button";
 import { useNavigate } from "react-router-dom";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 import { AdminGalleryListProps, GalleryListsType } from "shared/type/AdminType";
 import { useGalleryModalStore } from "shared/model";

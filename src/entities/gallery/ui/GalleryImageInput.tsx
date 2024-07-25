@@ -4,7 +4,7 @@ import { Api } from "shared/api";
 import styles from "./GalleryImageInput.module.css";
 import { FileType } from "shared/type/GalleryType";
 import { CloseIcon } from "utils/icon";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export type GalleryImageInputProps = {
   onUploadSuccess: (files: FileType[]) => void;

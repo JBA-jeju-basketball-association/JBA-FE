@@ -6,7 +6,7 @@ import {
   useAdminPostDelete,
   useAdminchangeAnnouncement,
 } from "pages/admin/api/useAdminPostDatas";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import { useTruncateString } from "shared/hook/useTruncateString";
 
 export const AdminPostListData = ({ titles, lists }: AdminPostListProps) => {
