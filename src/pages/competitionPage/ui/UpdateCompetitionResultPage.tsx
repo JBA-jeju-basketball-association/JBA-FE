@@ -12,7 +12,7 @@ import {
     CompetitionDetailTitle,
     competitionStatusCalculator,
 } from "../../../widgets/competition";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import FetchPostResult from "../api/FetchPostResult";
 import FetchGetCompetitionResult from "../../../widgets/competition/api/FetchGetCompetitionResult";

@@ -177,9 +177,9 @@
 }
 
 .searchBox {
-    width: 100%;
+    width: 460px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .search {
@@ -191,3 +191,4 @@
 .search:hover {
     color: var(--private-black);
 }
+

@@ -2,7 +2,7 @@ import React from "react";
 import { UploadType } from "shared/type/GalleryType";
 import { GalleryForm } from "shared/ui";
 import { useGalleryUpload } from "pages/galleryPages/api/useGalleryUpload";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 import { LoadingSpinner } from "shared/ui";
 
 export const GalleryUpload = () => {

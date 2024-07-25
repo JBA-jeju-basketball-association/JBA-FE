@@ -1,6 +1,6 @@
 import React from "react";
 import {NormalApi} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 export default function FetchCheckCertificationNum(email:string, num:string, setCertificating:React.Dispatch<React.SetStateAction<boolean>>, setIsCertificate:React.Dispatch<React.SetStateAction<boolean>>) {

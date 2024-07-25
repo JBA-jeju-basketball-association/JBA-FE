@@ -2,7 +2,7 @@ import React from "react";
 import { FileType, UploadType } from "shared/type/GalleryType";
 import { GalleryForm } from "shared/ui";
 import { useGalleryEdit } from "pages/galleryPages/api/useGalleryEdit";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import { LoadingSpinner } from "shared/ui";
 
 type EditType = {

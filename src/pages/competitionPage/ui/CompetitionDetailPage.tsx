@@ -12,7 +12,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {JwtDecoder} from "../../../shared/lib";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchDeleteCompetition from "../../../widgets/competition/api/FetchDeleteCompetition";
 import {useUserStore} from "../../../shared/model";
 

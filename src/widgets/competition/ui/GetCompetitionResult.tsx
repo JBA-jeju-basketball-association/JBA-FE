@@ -5,9 +5,9 @@ import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
 import {getCompetitionResult} from "../../../shared/type/CompetitionType";
 import FetchGetCompetitionResult from "../api/FetchGetCompetitionResult";
 import {ResultDivisionBox} from "./ResultDivisionBox";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchDeleteSchedule from "../api/FetchDeleteSchedule";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 type Props = {
     id: string | undefined;

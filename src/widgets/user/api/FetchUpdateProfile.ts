@@ -1,5 +1,5 @@
 import {Api} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 export default function FetchUpdateProfile(data:{name:string,phoneNum:string, birth:string, team:string}) {
     Api.put("/v1/api/user/update", data)

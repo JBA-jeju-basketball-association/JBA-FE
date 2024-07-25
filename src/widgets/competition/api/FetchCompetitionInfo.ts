@@ -1,5 +1,5 @@
 import {NormalApi} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 export default function FetchCompetitionInfo(id:string|undefined) {
     if (id) {

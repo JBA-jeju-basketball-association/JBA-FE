@@ -4,7 +4,7 @@ import { RegitUpdateDeleteButton } from "shared/ui/regitUpdateDeleteButton/Regit
 import { useNavigate } from "react-router-dom";
 import { FileType, UploadType } from "shared/type/GalleryType";
 import { GalleryImageInput } from "entities/gallery";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 type GalleryFormProps = {
   initialTitle?: string;

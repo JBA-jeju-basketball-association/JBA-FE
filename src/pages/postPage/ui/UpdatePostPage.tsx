@@ -23,8 +23,8 @@ import {
 } from "shared/type/PostType";
 import { LoadingSpinner, PageTitle } from "shared/ui";
 import axios from "axios";
-import confirmAlert from "shared/lib/ConfirmAlert";
-import confirmDelete from "shared/lib/ConfirmDelete";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
+import confirmDelete from "shared/lib/alert/ConfirmDelete";
 
 const customStyles = {
   control: (provided: any) => ({
