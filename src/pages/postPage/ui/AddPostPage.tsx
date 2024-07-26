@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
-import ForewordOptions from "../../../shared/model/forewordOptions";
 import OfficialOptions from "../../../shared/model/officialOptions";
 import { AddFiles } from "features/competition";
 import Select, { SingleValue } from "react-select";
@@ -30,9 +29,6 @@ const customStyles = {
 export const AddPostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [foreword, setForeword] = useState<
-    "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
-  >("");
   const [OfficialState, setOfficialState] = useState<"official" | "normal">(
     "normal"
   );
@@ -90,14 +86,14 @@ export const AddPostPage = () => {
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const forewordOption = ForewordOptions.find(
-      (option) => option.value === foreword
-    );
-    const forewordLabel = forewordOption ? forewordOption.label : "";
+    // const forewordOption = ForewordOptions.find(
+    //   (option) => option.value === foreword
+    // );
+    // const forewordLabel = forewordOption ? forewordOption.label : "";
     const requestData: requestPostData = {
       title,
       content,
-      foreword: forewordLabel,
+      // foreword: forewordLabel,
       postImgs,
     };
     addPost({
@@ -123,21 +119,21 @@ export const AddPostPage = () => {
     // );
   };
 
-  const forewordHandler = (selectedOption: SingleValue<any>): void => {
-    setForeword(selectedOption.value);
-  };
+  // const forewordHandler = (selectedOption: SingleValue<any>): void => {
+  //   setForeword(selectedOption.value);
+  // };
 
   const officialOptionHandler = (selectedOption: SingleValue<any>): void => {
     setOfficialState(selectedOption.value);
   };
 
-  useEffect(() => {
-    if (OfficialState === "normal") {
-      setForeword("");
-    } else {
-      setForeword("notice");
-    }
-  }, [OfficialState]);
+  // useEffect(() => {
+  //   if (OfficialState === "normal") {
+  //     setForeword("");
+  //   } else {
+  //     setForeword("notice");
+  //   }
+  // }, [OfficialState]);
 
   // const handleInputChange = async (files: FileList | null) => {
   //   // 1. url 발급 및 버켓 담기
@@ -180,14 +176,14 @@ export const AddPostPage = () => {
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
                 />
-                <Select
+                {/* <Select
                   styles={customStyles}
                   options={ForewordOptions}
                   placeholder="머리말"
                   className={styles.select}
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
                   isDisabled={OfficialState === "official" ? false : true}
-                />
+                /> */}
                 <input
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setTitle(e.target.value)

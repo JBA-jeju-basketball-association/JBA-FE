@@ -4,7 +4,6 @@ import { PostImgsType } from "shared/type/PostType";
 export interface requestPostData {
   title: string;
   content: string;
-  foreword: "안내" | "개최" | "합격자 발표" | "입찰" | "기타" | "";
   postImgs: PostImgsType[];
 }
 

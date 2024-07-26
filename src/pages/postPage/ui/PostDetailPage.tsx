@@ -130,7 +130,6 @@ export const PostDetailPage = () => {
               setDownloadUrl((prev) => [...prev, url]);
             })
             .catch((err) => console.error("Failed to fetch image:", err));
-
         }
       }
     }
@@ -144,15 +143,8 @@ export const PostDetailPage = () => {
     return <span>Error</span>;
   }
 
-  const {
-    foreword,
-    title,
-    writer,
-    createAt,
-    viewCount,
-    content,
-    isAnnouncement,
-  } = postDetail;
+  const { title, writer, createAt, viewCount, content, isAnnouncement } =
+    postDetail;
 
   return (
     <div className={styles.container}>
@@ -177,11 +169,11 @@ export const PostDetailPage = () => {
                 className={styles.adminDelete}
                 onClick={() => {
                   confirmDelete(
-                    '삭제',
+                    "삭제",
                     deletePost,
                     "question",
                     "정말 삭제하시겠습니까?",
-                    "게시글을 삭제하면 복원할 수 없습니다.",
+                    "게시글을 삭제하면 복원할 수 없습니다."
                   );
                 }}
               >
@@ -190,9 +182,7 @@ export const PostDetailPage = () => {
             </div>
           ) : null}
           <li className={styles.title}>
-            <span className={styles.titleContent}>
-              {!!foreword ? `[${foreword}] ` + title : title}
-            </span>
+            <span className={styles.titleContent}>{title}</span>
           </li>
           <li className={styles.list}></li>
           {typeItems.map((item, index) => (
