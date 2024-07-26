@@ -324,24 +324,31 @@ export const UpdatePostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <input
-                type="file"
-                name="uploadFile"
-                id="uploadFile"
-                multiple
-                onChange={(e) => handleChangeUploadFile(e)}
-              />
-              {filePreview.map((file) => (
-                <div key={file.fileId} className={styles.fileItemWrapper}>
-                  <span className={styles.fileItemText}>{file.fileName}</span>
-                  <button
-                    onClick={(e) => handleDeleteButtonClick(e, file.fileName)}
-                    className={styles.deleteButton}
-                  >
-                    X
-                  </button>
+              <div className={styles.inputWrapper}>
+                <input
+                  type="file"
+                  name="uploadFile"
+                  className={styles.uploadFile}
+                  id="uploadFile"
+                  multiple
+                  onChange={(e) => handleChangeUploadFile(e)}
+                />
+                <div className={styles.fileBundleWrapper}>
+                  {filePreview.map((file) => (
+                    <div key={file.fileId} className={styles.fileItemWrapper}>
+                      <span className={styles.fileItemText}>
+                        {file.fileName}
+                      </span>
+                      <button
+                        onClick={(e) =>
+                          handleDeleteButtonClick(e, file.fileName)
+                        }
+                        className={styles.deleteButton}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>

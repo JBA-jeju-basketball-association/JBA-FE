@@ -207,7 +207,7 @@ export const AddPostPage = () => {
               <div className={styles.subLine}></div>
               <div className={styles.uploadFileWrapper}>
                 <span className={styles.uploadFileTitle}>첨부파일</span>
-                <div>
+                <div className={styles.uploadFileBundle}>
                   {!!fileName.length ? (
                     fileName.map((item, i) => (
                       <div className={styles.uploadFileItem} key={i}>
