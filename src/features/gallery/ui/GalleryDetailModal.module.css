@@ -26,12 +26,18 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .detailImage {
-  max-width: 900px;
-  height: 500px;
+  max-width: 950px; 
+  max-height: 700px; 
+  width: auto; 
+  height: auto; 
+  object-fit: contain; 
 }
+/* max-width: 1000px; 여기 조절에  따라서 가로 이미지 크기 달라짐   */
 
 .handleBtn {
   display: flex;
