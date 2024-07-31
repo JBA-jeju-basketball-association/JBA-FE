@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 130px;
 }
 
 .checkBoxLabel input[type="checkbox"] {

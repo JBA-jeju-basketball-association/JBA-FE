@@ -18,7 +18,7 @@ import {
 } from "../../../shared/ui";
 import { JwtDecoder } from "../../../shared/lib";
 import { useUserStore } from "../../../shared/model";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export const PostListPage = () => {
   const [page, setPage] = useState<number>(1);

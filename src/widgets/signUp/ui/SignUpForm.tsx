@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import style from "./SignUpForm.module.css"
 import FetchSendCertificationEmail from "../api/FetchSendCertificationEmail";
 import FetchCheckCertificationNum from "../api/FetchCheckCertificationNum";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 import {VscEye, VscEyeClosed} from "react-icons/vsc";
 import PhoneNumHandler from "../model/PhoneNumHandler";
 import BirthHandler from "../model/BirthHandler";

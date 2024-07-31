@@ -6,7 +6,7 @@ import {
   CompetitionListsType,
 } from "shared/type/AdminType";
 import { useTruncateString } from "shared/hook/useTruncateString";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import { useAdminCompetitionDelete } from "pages/admin/api/useAdminCompetitionDatas";
 import { AdminEditChoiceModal, AdminDeleteChoiceModal } from "entities/admin";
 

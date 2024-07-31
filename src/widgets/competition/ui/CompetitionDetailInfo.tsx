@@ -8,7 +8,7 @@ import {CompetitionDetailMakeDivisionText, competitionStatusCalculator} from "..
 import {useNavigate, useParams} from "react-router-dom";
 import {useUserStore} from "../../../shared/model";
 import FetchDeleteCompetition from "../api/FetchDeleteCompetition";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 
 type Props = {
     data:competitionDetailData

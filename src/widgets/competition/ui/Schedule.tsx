@@ -5,9 +5,9 @@ import FetchGetSchedule from "../api/FetchGetSchedule";
 import {ScheduleDivisionBox} from "./ScheduleDivisionBox";
 import {getScheduleResponse, place} from "../../../shared/type/CompetitionType";
 import {LoadingSpinner, RegitUpdateDeleteButton} from "../../../shared/ui";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchDeleteSchedule from "../api/FetchDeleteSchedule";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 type Props = {

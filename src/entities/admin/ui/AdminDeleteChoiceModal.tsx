@@ -2,7 +2,7 @@ import React from "react";
 import { CommonModal } from "shared/ui";
 import Button from "shared/ui/button";
 import styles from "./AdminEditChoiceModal.module.css";
-import confirmAndCancelAlertWithLoading from "shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import {
   useAdminCompetitionDelete,
   useAdminScheduleDelete,

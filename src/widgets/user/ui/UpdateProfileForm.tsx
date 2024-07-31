@@ -4,7 +4,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import PhoneNumHandler from "../../signUp/model/PhoneNumHandler";
 import BirthHandler from "../../signUp/model/BirthHandler";
 import {ProfileUserInfo} from "../../../shared/type/UserType";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import FetchUpdateProfile from "../api/FetchUpdateProfile";
 
 type Props = {

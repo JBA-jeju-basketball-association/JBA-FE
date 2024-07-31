@@ -3,7 +3,7 @@ import style from "./ResultRow.module.css"
 import {getCompetitionResultRow} from "../../../shared/type/CompetitionType";
 import formatDate from "../../../shared/lib/formatDate";
 import {MdOutlineDriveFolderUpload} from "react-icons/md";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 type Props = {

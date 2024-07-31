@@ -15,7 +15,7 @@ import { useAdminUserDatas, useAdminUserCsv } from "../api/useAdminUserDatas";
 import { useAdminUserStore } from "shared/model/stores/AdminUserStore";
 import { AdminSearchForm } from "features/admin";
 import { CSVLink } from "react-csv";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 
 export const AdminUser = () => {
   const [isEnabled, setIsEnabled] = useState(false);

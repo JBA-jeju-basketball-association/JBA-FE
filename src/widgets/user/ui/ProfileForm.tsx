@@ -4,7 +4,7 @@ import {ProfileRow} from "../../../entities/user";
 import {useNavigate} from "react-router-dom";
 import {ProfileUserInfo} from "../../../shared/type/UserType";
 import {UpdatePasswordModal} from "../../../features/user";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 
 type Props = {
     setIsProfileForm: React.Dispatch<React.SetStateAction<boolean>>;

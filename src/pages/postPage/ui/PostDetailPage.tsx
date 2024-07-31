@@ -10,8 +10,8 @@ import styles from "./PostDetailPage.module.css";
 import { DeletePost } from "../api/DeletePost";
 import { LoadingSpinner, PageTitle } from "shared/ui";
 import axios from "axios";
-import confirmAlert from "shared/lib/ConfirmAlert";
-import confirmDelete from "shared/lib/ConfirmDelete";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
+import confirmDelete from "shared/lib/alert/ConfirmDelete";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();

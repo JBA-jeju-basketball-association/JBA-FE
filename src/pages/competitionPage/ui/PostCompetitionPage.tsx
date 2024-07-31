@@ -8,7 +8,7 @@ import {PlaceArea,AddFiles} from "../../../features/competition";
 import {AddCompetitionLabel, ListLinkBtn, PageTitle, RegitTitleInput} from "../../../shared/ui";
 import {CkEditor} from "../../../features/ckEditor";
 import {divisionType, IFileTypes, requestData} from "../../../shared/type/CompetitionType";
-import confirmAndCancelAlertWithLoading from "../../../shared/lib/ConfirmAndCancelAlertWithLoading";
+import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
 import {place} from "../../../shared/type/CompetitionType";
 import FetchPostCompetition from "../api/FetchPostCompetition";
 import {useNavigate} from "react-router-dom";

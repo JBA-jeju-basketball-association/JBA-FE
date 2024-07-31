@@ -1,5 +1,5 @@
 import { Api } from "shared/api";
-import confirmAlert from "shared/lib/ConfirmAlert";
+import confirmAlert from "shared/lib/alert/ConfirmAlert";
 /**
  * 지정된 URL에서 파일을 다운로드하고 브라우저에서 다운로드를 트리거.
  * 'application/octet-stream' MIME 타입을 사용하여 다양한 파일 형식을 처리가능.

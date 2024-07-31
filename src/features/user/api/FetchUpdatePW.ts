@@ -1,5 +1,5 @@
 import {Api} from "../../../shared/api";
-import confirmAlert from "../../../shared/lib/ConfirmAlert";
+import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
 
 export default function FetchUpdatePW(data:{prevPW:string, newPW:string, newPWConfirm:string}, setAccessToken:(token:string | null) =>void) {
