@@ -9,7 +9,7 @@ import PhoneNumHandler from "../model/PhoneNumHandler";
 import BirthHandler from "../model/BirthHandler";
 import FetchSignUp from "../api/FetchSignUp";
 
-export type FormData = {
+export type signUpData = {
     email: string;
     password: string;
     passwordConfirm: string;
@@ -28,7 +28,7 @@ export const SignUpForm = () => {
     const [certificationNum, setCertificationNum] = useState<string>("");
     const [isHidePassword, setIsHidePassword] = useState<boolean>(true);
     const [isHidePasswordConfirm, setIsHidePasswordConfirm] = useState<boolean>(true);
-    const {register, setValue, handleSubmit, formState:{ errors}, getValues} = useForm<FormData>();
+    const {register, setValue, handleSubmit, formState:{ errors}, getValues} = useForm<signUpData>();
 
 
     const onSubmit = handleSubmit(data => {

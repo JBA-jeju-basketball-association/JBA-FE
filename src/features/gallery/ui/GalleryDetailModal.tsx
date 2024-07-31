@@ -46,7 +46,6 @@ const customModalStyles: ReactModal.Styles = {
 
 const SlideContainer = styled.div`
   width: 100%;
-
   .slick-slide {
     height: 680px;
   }
