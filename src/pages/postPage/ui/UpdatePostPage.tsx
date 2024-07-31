@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../shared/ui/button";
 import { CkEditor } from "features/ckEditor";
-import ForewordOptions, {
-  forewordOptionType,
-} from "../../../shared/model/forewordOptions";
 import OfficialOptions, {
   OfficialOptionType,
 } from "../../../shared/model/officialOptions";
@@ -45,10 +42,6 @@ export const UpdatePostPage = () => {
   let isOfficialQuery = searchParams.get("isAnnouncement");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  // 드롭다운을 통한 머리말 상태관리
-  const [foreword, setForeword] = useState<
-    "notice" | "hold" | "announcement" | "bidding" | "etc" | ""
-  >("");
   // 드롭 다운을 통한 공지, 일반 게시글 종류 상태관리
   const [officialState, setOfficialState] = useState<"official" | "normal">(
     isOfficialQuery === "true" ? "official" : "normal"
@@ -93,7 +86,7 @@ export const UpdatePostPage = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["postList"] });
       navigate(`/post/${category}`);
-      confirmAlert('success','수정 성공', '게시글 수정을 완료하였습니다.')
+      confirmAlert("success", "수정 성공", "게시글 수정을 완료하였습니다.");
     },
     onError: (e) => {
       if (axios.isAxiosError(e)) {
@@ -125,10 +118,6 @@ export const UpdatePostPage = () => {
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const forewordOption = ForewordOptions.find(
-      (option) => option.value === foreword
-    );
-    const forewordLabel = forewordOption ? forewordOption.label : "";
     const remainingFiles: RemainingFilesType[] = [];
     const postImgs: RemainingImgsType[] = [];
     remainingFilesState.map(
@@ -142,7 +131,7 @@ export const UpdatePostPage = () => {
     const requestData: EditRequestPostData = {
       title,
       content,
-      foreword: forewordLabel,
+      // foreword: forewordLabel,
       remainingFiles,
       postImgs,
     };
@@ -170,9 +159,9 @@ export const UpdatePostPage = () => {
     // );
   };
 
-  const handleForewordValue = (): forewordOptionType | undefined => {
-    return ForewordOptions.find((option) => option.value === foreword);
-  };
+  // const handleForewordValue = (): forewordOptionType | undefined => {
+  //   return ForewordOptions.find((option) => option.value === foreword);
+  // };
 
   const handleOfficialValue = (): OfficialOptionType | undefined => {
     return OfficialOptions.find((option) => option.value === officialState);
@@ -182,9 +171,9 @@ export const UpdatePostPage = () => {
     setOfficialState(selectedOption.value);
   };
 
-  const forewordHandler = (selectedOption: SingleValue<any>): void => {
-    setForeword(selectedOption.value);
-  };
+  // const forewordHandler = (selectedOption: SingleValue<any>): void => {
+  //   setForeword(selectedOption.value);
+  // };
 
   // file preview "x"버튼 핸들 함수
   const handleDeleteButtonClick = (
@@ -241,14 +230,14 @@ export const UpdatePostPage = () => {
       setContent(postDetail.content);
       setPostImgsState(postDetail.postImgs);
       setRemainingFilesState(postDetail.files);
-      if (isOfficialQuery === "true") {
-        ForewordOptions.map(
-          (option) =>
-            option.label === postDetail.foreword && setForeword(option.value)
-        );
-      } else {
-        setForeword("");
-      }
+      // if (isOfficialQuery === "true") {
+      //   ForewordOptions.map(
+      //     (option) =>
+      //       option.label === postDetail.foreword && setForeword(option.value)
+      //   );
+      // } else {
+      //   setForeword("");
+      // }
     }
   }, [isOfficialQuery, postDetail]);
 
@@ -264,15 +253,15 @@ export const UpdatePostPage = () => {
     setFilePreview(fileBucket);
   }, [postImgsState, remainingFilesState]);
 
-  useEffect(() => {
-    if (officialState === "normal") {
-      setForeword("");
-      setSearchParams({ isAnnouncement: "false" });
-    } else {
-      setForeword("notice");
-      setSearchParams({ isAnnouncement: "true" });
-    }
-  }, [officialState]);
+  // useEffect(() => {
+  //   if (officialState === "normal") {
+  //     setForeword("");
+  //     setSearchParams({ isAnnouncement: "false" });
+  //   } else {
+  //     setForeword("notice");
+  //     setSearchParams({ isAnnouncement: "true" });
+  //   }
+  // }, [officialState]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -306,7 +295,7 @@ export const UpdatePostPage = () => {
                   onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
                   value={handleOfficialValue()}
                 />
-                <Select
+                {/* <Select
                   name="foreword"
                   id="foreword"
                   styles={customStyles}
@@ -316,7 +305,7 @@ export const UpdatePostPage = () => {
                   onChange={(e: SingleValue<any>) => forewordHandler(e)}
                   value={handleForewordValue()}
                   isDisabled={officialState === "normal" ? true : false}
-                />
+                /> */}
                 <input
                   value={title}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -335,24 +324,31 @@ export const UpdatePostPage = () => {
             </div>
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
-              <input
-                type="file"
-                name="uploadFile"
-                id="uploadFile"
-                multiple
-                onChange={(e) => handleChangeUploadFile(e)}
-              />
-              {filePreview.map((file) => (
-                <div key={file.fileId} className={styles.fileItemWrapper}>
-                  <span className={styles.fileItemText}>{file.fileName}</span>
-                  <button
-                    onClick={(e) => handleDeleteButtonClick(e, file.fileName)}
-                    className={styles.deleteButton}
-                  >
-                    X
-                  </button>
+              <div className={styles.inputWrapper}>
+                <input
+                  type="file"
+                  name="uploadFile"
+                  className={styles.uploadFile}
+                  id="uploadFile"
+                  multiple
+                  onChange={(e) => handleChangeUploadFile(e)}
+                />
+                <div className={styles.fileBundleWrapper}>
+                  {filePreview.map((file) => (
+                    <div key={file.fileId} className={styles.fileItemWrapper}>
+                      <span className={styles.fileItemText}>
+                        {file.fileName}
+                      </span>
+                      <button
+                        onClick={(e) =>
+                          handleDeleteButtonClick(e, file.fileName)
+                        }
+                        className={styles.deleteButton}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
               <div className={styles.subLine}></div>
             </div>
             <div className={styles.buttonContainer}>
