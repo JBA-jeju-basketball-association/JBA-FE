@@ -4,7 +4,10 @@ import { PostImgsType } from "shared/type/PostType";
 export interface requestPostData {
   title: string;
   content: string;
-  postImgs: PostImgsType[];
+  postImgs: {
+    fileName:string,
+    imgUrl: string,
+  }[];
 }
 
 const AddPostRequest = (params: {
@@ -14,7 +17,7 @@ const AddPostRequest = (params: {
   postFiles: FileList | null;
 }) => {
   const { category, data, OfficialState, postFiles } = params;
-  const officialBoolean = OfficialState === "official" ? true : false;
+  const officialBoolean = OfficialState === "official";
   const formData = new FormData();
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
   formData.append("body", blob);
