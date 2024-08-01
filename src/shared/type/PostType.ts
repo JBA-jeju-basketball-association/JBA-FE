@@ -5,7 +5,6 @@ export interface Post {
   writer: string;
   createAt: string;
   viewCount: number;
-  foreword: string;
 }
 
 export interface PostListData {
@@ -45,7 +44,6 @@ export interface RemainingImgsType {
 // 게시글 타입 정의
 export interface PostDetailType {
   postId: number;
-  foreword: string;
   title: string;
   writer: string;
   createAt: string;

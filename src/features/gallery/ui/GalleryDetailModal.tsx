@@ -7,12 +7,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { RegitUpdateDeleteButton } from "shared/ui";
-import confirmAlert from "shared/lib/alert/ConfirmAlert";
-import { useNavigate } from "react-router-dom";
-import { JwtDecoder } from "shared/lib";
-import { useUserStore } from "shared/model";
-import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
@@ -33,7 +27,7 @@ const customModalStyles: ReactModal.Styles = {
   },
   content: {
     width: "60%",
-    height: "80%",
+    height: "95%",
     zIndex: "102",
     position: "absolute",
     top: "50%",
@@ -47,7 +41,7 @@ const customModalStyles: ReactModal.Styles = {
 const SlideContainer = styled.div`
   width: 100%;
   .slick-slide {
-    height: 680px;
+    height: 850px;
   }
 
   .slick-dots {
@@ -156,7 +150,7 @@ export const GalleryDetailModal = ({
                   src={file.fileUrl}
                   alt="갤러리 이미지"
                 />
-              </div>
+              // </div>
             ))}
           </Slider>
         </SlideContainer>

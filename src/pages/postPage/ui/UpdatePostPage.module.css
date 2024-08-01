@@ -1,166 +1,177 @@
 .container {
-    min-width: 1440px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 72px;
-  }
-  
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    width: 70%;
-    margin-bottom: 20px;
-  }
-  
-  .categoryArea {
-    margin: 0 auto;
-    margin-bottom: 30px;
-  }
-  
-  .category {
-    font-size: 26px;
-    font-weight: 600;
-  }
-  
-  .divideLine {
-    background-color: var(--primary-color);
-    width: 100%;
-    height: 0.2px;
-  }
-  
-  .subLine {
-    background-color: var(--subcolor-black4);
-    width: 100%;
-    height: 0.2px;
-  }
-  
-  .list {
-    margin: 0 auto;
-  }
-  
-  .formContainer {
-    padding-top: 28px;
-    padding-bottom: 40px;
-  }
-  
-  .formWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .formContent {
-    padding-right: 5%;
-    padding-left: 5%;
-    margin-bottom: 30px;
-  }
-  
-  .inputArea {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      min-height: 50px;
-      margin-bottom: 19px;
-  }
-  
-  .select {
-      min-width: 15%;
-  }
-  
-  .titleInput {
-    height: 48px;
-    padding-left: 20px;
-    background-color: #EFEFEF;
-    width: 85%;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  
-  .titleInput::placeholder {
-    color: #8E8E8E;
-    font-size: 16px;
-  }
-  
-  .filesWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .filesContainer{
-    display: flex;
-    padding-left: 30px;
-  }
-  .filesContainerTitle {
-    margin: 10px
-  }
-  .fileDownloadItem {
-    margin-bottom: 5px;
-    text-decoration: underline;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .downloadUrlWrapper{
-    display: flex;
-    margin: 10px;
-    flex-direction: column;
-  }
-  .fileNull {
-    padding-left: 16px;
-  }
-  
-  .buttonContainer {
-    margin: 0 auto;
-  }
-  
-  .buttonWrapper {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .buttonCancel {
-    background-color: var(--subcolor-black3);
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 48px;
-    border-radius: 8px;
-    font-size: 18px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .buttonCancel:hover {
-    background-color: var(--subcolor-black4);
-  }
+  min-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 72px;
+}
 
-  .fileItemWrapper {
-    
-  }
-  .fileItemText {
-  
-  }
-  
-  .deleteButton {
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    width: 17px;
-    height: 17px;
-    margin-left: 7px;
-    
-    background-color: var(--subcolor-black3);
-  }
-  .deleteButton:hover {
-    background-color: var(--subcolor-black4);
-  }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.categoryArea {
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.category {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.divideLine {
+  background-color: var(--primary-color);
+  width: 100%;
+  height: 0.2px;
+}
+
+.subLine {
+  background-color: var(--subcolor-black4);
+  width: 100%;
+  height: 0.2px;
+}
+
+.list {
+  margin: 0 auto;
+}
+
+.formContainer {
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.formContent {
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-bottom: 30px;
+}
+
+.inputArea {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  min-height: 50px;
+  margin-bottom: 19px;
+}
+
+.select {
+  min-width: 15%;
+  z-index: 9;
+}
+
+.titleInput {
+  height: 48px;
+  padding-left: 20px;
+  background-color: #efefef;
+  width: 85%;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+}
+
+.titleInput::placeholder {
+  color: #8e8e8e;
+  font-size: 16px;
+}
+
+.filesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.inputWrapper {
+  display: flex;
+}
+.filesContainer {
+  display: flex;
+  padding-left: 30px;
+}
+.filesContainerTitle {
+  margin: 10px;
+}
+.fileDownloadItem {
+  margin-bottom: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+}
+.downloadUrlWrapper {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+}
+.fileNull {
+  padding-left: 16px;
+}
+
+.buttonContainer {
+  margin: 0 auto;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.buttonCancel {
+  background-color: var(--subcolor-black3);
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonCancel:hover {
+  background-color: var(--subcolor-black4);
+}
+
+.uploadFile {
+  width: 160px;
+  border: none;
+}
+
+.fileItemWrapper {
+  display: flex;
+  align-items: center;
+}
+.fileBundleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 17px;
+}
+.deleteButton {
+  border: none;
+  color: #fff;
+  width: 15px;
+  height: 100%;
+  margin-left: 7px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-image: url(/public/icon/delete.svg);
+}
+.deleteButton:hover {
+  opacity: 0.5;
+}
