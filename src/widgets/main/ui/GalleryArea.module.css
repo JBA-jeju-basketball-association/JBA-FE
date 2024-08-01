@@ -27,6 +27,10 @@
     height: 500px;
 }
 
+.pictureArea img {
+    object-fit: cover;
+}
+
 .leftArea {
     width: 640px;
     margin-right: 20px;

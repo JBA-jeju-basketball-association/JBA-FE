@@ -5,15 +5,8 @@ import styles from "./PostListRow.module.css";
 import NoticeCard from "./NoticeCard";
 
 const PostListRow = ({ postItem }: { postItem: Post }) => {
-  const {
-    postId,
-    isAnnouncement,
-    title,
-    writer,
-    createAt,
-    viewCount,
-    foreword,
-  } = postItem;
+  const { postId, isAnnouncement, title, writer, createAt, viewCount } =
+    postItem;
   const navigate = useNavigate();
   return (
     <div
@@ -24,9 +17,7 @@ const PostListRow = ({ postItem }: { postItem: Post }) => {
     >
       <div className={styles.postList}>
         <NoticeCard isAnnouncement={isAnnouncement} postId={postId} />
-        <div className={styles.postTitle}>
-          {!!foreword ? `[${foreword}]` : ""} {title}
-        </div>
+        <div className={styles.postTitle}>{title}</div>
         <div className={styles.postWriter}>{writer}</div>
         <div className={styles.postItem}>{createAt}</div>
         <div className={styles.postItem}>{viewCount}</div>

@@ -29,4 +29,5 @@
 
 .image {
   height: 253px;
+  object-fit: cover;
 }

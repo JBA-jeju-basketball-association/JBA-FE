@@ -1,8 +1,8 @@
-import {FormData} from "../ui/SignUpForm";
+import {signUpData} from "../ui/SignUpForm";
 import {NormalApi} from "../../../shared/api";
 import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
 
-export default function FetchSignUp(data:FormData) {
+export default function FetchSignUp(data:signUpData) {
 
 
     return NormalApi.post("v1/api/sign/sign-up", data)

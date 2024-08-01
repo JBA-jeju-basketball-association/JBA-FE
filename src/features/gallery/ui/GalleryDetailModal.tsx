@@ -7,12 +7,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { RegitUpdateDeleteButton } from "shared/ui";
-import confirmAlert from "shared/lib/alert/ConfirmAlert";
-import { useNavigate } from "react-router-dom";
-import { JwtDecoder } from "shared/lib";
-import { useUserStore } from "shared/model";
-import { useGalleryDelete } from "pages/galleryPages/api/useGalleryDelete";
 
 type GalleryDetailModalProps = {
   modalOpen: boolean;
@@ -33,7 +27,7 @@ const customModalStyles: ReactModal.Styles = {
   },
   content: {
     width: "60%",
-    height: "80%",
+    height: "100vh",
     zIndex: "102",
     position: "absolute",
     top: "50%",
@@ -46,14 +40,15 @@ const customModalStyles: ReactModal.Styles = {
 
 const SlideContainer = styled.div`
   width: 100%;
-
   .slick-slide {
-    height: 680px;
+    height: 80vh;
   }
 
   .slick-dots {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    height: 15vh;
   }
 
   .dots_custom {
@@ -65,9 +60,9 @@ const SlideContainer = styled.div`
 
   .dots_custom li {
     cursor: pointer;
-    width: 200px;
-    height: 130px;
-    flex: 0 0 200px;
+    width: 15vh;
+    height: 10vh;
+    flex: 0 0 15vh;
   }
 
   .dots_custom li img {
@@ -118,7 +113,6 @@ export const GalleryDetailModal = ({
       <img
         src={files[i]?.fileUrl}
         alt="도트 이미지"
-        className={styles.dotImage}
       />
     ),
     appendDots: (dots: React.ReactNode) => (
@@ -157,7 +151,7 @@ export const GalleryDetailModal = ({
                   src={file.fileUrl}
                   alt="갤러리 이미지"
                 />
-              </div>
+              // </div>
             ))}
           </Slider>
         </SlideContainer>

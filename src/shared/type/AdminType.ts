@@ -76,7 +76,6 @@ export type PostListsType = {
   deleteAt: string | null;
   email: string;
   files: File[];
-  foreword: string | null;
   isAnnouncement: boolean;
   postId: number;
   postStatus: string;
