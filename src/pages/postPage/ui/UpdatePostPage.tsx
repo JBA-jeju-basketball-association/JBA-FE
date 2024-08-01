@@ -5,10 +5,9 @@ import { CkEditor } from "features/ckEditor";
 import OfficialOptions, {
   OfficialOptionType,
 } from "../../../shared/model/officialOptions";
-import { AddFiles } from "features/competition";
 import Select, { SingleValue } from "react-select";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { NormalApi } from "../../../shared/api/NormalApi";
+import { NormalApi } from "../../../shared/api";
 import EditPostRequest, { EditRequestPostData } from "../api/EditPostRequest";
 import styles from "./UpdatePostPage.module.css";
 import {
@@ -51,9 +50,6 @@ export const UpdatePostPage = () => {
   const [remainingFilesState, setRemainingFilesState] = useState<FilesType[]>(
     []
   );
-  const [filePreview, setFilePreview] = useState<(FilesType | PostImgsType)[]>(
-    []
-  );
   // 수정 후 보낼 내용
   const [uploadFiles, setUploadFiles] = useState<FileList | null>(null);
   const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
@@ -78,6 +74,7 @@ export const UpdatePostPage = () => {
     enabled: !!postId, // postId가 존재할 때에만 호출
     select: (result: any) => result.data.data,
   });
+  console.log(postDetail)
 
   const queryClient = useQueryClient();
 
@@ -125,15 +122,17 @@ export const UpdatePostPage = () => {
         item.fileUrl &&
         remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
     );
-    postImgsState.map((item) =>
+    postImgsState.forEach((item) =>
       postImgs.push({ fileName: item.fileName, imgUrl: item.imgUrl })
     );
+    newCkImgUrls.forEach((item) => {
+      postImgs.push({fileName: item, imgUrl:item})
+    })
     const requestData: EditRequestPostData = {
-      title,
-      content,
-      // foreword: forewordLabel,
-      remainingFiles,
-      postImgs,
+      title: title,
+      content: content,
+      remainingFiles: remainingFiles,
+      postImgs: postImgs
     };
     editPost({
       category,
@@ -222,7 +221,7 @@ export const UpdatePostPage = () => {
       }
     }
   };
-
+  console.log(postImgsState)
   // 게시글 상세 내용 가져오기
   useEffect(() => {
     if (postDetail) {
@@ -240,18 +239,6 @@ export const UpdatePostPage = () => {
       // }
     }
   }, [isOfficialQuery, postDetail]);
-
-  // 게시글 상세 내용 가져온 후, file + postImgs 합쳐서 화면에 미리 보기 위해서 상태로 관리
-  useEffect(() => {
-    let fileBucket: (FilesType | PostImgsType)[] = [];
-    if (!!postImgsState) {
-      fileBucket.push(...postImgsState);
-    }
-    if (!!remainingFilesState) {
-      fileBucket.push(...remainingFilesState);
-    }
-    setFilePreview(fileBucket);
-  }, [postImgsState, remainingFilesState]);
 
   // useEffect(() => {
   //   if (officialState === "normal") {
@@ -295,17 +282,6 @@ export const UpdatePostPage = () => {
                   onChange={(e: SingleValue<any>) => officialOptionHandler(e)}
                   value={handleOfficialValue()}
                 />
-                {/* <Select
-                  name="foreword"
-                  id="foreword"
-                  styles={customStyles}
-                  options={ForewordOptions}
-                  placeholder="머리말"
-                  className={styles.select}
-                  onChange={(e: SingleValue<any>) => forewordHandler(e)}
-                  value={handleForewordValue()}
-                  isDisabled={officialState === "normal" ? true : false}
-                /> */}
                 <input
                   value={title}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -334,7 +310,7 @@ export const UpdatePostPage = () => {
                   onChange={(e) => handleChangeUploadFile(e)}
                 />
                 <div className={styles.fileBundleWrapper}>
-                  {filePreview.map((file) => (
+                  {remainingFilesState.map((file) => (
                     <div key={file.fileId} className={styles.fileItemWrapper}>
                       <span className={styles.fileItemText}>
                         {file.fileName}
