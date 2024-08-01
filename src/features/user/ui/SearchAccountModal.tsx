@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import style from "./SearchAccountModal.module.css"
 import {CommonModal} from "../../../shared/ui";
-import styled from "styled-components";
+import SearchPasswordBox from "./SearchPasswordBox";
+import SearchEmailBox from "./SearchEmailBox";
 
 type Props = {
     isModalOpen: boolean;
@@ -37,21 +38,23 @@ const customModalStyles: ReactModal.Styles = {
     },
 };
 
-const CategoryBtn = styled.button `
-    width: 250px;
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: ${(props) => props.color || "white"};
-`
+
 export const SearchAccountModal = ({isModalOpen, setModalOpen}:Props) => {
     const [isEmailSelected, setIsEmailSelected] = useState<boolean>(true);
     return (
         <CommonModal isopen={isModalOpen} onRequestClose={() => setModalOpen(false)} style={customModalStyles}>
+            <button className={style.xBtn} onClick={() => setModalOpen(false)}>x</button>
             <div className={style.SearchAccountModal}>
                 <div className={style.categoryArea}>
-                    <CategoryBtn color={isEmailSelected ? "black" : "white"} onClick={() => setIsEmailSelected(true)}>이메일 찾기</CategoryBtn>
-                    <CategoryBtn color={isEmailSelected ? "var(--primary-color)" : "white"} onClick={() => setIsEmailSelected(false)}>비밀번호 찾기</CategoryBtn>
+                    <button className={isEmailSelected ? style.selectedCategory : style.unSelectedCategory}
+                            style={{borderRadius: "10px 0 0 10px"}} onClick={() => setIsEmailSelected(true)}>이메일 찾기
+                    </button>
+                    <button className={isEmailSelected ? style.unSelectedCategory : style.selectedCategory}
+                            style={{borderRadius: "0 10px 10px 0"}} onClick={() => setIsEmailSelected(false)}>비밀번호 찾기
+                    </button>
+                </div>
+                <div>
+                    {isEmailSelected ? <SearchEmailBox/> : <SearchPasswordBox/>}
                 </div>
             </div>
         </CommonModal>
