@@ -15,12 +15,56 @@
   margin-top: 40px;
 }
 
-.closeIcon {
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
+@media (min-height: 800px) {
+  .container > h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin-top: 40px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    cursor: pointer;
+  }
 }
+
+
+@media (max-height: 799px) and (min-height: 500px) {
+  .container > h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-top: 20px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    cursor: pointer;
+  }
+}
+
+@media (max-height: 499px) {
+  .container > h1 {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-top: 10px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    cursor: pointer;
+  }
+}
+
+
 
 .detailImageImgWrapper {
   display: flex !important;
@@ -32,10 +76,9 @@
 
 .detailImage {
   width: 900px;
-  height: 700px;
+  height: 65vh;
   object-fit: cover;
 }
-/* max-width: 1000px; 여기 조절에  따라서 가로 이미지 크기 달라짐   */
 
 .handleBtn {
   display: flex;
