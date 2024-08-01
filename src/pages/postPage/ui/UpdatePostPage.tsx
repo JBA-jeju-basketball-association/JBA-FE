@@ -74,7 +74,6 @@ export const UpdatePostPage = () => {
     enabled: !!postId, // postId가 존재할 때에만 호출
     select: (result: any) => result.data.data,
   });
-  console.log(postDetail)
 
   const queryClient = useQueryClient();
 
