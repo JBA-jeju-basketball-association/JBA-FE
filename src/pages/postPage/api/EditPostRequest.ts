@@ -16,7 +16,7 @@ const EditPostRequest = (params: {
   uploadFiles: FileList | null;
 }) => {
   const { category, requestData, postId, officialState, uploadFiles } = params;
-  const officialBoolean = officialState === "official" ? true : false;
+  const officialBoolean = officialState === "official";
   const formData = new FormData();
   const blob = new Blob([JSON.stringify(requestData)], {
     type: "application/json",
