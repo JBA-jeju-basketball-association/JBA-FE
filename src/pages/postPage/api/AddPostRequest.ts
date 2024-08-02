@@ -6,7 +6,7 @@ export interface requestPostData {
   content: string;
   postImgs: {
     fileName:string,
-    imgUrl: string,
+    fileUrl: string,
   }[];
 }
 

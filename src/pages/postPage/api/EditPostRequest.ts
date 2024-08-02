@@ -5,7 +5,7 @@ export interface EditRequestPostData {
   title: string;
   content: string;
   remainingFiles: RemainingFilesType[];
-  postImgs: RemainingImgsType[];
+  postImgs: {fileName:string, fileUrl:string}[];
 }
 
 const EditPostRequest = (params: {
