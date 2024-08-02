@@ -85,10 +85,10 @@ export const AddPostPage = () => {
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const ckImgs:{fileName:string, imgUrl:string}[] = newCkImgUrls.map((item) => {
+    const ckImgs:{fileName:string, fileUrl:string}[] = newCkImgUrls.map((item) => {
       return {
         fileName: item,
-        imgUrl: item
+        fileUrl: item
       }
     })
     const requestData: requestPostData = {
