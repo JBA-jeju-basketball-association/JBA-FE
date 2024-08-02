@@ -5,11 +5,14 @@ import Editor from "ckeditor5-custom-build/build/ckeditor";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import React from "react";
 import { Api } from "../../../shared/api";
-import {ClassicEditor} from "@ckeditor/ckeditor5-editor-classic";
 
+export type ckEditorResponse= {
+  fileUrl:string
+  fileName:string
+}
 type Props = {
   setCkData: React.Dispatch<any>;
-  setNewCkImgUrls: React.Dispatch<React.SetStateAction<string[]>>;
+  setNewCkImgUrls: React.Dispatch<React.SetStateAction<ckEditorResponse[]>>;
   ckData: string;
 };
 
@@ -83,7 +86,7 @@ export const CkEditor = ({ ckData, setCkData, setNewCkImgUrls }: Props) => {
             })
               .then((res) => {
                 setNewCkImgUrls((prevState) => {
-                  return [...prevState, res.data.url];
+                  return [...prevState, {fileUrl:res.data.url, fileName:res.data.fileName}];
                 });
                 resolve({
                   default: res.data.url,

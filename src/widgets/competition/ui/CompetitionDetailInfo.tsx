@@ -9,6 +9,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useUserStore} from "../../../shared/model";
 import FetchDeleteCompetition from "../api/FetchDeleteCompetition";
 import confirmAndCancelAlertWithLoading from "../../../shared/lib/alert/ConfirmAndCancelAlertWithLoading";
+import {handleDownload} from "../../../shared/lib/handleDownload";
 
 type Props = {
     data:competitionDetailData
@@ -82,7 +83,7 @@ export const CompetitionDetailInfo = ({data}:Props) => {
                     <CompetitionDetailLabel name={"첨부파일"}/>
                     <div
                         className={style.info}>{data?.competitionDetailAttachedFiles.map((f: competitionDetailAttachedFile, index: number) => {
-                        return <a href={f.filePath} key={index}>{index + 1}. {f.fileName}</a>
+                        return <button onClick={() => handleDownload(f.filePath, f.fileName)} key={f.competitionAttachedFileId}>{index + 1}. {f.fileName}</button>
                     })}</div>
                 </div>
             </div>

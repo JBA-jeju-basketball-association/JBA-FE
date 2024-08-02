@@ -8,19 +8,17 @@ import OfficialOptions, {
 import Select, { SingleValue } from "react-select";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { NormalApi } from "../../../shared/api";
-import EditPostRequest, { EditRequestPostData } from "../api/EditPostRequest";
+import { EditRequestPostData } from "../api/EditPostRequest";
 import styles from "./UpdatePostPage.module.css";
 import {
   FilesType,
   PostDetailType,
-  PostImgsType,
   RemainingFilesType,
-  RemainingImgsType,
 } from "shared/type/PostType";
 import { LoadingSpinner, PageTitle } from "shared/ui";
-import axios from "axios";
-import confirmAlert from "shared/lib/alert/ConfirmAlert";
 import confirmDelete from "shared/lib/alert/ConfirmDelete";
+import MutationEditPost from "../api/MutationEditPost";
+import {ckEditorResponse} from "../../../features/ckEditor/ui/CkEditor";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -46,14 +44,13 @@ export const UpdatePostPage = () => {
     isOfficialQuery === "true" ? "official" : "normal"
   );
   // 기존 내용
-  const [postImgsState, setPostImgsState] = useState<{fileName:string, fileUrl:string}[]>([]);
+  const [postImgsState, setPostImgsState] = useState<RemainingFilesType[]>([]);
   const [remainingFilesState, setRemainingFilesState] = useState<FilesType[]>(
     []
   );
   // 수정 후 보낼 내용
-  const [uploadFiles, setUploadFiles] = useState<FileList | null>(null);
-  const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
-
+  const [uploadFiles, setUploadFiles] = useState<File[]>([]);
+  const [newCkImgUrls, setNewCkImgUrls] = useState<ckEditorResponse[]>([]);
   const navigate = useNavigate();
 
   const detailTitle =
@@ -63,52 +60,22 @@ export const UpdatePostPage = () => {
         ? "NEWS"
         : "자료실";
 
-  const {
-    isLoading,
-    isError,
-    data: postDetail,
-    error,
-  } = useQuery<PostDetailType>({
+  const {isLoading, isError, data: postDetail, error,} = useQuery<PostDetailType>({
     queryKey: ["postDeatil", category, postId],
     queryFn: () => NormalApi.get(`/v1/api/post/${category}/${postId}`),
     enabled: !!postId, // postId가 존재할 때에만 호출
     select: (result: any) => result.data.data,
   });
-  console.log(postDetail)
 
   const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: EditPostRequest,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["postList"] });
-      navigate(`/post/${category}`);
-      confirmAlert("success", "수정 성공", "게시글 수정을 완료하였습니다.");
-    },
-    onError: (e) => {
-      if (axios.isAxiosError(e)) {
-        if (e.response?.status === 409) {
-          confirmAlert("warning", "중복된 게시글 제목입니다.");
-        }
-        if (e.response?.status === 403) {
-          confirmAlert("warning", "게시글 작성 권한이 없습니다.");
-        }
-        if (e.response?.status === 400) {
-          confirmAlert("warning", "게시글 제목 또는 내용을 입력해주세요.");
-        }
-        if (e.response?.status === 404) {
-          confirmAlert("warning", "존재하지 않는 작성자입니다.");
-        }
-      }
-    },
-  });
+  const mutation = MutationEditPost(queryClient, category)
 
   const editPost = (params: {
     category?: string;
     requestData: EditRequestPostData;
     postId?: string;
     officialState: "official" | "normal";
-    uploadFiles: FileList | null;
+    uploadFiles: File[];
   }) => {
     mutation.mutate(params);
   };
@@ -116,17 +83,17 @@ export const UpdatePostPage = () => {
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const remainingFiles: RemainingFilesType[] = [];
-    let postImgs: {fileName:string, fileUrl:string}[] = [];
+    let postImgs: RemainingFilesType[] = [];
+
     remainingFilesState.map(
       (item) =>
-        item.fileUrl &&
-        remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
+        item.fileUrl && remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
     );
     postImgsState.forEach((item) =>
       postImgs.push(item)
     );
     newCkImgUrls.forEach((item) => {
-      postImgs.push({fileName: item, fileUrl:item})
+      postImgs.push({fileName: item.fileName, fileUrl:item.fileUrl})
     })
     const requestData: EditRequestPostData = {
       title: title,
@@ -134,7 +101,7 @@ export const UpdatePostPage = () => {
       remainingFiles: remainingFiles,
       postImgs: postImgs
     };
-    console.log(requestData)
+
     editPost({
       category,
       requestData,
@@ -143,25 +110,9 @@ export const UpdatePostPage = () => {
       uploadFiles,
     });
 
-    // for (let i: number = 0; i < newCkImgUrls.length; i++) {
-    //   if (content.includes(newCkImgUrls[i])) {
-    //     requestData.postImgs.push(newCkImgUrls[i]);
-    //   }
-    // }
 
-    // confirmAndCancelAlertWithLoading(
-    //   "question",
-    //   "대회를 등록하시겠습니까?",
-    //   "",
-    //   async () => {
-    //     await FetchPostCompetition(requestData, files);
-    //   }
-    // );
   };
 
-  // const handleForewordValue = (): forewordOptionType | undefined => {
-  //   return ForewordOptions.find((option) => option.value === foreword);
-  // };
 
   const handleOfficialValue = (): OfficialOptionType | undefined => {
     return OfficialOptions.find((option) => option.value === officialState);
@@ -171,58 +122,35 @@ export const UpdatePostPage = () => {
     setOfficialState(selectedOption.value);
   };
 
-  // const forewordHandler = (selectedOption: SingleValue<any>): void => {
-  //   setForeword(selectedOption.value);
-  // };
 
-  // file preview "x"버튼 핸들 함수
-  const handleDeleteButtonClick = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    fileNameToDelete: string
-  ) => {
+  // 추가 upload 되는 파일들을 모아준다.
+  const handleUploadFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      setUploadFiles(prevState => {
+        let result = [...prevState]
+        for (let i: number = 0; i < files.length; i++) {
+          const file = files.item(i)
+          if (file) result.push(file)
+        }
+        return result
+      });
+    }
+  }
+
+  // 추가된 파일 삭제 로직
+  const handleDeleteUploadFiles = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>,indexToRemove:number) => {
+    e.preventDefault()
+    setUploadFiles(prev => prev.filter((f, index) => index !== indexToRemove))
+  }
+
+  // 원래 업로드 되어있던 파일 삭제 로직
+  const handleDeleteOriginFiles = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, indexToRemove:number) => {
     // form event
     e.preventDefault();
-    // 프리뷰 데이터 관리 -> 유즈 이펙트로 인한 프리뷰 업데이트
-    const filteredImgs = postImgsState.filter(
-      (item) => item.fileName !== fileNameToDelete
-    );
-    const filteredFiles = remainingFilesState.filter(
-      (item) => item.fileName !== fileNameToDelete
-    );
-    setPostImgsState([...filteredImgs]);
-    setRemainingFilesState([...filteredFiles]);
-
-    // 추가 업로드 첨부파일 인풋 관리
-    if (uploadFiles) {
-      // FileList 데이터 타입을 유지하기 위해서
-      const newDataTransfer = new DataTransfer();
-      for (let i = 0; i < uploadFiles.length; i++) {
-        if (uploadFiles[i].name !== fileNameToDelete) {
-          newDataTransfer.items.add(uploadFiles[i]);
-        }
-      }
-      setUploadFiles(newDataTransfer.files);
-    }
+    setRemainingFilesState(prev => prev.filter((f,index) => index !== indexToRemove))
   };
 
-  // 첨부파일 인풋 onChange 핸들링 함수
-  const handleChangeUploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // 데이터 변경
-    setUploadFiles(e.target.files);
-    // 프리뷰 변경
-    if (e.target.files) {
-      const Random: number = Math.floor(Math.random() * 10 + 1.6);
-      for (let i = 0; i < e.target.files.length; i++) {
-        const previewItem: FilesType | PostImgsType = {
-          fileId: i + Random,
-          fileName: e.target.files[i].name,
-          fileUrl: "",
-        };
-        setRemainingFilesState((prev) => [...prev, previewItem]);
-      }
-    }
-  };
-  console.log(postImgsState)
   // 게시글 상세 내용 가져오기
   useEffect(() => {
     if (postDetail) {
@@ -233,26 +161,8 @@ export const UpdatePostPage = () => {
       setContent(postDetail.content);
       setPostImgsState(imgList);
       setRemainingFilesState(postDetail.files);
-      // if (isOfficialQuery === "true") {
-      //   ForewordOptions.map(
-      //     (option) =>
-      //       option.label === postDetail.foreword && setForeword(option.value)
-      //   );
-      // } else {
-      //   setForeword("");
-      // }
     }
   }, [isOfficialQuery, postDetail]);
-
-  // useEffect(() => {
-  //   if (officialState === "normal") {
-  //     setForeword("");
-  //     setSearchParams({ isAnnouncement: "false" });
-  //   } else {
-  //     setForeword("notice");
-  //     setSearchParams({ isAnnouncement: "true" });
-  //   }
-  // }, [officialState]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -305,27 +215,41 @@ export const UpdatePostPage = () => {
             <div className={styles.filesWrapper}>
               <div className={styles.subLine}></div>
               <div className={styles.inputWrapper}>
-                <input
-                  type="file"
-                  name="uploadFile"
-                  className={styles.uploadFile}
-                  id="uploadFile"
-                  multiple
-                  onChange={(e) => handleChangeUploadFile(e)}
-                />
+                <div className={styles.customFileInput}>
+                  <p>파일선택</p>
+                  <input
+                      type="file"
+                      id="uploadFile"
+                      multiple
+                      onChange={(e) => handleUploadFiles(e)}
+                  />
+                </div>
                 <div className={styles.fileBundleWrapper}>
-                  {remainingFilesState.map((file) => (
-                    <div key={file.fileId} className={styles.fileItemWrapper}>
+                  {remainingFilesState.map((file, index:number) => (
+                      <div key={file.fileId} className={styles.fileItemWrapper}>
                       <span>
                         {file.fileName}
                       </span>
                       <button
                         onClick={(e) =>
-                          handleDeleteButtonClick(e, file.fileName)
+                            handleDeleteOriginFiles(e, index)
                         }
                         className={styles.deleteButton}
                       />
                     </div>
+                  ))}
+                  {uploadFiles.map((file:File, index:number) => (
+                      <div key={index} className={styles.fileItemWrapper}>
+                      <span>
+                        {file.name}
+                      </span>
+                        <button
+                            onClick={(e) =>
+                                handleDeleteUploadFiles(e,index)
+                            }
+                            className={styles.deleteButton}
+                        />
+                      </div>
                   ))}
                 </div>
               </div>

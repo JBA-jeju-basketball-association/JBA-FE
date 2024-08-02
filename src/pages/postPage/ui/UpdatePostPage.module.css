@@ -147,13 +147,39 @@
 }
 
 .uploadFile {
-  width: 160px;
-  border: none;
+  /*width: 160px;*/
+  /*border: none;*/
+}
+
+.customFileInput {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+}
+
+.customFileInput:hover {
+  color: white;
+}
+
+.customFileInput input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .fileItemWrapper {
   display: flex;
-  align-items: center;
 }
 .fileBundleWrapper {
   display: flex;

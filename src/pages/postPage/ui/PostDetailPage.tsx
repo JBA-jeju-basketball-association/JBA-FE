@@ -11,6 +11,8 @@ import { LoadingSpinner, PageTitle } from "shared/ui";
 import axios from "axios";
 import confirmAlert from "shared/lib/alert/ConfirmAlert";
 import confirmDelete from "shared/lib/alert/ConfirmDelete";
+import {FilesType} from "../../../shared/type/PostType";
+import {handleDownload} from "../../../shared/lib/handleDownload";
 
 export const PostDetailPage = () => {
   let { postId, category } = useParams();
@@ -133,14 +135,15 @@ export const PostDetailPage = () => {
                 {
                   postDetail?.files.length > 0
                       ?
-                      postDetail?.files?.map((item: { fileId: number; fileName: string; fileUrl: string }) => (
-                          <a
+                      postDetail?.files?.map((item:FilesType, i:number) => (
+                          <button
+                              // download 속성을 넣어도 원본 파일명이 다운로드 되서 fetch 로직으로 변경했어요.
+                              onClick={() => handleDownload(item.fileUrl, item.fileName)}
                               key={item.fileId}
-                              href={item.fileUrl}
                               className={styles.fileDownloadItem}
                           >
                             {item.fileName}
-                          </a>
+                          </button>
                       ))
                       :
                       <span className={styles.fileNull}>첨부파일 없음</span>
