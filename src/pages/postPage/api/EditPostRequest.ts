@@ -13,7 +13,7 @@ const EditPostRequest = (params: {
   requestData: EditRequestPostData;
   postId?: string;
   officialState: "official" | "normal";
-  uploadFiles: FileList | null;
+  uploadFiles: File[];
 }) => {
   const { category, requestData, postId, officialState, uploadFiles } = params;
   const officialBoolean = officialState === "official";

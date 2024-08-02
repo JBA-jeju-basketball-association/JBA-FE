@@ -11,7 +11,7 @@ const AddPostRequest = (params: {
   category?: string;
   data: requestPostData;
   OfficialState: "official" | "normal";
-  postFiles: FileList | null;
+  postFiles: File[];
 }) => {
   const { category, data, OfficialState, postFiles } = params;
   const officialBoolean = OfficialState === "official";
