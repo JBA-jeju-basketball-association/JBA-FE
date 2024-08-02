@@ -49,6 +49,6 @@ export interface PostDetailType {
   createAt: string;
   viewCount: number;
   files: any[]; // files가 배열인데 정확한 구조를 알 수 없으므로 any[]로 정의
-  postImgs: PostImgsType[];
+  postImgs: FilesType[];
   content: string;
 }

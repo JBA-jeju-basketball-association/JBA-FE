@@ -74,6 +74,7 @@ export const UpdatePostPage = () => {
     enabled: !!postId, // postId가 존재할 때에만 호출
     select: (result: any) => result.data.data,
   });
+  console.log(postDetail)
 
   const queryClient = useQueryClient();
 
@@ -115,14 +116,14 @@ export const UpdatePostPage = () => {
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const remainingFiles: RemainingFilesType[] = [];
-    const postImgs: {fileName:string, fileUrl:string}[] = [];
+    let postImgs: {fileName:string, fileUrl:string}[] = [];
     remainingFilesState.map(
       (item) =>
         item.fileUrl &&
         remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
     );
     postImgsState.forEach((item) =>
-      postImgs.push({ fileName: item.fileName, fileUrl: item.fileUrl })
+      postImgs.push(item)
     );
     newCkImgUrls.forEach((item) => {
       postImgs.push({fileName: item, fileUrl:item})
@@ -226,7 +227,7 @@ export const UpdatePostPage = () => {
   useEffect(() => {
     if (postDetail) {
       const imgList = postDetail.postImgs.map(item => {
-        return {fileName:item.fileName, fileUrl:item.imgUrl}
+        return {fileName:item.fileName, fileUrl:item.fileUrl}
       })
       setTitle(postDetail.title);
       setContent(postDetail.content);
