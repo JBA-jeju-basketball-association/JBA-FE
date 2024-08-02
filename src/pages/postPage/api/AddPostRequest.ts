@@ -1,13 +1,10 @@
 import { Api } from "shared/api";
-import { PostImgsType } from "shared/type/PostType";
+import {RemainingFilesType} from "shared/type/PostType";
 
 export interface requestPostData {
   title: string;
   content: string;
-  postImgs: {
-    fileName:string,
-    fileUrl: string,
-  }[];
+  postImgs: RemainingFilesType[];
 }
 
 const AddPostRequest = (params: {
