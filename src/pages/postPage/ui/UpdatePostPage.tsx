@@ -46,7 +46,7 @@ export const UpdatePostPage = () => {
     isOfficialQuery === "true" ? "official" : "normal"
   );
   // 기존 내용
-  const [postImgsState, setPostImgsState] = useState<PostImgsType[]>([]);
+  const [postImgsState, setPostImgsState] = useState<{fileName:string, fileUrl:string}[]>([]);
   const [remainingFilesState, setRemainingFilesState] = useState<FilesType[]>(
     []
   );
@@ -115,17 +115,17 @@ export const UpdatePostPage = () => {
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const remainingFiles: RemainingFilesType[] = [];
-    const postImgs: RemainingImgsType[] = [];
+    const postImgs: {fileName:string, fileUrl:string}[] = [];
     remainingFilesState.map(
       (item) =>
         item.fileUrl &&
         remainingFiles.push({ fileName: item.fileName, fileUrl: item.fileUrl })
     );
     postImgsState.forEach((item) =>
-      postImgs.push({ fileName: item.fileName, imgUrl: item.imgUrl })
+      postImgs.push({ fileName: item.fileName, fileUrl: item.fileUrl })
     );
     newCkImgUrls.forEach((item) => {
-      postImgs.push({fileName: item, imgUrl:item})
+      postImgs.push({fileName: item, fileUrl:item})
     })
     const requestData: EditRequestPostData = {
       title: title,
@@ -133,6 +133,7 @@ export const UpdatePostPage = () => {
       remainingFiles: remainingFiles,
       postImgs: postImgs
     };
+    console.log(requestData)
     editPost({
       category,
       requestData,
@@ -224,9 +225,12 @@ export const UpdatePostPage = () => {
   // 게시글 상세 내용 가져오기
   useEffect(() => {
     if (postDetail) {
+      const imgList = postDetail.postImgs.map(item => {
+        return {fileName:item.fileName, fileUrl:item.imgUrl}
+      })
       setTitle(postDetail.title);
       setContent(postDetail.content);
-      setPostImgsState(postDetail.postImgs);
+      setPostImgsState(imgList);
       setRemainingFilesState(postDetail.files);
       // if (isOfficialQuery === "true") {
       //   ForewordOptions.map(
@@ -311,7 +315,7 @@ export const UpdatePostPage = () => {
                 <div className={styles.fileBundleWrapper}>
                   {remainingFilesState.map((file) => (
                     <div key={file.fileId} className={styles.fileItemWrapper}>
-                      <span className={styles.fileItemText}>
+                      <span>
                         {file.fileName}
                       </span>
                       <button
