@@ -1,3 +1,5 @@
+import {ckEditorResponse} from "../../features/ckEditor/ui/CkEditor";
+
 export type requestData = {
     title: string;
     divisions: string[];
@@ -6,7 +8,7 @@ export type requestData = {
     places: place[];
     relatedURL: string | null;
     ckData:any;
-    realCkImgs:string[];
+    ckImgRequests:ckEditorResponse[];
 }
 
 export type IFileTypes = {
@@ -22,7 +24,7 @@ export type updateRequestData = {
     updatePlaces: place[];
     relatedURL: string | null;
     ckData:any;
-    realCkImgs:string[];
+    ckImgRequests:ckEditorResponse[];
     uploadedAttachedFiles:string[];
     deletedCkImgUrls: string[]
 }

@@ -25,6 +25,7 @@ import {useQuery} from "@tanstack/react-query";
 import FetchCompetitionInfo from "../../../widgets/competition/api/FetchCompetitionInfo";
 import {useNavigate, useParams} from "react-router-dom";
 import FetchGetDivisionList from "../api/FetchGetDivisionList";
+import {ckEditorResponse} from "../../../features/ckEditor/ui/CkEditor";
 
 
 
@@ -39,7 +40,7 @@ export const UpdateCompetitionPage = () => {
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
     const [attachedFileList, setAttachedFileList] = useState<competitionDetailAttachedFile[]>([])
-    const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+    const [newCkImgUrls, setNewCkImgUrls] = useState<ckEditorResponse[]>([]);
     const navigate = useNavigate();
     const [divisionList, setDivisionList] = useState<divisionType[]>([]);
 
@@ -83,7 +84,7 @@ export const UpdateCompetitionPage = () => {
             updatePlaces: places,
             relatedURL: relatedURL,
             ckData:ckData,
-            realCkImgs:[],
+            ckImgRequests:[],
             uploadedAttachedFiles:attachedFileList.map((item) => item.filePath),
             deletedCkImgUrls: []
         }
@@ -96,8 +97,8 @@ export const UpdateCompetitionPage = () => {
         }
         // 새로운 ck 이미지
         for (let i:number = 0; i < newCkImgUrls.length; i++) {
-            if(ckData.includes(newCkImgUrls[i])) {
-                requestData.realCkImgs.push(newCkImgUrls[i])
+            if(ckData.includes(newCkImgUrls[i].fileUrl)) {
+                requestData.ckImgRequests.push(newCkImgUrls[i])
             }
         }
         confirmAndCancelAlertWithLoading("question", "대회를 수정하시겠습니까?", "", async () => {

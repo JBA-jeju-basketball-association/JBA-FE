@@ -96,6 +96,7 @@
   display: flex;
   margin: 10px;
   flex-direction: column;
+  align-items: flex-start;
 }
 .fileNull {
   padding-left: 16px;

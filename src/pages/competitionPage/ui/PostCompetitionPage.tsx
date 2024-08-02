@@ -14,6 +14,7 @@ import FetchPostCompetition from "../api/FetchPostCompetition";
 import {useNavigate} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import FetchGetDivisionList from "../api/FetchGetDivisionList";
+import {ckEditorResponse} from "../../../features/ckEditor/ui/CkEditor";
 
 
 
@@ -27,7 +28,7 @@ export const PostCompetitionPage = () => {
     const [relatedURL, setRelatedUrl] = useState<string | null>(null);
     const [files, setFiles] = useState<IFileTypes[]>([]);
     const [ckData, setCkData] = useState<string>("");
-    const [newCkImgUrls, setNewCkImgUrls] = useState<string[]>([]);
+    const [newCkImgUrls, setNewCkImgUrls] = useState<ckEditorResponse[]>([]);
     const navigate = useNavigate();
     const [divisionList, setDivisionList] = useState<divisionType[]>([])
 
@@ -62,12 +63,12 @@ export const PostCompetitionPage = () => {
             places: places,
             relatedURL: relatedURL,
             ckData:ckData,
-            realCkImgs:[]
+            ckImgRequests:[]
         }
 
         for (let i:number = 0; i < newCkImgUrls.length; i++) {
-            if(ckData.includes(newCkImgUrls[i])) {
-                requestData.realCkImgs.push(newCkImgUrls[i])
+            if(ckData.includes(newCkImgUrls[i].fileUrl)) {
+                requestData.ckImgRequests.push(newCkImgUrls[i])
             }
         }
         confirmAndCancelAlertWithLoading("question", "대회를 등록하시겠습니까?", "", async () => {

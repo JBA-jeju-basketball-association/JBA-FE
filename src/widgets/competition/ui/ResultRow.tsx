@@ -4,6 +4,7 @@ import {getCompetitionResultRow} from "../../../shared/type/CompetitionType";
 import formatDate from "../../../shared/lib/formatDate";
 import {MdOutlineDriveFolderUpload} from "react-icons/md";
 import confirmAlert from "../../../shared/lib/alert/ConfirmAlert";
+import {handleDownload} from "../../../shared/lib/handleDownload";
 
 
 type Props = {
@@ -14,12 +15,7 @@ export const ResultRow = ({data}:Props) => {
 
     function fileHandler() {
         if(data.filePath) {
-            const a = document.createElement('a');
-            a.href = data.filePath;
-            a.download = data.fileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            handleDownload(data.filePath, data.fileName)
         }else {
             confirmAlert("warning", "파일이 없습니다.")
         }
@@ -59,10 +55,10 @@ export const ResultRow = ({data}:Props) => {
                 </div>
             </div>
             <div className={style.fileArea}>
-                <a className={style.fileBtn} onClick={fileHandler}>
+                <button className={style.fileBtn} onClick={fileHandler}>
                     <MdOutlineDriveFolderUpload size={24}/>
                     <p>파일</p>
-                </a>
+                </button>
             </div>
         </div>
     );
