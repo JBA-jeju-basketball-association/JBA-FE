@@ -56,7 +56,7 @@ export const UpdateCompetitionSchedulePage = () => {
                 const list:postCompetitionScheduleRow[] = s?.getScheduleRows?.map((row) => {
                      return {
                          gameNumber: row.gameNumber,
-                         startDate: row.startDate,
+                         startDate: new Date(row.startDate ?? new Date),
                          floor: row.floor,
                          place: row.place,
                          homeName: row.homeName,
