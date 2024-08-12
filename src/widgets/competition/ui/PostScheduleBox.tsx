@@ -66,11 +66,14 @@ export const PostScheduleBox = ({places, index, postCompetitionScheduleList, set
         let firstLastDate;
         let secondLastDate;
         if (row.length > 1) {
-            firstLastDate = row[row.length - 1].startDate?.getTime() ?? new Date().getTime();
-            secondLastDate = row[row.length - 2].startDate?.getTime() ?? new Date().getTime();
+            firstLastDate = row[row.length - 1].startDate ?? new Date()
+            firstLastDate = new Date(firstLastDate).getTime()
+            secondLastDate = row[row.length - 2].startDate?? new Date()
+            secondLastDate = new Date(secondLastDate).getTime()
             prevStartDate = (2 * firstLastDate) - secondLastDate
         }else if (row.length == 1){
-            firstLastDate = (row[row.length - 1].startDate?.getTime() ?? new Date().getTime()) + 3600000;
+            firstLastDate = row[row.length -1].startDate ?? new Date()
+            firstLastDate = new Date(firstLastDate).getTime() + 3600000;
             prevStartDate = firstLastDate;
         }else {
             prevStartDate = new Date().getTime();

@@ -38,6 +38,7 @@ export const UpdateCompetitionResultPage = () => {
         queryKey:["getCompetitionResult", id],
         queryFn: () => FetchGetCompetitionResult(id),
         select: (result) => result?.data.data
+
     })
     console.log(data)
 
@@ -55,7 +56,7 @@ export const UpdateCompetitionResultPage = () => {
                     return {
                         competitionResultId: row.competitionResultId,
                         gameNumber: row.gameNumber,
-                        startDate: row.startDate,
+                        startDate: new Date(row.startDate ?? new Date()),
                         floor: row.floor,
                         place: row.place,
                         homeName: row.homeName,
