@@ -56,7 +56,7 @@ export const PostCompetitionResultPage = () => {
                     return {
                         competitionResultId: row.competitionResultId,
                         gameNumber: row.gameNumber,
-                        startDate: row.startDate,
+                        startDate: new Date(row.startDate ?? new Date()),
                         floor: row.floor,
                         place: row.place,
                         homeName: row.homeName,
