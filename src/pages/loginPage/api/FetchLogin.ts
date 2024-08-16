@@ -19,8 +19,8 @@ export default function fetchLogin (email:string, password:string,
             }else {
                 setCookie("savedEmail", "", -1)
             }
-            setAccessToken(res.headers["access-token"]);
-            window.location.href = "/";
+            setAccessToken(res.data.data);
+            // window.location.href = "/";
         }
     }).catch(err => {
         const data = err.response.data;
