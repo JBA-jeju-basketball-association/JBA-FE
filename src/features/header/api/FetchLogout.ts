@@ -3,9 +3,9 @@ import {NavigateFunction} from "react-router-dom";
 
 
 const fetchLogout = (AccessToken:string | null, setAccessToken:(token: (string | null)) => void, navigate:NavigateFunction):void => {
-    NormalApi.post("/v1/api/sign/logout", null, {
+    NormalApi.post("/v1/api/sign/logout-cookie", null, {
         headers: {
-            AccessToken: AccessToken,
+            Authorization: AccessToken,
         }
     }).then(res => {
         setAccessToken(null);
