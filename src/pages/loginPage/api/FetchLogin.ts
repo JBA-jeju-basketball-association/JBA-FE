@@ -20,7 +20,7 @@ export default function fetchLogin (email:string, password:string,
                 setCookie("savedEmail", "", -1)
             }
             setAccessToken(res.data.data);
-            // window.location.href = "/";
+            window.location.href = "/";
         }
     }).catch(err => {
         const data = err.response.data;
