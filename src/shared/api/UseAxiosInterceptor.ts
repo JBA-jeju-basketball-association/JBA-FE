@@ -14,7 +14,7 @@ const useAxiosInterceptor = ():void => {
     const requestHandler = async (config:InternalAxiosRequestConfig) => {
         // 토큰이 있으면 요청 헤더에 추가한다.
         if (AccessToken) {
-            config.headers.setAuthorization(AccessToken);
+            config.headers["Authorization"] = AccessToken;
             const expireTime:number = Math.floor(new Date(JwtDecoder(AccessToken).exp).getTime());
             const currentTime:number = Math.floor(new Date().getTime()/1000)
             if (currentTime + 1 > expireTime) {
@@ -28,7 +28,7 @@ const useAxiosInterceptor = ():void => {
                     });
                     const accessToken: string = res.data.data;
                     setAccessToken(accessToken);
-                    config.headers.setAuthorization(accessToken);
+                    config.headers["Authorization"] = accessToken;
                 } catch (err) {
                     if (axios.isAxiosError(err) && err.response?.status === 401) {
                         try {
